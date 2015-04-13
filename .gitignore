@@ -1,0 +1,11 @@
+H26
+Intensive
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+
+*~

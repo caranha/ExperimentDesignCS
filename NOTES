@@ -1,0 +1,39 @@
+* Class planning
+-- 4/14: Introduction, what is science
+-- 4/21: Intro to experiment design, TASK: describe your research
+-- 4/28: Basics of data, statistics
+-- 5/12: R-tutorial, TASK: describe your data
+-- 5/19, 5/26, no class
+-- 6/2: 
+-- 6/9: 
+-- 6/16:
+-- 6/23:
+-- 6/30: Final Report Review (maybe)
+    
+* Topics to touch
+-- What is science
+    - What is not science
+-- What is experimentation
+-- R tutorial
+    - Data processing
+    - Data visualization
+-- Experiment Design
+    - Selecting/Defining factors
+    - Blocking 
+    - defining the hypothesis
+    - Question preparation
+    - Parameter settings 
+        - One parameter
+        - Multiple parameters
+        - Noise handling
+-- Hypothesis Testing
+    - statistical tests single variable
+    - statistical tests multiple variables
+-- Critically reading research papers
+    - understanding and criticizing
+    - writing reports
+
+* Links:
+-- Github: https://github.com/caranha/ExperimentDesignLectureNotes
+-- Manaba: https://manaba.tsukuba.ac.jp/ct/course_397478
+-- Manaba Code: 7739931
