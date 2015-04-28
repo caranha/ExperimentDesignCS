@@ -1,0 +1,248 @@
+\documentclass[10pt]{beamer}
+
+\input{beamerpreamble.tex}
+
+
+\title[]{Experiment Planning and Design}
+\subtitle[]{Lecture 3-a: Homework Analysis}
+\author[Claus Aranha]{Claus Aranha\\{\footnotesize caranha@cs.tsukuba.ac.jp}}
+\institute{Department of Computer Science}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+  \begin{block}{}
+    Make a description of your research topics, taking into account
+    the concepts we discussed about ``Science'' and ``Experiment
+    Design''
+  \end{block}
+
+  \begin{itemize}
+    \item It is a good way to try to weed out some common mistakes;
+    \item Will not be able to comment on everyone's work. Ask me
+      questions after the class, or extrapolate to your own work.
+    \item Remember that I am not an expert in every field -- these are
+      generic scientific questions, more specific questions may apply
+      in your field.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Optics based quantum device}
+  \begin{block}{What did I get from the description?}
+  \begin{itemize}
+  \item Description of a 2D simulator of quantum bit behavior
+  \item Desire of the implementation of a 3D quantum bit behavior
+  \end{itemize}
+  \end{block}
+  \begin{block}{My comments}
+    \begin{itemize}
+    \item How to we evaluate that the simulation is operating correctly?
+    \item Exact behavior, or Statistical behavior?
+    \item Minimum/Maximum treshold of behavior?
+    \item What are the observable quantities in the simulation?
+    \item \alert{a testing condition is necessary}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Image Analysis using Eigensolver clustering}
+  \begin{block}{What did I get from the description?}
+    \begin{itemize}
+    \item Image segmentation - clustering of images in order to find features
+    \item Use of the ``spectral Clustering'' measure
+    \item Difficulty point - connecting theory and
+      practice. \structure{I understand j00!}
+    \end{itemize}
+  \end{block}
+  \begin{block}{My comments}
+    \begin{itemize}
+    \item Clustering is very easy to setup as an experiment!
+    \item Cluster testing: NMI, Rand Index, other indexes
+    \item Comparison with other clustering methods! (SVM, kmeans?)
+    \item Do you want to focus on the method, or the application?
+    \end{itemize}    
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Database Management Systems}
+  \begin{block}{What did I get from the description?}
+    \begin{itemize}
+    \item Concerned about the confidentiality of data (when storing?
+      when transmitting? when processing?)
+    \item Improve performance of storage of encrypted data, but the
+      database becomes ``complicated''
+    \item \structure{Experiment}: execute SQL query and measure the
+      time; Compare with execution time of existing (non encripted?)
+      method;
+    \end{itemize}
+  \end{block}
+  \begin{block}{My comments}
+    \begin{itemize}
+    \item ``Big Data has been the basis of attractive research fields''
+      -- why is this attractive?
+    \item Tradeoff is good, but what does ``complicated'' and
+      ``performance'' mean?
+    \item We could say that the goal is ``to perform encrypted
+      operations at no additional performance burden''
+    \item Need to be careful to define many experiment conditions
+      (message size, message complexity, computer load, etc).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Virtual Machine research}
+  \begin{block}{What did I get from the description?}
+    \begin{itemize}
+    \item Research about improvement of VM to use kernel instructions
+    \item Topic involves some deep hacking of computer's memory
+    \item System Benchmarks as experiments
+    \end{itemize}
+  \end{block}
+  \begin{block}{My comments}
+    \begin{itemize}
+    \item The student identified different expectations from different
+      results of his experiments.
+    \item Experiments parameters and goals were well described
+    \item This is a hard topic to perform experimentation, but the
+      analysis of system performance is a good topic. Comparison with
+      non-virtual systems is an obvious target.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Natural Language Processing}
+  \begin{block}{What did I get from the description?}
+    \begin{itemize}
+    \item Statistical Machine translation;
+    \item Different word alignment models;
+    \item Analysis of ``data training'' perfomance.
+    \end{itemize}
+  \end{block}
+  \begin{block}{My comments}
+    \begin{itemize}
+    \item Experiment is not well defined: ``data training'',
+      ``performance'' are undefined terms.
+    \item Do you mean correct translation rate?
+    \item Or do you mean time?
+    \item How do you measure both things?
+    \item What other variations and uncertainties do you have to take
+      into account?
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Camera Controlled Robot}
+  \begin{block}{What did I get from the description?}
+    \begin{itemize}
+    \item Automatic ``coating'' from camera data
+    \item Decisions: How many cameras are needed? What kind of camera? What models?
+    \item Testing: How to recover data from the camera? How to calibrate the camera?
+    \item Conditions: Setup, light, error, etc/
+    \end{itemize}
+  \end{block}
+  \begin{block}{My comments}
+    \begin{itemize}
+    \item Important distinction: tests for defining what are the best
+      parts for a research model; tests for comparing the model with
+      other research works;
+    \item Model Validation vs Model development;
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Secure Wireless Network}
+  \begin{block}{What did I get from the description?}
+    \begin{itemize}
+    \item Detection of attackers/wiretapping in a wireless network
+    \item Limited performance (power/communication/memory)
+    \item Evaluation of data confidentiality
+    \item Experiment with varied number of attacks
+    \end{itemize}
+  \end{block}
+  \begin{block}{My comments}
+    \begin{itemize}
+    \item How about experiment without attacks? 
+    \item The utility of controls;
+    \item Problem: result is ``method is feasible'', which does not say much.
+    \item ``High perfomance'', ``low performance'' as expected results
+      can be quantified (we will do this in this course)
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Stream Data Processing Engine}
+  \begin{block}{What did I get from the description?}
+    \begin{itemize}
+    \item Many people use ``Performance'' with many different
+      meanings;
+    \item It is important to be specific in your word use to avoid
+      misunderstandings;
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Decentralized SNS development}
+  \begin{block}{What did I get from the description?}
+    \begin{itemize}
+    \item Focus on data storage, data syncronization, data replication
+    \item Difficulty to stablish P2P connection among peers with
+      interfering situations
+    \item Evaluation of application ``performance''
+    \item Experiment: Time cost and data loss of communication over
+      internet and LAN;
+    \item Compare data loss and time cost against ``user tolerance''
+    \item Stress test against multiple concurrent users;
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{High Performance Computation}
+  \begin{block}{What did I get from the description?}
+    \begin{itemize}
+    \item Very Cool Title;
+    \item High performance computing using GPU and MIC
+    \item Application of TCA architecture to MIC
+    \item Test of optimization implementations
+    \item Is your research hard enough?
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Intelligent Mobile Robot}
+  \begin{block}{What did I get from the description?}
+    \begin{itemize}
+    \item Autonomous robot that can squeeze past crowds
+    \item Algorithm is the critical part - how to control each wheel?
+    \item Experiment: Test if robot can pass or not through crowd;
+    \item Analysis of Noise
+    \end{itemize}
+  \end{block}
+  \begin{block}{My comments}
+    \begin{itemize}
+    \item ``Experiment: pass through the crowd'' does not need to be a
+      ``Yes/No'' experiment.
+    \item How many times did you hit a person? (incremental improvement)
+    \item What was the robot's time while evading people?
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+
+
+\end{document}
