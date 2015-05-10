@@ -3,7 +3,6 @@ Class 3 -
 Points from Felipe Campelo
 
 
-* Motivation - Broken experiments/Explain the broken experiments
 * R basics
 * Data reading in R 
 * Basic Statistics (Campelo Class)
@@ -27,7 +26,8 @@ Points from Felipe Campelo
   * Point estimators + statistic intervals = "Descriptivie statistics", describes the world.
     - We also need "decision-making tools" -- Statistical Inference
     - Hypothesis, Testability, Falsiability
-
+    - What are the assumptions behind the 
+      hypothesis testing?
 
 * Central Limit Theorem -- http://drwho.cpdee.ufmg.br:3838/CLT/
 

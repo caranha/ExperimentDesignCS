@@ -4,9 +4,10 @@
 
 
 \title[]{Experiment Planning and Design}
-\subtitle[]{Lecture 3: Simple Statistical tools}
+\subtitle[]{Lecture 3: Experimental Statistics}
 \author[Claus Aranha]{Claus Aranha\\{\footnotesize caranha@cs.tsukuba.ac.jp}}
 \institute{Department of Computer Science}
+\date{2015-04-29}
 
 \begin{document}
 
@@ -18,36 +19,64 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Before we begin} 
+
+  \begin{block}{Homework Feedback}
+  Last week I asked you all for a simple description of your projects,
+  and how you would expect to use experiments in these projects. Let's
+  take a look at the responses and do some comments.
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
   \frametitle{Class Outline}
   \begin{block}{}
-    In this class, we will learn some basic statistical tools and
-    methods. These tools are useful to analyse the results of
-    experiments.
+    In this class, we will start to look at the statistical and
+    technical tools that are used when designing, preparing and
+    analysing data and experiments.
   \end{block}
+  \begin{block}{}
+    These topics are generic enough that they should be useful for all
+    of you, but each of these techniques can (and has!) been refined
+    to deal with different, specific situations.
+  \end{block}
+
+  \bigskip
+
   \begin{itemize}
-  \item Statistical Inference
-  \item Hypothesis Testing
-  \item ``R'' Tutorial
+  \item Why to statistically analyze data?
+  \item Simple ``R'' tutorial;
+  \item Statistical Indicators
+  \item Hypothesis testing
   \end{itemize}
 \end{frame}
 
-\subsection{The Story of Alice and Bob}
+\subsection{Motivation}
 
 \begin{frame}
   \frametitle{The Story of Alice and Bob}
   \begin{block}{}
-    Alice and Bob are two scientists, trying to create a flying
-    robot. Each has a different technology that they claim is the best
-    one.
+    Alice and Bob are two competing scientists.
+    \bigskip
+    Each has developed a new program that minimizes the number of spam
+    messages that a person receives in their inbox everyday.
+    \bigskip
+    They decide to compare their approaches to decide which one is
+    better.
   \end{block}
 \end{frame}
 
 \begin{frame}
   \frametitle{The Story of Alice and Bob (2)}
   \begin{block}{}
-    Alice and Bob test their robots. They record the maximum heigh of
-    the robot. After the test, Alice claims that her technology is the
-    best.
+    Alice and Bob test their programs. They create a mail account, and
+    count the number of spam e-mails that is received in a one-day
+    period, using their software. 
+  \end{block}
+  \begin{block}{}
+    After the test, Bob claims that his software is the best. Is he
+    correct? Why?
   \end{block}
   \begin{columns}[c]
     \column{0.5\textwidth}
@@ -57,16 +86,22 @@
       9.533777 & 7.132107
     \end{tabular}
     \column{0.5\textwidth}
-    \includegraphics[width=1\textwidth]{img/AliceBob_1}
+    \includegraphics[width=.7\textwidth]{img/AliceBob_1}
   \end{columns}
 \end{frame}
 
 \begin{frame}
   \frametitle{The Story of Alice and Bob (3)}
   \begin{block}{}
-    Bob claims that the wind got in the way of his robot, and asks for a rematch.
-    This time, Alice's robot Crashes! Bob is now claiming that his technology is 
-    safer and better.
+    Alice complains, and says that Bob created his e-mail account a
+    few hours later than her (he didn't). They decide to repeat the
+    test the next day.
+
+    \medskip
+
+    This time Alice's software not only catch all spam, it also
+    catches some annoying chain mails from grandma that the user did
+    not want either!
   \end{block}
   \begin{columns}[c]
     \column{0.5\textwidth}
@@ -84,9 +119,13 @@
 \begin{frame}
   \frametitle{The Story of Alice and Bob (4)}
   \begin{block}{}
-    Alice and Bob do a few more experiments. After five repetitions,
-    Bob claims that, on average, his robot will fly more than
-    Alice's. So it proves that his technology is better.
+    Alice and Bob do the experiment for three more days. After five
+    total days, Alice claims that on average, her program receives less
+    spam than Bob's, and is the better program.
+
+    \smallskip
+
+    \alert{Is she right? Can you comment on their experiment?}
   \end{block}
   \begin{columns}[c]
     \column{0.5\textwidth}
@@ -158,6 +197,28 @@
     \end{itemize}
   \item We will apply those techniques using the tool ``R''
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The takeaway message} 
+
+  Our monkey-brains are \alert{very bad} at seeing the big
+  picture. 
+  
+  \bigskip
+  
+  Our intelligence is optimized for pattern matching and, thus, we
+  tend to quickly grab the first interpretation that jumps to the eye.
+
+  \bigskip
+  
+  Statistics is a great tool to make sense of data in ways that may
+  not be immediately obvious.
+
+  \bigskip
+  
+  \includegraphics[width=0.6\textwidth]{img/smile}
+
 \end{frame}
 
 \section{Introduction to R}
