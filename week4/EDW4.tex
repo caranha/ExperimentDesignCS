@@ -423,7 +423,7 @@
   \url{http://drwho.cpdee.ufmg.br:3838/CLT/}
 \end{frame}
 
-% TODO: Add an example of point estimators
+% TODO: Add a numerical example of point estimators using R and some data
 
 \begin{frame}
   \begin{center}
@@ -433,40 +433,346 @@
 
 
 \section{Interval Estimators}
+\subsection{Introduction}
+\begin{frame}
+  \frametitle{Statistical Intervals} 
+
+  Statistical Intervals are important in quantifying the uncertainty
+  associated to a given estimate;
+
+  \bigskip
+  
+  % TODO: use a more relevant example to the students
+  \begin{exampleblock}{Example: Coaxial cable factory}
+    A coaxial cable manufacturing operation produces cables with a
+    target resistance of 50$\Omega$ and a standard deviation of
+    2$\Omega$. Assume that the resistance values of the cables
+    produced can be well modeled by a normal distribution.
+  \end{exampleblock}
+  \begin{exampleblock}{}
+    Suppose that we take a sample of $N = 25$ cables produced, and the
+    sample mean is $\bar{x} = 48$. Given the variability of the
+    sample, it is likely that this value is not exactly the true value
+    $\mu$. 
+
+    \medskip
+
+    \structure{How can we quantify the uncertainty of this estimate?}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Definition of Statistical Intervals}
+  \structure{Statistical Intervals} define regions that are likely to
+  contain the true value of an estimated parameter.
+ 
+  \medskip
+  
+  More formally, it is generally possible to quantify the level of
+  uncertainty associated with the estimation, which allows the
+  derivation of sound \structure{conclusions at predefined levels of
+    certainty}.
+
+  \begin{exampleblock}{Example}
+    We estimate that the value of the mean of this population is
+    between 5.3 and 7.8, and we have a 95\% confidence on the method
+    used to generate this interval.
+  \end{exampleblock}
+
+  The most common types of interval are:
+  \begin{enumerate}
+  \item Confidence Intervals;
+  \item Tolerance Intervals;
+  \item Prediction Intervals;
+  \end{enumerate}
+\end{frame}
+
+\subsection{Interval definitions}
+\begin{frame}
+  \frametitle{Confidence Intervals} 
+
+  Confidence Intervals quantify the degree of uncertainty associated
+  with the estimation of the population parameter, such as the mean or
+  the variance.
+
+  \begin{block}{Definition}
+    ``The interval that contains the true value of a given population
+    with a confidence level of $100(1-\alpha)$''
+  \end{block}
+  
+  \bigskip
+  
+  \begin{itemize}
+    \item \alert{Wrong:} ``there is a 95\% chance that the interval
+      contains the true population mean'':
+    \item \structure{Right:} ``The method used to derive the interval
+      has a hit rate of 95\%'' - i.e., the interval generated has a
+      95\% chance of capturing the true population parameter;
+  \end{itemize}
+
+  \medskip
+
+  It is easier to understand if you think about confidence in the {\bf
+    method}, not in the interval.
+\end{frame}
+
+\begin{frame}[singleslide,fragile]
+  \frametitle{Example, 100 $CI_{.95}$ for a sample of 25 observations}
+  \begin{center}
+    \includegraphics[width=.9\textwidth]{img/CIs}
+  \end{center}
+  \medskip
+\begin{verbatim}
+> library(TeachingDemos)
+> run.ci.examp()
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+  \frametitle{CI on the Mean of a Normal Variable} 
+  The two-sided $CI_{(1-\alpha)}$ for the mean of a normal population
+  with known variance $\sigma^2$ is given by:
+  \begin{equation*}
+    \bar{x} - \frac{\sigma}{\sqrt{N}}Z_{(\alpha/2)} \leq \mu \leq \bar{x} + \frac{\sigma}{\sqrt{N}}Z_{(\alpha/2)}
+  \end{equation*}
+  where $(1-\alpha)$ is the confidence level and $z_{(\alpha/2)}$ is
+  the $(1-\alpha/2)$-quantile of the standard normal distribution.
+
+  For the more usual case with an unknown variance,
+  \begin{equation*}
+    \bar{x} - \frac{s}{\sqrt{N}}t_{(\alpha/2;N-1)} \leq \mu \leq \bar{x} + \frac{s}{\sqrt{N}}t_{(\alpha/2;N-1)} 
+  \end{equation*}
+  where $t_{(\alpha/2;N-1)}$ is the corresponding quantile of the $t$
+  distribution with $N-1$ degrees of freedom.
+\end{frame}
+
+\begin{frame}
+  \frametitle{CI on the Variance of a Normal Variable} 
+  In the same way, a two-sided confidence interval on the variance of
+  a normal variable can be easily calculated:
+  \begin{equation*}
+    \frac{(N-1)s^2}{\chi^2_{\alpha/2;N-1}} \leq \sigma^2 \leq \frac{(N-1)s^2}{\chi^2_{1-\alpha/2;N-1}}
+  \end{equation*}
+  where $\chi^2_{\alpha/2;N-1}$ and $\chi^2_{1-\alpha/2;N-1}$ are the
+  upper and lower $(\alpha/2)$-quantiles of the $\chi^2$ distribution
+  with $N-1$ degrees of freedom.
+\end{frame}
+
+\begin{frame}[singleslide,fragile]
+  \frametitle{Calculating the CI with R} 
+
+  Remember that we don't want to do all these calculations by hand! It
+  is important to understand what they mean, but in practice you will
+  do something like this:
+  
+{\small
+\begin{verbatim}
+> population <- rnorm(5000) # our hypotethical population
+> sample.size = 20
+> x1 <- sample(population,sample.size) # replace with experiment
+
+> mean.estimator <- mean(x1)
+> sd.estimator <- sd(x1)
+
+> left <- mean.estimator - (sd.estimator/sqrt(sample.size))*qt(0.95,df=sample.size-1)
+> right <- mean.estimator + (sd.estimator/sqrt(sample.size))*qt(0.95,df=sample.size-1)
+
+> c(left,right)
+[1] -0.5218866  0.3356534
+\end{verbatim}}
+%TODO: Add another R example with real data
+\end{frame}
+
+\begin{frame}[singleslide,fragile]
+  \frametitle{What if we want a smaller Interval?} 
+
+  One way to decrease the size of the confidence interval, without
+  losing confidence, is increasing the size of a sample. This has its
+  own problems which we will see in the future (e.g. cost of
+  sampling).
+  
+{\small
+\begin{verbatim}
+> population <- rnorm(5000) # our hypotethical population
+> sample.size = 100 # INCREASED SAMPLE SIZE
+> x1 <- sample(population,sample.size) # replace with experiment
+
+> mean.estimator <- mean(x1)
+> sd.estimator <- sd(x1)
+
+> left <- mean.estimator - (sd.estimator/sqrt(sample.size))*qt(0.95,df=sample.size-1)
+> right <- mean.estimator + (sd.estimator/sqrt(sample.size))*qt(0.95,df=sample.size-1)
+
+> c(left,right)
+[1] -0.1163320  0.2011607 # DECREASED CONFIDENCE INTERVAL
+\end{verbatim}}
+%TODO: Add another R example with real data
+\end{frame}
+
+\begin{frame}
+  \frametitle{Tolerance Intervals} 
+
+  ``A tolerance interval is a {\bf enclosure} interval for a specified
+  proportion of the samplede population, not its mean or standard
+  deviation. For a specified confidence level, you may want to
+  determine lower and upper bounds such that a given percent of the
+  population is contained within them.''
+
+  \hfill{\tiny J.G. Ramirez:
+    \url{https://www.sas.com/resources/whitepaper/wp_4430.pdf}}
+
+  \begin{center}
+    90\% enclosure of a N(50,2) population
+    \includegraphics[width=0.8\textwidth]{img/enclosure}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Tolerance Intervals} 
+  The common practice in engineering of defining specification limits
+  by adding $\pm 3\sigma$ to a given estimate of the mean arises from
+  this definition - for a normally-distributed population,
+  approximately 99.75\% of the observations will fall within these
+  limits.
+  
+  However, in most cases the true variance is unknown. So we have to
+  use its estimate, $s^2$, and compensate for the uncertainty in this
+  estimation. The two-sided tolerance interval is given as: 
+  \begin{equation*}
+    \bar{x} \pm \sqrt{(N-1)(N+z^2_{(\alpha/2)}}{N_{\chi^2_{(\gamma;N-1)}}}
+  \end{equation*}
+  In which $\gamma$ is the proportion of the population to be
+  enclosed, and $1-\alpha$ is the desired confidence level for the
+  interval.
+\end{frame}
+
+\begin{frame}[singleslide,fragile]
+  \frametitle{Another Example} 
+  We are bulding a program that should finish its operation in between
+  10 and 30$\mu s$. An initial analysis would be to run the programs a
+  few times to calculate the tolerance interval for its running time.
+
+{\smaller
+\begin{verbatim}
+> runtime <- c(14.92869, 13.65345, 14.63093, 14.38412, 
+               14.98059, 13.92460, 14.81254, 14.26117
+               13.31676, 19.80000)
+> df <- length(runtime)
+> prop <- 0.9
+> conf <- 0.95
+> spread <- sqrt(((df-1)*(df+qnorm(conf/2)^2))/(df*qchisq(prop,df=df-1)))
+> left <- mean(runtime) - spread
+> right <- mean(runtime) + spread
+> c(left,right)
+[1] 14.08623 15.64972
+\end{verbatim}}
+% TODO: check that this calculation of tolerance interval is correct
+\end{frame}
+
+\begin{frame}
+  \frametitle{Prediction Intervals} 
+  Prediction intervals quantify the uncertainty associated with
+  forecasting the value of a future observation;
+  
+  \medskip
+
+  Essentially, one is intersted in obtaining an interval within which
+  he or she can declare that the next observation will fall with a
+  given probability;
+
+  \medskip
+
+  For a normal distribution, we have:
+  \begin{equation*}
+    \bar{x} - t_{(\alpha/2;N-1)}s/sqrt{1+\frac{1}{N}} \leq X_{N+1} \leq \bar{x} + t_{(\alpha/2;N-1)}s/sqrt{1+\frac{1}{N}}
+  \end{equation*}
+  which is similar to the confidence interval for the mean, but adding
+  1 to the term within the square root to account for the prediction
+  noise.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wrapping up} 
+  Statistical intervals quantify the uncertainty associated with
+  different aspects of estimation;
+
+  \bigskip
+
+  Reporting intervals is always better than point estimates, as it
+  provides to you (and your readers) the necessary information to
+  quantify the location and spread of your estimated values;
+
+  \bigskip
+
+  The correct interpretation is a little tricky, but it is essential
+  in order to derive the correct conclusions based on the statistical
+  interval of interest.
+
+  \bigskip
+
+  \rule{\textwidth}{0.4pt}
+  {\smaller
+    Related reading:
+    \begin{itemize}
+      \item J.G. Ramirez, Statistical Intervals: Confidence, Prediction, Enclosure:\\
+        \url{https://www.sas.com/resources/whitepaper/wp_4430.pdf}
+      \item D.C. Montgomery and G.C. Runger, ``Applied Statistics and
+        Probability for Engineers'', chapter 8, 3rd Ed., Wiley 2005.
+    \end{itemize}    
+  }
+
+\end{frame}
+
 \section{Hypothesis Testing}
-% TODO: Add campelo class 4
 % TODO: Add campelo class 5
 
 \section{End Notes}
 \subsection{Homework 2}
 \begin{frame}
   \frametitle{Homework 2}
-  % Scatterplot of your data
-  % Histogram of your data (which columns should you choose?)
-  % Other plots that describe your data well
-
-  % Do a hypothesis testing to compare different qualities of your data
-
-  % OR
-  % Provide some data that can be analysed and compared
+  \begin{block}{Basic Data analysis}
+    \begin{itemize}
+    \item Load two data files related to your research into R data
+      frames (experiment results, data sets, etc);
+    \item Find out, for each data set: variables, their means,
+      variances, maximum and minimum values;
+    \item Plot relevant plots to characterize these data sets;
+    \item Compare these data sets using statistical estimators (point
+      estimators, interval estimators, etc)
+    \item Describe your findings;
+    \end{itemize}
+  \end{block}
+  \begin{block}{Submission materials}
+    \begin{itemize}
+    \item \structure{Files 1..n:} text files containing the data used;
+    \item \structure{File n+1:} R file (text file) containing the
+      tasks above; R file must contain comments explaining what each
+      command block does.
+    \end{itemize}
+  \end{block}
+  \rule{\textwidth}{0.4pt} {\tiny If you don't have useable data
+    related to your research, you can use the following data sets:}
 \end{frame}
 
 \section{Final Notes}
 \subsection{Image Information}
 \begin{frame}
-  {\tiny
+  \frametitle{Credits}
+  {\smaller
   \begin{itemize}
+    %TODO: Generate self image for pool of balls
   \item Pool of balls image: \url{http://goo.gl/y8doaN}
+    %TODO: Generate self image for green ball
   \item Green ball: \url{http://goo.gl/Fb8z68}
+    %TODO: Generate self image for MVUE (min-max/2 vs regular mean)
   \item MVUE image: D.C.Montgomery, G.C. Runger, ``Applied Statistics and Probability for Engineers'', Wiley 2003
   \end{itemize}
-  }
   \medskip
   \begin{block}{This lecture notes is a derived work of}
     Felipe Campelo (2015), ``Lecture Notes on Design and Analysis of Experiments''\\
     Online: \url{https://github.com/fcampelo/Design-and-Analysis-of-Experiments}
     Creative Commons BY-NC-SA 4.0.
-  \end{block}
+  \end{block}}
 \end{frame}
 
 \end{document}
