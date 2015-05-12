@@ -1,10 +1,15 @@
-363:% TODO: Think about adding slides 12-14 from campelo class 3 (or replace by an example?)
-426:% TODO: Add a numerical example of point estimators using R and some data
-445:  % TODO: use a more relevant example to the students
-583:%TODO: Add another R example with real data
-609:%TODO: Add another R example with real data
-669:% TODO: check that this calculation of tolerance interval is correct
-727:% TODO: Add campelo class 5
-763:    %TODO: Generate self image for pool of balls
-765:    %TODO: Generate self image for green ball
-767:    %TODO: Generate self image for MVUE (min-max/2 vs regular mean)
+5:% TODO: this class needs more real examples from real data.
+365:% TODO: Think about adding slides 12-14 from campelo class 3 (or replace by an example?)
+428:% TODO: Add a numerical example of point estimators using R and some data
+447:  % TODO: use a more relevant example to the students
+585:%TODO: Add another R example with real data
+611:%TODO: Add another R example with real data
+671:% TODO: check that this calculation of tolerance interval is correct
+737:%TODO: this should probably be a separate chapter: 
+738:%TODO: Statistical inference (value comparison) and simple comparisons (pop comp) 
+781:  % TODO: maybe add quotes from popper/ockham?
+1199:  %TODO: Explain what is T0 and tn-1: percentiles of t distribution?
+1254:%TODO: include ``by hand'' calculation of critical region in R
+1389:    %TODO: Generate self image for pool of balls
+1391:    %TODO: Generate self image for green ball
+1393:    %TODO: Generate self image for MVUE (min-max/2 vs regular mean)

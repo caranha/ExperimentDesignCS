@@ -2,6 +2,8 @@
 
 \input{../utils/beamerpreamble.tex}
 
+% TODO: this class needs more real examples from real data.
+
 
 \title[]{Experiment Planning and Design}
 \subtitle[]{Lecture 4: Statistical Concepts}
@@ -723,13 +725,636 @@
 
 \end{frame}
 
-\section{Hypothesis Testing}
-% TODO: Add campelo class 5
+\begin{frame}
+  \frametitle{}
+  \begin{center}
+    Did you understand everything?\\
+    Another mini-break!
+  \end{center}
+\end{frame}
+
+
+%TODO: this should probably be a separate chapter: 
+%TODO: Statistical inference (value comparison) and simple comparisons (pop comp) 
+\section{Statistical Inference}
+\subsection{Introduction}
+\begin{frame}
+  \frametitle{Introduction to Statistical Inference} 
+
+  Point Estimators and Statistical Intervals belong to a branch of
+  statistics known as \emph{descriptive statistics}. That is, these
+  methods are focused on accurately describing characteristics such as
+  the location and uncertainty about a given population parameter;
+
+  \vfill
+
+  While these concepts are certainly important, in many cases
+  description is not enough -- someone may need the decision-making
+  tools to deal with information from random samples, tools that allow
+  a research to perform \structure{inference} with a quantifiable
+  degree of certainty.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Statistical Hypotheses}
+  {\small
+  A \structure{hypothesis} is a proposed explanation for an observable phenomenon.
+  
+  Scientific hypotheses must satisfy (at least) two conditions:
+  \begin{itemize}
+  \item Testability;
+  \item Falsifiability;
+  \end{itemize}
+
+  \bigskip
+
+  The \structure{hypothetico-deductive} model of construction of
+  scientific knowledge includes:
+  \begin{itemize}
+  \item Formulation of a falsifiable hypotheses;
+  \item Refutation or corroboration of the hypotheses by the data;
+  \item Comparison between alternative hypotheses -- principle of
+    parsimony (Ockham's razor);
+  \item Predictive power;
+  \end{itemize}}
+
+  % TODO: maybe add quotes from popper/ockham?
+\end{frame}
+
+\subsection{Hypotheses}
+\begin{frame}
+  \frametitle{Definitions of Statistical Hypotheses} 
+  Statistical hypotheses are defined as objective statements about
+  parameters of one or more populations;
+
+  \bigskip
+
+  \alert{Attention:} the statements in statistical hypotheses are
+  about parameters of the population or model, {\bf not the sample.}
+
+  \bigskip
+
+  On frequentist approaches, the formal test of hypotheses involves
+  the contrast between null and alternate hypotheses.
+
+  \begin{columns}
+    \column{.5\textwidth}
+    \begin{block}{Null hypothesis ($H_0$)}
+      \begin{itemize}
+        \item Absence of effects;
+        \item Conservative model;
+        \item Point value for the parameter.
+      \end{itemize}
+      {\bf Example:} $H_0 : \mu = 25$
+    \end{block}
+    \column{.5\textwidth}
+    \begin{block}{Null hypothesis ($H_A$)}
+      \begin{itemize}
+        \item Presence of some effect;
+        \item Existence of something ``new'';
+        \item Interval value for the parameter.
+      \end{itemize}
+      {\bf Example:} $H_A : \mu \neq 25$
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Statistical Hypotheses: Working them out}
+  Determination of the reference value for the null hypothesis $H_0$:
+  \begin{itemize}
+  \item Previous knowledge about the process (investigation of changes);
+  \item Value obtained from theory or models (model validation);
+  \item Project requirements (investigation of system compliance);
+  \end{itemize}
+
+  \bigskip
+
+  Hypothesis testing involves:
+  \begin{itemize}
+  \item Obtaining the sample;
+  \item Calculation of test statistics;
+  \item Decision based on the computed value;
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Statistical Hypothesis: an example}
+  {\small
+    \begin{columns}
+      \column{0.2\textwidth}
+      \includegraphics[width=1\textwidth]{img/peas}
+      \column{0.8\textwidth} Suppose you are a large-scale consumer of
+      green peas, and you want to determine if the 500g packages from
+      a supplier really contain their nominal wight (at least on
+      average).
+    \end{columns}
+  }
+  
+  \bigskip
+  
+  In this case, the null hypothesis could be defined as: \emph{the
+    average net weight of a package is 500g}, and the alternative of
+  interest could be expressed as the complementary inequality.
+  \begin{equation*}
+    \begin{cases}
+      H_0 : \mu = 500g\\
+      H_1 : \mu \neq 500g
+    \end{cases}
+  \end{equation*}
+  Suppose still that you get 10 randomly selected packs from the supplier
+  (in other words, $N=10$), and you then measure their contents using
+  a calibrated scale;
+\end{frame}
+
+\begin{frame}
+  \frametitle{Statistical Hypothesis: an example} 
+  Since the sample mean $\bar{x}$ is a good estimator of the real mean
+  $\mu$, we can assume:
+  
+  \medskip
+
+  \begin{itemize}
+  \item If $\bar{x} \cong 500g$ - then $H_0$ is corroborated;
+  \item If $\bar{x} \ll 500g$ or $\bar{x} \gg 500g$ - $H_0$ is refuted;
+  \end{itemize}
+  
+  \medskip
+
+  This suggests that we use the value of $\bar{x}$ as the basis for a
+  statistical test.
+  
+  \vfill
+
+  First, we need to define a \structure{critical region} for the rejection of $H_0$.
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{img/criticalregion}
+  \end{center}
+  \hfill The big question: how do we define \structure{$\Delta$}?
+\end{frame}
+
+\subsection{Inferential Errors}
+\begin{frame}
+  \frametitle{Type I error}
+  \begin{block}{}
+    {\bf Type I error} (AKA false positive): rejecting the null
+    hypothesis when it is true.
+  \end{block}
+  
+  \vspace{1cm}
+
+  The probability of occurrence of a false positive in any hypothesis
+  testing procedure is generally known as the \structure{significance
+    level} of the test. It is generally represented by the Greek
+  letter $\alpha$:
+
+  \begin{equation*}
+    \alpha = P(\text{type I error}) = P(\text{reject } H_0|H_0 \text{ is true})
+  \end{equation*}
+
+  Another frequently used term is the \structure{confidence level} of
+  the test, given by $(1-\alpha)$
+\end{frame}
+
+\begin{frame}
+  \frametitle{Type I error} 
+
+  \begin{block}{}
+  For a given sample, the selected value of $\alpha$ defines the
+  critical threshold for the rejection of $H_0$. Bigger $\alpha$ --
+  lower treshold -- higher probability of a type I error.
+  \end{block}
+
+  \bigskip
+
+  If $H_0$ is true (i.e., if $\mu = 500g$), the distribution of values
+  of $\bar{x}$ is approximately normal (remember the CLT), with
+  average 500 and variance given by $s^2/n$.
+
+  \bigskip
+
+  For a Type-I error probability $\alpha = 0.05$, the critical values
+  of the distribution of $\bar{x}$ are those for which the probability
+  density within the acceptance region is $1-\alpha = 0.95$.
+
+  \bigskip
+  
+  \hfill \includegraphics[width=0.4\textwidth]{img/alpha}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Type II error}
+  \begin{block}{}
+    {\bf Type II error} (AKA. false negative): failure to reject the
+    null hypothesis when it is false.
+  \end{block}
+
+  \bigskip
+
+  The probability of occurrence of a false negative in any hypothesis
+  testing procedure is generally represented by $\beta$:
+  \begin{equation*}
+    \beta = P(\text{type II error}) = P(\text{not reject } H_0|H_0 \text{ is false})
+  \end{equation*}
+
+  \bigskip
+
+  The quantity $(1-\beta)$ is known as the \structure{power of the
+    test}, and quantifies its sensitivity to effects that violate the
+  null hypothesis.
+
+  \vspace{1cm}
+
+  \begin{exampleblock}{In other words}
+    A type II error usually happen when the difference between the
+    effect and the null hypothesis is too small to be detected. In
+    this case, the testing procedure is not sensitive enough.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Type II error}
+
+  \begin{columns}
+    \column{.5\textwidth}
+
+    Unlike the Type-I error, the definiton of the Type-II error rate
+    requires further specification of the value of the parameter being
+    investigated;
+
+    \bigskip
+
+    The probability of failing to reject a false $H_0$ is strongly
+    dependent on the magnitude of the difference between the value
+    under $H_0$ and the real value of the parameter.
+
+    \column{.5\textwidth}
+    \includegraphics[width=1\textwidth]{img/beta-a}\\
+    \includegraphics[width=1\textwidth]{img/beta-d}    
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Type II error}
+  
+  The power of a test is governed by several factors:
+  \begin{itemize}
+    \item \structure{Controllable factors}: significance level $\alpha$, sample size $N$;
+    \item \structure{Uncontrollable factors}: real value of the parameter in the population;
+  \end{itemize}
+  If $H_0$ is false, the smaller the magnitude of the difference
+  between the real value of the parameter and the one under the null
+  hypothesis, the greater the probability of a type II error.
+
+  \vspace{1.5cm}
+
+  \begin{alertblock}{However!}
+    If the difference between $H_0$ and the parameter is too small,
+    the practical importance of the effect (and the importance of the
+    type II error) also gets insignificant.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Considerations about type I, II errors} 
+
+  {\bf Type I error} ($\alpha$) depends only on the distribution of
+  the null hypothesis -- easier to control;
+  
+  \smallskip
+
+  {\bf Type II error} ($\beta$) depends on the real value of the
+  parmeter -- more difficult to specity and control;
+
+  \bigskip
+
+  These characteristics lead to the following classification of the
+  conclusions obtained from hypothesis testing:
+  \begin{block}{}
+    \begin{itemize}
+    \item Rejection of $H_0$ -- strong conclusion;
+    \item Failure to reject $H_0$ -- weak conclusion (but can be strengthened);
+    \end{itemize}
+  \end{block}
+
+  It is important to remember that failing to reject $H_0$ does not
+  mean that there is evidence in favor of $H_0$ -- it inly suggests
+  that it is a better model than the alternative.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Easy way to remember type I, II errors}
+  \begin{center}
+    \includegraphics[width=.8\textwidth]{img/type_I_type_II_errors}\\
+    Also -- mini break!
+  \end{center}
+\end{frame}
+
+
+
+\subsection{Hypothesis testing procedure}
+\begin{frame}
+  \frametitle{General Procedure for Hypothesis testing}
+  \begin{columns}
+    \column{.7\textwidth}
+    \begin{itemize}
+    \item Identify the parameter of interest;
+    \item Define $H_0$ and $H_A$ (one or two sided)
+    \item Determined desired $\alpha$, $\beta$;
+    \item Define minimally interesting effect $\delta^*$;
+    \item Calculate sample size;
+    \item Determine the test statistic and critical region;
+    \item Compute the statistic;
+    \item Decide whether or not to reject $H_0$;
+    \end{itemize}
+    \column{.3\textwidth}
+    \includegraphics[width=.6\textwidth]{img/hypothesis-wine}
+  \end{columns}
+  \rule{1\textwidth}{0.4pt}
+  {\tiny Image (c) Roots Run Deep Winery: \url{http://www.rootsrundeep.com/hypothesis.html}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hypothesis testing: Mean of a normal dist, variance known}
+  \begin{columns}
+    \column{0.2\textwidth}
+    \includegraphics[width=1\textwidth]{img/peas}
+    \column{0.8\textwidth} Back to the green peas example, we want to
+    determine if there is any significant deviation on the mean weight
+    of the packages. Assume for now that the variance of the process
+    is known. The test hypothesis are defined as:
+  \end{columns}
+  
+  \bigskip
+
+  \begin{equation*}
+    \begin{cases}
+      H_0 : \mu = 500g\\
+      H_1 : \mu \neq 500g
+    \end{cases}
+  \end{equation*}
+  Let the desired significance level be $\alpha = 0.05$;
+
+  \bigskip
+
+  Given these characteristics, we expect that the sampling
+  distribution of $\bar{X}$ is also normal, with variance
+  Var($\bar{X}$) $= \sigma^2/n$. If $H_0$ is true, the mean of the
+  population is $\mu_{\bar{X}} = \mu_0 = 500$;
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hypothesis testing: Mean of a normal dist, variance known}
+  Based on these characteristics, the variable
+  \begin{equation*}
+    Z_0 = \frac{\bar{X} - \mu_0}{\sigma/\sqrt{n}}
+  \end{equation*}
+  will be distributed according to the standard normal, N(0,1), but
+  {\bf only if $H_0$ is true}.
+
+  \bigskip
+
+  This result implies a probablility of $(1-\alpha)$ that $Z_0$ will
+  fall within the range $(\pm z_{\sigma/2})^b$ if $H_0$ is true. This
+  provides a selection criterion between $H_0$ and $H_1$:
+  \begin{itemize}
+    \item If $|z_0| > z_{alpha/2}$, we reject $H_0$ at the confidence
+      level $1-\alpha$;
+    \item Otherwise, there is not enough evidence to reject $H_0$
+  \end{itemize}  
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hypothesis testing: Mean of a normal dist, variance known}
+
+  Assume that we got $\bar{x} = 496.48$ from our $n=10$ observations,
+  and that $\sigma = 10g$. In this case.
+
+  \medskip
+
+  \begin{equation*}
+    z_0 = \frac{496.48 - 500}{10/\sqrt{10}} = -1.113
+  \end{equation*}
+
+  \medskip
+
+  The critical values of the standard normal distribution are taken from its 
+  quantiles, so $\pm z_{\sigma/2} = \pm z_{0.025} = \pm 1.96$;
+  
+  Since $|z0| < Z_{0.025}$, we can conclude that there is not enough
+  evidence to reject $H_0$ at the 95\% confidence level.
+\end{frame}
+
+\begin{frame}[singleslide,fragile]
+  \frametitle{Hypothesis testing: Mean of a normal dist, variance known}
+{\small
+\begin{verbatim}
+> install.packages("TeachingDemos")
+> library(TeachingDemos)
+
+> peas <- scan("Rfiles/greenpeas.txt")
+> z.test (as.numeric(peas), mu=500, stdev=10)
+
+One Sample z-test
+data: as.numeric(peas)
+z = -1.1131, n = 10.0000, Std. Dev. = 10.0000, 
+Std. Dev. of the sample mean = 3.1623, 
+p-value = 0.2657
+alternative hypothesis: true mean is not equal to 500
+95 percent confidence interval:
+ 490.282 502.678
+sample estimates:
+mean of as.numeric(peas) 
+                  496.48
+\end{verbatim}}
+\end{frame}
+
+\subsection{Another Example}
+\begin{frame}
+  \frametitle{Hypothesis testing 2: normal dist, variance unknown}
+  Suppose now a more realistic situation: we don't know the real
+  variance of the population. Besides, assume that we are interested
+  in detecting only negative deviations (We only care if the real
+  number of peas is less than the stated amount).
+  
+  \bigskip
+  
+  The test hypotheses can be defined as: 
+  \begin{equation*}
+    \begin{cases}
+      H_0 : \mu = 500g\\
+      H_1 : \mu < 500g
+    \end{cases}
+  \end{equation*}
+
+  \bigskip
+
+  In this second scenario, we want to be more conservative, so we pick
+  a significance level of $\alpha = 0.01$;
+  
+  \bigskip
+
+  It can be shown that, {\bf if $H_0$ is true} then
+  %TODO: Explain what is T0 and tn-1: percentiles of t distribution?
+  \begin{equation*}
+    T_0 = \frac{\bar{X} - \mu_0}{S/\sqrt{n}}\sim t_{n-1}
+  \end{equation*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hypothesis testing 2: normal dist, variance unknown}
+  From the same data as in the previous example, we can calculate that 
+  $\bar{x} = 496.48g$, $n = 10$, $s=6.97g$. From this we find out that:
+
+  \bigskip
+
+  \begin{equation*}
+    t_0 = \frac{496.48 - 500}{6.79/\sqrt{10}} = -1.5969
+  \end{equation*}
+
+  \bigskip
+
+  The critical value of this test statistic for the desired
+  significance is $t_{\alpha,n-1} = t_{0.01,9} = -2.82$;
+
+  \bigskip
+
+  Given that $t_0 > -2.54$, we conclude that the evidence is
+  insufficient to reject $H_0$ at the 99\% confidence level;
+  
+  \begin{block}{In the end}
+    From analyzing this sample of 10 peas packages, we do not have
+    enough evidence to affirm, with a 99\% confidence level, that the
+    mean weight of pea packages is less than 500g. 
+  \end{block}
+
+\end{frame}
+
+\begin{frame}[singleframe,fragile]
+  \frametitle{Hypothesis Testing 2: calculating it with R}
+  {\small
+\begin{verbatim}
+> library(TeachingDemos)
+> peas <- scan("Rfiles/greenpeas.txt")
+> t.test(peas,alternative="less",mu=500,conf.level=0.99)
+
+        One Sample t-test
+
+data:  peas
+t = -1.5969, df = 9, p-value = 0.07237
+alternative hypothesis: true mean is less than 500
+99 percent confidence interval:
+     -Inf 502.6991
+sample estimates:
+mean of x 
+   496.48
+\end{verbatim}
+  }
+%TODO: include ``by hand'' calculation of critical region in R
+\end{frame}
+
+\subsection{Analysing Results}
+\begin{frame}
+  \frametitle{Hypothesis testing: description of results}
+  \begin{block}{}
+    (In)Sufficient evidence for rejecting $H_0$ at the significance
+    level $\alpha$
+  \end{block}
+
+  \bigskip
+
+  Even though this is correct (and better than just comparing single
+  values), this description is still relatively poor:
+
+  \medskip
+
+  \begin{enumerate}
+  \item It does not provide information on the intensity of the
+    evidence for rejection/non rejection;
+  \item It imposes a predetermined significance level to the consumer
+    of the information;
+  \item It does not provide information about the magnitude of the
+    effect that was found, or the sensitivity of the test;
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hypothesis testing: p-values}
+  \begin{block}{The p-value:}
+    The lowest significance level that would lead to the rejection of
+    $H_0$ for the available data.
+  \end{block}
+  
+  \bigskip
+  
+  Can be interpreted as the probability that, if $H_0$ is true, that
+  the test statistic would obtain a value at least as extreme as the
+  one obtained.
+
+  \bigskip
+
+  For our previous example, the p-value could have been calculated as:
+  \begin{equation*}
+    p = P(t_0 \leq -1.597|H_0 = \text{TRUE} =
+    \int^{-1.597}_{-\inf}(t_9)dt = 0.07237
+  \end{equation*}
+
+  \bigskip
+  
+  \begin{block}{}
+    It is still important to define the significance level a priori!
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Beware the Caveats of hypothesis testing!}
+
+  The p-value is a very powerful tool for analysing the result of a
+  hypothesis test procedure. However, even the p-value can lead
+  to erroneous conclusions if not analyzed carefully:
+
+  \bigskip
+
+  \begin{block}{Some simple caveats}
+    \begin{itemize}
+    \item Multiplicative effects of multiple experiments;
+    \item Huge n sizes leading to high confidence for small effects;
+    \item Type II errors
+    \item Throwing away low confidence results
+    \end{itemize}
+  \end{block}
+
+  \bigskip
+
+  But you must be tired by now, so we will talk about these guys next
+  class!
+\end{frame}
+
 
 \section{End Notes}
+
+\subsection{Summary}
+\begin{frame}
+  \frametitle{Today you learned}
+  \begin{itemize}
+  \item Statistical population as a proxy for the unknown truth we
+    want to understand through experiments;
+  \item That there are different methods to infer information about
+    the population from the experiments (samples);
+  \item That different statistical methods have different accuracies
+    and confidence levels, and these can be calculated;
+  \item About hypothesis testing as a way to make decisions about a
+    population based on a sample;
+  \item About how to calculate and analyse a hypothesis about a
+    parameter of the population;
+  \end{itemize}
+\end{frame}
+
 \subsection{Homework 2}
 \begin{frame}
   \frametitle{Homework 2}
+  {\smaller
   \begin{block}{Basic Data analysis}
     \begin{itemize}
     \item Load two data files related to your research into R data
@@ -749,9 +1374,10 @@
       tasks above; R file must contain comments explaining what each
       command block does.
     \end{itemize}
-  \end{block}
+  \end{block}}
   \rule{\textwidth}{0.4pt} {\tiny If you don't have useable data
-    related to your research, you can use the following data sets:}
+    related to your research, you can use the ``air quality'' data set
+    in the ``datasets'' R package}
 \end{frame}
 
 \section{Final Notes}
@@ -766,6 +1392,7 @@
   \item Green ball: \url{http://goo.gl/Fb8z68}
     %TODO: Generate self image for MVUE (min-max/2 vs regular mean)
   \item MVUE image: D.C.Montgomery, G.C. Runger, ``Applied Statistics and Probability for Engineers'', Wiley 2003
+  \item Peas image: \url{http://www.storko.eu/ed_files/image/green-peas.jpg}
   \end{itemize}
   \medskip
   \begin{block}{This lecture notes is a derived work of}
