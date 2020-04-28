@@ -23,7 +23,9 @@ You can also see the full [syllabus](syllabus.md) of the course.
 - Topic 10: Case Study II
 
 # Useful Links
-The [useful links](UsefulLinks.md) page contains a series of links that will give you more information about the topics in this course. Make sure to read it to increase your understanding.
+University of Tsukuba Students will want to check out the [manaba page]() for this course. If you are not enrolled in the course, you can still access the page by using the self registration number: XXXXXXXX.
+
+The [useful links](UsefulLinks.md) page contains other online resources that will give you an increased understanding of the topics in this course. Make sure to check it out!
 
 # Acknowledgements
 This course was forked from and follows closely the ["Design and Analysis of Experiments"](https://github.com/fcampelo/Design-and-Analysis-of-Experiments) material by Felipe Campelo (Aston University) BY-NC-SA 4.0
