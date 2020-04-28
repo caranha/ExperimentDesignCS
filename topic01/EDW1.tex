@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\input{beamerpreamble.tex}
+\input{../utils/beamerpreamble.tex}
 
 \title[]{Experiment Design}
 \subtitle[]{Lecture 1: Introduction}
@@ -84,7 +84,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Evaluation} 
+  \frametitle{Evaluation}
 
   Evaluation will be based on your ability to apply this classes ideas
   on your own research!
@@ -116,7 +116,7 @@
 \subsection{Recommended Reading}
 \begin{frame}
   \frametitle{Useful Materials -- Internet}
-  
+
   \begin{itemize}
   \item \structure{Course
     Webpage}:\\\url{https://manaba.tsukuba.ac.jp/ct/course_397478}\\ Manaba
@@ -180,7 +180,7 @@
     \item For example, the triplet ${3,6,9}$ obeys the rule!
     \end{itemize}
   \end{block}
-  
+
   \begin{block}{Goal of the game:}
     \begin{itemize}
     \item Find out the secret rule for the triplets;
@@ -223,14 +223,14 @@
 \begin{frame}
   \frametitle{Hans, the Smart Horse}
   \begin{columns}[c]
-    \column{0.3\textwidth} 
+    \column{0.3\textwidth}
     \includegraphics[width=\textwidth]{img/smarthorse}
-    \column{0.7\textwidth} 
+    \column{0.7\textwidth}
     Von Osten, the horse's trainer, displayed Hans amazing ability to
     do mathematical calculations by tapping his hoof.
   \end{columns}
   \medskip
-  
+
   \begin{onlyenv}<2->
     \begin{block}{Oskar Pfungst's Experiments}
       \begin{itemize}
@@ -327,7 +327,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Uncertainties Everywhere} 
+  \frametitle{Uncertainties Everywhere}
 
   When it comes to gathering data and experimental rigour, Researchers
   in Computer Science are still years behind other disciplines. A
@@ -390,7 +390,7 @@
     It is very difficult to prove an algorithmic behavior if part of
     it is defined by randomly generated numbers.
     \medskip
-    
+
     Implementation of the RNG library can have a huge effect on
     algorithm behavior.
   \end{block}
@@ -405,7 +405,7 @@
     Including humans in your research (eg. Interfaces), is a huge
     source of uncertainty regarding the results.
     \medskip
-    
+
     You have to take into account not only how the humans will act,
     but also what are the characteristics of the particular group that
     you are using (don't do all your experiments on college students).
@@ -413,10 +413,10 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Experiment Design} 
+  \frametitle{Experiment Design}
 
   By carefully designing the experimental methods of our research, we
-  can account for these uncertainties in our results. 
+  can account for these uncertainties in our results.
   \bigskip
   \begin{itemize}
   \item Understand the influence of the uncertainty in the final results;\\
@@ -441,14 +441,14 @@
   \begin{itemize}
   \item<2-> Experiments that only show the system works;\\
     {\small (of course it works, but WHY? And why is it good?)}
-  \item<3-> Reinventing the wheel;\\ 
+  \item<3-> Reinventing the wheel;\\
     {\small(Lack of comparisons and inspiration from other methods)}
   \item<4-> No knowledge is actually acquired;\\
     {\small(unreplicable papers, excess of data)}
   \end{itemize}
 \end{frame}
 
-\section{Experimental Practices} % Biggest section 
+\section{Experimental Practices} % Biggest section
 
 \subsection{Some examples of dealing with uncertainties}
 
@@ -460,7 +460,7 @@
     uncertainties.
   \end{center}
 
-%% For each uncertainty, give examples of how to deal with them 
+%% For each uncertainty, give examples of how to deal with them
 %% In an experimental setting (uncertainty - dealing with them)
   \begin{onlyenv}<2>
     \begin{block}{Pshysical Uncertainties}
@@ -484,9 +484,9 @@
 
 \begin{frame}
   \frametitle{Goals for an experiment}
-  
+
   The main characteristics that we look for in a good experiment are:
-  \bigskip 
+  \bigskip
 
   \begin{columns}[c]
     \column{0.8\textwidth}
@@ -509,7 +509,7 @@
   \vfill
   \begin{block}{}
     \begin{columns}[c]
-      \column{0.8\textwidth} 
+      \column{0.8\textwidth}
       {\footnotesize {\it``However, experiments require a lot of
       work, so the reader may be warned: performing a good experiment
       is as demanding as proving a new theorem.''}\\
@@ -521,7 +521,7 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Experiment Design: Control} %% TODO: 
+  \frametitle{Experiment Design: Control} %% TODO:
 
   \begin{itemize}
   \item Decide what is the quantity to be examined;
@@ -574,7 +574,7 @@
       thirds of drug studies failed to replicate}''
   \end{block}
   \bigskip
-  
+
   \begin{itemize}
   \item Not all data available;
   \item Not all experimental parameters available;
@@ -585,7 +585,7 @@
   \begin{center}
     (Specially bad in the computer sciences)
   \end{center}
-  
+
 \end{frame}
 
 
@@ -596,7 +596,7 @@
   \begin{block}{Careless Experimentation}
 
     \begin{columns}[c]
-      \column{0.7\textwidth} 
+      \column{0.7\textwidth}
       \smaller{``To Consult the statician after an experiment is finished is
       often merely to ask him to conduct a post mortem examination. He
       can perhaps say what the experiment died of.'' -- Sir Ronald Fischer}
@@ -624,7 +624,7 @@
 
 \begin{frame}
   \frametitle{Careless Experimentation}
-  
+
   \begin{block}{}
     ``The presented results represent the average from 30 runs of each
     algorithm''
@@ -654,7 +654,7 @@
       \item Single experimental run;}
       \end{itemize}
     \end{columns}
-  \end{block}    
+  \end{block}
   \end{onlyenv}
 \end{frame}
 
