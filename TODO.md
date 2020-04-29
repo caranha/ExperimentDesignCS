@@ -1,6 +1,10 @@
-# Class Outline
-- Topic 0: Introduction and Orientation
-- Topic 1: Science, Experimentalism, Rigorous Research and Scientific Communication.
+# Current
+- Video lecture: Topic 00
+- Lecture Notes: Topic 1 Science, Experimentalism, Rigorous Research and Scientific Communication.
+- Sort References and upload to manaba
+- Sort links and add to UsefulLinks.md
+
+# Lectures
 - Topic 2: Statistics review. Point Indicators and Interval Indicators.
 - Topic 3: Introduction to Inference Testing -- Hypothesis, Type Errors, Z testing.
 - Topic 4: Introduction to Inference Testing -- Comparison Testing, Paired Testing
@@ -34,5 +38,16 @@
   - Noise and uncertainties
   - Hacking and Science
   - Bad science: cargo-cult science, 5% science
+
+- You need to love your scientific topic
+  - Reading a lot
+  - Keeping up with the literature (arxiv, knowing the researchers)
+  - Being excited about the theme
+  - Do not limit yourself to your own study
+
+- Limitations
+  - Our experiments show an indication of X and Y
+  - But we did not examine the influence of Z, so maybe Z has an effect that we did not consider
+  - "Future works" is not a place for advertising your work
 
 # Materials

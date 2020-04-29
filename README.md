@@ -11,6 +11,7 @@ You can also see the full [syllabus](syllabus.md) of the course.
 # Materials
 ## Weekly Materials
 - Topic 0: Introduction and Orientation
+  - [Lecture Notes](topic00/course_introduction.pdf)
 - Topic 1: Science, Experimentalism, Rigorous Research and Scientific Communication.
 - Topic 2: Statistics review. Point Indicators and Interval Indicators.
 - Topic 3: Introduction to Inference Testing -- Hypothesis, Type Errors, Z testing.
@@ -22,8 +23,13 @@ You can also see the full [syllabus](syllabus.md) of the course.
 - Topic 9: Blocking and selection of parameters for experiments;
 - Topic 10: Case Study II
 
+## Reports
+- Report 1: Experiment and Data Report
+- Report 2: Statistical Inference
+- Report 3: Multiple Sample Statistical Inference
+
 # Useful Links
-University of Tsukuba Students will want to check out the [manaba page]() for this course. If you are not enrolled in the course, you can still access the page by using the self registration number: XXXXXXXX.
+University of Tsukuba Students will want to check out the [manaba page](https://manaba.tsukuba.ac.jp/ct/course_1354290) for this course. If you are not enrolled in the course, you can still access the page by using the self registration number: 5685116.
 
 The [useful links](UsefulLinks.md) page contains other online resources that will give you an increased understanding of the topics in this course. Make sure to check it out!
 

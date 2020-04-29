@@ -2,6 +2,7 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{color}
+\usepackage{pagenote}[continuous,page]
 \usepackage{relsize}		% For \smaller
 \usepackage{url}			% For \url
 \usepackage{epstopdf}	% Included EPS files automatically converted to PDF to include with pdflatex
@@ -49,11 +50,17 @@
 \beamertemplatenavigationsymbolsempty
 
 \usepackage[english]{babel}
-\usepackage[latin1]{inputenc}
+%\usepackage[latin1]{inputenc}
 \usepackage{subfigure}
 
 \usepackage{times}
 \usepackage[T1]{fontenc}
+\usepackage{CJKutf8}
+
+%% makes the ppagenote command for figure references at the end.
+\makepagenote
+\renewcommand{\notenumintext}[1]{}
+\newcommand{\ppagenote}[1]{\pagenote[Page \insertframenumber]{#1}}
 
 \title[Experiment Design (01CH740)]{Experiment Design for Computer Sciences (01CH740)}
 \author[Claus Aranha]{Claus Aranha\\{\footnotesize caranha@cs.tsukuba.ac.jp}}
