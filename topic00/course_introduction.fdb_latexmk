@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1588150755 "course_introduction.tex" "course_introduction.pdf" "course_introduction" 1588150756
+["pdflatex"] 1588155170 "course_introduction.tex" "course_introduction.pdf" "course_introduction" 1588155171
   "../img/DesignAnalysis_book.png" 1588144127 169671 7130335078c3db0cb03041befe57237f ""
   "../img/Felipe_Campelo.jpg" 1588132589 34402 ddc67deca235d3d8e69fb8e57661ec68 ""
   "../img/irasuto_sprout.png" 1588144621 141360 bed81c6e15794a9f2a6ea8a3dcbb5010 ""
@@ -234,17 +234,17 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1551226139 34566 ab5be96bde1a5acfd4f881dbe566b5fb ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1570526444 3017049 acc2bf887dbfe621fd96502adb9cab9c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1570526447 1158639 24df133e309d24869bfb4fa3ca9d20fa ""
-  "course_introduction.aux" 1588150756 5291 3831e5db4a0ef7f044f2771e0a485cbf ""
-  "course_introduction.ent" 1588150756 332 5778523c31420b6f895dd2f9455a5a42 ""
-  "course_introduction.nav" 1588150756 3064 20ec235eabae09106b3e07da6a1fddd2 ""
-  "course_introduction.out" 1588150756 407 81d62db9302e9f7305c590d01aa56bec ""
-  "course_introduction.tex" 1588150755 9938 4019f479c2485b89784303bb3ba7362a ""
+  "course_introduction.aux" 1588155171 5291 3831e5db4a0ef7f044f2771e0a485cbf ""
+  "course_introduction.ent" 1588155171 332 5778523c31420b6f895dd2f9455a5a42 ""
+  "course_introduction.nav" 1588155171 3064 20ec235eabae09106b3e07da6a1fddd2 ""
+  "course_introduction.out" 1588155171 407 81d62db9302e9f7305c590d01aa56bec ""
+  "course_introduction.tex" 1588155167 9964 0355808b33442262695da6a4adee3b94 ""
   (generated)
-  "course_introduction.out"
   "course_introduction.snm"
+  "course_introduction.ent"
+  "course_introduction.pdf"
+  "course_introduction.toc"
   "course_introduction.log"
   "course_introduction.aux"
-  "course_introduction.pdf"
   "course_introduction.nav"
-  "course_introduction.toc"
-  "course_introduction.ent"
+  "course_introduction.out"

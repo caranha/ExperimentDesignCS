@@ -12,7 +12,10 @@ You can also see the full [syllabus](syllabus.md) of the course.
 ## Weekly Materials
 - Topic 0: Introduction and Orientation
   - [Lecture Notes](topic00/course_introduction.pdf)
+  - [Video Lecture]()
 - Topic 1: Science, Experimentalism, Rigorous Research and Scientific Communication.
+  - [Lecture Notes](topic01/experimentalism.pdf)
+  - [Video Lecture]()
 - Topic 2: Statistics review. Point Indicators and Interval Indicators.
 - Topic 3: Introduction to Inference Testing -- Hypothesis, Type Errors, Z testing.
 - Topic 4: Introduction to Inference Testing -- Comparison Testing, Paired Testing
