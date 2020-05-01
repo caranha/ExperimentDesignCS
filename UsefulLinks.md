@@ -12,6 +12,8 @@ These are links to complementary materials to increase your knowledge on the sev
 ## Online Materials
 - [Understanding Science](https://undsci.berkeley.edu/article/intro_01). This website holds a discussion of science as an interactive process closely tied with society.
 
+- [Design and Analysis of Experiments](https://github.com/fcampelo/Design-and-Analysis-of-Experiments). Lecture notes by Felipe Campelo, sister course to this one.
+
 ## Academic Materials
 
 ## Others
