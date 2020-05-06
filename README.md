@@ -18,6 +18,9 @@ You can also see the full [syllabus](syllabus.md) of the course.
   - [Video Lecture I](https://youtu.be/j_prkSViQ_I)
   - [Video Lecture II](https://youtu.be/FoSRgZWO6P0)
 - Topic 2: Statistics review. Point Indicators and Interval Indicators.
+  - [Lecture Notes](topic02/lecture2.pdf)
+  - [Code]()
+  - [Video Lecture]()
 - Topic 3: Introduction to Inference Testing -- Hypothesis, Type Errors, Z testing.
 - Topic 4: Introduction to Inference Testing -- Comparison Testing, Paired Testing
 - Topic 5: Introduction to Inference Testing -- Equality Testing, Non-Parametric Testing
