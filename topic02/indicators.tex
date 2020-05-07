@@ -84,7 +84,7 @@
 \end{frame}
 
 \begin{frame}{A note about programming language}
-  Starting from this lecture, I will show some coding examples using the \structure{R programming language}. I highly recommend students in this course to get used to R. Read the following link if for one nice tutorial:\bigskip
+  Starting from this lecture (in the next video), I will show some coding examples using the \structure{R programming language}. I highly recommend students in this course to get used to R. Read the following link if for one nice tutorial:\bigskip
 
   R for Beginners: \url{https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf}\bigskip
 
@@ -208,20 +208,6 @@
   \end{block}
 \end{frame}
 
-\begin{frame}{Errors and Biases}
-  Note that we are being very careful to always use the word {\bf estimate} when we talk about statistics. Why is that?
-  \bigskip
-
-  In all the examples that we mentioned, if we are unlucky\footnote{or careless, or malicious}, we could obtain an estimate that is very different from the true value of the population:
-  \begin{alertblock}{Bad statistics example}
-    To estimate the height of the students of a school, we pick 10 students, and we measure the height of the youngest one.
-  \end{alertblock}\medskip
-  \begin{itemize}
-    \item {\bf Error}: The difference between an estimate and the true value of a population's parameter;
-    \item {\bf Bias}: The property of a statistic that systematically produces wrong estimates;
-  \end{itemize}
-\end{frame}
-
 \begin{frame}{Point and Interval Indicators}
   The idea of estimating parameters of a population using information
   obtained from a sample is called {\bf statistical inference}.
@@ -281,6 +267,19 @@ Point estimation problems arise frequently in all areas of science and engineeri
 In each case there are multiple ways of performing the estimation task, and the decision about which estimators to use is based on the mathematical properties of each statistic.
 \end{frame}
 
+\begin{frame}{Errors and Biases}
+  Note that we are being very careful to always use the word {\bf estimate} when we talk about statistics. Why is that?
+  \bigskip
+
+  In all the examples that we mentioned, if we are unlucky\footnote{or careless, or malicious}, we could obtain an estimate that is very different from the true value of the population:
+  \begin{alertblock}{Bad statistics example}
+    To estimate the height of the students of a school, we pick 10 students, and we measure the height of the youngest one.
+  \end{alertblock}\medskip
+  \begin{itemize}
+    \item {\bf Error}: The difference between an estimate and the true value of a population's parameter;
+    \item {\bf Bias}: The property of a statistic that systematically produces wrong estimates;
+  \end{itemize}
+\end{frame}
 
 %% TODO: this part was taken directly from campelo's materials, Needs update.
 \begin{frame}{Unbiased estimators}
@@ -474,7 +473,18 @@ Another useful definition is to think about confidence intervals in terms of con
 \end{frame}
 
 %=====
+% WARNING: The lecture picks up too fast in the next three slides
+% Break them up with examples and more text.
+%=====
 
+
+%% TODO -- TODO: z and t came out of nowhere here!!!
+% Topics that the students don't know:
+% Z distribution
+% T distribution
+% Degrees of freedom.
+% Need to explain this (maybe when explaining the distribution
+% of an indicator)
 \begin{frame}{CI on the Mean of a Normal Variable}
 The two-sided $CI_{(1-\alpha)}$ for the mean of a normal population with known variance $\sigma^2$ is given by:
 \begin{equation*}
@@ -482,6 +492,7 @@ The two-sided $CI_{(1-\alpha)}$ for the mean of a normal population with known v
 \end{equation*}
 \noindent where $(1-\alpha)$ is the confidence level and $z_{x}$ is the $x$-quantile of the standard normal distribution.
 \bigskip
+
 For the more usual case with an unknown variance,
 \begin{equation*}
 \bar{x}+t_{\alpha/2}^{(n-1)}\frac{s}{\sqrt{n}}\leq\mu\leq\bar{x}+t_{1-\alpha/2}^{(n-1)}\frac{s}{\sqrt{n}}
@@ -557,8 +568,10 @@ A two-sided confidence interval on the variance of a normal variable can be easi
 \begin{frame}{Wrapping up}
 Statistical intervals quantify the uncertainty associated with different aspects of estimation;
 \bigskip
+
 Reporting intervals is always better than point estimates, as it provides the necessary information to quantify the location and uncertainty of your estimated values;
 \bigskip
+
 The correct interpretation is a little tricky (although not very difficult)\footnote{See the table at the end of  \url{https://git.io/v5ZFh}}, but it is essential in order to derive the correct conclusions based on the statistical interval of interest.
 \end{frame}
 
@@ -567,11 +580,30 @@ The correct interpretation is a little tricky (although not very difficult)\foot
 % \subsection{Visualizing indicators}
 
 \section{Conclusion}
-% \begin{frame}
-%   \begin{center}
-%     Part III - Conclusion
-%   \end{center}
-% \end{frame}
+\begin{frame}
+  \begin{center}
+    Part III - Conclusion
+  \end{center}
+\end{frame}
+
+\begin{frame}{Conclusion}
+  In this lecture, we talked about how we use experimental data to learn the characteristics of a system that we want to understand better.\bigskip
+
+  In other workds, how we use {\bf statistics} to calculate {\bf estimates of population parameters} from {\bf sample data}.\bigskip
+
+  We looked at \structure{point estimators} and \structure{interval estimators}. These are important {\bf descriptive statistics} that can describe parameters of a population.
+\end{frame}
+
+\begin{frame}{Report I}
+  Next week, you have to submit a report on your initial experiment.\bigskip
+
+  Make sure to use the statistics described in this lecture to characterize the population of your experiment: means, errors, confidence interval.\bigskip
+
+  Also think about how the sample size can reduce the variance of your estimators. How does this affect your experimental design?
+  \bigskip
+
+  I look forward to read your reports!
+\end{frame}
 
 \begin{frame}{Recommended Reads}
   {\bf More details}
