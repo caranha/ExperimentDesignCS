@@ -1,8 +1,9 @@
 ---
 title: "Code Examples for Experiment Design in Computer Science, Lecture II"
-output: html_document
 author: "Claus Aranha"
-# output: pdf -- You can define several formats for output
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 # R Markdown Introduction
@@ -97,8 +98,8 @@ However, point indicators alone give us a limited vision of the data that we wan
 values <- students$BMI  # shorter name for variable
 ci_alpha <- 0.05        # Alpha value for confidence interval. Confidence = 1 - alpha.
 # calculating low and high bounds for ci
-ci_low <- mean(values) + qt(ci_alpha/2, length(values))*(sd(values)/sqrt(length(values))) 
-ci_hi <- mean(values) + qt(1 - ci_alpha/2, length(values))*(sd(values)/sqrt(length(values)))
+ci_low <- mean(values) + qt(ci_alpha/2, length(values)-1)*(sd(values)/sqrt(length(values))) 
+ci_hi <- mean(values) + qt(1 - ci_alpha/2, length(values)-1)*(sd(values)/sqrt(length(values)))
 
 # plot the values and the confidence interval of the mean
 plot(students$BMI, ylim = c(0,40), xlab = "Student ID", ylab = "BMI")
@@ -119,8 +120,8 @@ students_female <- students[which(students$Gender == "F"),]
 
 # Function to calculate confidence intervals
 ci_bounds <- function(x,alpha) {
-  low <- mean(x) + qt(alpha/2, length(x))*(sd(x)/sqrt(length(x))) 
-  hi <- mean(x) + qt(1 - alpha/2, length(x))*(sd(x)/sqrt(length(x)))
+  low <- mean(x) + qt(alpha/2, length(x)-1)*(sd(x)/sqrt(length(x))) 
+  hi <- mean(x) + qt(1 - alpha/2, length(x)-1)*(sd(x)/sqrt(length(x)))
   return(c(low,hi))
 }
 
@@ -166,13 +167,13 @@ sample_number <-100  # Leave this fixed
 sample_size <- 50    # Change this
 
 ### distributions: uncomment one of these:
-means = replicate(sample_number,mean(rbeta(sample_size, 0.5, 0.5)))
-dist = rbeta(sample_number, 0.5, 0.5)
-name = "Beta Distribution"
+# means = replicate(sample_number,mean(rbeta(sample_size, 0.5, 0.5)))
+# dist = rbeta(sample_number, 0.5, 0.5)
+# name = "Beta Distribution"
 
-# means = replicate(sample_number,mean(rchisq(sample_size, df=2)))
-# dist = rchisq(sample_number, df=2)
-# name = "Chi Squared Distribution"
+means = replicate(sample_number,mean(rchisq(sample_size, df=2)))
+dist = rchisq(sample_number, df=2)
+name = "Chi Squared Distribution"
 
 # means = replicate(sample_number,mean(rf(sample_size, df1=5, df2=10)))
 # dist = rf(sample_number, df1=5, df2=10)
