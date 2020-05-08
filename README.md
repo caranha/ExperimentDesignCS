@@ -19,7 +19,7 @@ You can also see the full [syllabus](syllabus.md) of the course.
   - [Video Lecture II](https://youtu.be/FoSRgZWO6P0)
 - Topic 2: Statistics review. Point Indicators and Interval Indicators.
   - [Lecture Notes](topic02/lecture2.pdf)
-  - [Code]()
+  - [Code Examples](topic02/Code)
   - [Video Lecture I]()
   - [Video Lecture II]()
 - Topic 3: Introduction to Inference Testing -- Hypothesis, Type Errors, Z testing.

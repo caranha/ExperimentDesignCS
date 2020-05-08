@@ -1,0 +1,198 @@
+---
+title: "Code Examples for Experiment Design in Computer Science, Lecture II"
+output: html_document
+author: "Claus Aranha"
+# output: pdf -- You can define several formats for output
+---
+
+# R Markdown Introduction
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r chunk_example}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+# Lecture II, Topic I: Point and Interval Indicators
+## Example I: Coaxial cable factory
+
+In this example, we assume a hypotethical factory that produces coaxial cables. The 
+resistance of the cables produced follow a gaussian distribution, with mean 50 and 
+standard deviation 2.
+
+First, let's generate a sample of 25 cables from this process:
+
+```{r coaxial_generate_data}
+# Generating the data. 
+set.seed(42)                    # Set PRNG seed (for reproducibility)
+x<-rnorm(n=25, mean=50, sd=2)   # Draw 25 samples from N(mu=50,sigma=2)
+
+x                               # Lists the resistances of each cable in the sample
+```
+
+We are interested in estimating the mean of the process from the sample data. We can do this by using the **sample mean** statistic, which, as we saw in class, is an unbiased estimator of the population mean.
+
+```{r coaxial_sample_mean}
+sample_mean <- sum(x) / length(x) # Sample mean: sum of obs / sample size
+sample_mean
+```
+
+Of course, we can also direclty use the native **mean** function to obtain the same value: `r mean(x)`
+
+We can now calculate an estimated error for the estimated mean:
+
+```{r coaxial_estimated_error}
+sample_mean_error <- sd(x)/sqrt(length(x)) # sample mean error: slide 25
+sample_mean_error
+```
+
+The larger the sample, the smaller is the estimated error for the estimated mean:
+
+```{r coaxial_sample_size}
+csample_10 <- rnorm(n=10, mean=50, sd=2)
+csample_25 <- rnorm(n=25, mean=50, sd=2)
+csample_50 <- rnorm(n=50, mean=50, sd=2)
+
+sme <- function(x) {
+  sd(x) / sqrt(length(x))
+}
+
+print(c(length(csample_10), mean(csample_10), sme(csample_10)))
+print(c(length(csample_25), mean(csample_25), sme(csample_25)))
+print(c(length(csample_50), mean(csample_50), sme(csample_50)))
+```
+
+## Example II: Student status (from Campelo's Analysis and Design of Experiments Course)
+
+As a second example, let's consider a survey of students on their height and weight. We can easily load data that is stored as a **csv file** into an R data fram (data frames and lists are R's main data structures).
+
+```{r students_loaddata}
+  students <- read.csv("student_data.csv")
+  students
+  mean(students$Height.m)   # Student mean height
+  mean(students$Weight.kg)   # Student mean weight
+```
+
+We might be interested in calculating the BMI of the students who answered the survey:
+
+```{r students_bmi}
+  bmi = students$Weight.kg / (students$Height.m ** 2)
+  students["BMI"] <- bmi
+  students
+```
+
+The mean BMI of the students is `r mean(students$BMI)` with an estimated error of `r sme(students$BMI)`.
+
+However, point indicators alone give us a limited vision of the data that we want to study. When analysing data, always accompany point indicators with statistical intervals and **figures**. Let's plot the mean BMI of the students, as well as the 95% confidence interval for this estimator:
+
+```{r students_plotbmi}
+values <- students$BMI  # shorter name for variable
+ci_alpha <- 0.05        # Alpha value for confidence interval. Confidence = 1 - alpha.
+# calculating low and high bounds for ci
+ci_low <- mean(values) + qt(ci_alpha/2, length(values))*(sd(values)/sqrt(length(values))) 
+ci_hi <- mean(values) + qt(1 - ci_alpha/2, length(values))*(sd(values)/sqrt(length(values)))
+
+# plot the values and the confidence interval of the mean
+plot(students$BMI, ylim = c(0,40), xlab = "Student ID", ylab = "BMI")
+title("BMI Values")
+abline(h = mean(students$BMI))
+abline(h = ci_low, lty=2)
+abline(h = ci_hi, lty=2)
+```
+
+Let's investigate the difference in BMI between male students and female students:
+
+```{r students_bmi_gender, echo=FALSE}
+# ECHO=FALSE hides the code in the report
+
+# Separating the data based on one column
+students_male <- students[which(students$Gender == "M"),]
+students_female <- students[which(students$Gender == "F"),]
+
+# Function to calculate confidence intervals
+ci_bounds <- function(x,alpha) {
+  low <- mean(x) + qt(alpha/2, length(x))*(sd(x)/sqrt(length(x))) 
+  hi <- mean(x) + qt(1 - alpha/2, length(x))*(sd(x)/sqrt(length(x)))
+  return(c(low,hi))
+}
+
+# plot confidence intervals for male and female students
+plot(students_male$BMI, ylim = c(0,40), xlim = c(0,40), xlab = "Student ID", ylab = "BMI", col="red")
+par(new = TRUE)
+plot(students_female$BMI, ylim = c(0,40), xlim = c(0,40), xlab = "Student ID", ylab = "BMI", col="blue")
+title("BMI Values")
+
+ci_male <- ci_bounds(students_male$BMI, 0.01)
+abline(h = mean(students_male$BMI), col="red")
+abline(h = ci_male, lty=2, col="red")
+abline(h = ci_male[2], lty=2, col="red")
+
+ci_female <- ci_bounds(students_female$BMI, 0.01)
+abline(h = mean(students_female$BMI), col="blue")
+abline(h = ci_female[1], lty=2, col="blue")
+abline(h = ci_female[2], lty=2, col="blue")
+
+```
+
+Let's see two other ways to observe the values of a sample.
+
+The histogram is also a good way to visualise the distribution of a random variable within a sample:
+
+```{r students_bmi_histogram, echo=FALSE}
+hist(students$BMI)
+```
+
+Boxplots give a good idea of upper and lower limits of a sample's value:
+
+```{r students_bmi_boxplot, echo=FALSE}
+boxplot(BMI ~ Course, data=students)  # In R, the "X~Y" notation means "variable X explained by variable Y"
+title("Boxplot of BMI values of students depending on course")
+```
+
+# Topic II: Central Limit Theorem
+
+The Central Limit Theorem (CLT) states that for most distributions, the distribution of sample means tends to follow a normal distributio under certain conditions. Let's observe this effect. Modify the code below to test different base distributions:
+
+```{r CLT_demo}
+sample_number <-100  # Leave this fixed
+sample_size <- 50    # Change this
+
+### distributions: uncomment one of these:
+means = replicate(sample_number,mean(rbeta(sample_size, 0.5, 0.5)))
+dist = rbeta(sample_number, 0.5, 0.5)
+name = "Beta Distribution"
+
+# means = replicate(sample_number,mean(rchisq(sample_size, df=2)))
+# dist = rchisq(sample_number, df=2)
+# name = "Chi Squared Distribution"
+
+# means = replicate(sample_number,mean(rf(sample_size, df1=5, df2=10)))
+# dist = rf(sample_number, df1=5, df2=10)
+# name = "F distribution"
+
+# means = replicate(sample_number,mean(rnorm(sample_size)))
+# dist = rnorm(sample_number)
+# name = "Normal Distribution"
+
+lims = c(min(c(means,dist)),max(c(means,dist)))
+
+par(mfcol=(c(1,2)))
+hist(dist, xlim = lims)
+hist(means, xlim = lims)
+
+# TODO: make this prettier
+```
+
+
+
+
+
+
