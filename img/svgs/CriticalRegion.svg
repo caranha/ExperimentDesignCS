@@ -1,0 +1,1057 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="CriticalRegion.svg"
+   inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path933"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Send"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Send"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path939"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.2) rotate(180) translate(6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path927"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path933-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <inkscape:perspective
+       id="perspective289"
+       inkscape:persp3d-origin="360 : 153.33333 : 1"
+       inkscape:vp_z="720 : 230 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 230 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <clipPath
+       id="cp3">
+      <polygon
+         points="73,190 73,203.563 95,203.563 95,190 73,190 "
+         id="polygon1797" />
+    </clipPath>
+    <clipPath
+       id="cp5">
+      <polygon
+         points="73,190 73,203.563 95,203.563 95,190 73,190 "
+         id="polygon1821" />
+    </clipPath>
+    <clipPath
+       id="cp7">
+      <polygon
+         points="73,190 73,203.563 88,203.563 88,190 73,190 "
+         id="polygon1845" />
+    </clipPath>
+    <clipPath
+       id="cp9">
+      <polygon
+         points="73,190 73,203.563 88,203.563 88,190 73,190 "
+         id="polygon1867" />
+    </clipPath>
+    <clipPath
+       id="cp10">
+      <polygon
+         points="74,13 74,364 434,364 434,13 74,13 "
+         id="polygon1874" />
+    </clipPath>
+    <clipPath
+       id="cp11">
+      <polygon
+         points="73,190 73,203.563 88,203.563 88,190 73,190 "
+         id="polygon1889" />
+    </clipPath>
+    <clipPath
+       id="cp13">
+      <polygon
+         points="74,190 74,204 95,204 95,190 74,190 "
+         id="polygon1907" />
+    </clipPath>
+    <clipPath
+       id="cp15">
+      <polygon
+         points="74,190 74,204 95,204 95,190 74,190 "
+         id="polygon1931" />
+    </clipPath>
+    <clipPath
+       id="cp17">
+      <polygon
+         points="73,190 73,204 88,204 88,190 73,190 "
+         id="polygon1955" />
+    </clipPath>
+    <clipPath
+       id="cp19">
+      <polygon
+         points="73,190 73,204 88,204 88,190 73,190 "
+         id="polygon1977" />
+    </clipPath>
+    <clipPath
+       id="cp21">
+      <polygon
+         points="73,190 73,204 88,204 88,190 73,190 "
+         id="polygon1999" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="503.97726"
+     inkscape:cy="472.00834"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1850"
+     inkscape:window-height="1016"
+     inkscape:window-x="1990"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 29.104166,64.166664 H 97.97143 V 79.210115 H 29.104166 Z"
+       id="rect10"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 97.97143,64.166664 h 76.80476 V 79.210115 H 97.97143 Z"
+       id="rect10-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 22.149403,64.166664 h 5.367262 v 15.043451 h -5.367262 z"
+       id="rect10-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 17.840473,64.166664 h 3.250596 v 15.043451 h -3.250596 z"
+       id="rect10-6-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 13.607137,64.166664 h 3.250596 v 15.043451 h -3.250596 z"
+       id="rect10-6-7-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 181.73096,64.166664 h -5.36726 v 15.043451 h 5.36726 z"
+       id="rect10-6-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 186.03989,64.166664 h -3.25059 v 15.043451 h 3.25059 z"
+       id="rect10-6-7-56"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 190.27323,64.166664 h -3.2506 v 15.043451 h 3.2506 z"
+       id="rect10-6-7-5-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="34.395836"
+       y="73.634865"
+       id="text902"><tspan
+         sodipodi:role="line"
+         id="tspan900"
+         x="34.395836"
+         y="73.634865"
+         style="font-size:7.05555534px;stroke-width:0.26458332">Rejection Region</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="105.37686"
+       y="73.634865"
+       id="text902-9"><tspan
+         sodipodi:role="line"
+         id="tspan900-1"
+         x="105.37686"
+         y="73.634865"
+         style="font-size:7.05555534px;stroke-width:0.26458332">Expected Region</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#Arrow1Mend)"
+       d="M 7.1815475,84.577379 H 199.57142"
+       id="path922"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 97.97143,79.210115 V 89.415469"
+       id="path1264"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 130.40179,79.021133 v 10.20535"
+       id="path1264-2"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="122.46428"
+       y="97.974808"
+       id="text1283"><tspan
+         sodipodi:role="line"
+         id="tspan1281"
+         x="122.46428"
+         y="97.974808"
+         style="font-size:7.05555534px;stroke-width:0.26458332">300</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="85.044647"
+       y="97.974808"
+       id="text1287"><tspan
+         sodipodi:role="line"
+         id="tspan1285"
+         x="85.044647"
+         y="97.974808"
+         style="stroke-width:0.26458332"><tspan
+   style="font-size:7.05555534px"
+   id="tspan1289">300 - ∆</tspan> </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:0.69999999;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;text-anchor:middle;text-align:center;"
+       x="185.575"
+       y="93.648804"
+       id="text1293"><tspan
+         sodipodi:role="line"
+         x="162.15179"
+         y="93.648804"
+         style="font-size:7.05555534px;line-height:0.69999999;stroke-width:0.26458332;text-anchor:middle;text-align:center;"
+         id="tspan1299">Mean sample </tspan><tspan
+         sodipodi:role="line"
+         x="162.15179"
+         y="101.05714"
+         style="font-size:7.05555534px;line-height:0.69999999;stroke-width:0.26458332;text-anchor:middle;text-align:center;"
+         id="tspan1303">weight (g)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="38.931549"
+       y="58.497025"
+       id="text1307"><tspan
+         sodipodi:role="line"
+         id="tspan1305"
+         x="38.931549"
+         y="58.497025"
+         style="font-size:7.05555534px;stroke-width:0.26458332">Reject H<tspan
+   style="font-size:7.05555534px;baseline-shift:sub"
+   id="tspan1309">0</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="111.50298"
+       y="58.497025"
+       id="text1313"><tspan
+         sodipodi:role="line"
+         id="tspan1311"
+         x="111.50298"
+         y="58.497025"
+         style="font-size:7.05555534px;stroke-width:0.26458332">Fail to Reject H<tspan
+   style="font-size:7.05555534px;baseline-shift:sub"
+   id="tspan1315">0</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="35.467007"
+       y="251.60493"
+       id="text902-0"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan900-9"
+         x="35.467007"
+         y="251.60493"
+         style="font-size:7.05555534px;stroke-width:0.26458332">Rejection Region</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="106.44804"
+       y="251.60493"
+       id="text902-9-3"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan900-1-6"
+         x="106.44804"
+         y="251.60493"
+         style="font-size:7.05555534px;stroke-width:0.26458332">Expected Region</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-3)"
+       d="M 8.252719,262.54742 H 200.64259"
+       id="path922-0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 99.042609,257.18016 v 10.20535"
+       id="path1264-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 131.47296,256.99118 v 10.20535"
+       id="path1264-2-2"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="123.53546"
+       y="275.94482"
+       id="text1283-6"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan1281-1"
+         x="123.53546"
+         y="275.94482"
+         style="font-size:7.05555534px;stroke-width:0.26458332">300</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="86.115829"
+       y="275.94482"
+       id="text1287-8"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan1285-7"
+         x="86.115829"
+         y="275.94482"
+         style="stroke-width:0.26458332"><tspan
+   style="font-size:7.05555534px;stroke-width:0.26458332"
+   id="tspan1289-9">300 - ∆</tspan> </tspan></text>
+    <g
+       clip-path="url(#cp3)"
+       id="g8871"
+       transform="matrix(0.36092791,0,0,0.37217482,-80.677172,121.70853)">
+      <clipPath
+         id="clipPath9201">
+        <polygon
+           id="polygon8874"
+           points="73,140 87,140 87,126 73,126 " />
+      </clipPath>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:SVGTimes;fill:#000000"
+         id="text8876"
+         y="137"
+         x="74">-</text>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:'Times New Roman';fill:#000000"
+         id="text8878"
+         y="137"
+         x="80.5">3</text>
+    </g>
+    <g
+       clip-path="url(#cp5)"
+       id="g8895"
+       transform="matrix(0.36092791,0,0,0.37217482,-59.957022,121.70853)">
+      <clipPath
+         id="clipPath9216">
+        <polygon
+           id="polygon8898"
+           points="73,140 87,140 87,126 73,126 " />
+      </clipPath>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:SVGTimes;fill:#000000"
+         id="text8900"
+         y="137"
+         x="74">-</text>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:'Times New Roman';fill:#000000"
+         id="text8902"
+         y="137"
+         x="80.5">2</text>
+    </g>
+    <g
+       clip-path="url(#cp7)"
+       id="g8919"
+       transform="matrix(0.36092791,0,0,0.37217482,-39.236872,121.70853)">
+      <clipPath
+         id="clipPath9231">
+        <polygon
+           id="polygon8922"
+           points="73,140 87,140 87,126 73,126 " />
+      </clipPath>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:SVGTimes;fill:#000000"
+         id="text8924"
+         y="137"
+         x="74">-</text>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:'Times New Roman';fill:#000000"
+         id="text8926"
+         y="137"
+         x="80.5">1</text>
+    </g>
+    <g
+       clip-path="url(#cp9)"
+       transform="matrix(0.36092791,0,0,0.37217482,-81.137716,121.71772)"
+       id="g8943">
+      <clipPath
+         id="clipPath9246">
+        <polygon
+           id="polygon8946"
+           points="74,236 434,236 434,13 74,13 " />
+      </clipPath>
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8948"
+         points="265,124 265,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8950"
+         points="276.438,124 276.438,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8952"
+         points="287.938,124 287.938,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8954"
+         points="299.438,124 299.438,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8956"
+         points="310.938,124 310.938,120 " />
+    </g>
+    <g
+       clip-path="url(#cp10)"
+       id="g8958"
+       transform="matrix(0.36092791,0,0,0.37217482,3.4666734,121.70853)">
+      <clipPath
+         id="clipPath9255">
+        <polygon
+           id="polygon8961"
+           points="73,140 80,140 80,126 73,126 " />
+      </clipPath>
+    </g>
+    <g
+       clip-path="url(#cp11)"
+       transform="matrix(0.36092791,0,0,0.37217482,-81.137716,121.71772)"
+       id="g8965">
+      <clipPath
+         id="clipPath9260">
+        <polygon
+           id="polygon8968"
+           points="74,236 434,236 434,13 74,13 " />
+      </clipPath>
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8970"
+         points="322.375,124 322.375,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8972"
+         points="333.875,124 333.875,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8974"
+         points="345.375,124 345.375,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8976"
+         points="356.813,124 356.813,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8978"
+         points="368.313,124 368.313,120 " />
+    </g>
+    <g
+       clip-path="url(#cp13)"
+       transform="matrix(0.36092791,0,0,0.37217482,-81.137716,121.71772)"
+       id="g8987">
+      <clipPath
+         id="clipPath9274">
+        <polygon
+           id="polygon8990"
+           points="74,236 434,236 434,13 74,13 " />
+      </clipPath>
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8992"
+         points="379.813,124 379.813,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8994"
+         points="391.25,124 391.25,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8996"
+         points="402.75,124 402.75,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline8998"
+         points="414.25,124 414.25,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9000"
+         points="425.75,124 425.75,120 " />
+    </g>
+    <g
+       clip-path="url(#cp17)"
+       transform="matrix(0.36092791,0,0,0.37217482,-81.137716,121.71772)"
+       id="g9029">
+      <clipPath
+         id="clipPath9301">
+        <polygon
+           id="polygon9032"
+           points="74,236 434,236 434,13 74,13 " />
+      </clipPath>
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9034"
+         points="253.5,219.5 255.875,219.5 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9036"
+         points="253.5,212.688 255.875,212.688 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9038"
+         points="253.5,205.875 255.875,205.875 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9040"
+         points="253.5,199 255.875,199 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9042"
+         points="253.5,192.188 257.5,192.188 " />
+    </g>
+    <g
+       clip-path="url(#cp19)"
+       transform="matrix(0.36092791,0,0,0.37217482,-81.137716,121.71772)"
+       id="g9053">
+      <clipPath
+         id="clipPath9316">
+        <polygon
+           id="polygon9056"
+           points="74,236 434,236 434,13 74,13 " />
+      </clipPath>
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9058"
+         points="253.5,185.375 255.875,185.375 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9060"
+         points="253.5,178.563 255.875,178.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9062"
+         points="253.5,171.75 255.875,171.75 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9064"
+         points="253.5,164.938 255.875,164.938 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9066"
+         points="253.5,158.063 257.5,158.063 " />
+    </g>
+    <g
+       clip-path="url(#cp21)"
+       transform="matrix(0.36092791,0,0,0.37217482,-81.137716,121.71772)"
+       id="g9077">
+      <clipPath
+         id="clipPath9331">
+        <polygon
+           id="polygon9080"
+           points="74,236 434,236 434,13 74,13 " />
+      </clipPath>
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9082"
+         points="253.5,151.25 255.875,151.25 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9084"
+         points="253.5,144.438 255.875,144.438 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9086"
+         points="253.5,137.625 255.875,137.625 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9088"
+         points="253.5,130.813 255.875,130.813 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.13535678px;stroke-opacity:1"
+         id="polyline9090"
+         points="253.5,124 257.5,124 " />
+    </g>
+    <g
+       clip-path="url(#cp3)"
+       transform="matrix(0.26458333,0,0,0.26458333,113.3619,123.1427)"
+       id="g10133">
+      <clipPath
+         id="clipPath10481">
+        <polygon
+           id="polygon10136"
+           points="74,236 434,236 434,13 74,13 " />
+      </clipPath>
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10138"
+         points="83.9375,124 83.9375,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10140"
+         points="94.5,124 94.5,120 " />
+    </g>
+    <g
+       clip-path="url(#cp5)"
+       transform="matrix(0.26458333,0,0,0.26458333,113.3619,123.1427)"
+       id="g10151">
+      <clipPath
+         id="clipPath10493">
+        <polygon
+           id="polygon10154"
+           points="74,236 434,236 434,13 74,13 " />
+      </clipPath>
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10156"
+         points="105.125,124 105.125,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10158"
+         points="115.75,124 115.75,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10160"
+         points="126.313,124 126.313,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10162"
+         points="136.938,124 136.938,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10164"
+         points="147.5,124 147.5,120 " />
+    </g>
+    <g
+       clip-path="url(#cp7)"
+       transform="matrix(0.26458333,0,0,0.26458333,113.3619,123.1427)"
+       id="g10175">
+      <clipPath
+         id="clipPath10508">
+        <polygon
+           id="polygon10178"
+           points="74,236 434,236 434,13 74,13 " />
+      </clipPath>
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10180"
+         points="158.125,124 158.125,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10182"
+         points="168.688,124 168.688,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10184"
+         points="179.313,124 179.313,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10186"
+         points="189.938,124 189.938,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10188"
+         points="200.5,124 200.5,120 " />
+    </g>
+    <g
+       clip-path="url(#cp9)"
+       transform="matrix(0.26458333,0,0,0.26458333,113.3619,123.1427)"
+       id="g10199">
+      <clipPath
+         id="clipPath10523">
+        <polygon
+           id="polygon10202"
+           points="74,236 434,236 434,13 74,13 " />
+      </clipPath>
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10204"
+         points="211.125,124 211.125,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10206"
+         points="221.688,124 221.688,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10208"
+         points="232.313,124 232.313,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10210"
+         points="242.875,124 242.875,121.563 " />
+      <polyline
+         style="fill:none;stroke:#000000;stroke-width:0.1875px;stroke-opacity:1"
+         id="polyline10212"
+         points="253.5,124 253.5,120 " />
+    </g>
+    <g
+       clip-path="url(#cp11)"
+       id="g10229"
+       transform="matrix(0.26458333,0,0,0.26458333,174.21395,123.13616)">
+      <clipPath
+         id="clipPath10541">
+        <polygon
+           id="polygon10232"
+           points="73,140 80,140 80,126 73,126 " />
+      </clipPath>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:'Times New Roman';fill:#000000"
+         id="text10234"
+         y="137"
+         x="74">1</text>
+    </g>
+    <g
+       clip-path="url(#cp13)"
+       id="g10251"
+       transform="matrix(0.26458333,0,0,0.26458333,188.23475,123.13616)">
+      <clipPath
+         id="clipPath10555">
+        <polygon
+           id="polygon10254"
+           points="73,140 80,140 80,126 73,126 " />
+      </clipPath>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:'Times New Roman';fill:#000000"
+         id="text10256"
+         y="137"
+         x="74">2</text>
+    </g>
+    <g
+       clip-path="url(#cp15)"
+       id="g10273"
+       transform="matrix(0.26458333,0,0,0.26458333,202.25555,123.13616)">
+      <clipPath
+         id="clipPath10569">
+        <polygon
+           id="polygon10276"
+           points="73,140 80,140 80,126 73,126 " />
+      </clipPath>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:'Times New Roman';fill:#000000"
+         id="text10278"
+         y="137"
+         x="74">3</text>
+    </g>
+    <g
+       clip-path="url(#cp17)"
+       id="g10297"
+       transform="matrix(0.26458333,0,0,0.26458333,156.88585,144.22352)">
+      <clipPath
+         id="clipPath10584">
+        <polygon
+           id="polygon10300"
+           points="73,140 87,140 87,126 73,126 " />
+      </clipPath>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:SVGTimes;fill:#000000"
+         id="text10302"
+         y="137"
+         x="74">-</text>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:'Times New Roman';fill:#000000"
+         id="text10304"
+         y="137"
+         x="80.5">3</text>
+    </g>
+    <g
+       clip-path="url(#cp19)"
+       id="g10321"
+       transform="matrix(0.26458333,0,0,0.26458333,156.88585,136.40065)">
+      <clipPath
+         id="clipPath10599">
+        <polygon
+           id="polygon10324"
+           points="73,140 87,140 87,126 73,126 " />
+      </clipPath>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:SVGTimes;fill:#000000"
+         id="text10326"
+         y="137"
+         x="74">-</text>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:'Times New Roman';fill:#000000"
+         id="text10328"
+         y="137"
+         x="80.5">2</text>
+    </g>
+    <g
+       clip-path="url(#cp21)"
+       id="g10345"
+       transform="matrix(0.26458333,0,0,0.26458333,156.88585,128.57778)">
+      <clipPath
+         id="clipPath10614">
+        <polygon
+           id="polygon10348"
+           points="73,140 87,140 87,126 73,126 " />
+      </clipPath>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:SVGTimes;fill:#000000"
+         id="text10350"
+         y="137"
+         x="74">-</text>
+      <text
+         font-size="10px"
+         style="font-size:10px;line-height:0%;font-family:'Times New Roman';fill:#000000"
+         id="text10352"
+         y="137"
+         x="80.5">1</text>
+    </g>
+    <path
+       sodipodi:nodetypes="csssssc"
+       d="m 208.58014,262.54742 c -15.91366,-0.67376 -10.98725,-0.33657 -15.91366,-0.67376 -19.10279,-1.30743 -27.7725,-12.42131 -35.36155,-22.83285 -9.6226,-13.20144 -16.78824,-26.2383 -25.44361,-26.2383 -8.65537,0 -15.82102,13.03686 -25.44363,26.2383 -7.589068,10.41154 -16.258791,21.52542 -35.361579,22.83285 -4.926411,0.33719 0,0 -17.295973,0.67376"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.38231039;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path2842"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.518"
+       d="m 30.175339,242.13671 h 68.86727 v 15.04345 h -68.86727 z"
+       id="rect10-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.518"
+       d="m 99.042609,242.13671 h 76.804761 v 15.04345 H 99.042609 Z"
+       id="rect10-3-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.518"
+       d="m 23.220579,242.13671 h 5.36726 v 15.04345 h -5.36726 z"
+       id="rect10-6-35"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.518"
+       d="m 18.911649,242.13671 h 3.2506 v 15.04345 h -3.2506 z"
+       id="rect10-6-7-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.518"
+       d="m 14.678309,242.13671 h 3.2506 v 15.04345 h -3.2506 z"
+       id="rect10-6-7-5-29"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.518"
+       d="m 182.80213,242.13671 h -5.36726 v 15.04345 h 5.36726 z"
+       id="rect10-6-3-1"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.518"
+       d="m 187.11106,242.13671 h -3.25058 v 15.04345 h 3.25058 z"
+       id="rect10-6-7-56-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;opacity:0.518"
+       d="m 191.34441,242.13671 h -3.25061 v 15.04345 h 3.25061 z"
+       id="rect10-6-7-5-2-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 99.042608,267.38551 V 209.30952"
+       id="path2507"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:1;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:5.39932537;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 304.72074,986.78023 c 5.4834,-1.5621 15.37596,-5.37359 21.98346,-8.46997 11.77665,-5.51872 12.33382,-5.62978 28.24446,-5.62978 h 16.23082 v 8.57143 8.57143 l -38.21428,-0.10147 -38.21429,-0.10146 z"
+       id="path2515"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:1;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:5.39932537;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 349.73636,964.72132 c 4.87915,-3.59183 11.69987,-9.13799 15.15715,-12.3248 l 6.28597,-5.79421 v 12.3248 18.3248 h -15.15715 -25.15716 z"
+       id="path2517"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       sodipodi:nodetypes="cscccccc"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="21.980564"
+       y="195.87527"
+       id="text2521"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan2519"
+         x="21.980564"
+         y="195.87527"
+         style="stroke-width:0.26458332">0.05 prob.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="121.40485"
+       y="195.87529"
+       id="text2525"
+       inkscape:export-filename="/home/caranha/Work/Lectures/ExperimentDesign/LectureNotes/img/critical_region_alpha.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan2523"
+         x="121.40485"
+         y="195.87529"
+         style="stroke-width:0.26458332">0.95 prob.</tspan></text>
+  </g>
+</svg>

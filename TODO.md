@@ -7,17 +7,17 @@
 # Talk about Scientists:
 - Marie Curie: Lesson 1 (many things you can do as a scientist)
 - Charles Darwin: Lesson 2 (data collection and publication)
+- Florence Nightingale: Lesson 3 (data visualization)
+
 - A religious scientist (thomas de aquina?)
 - A modern woman scientist (Lana? Science communicator?)
 - 1st commandment of felipe campelo: Always incorporate domain knowledge to your analysis (inference lecture, assumptions)
 
 # Lectures
-- Topic 2: Statistics review. Point Indicators and Interval Indicators.
-- Topic 3: Introduction to Inference Testing -- Hypothesis, Type Errors, Z testing.
 - Topic 4: Introduction to Inference Testing -- Comparison Testing, Paired Testing
 - Topic 5: Introduction to Inference Testing -- Equality Testing, Non-Parametric Testing
 - Topic 6: Case Study I
-- Topic 7: Power Analysis, Sample Size and Sample Choosing
+- Topic 7: Power Analysis, Sample Size and Choosing Samples
 - Topic 8: Multiple Comparison: ANOVA and post-hoc testing
 - Topic 9: Blocking and selection of parameters for experiments;
 - Topic 10: Case Study II
