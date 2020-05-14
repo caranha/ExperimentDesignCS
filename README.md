@@ -24,7 +24,9 @@ You can also see the full [syllabus](syllabus.md) of the course.
   - [Video Lecture II](https://youtu.be/uI62qUke4dM)
 - Topic 3: Introduction to Inference Testing -- Hypothesis, Type Errors, Z testing.
   - [Lecture Notes](topic03/lecture3.pdf)
-  - [Video Lecture]
+  - [Video Lecture I](https://youtu.be/blvcIybva-Q)
+  - [Video Lecture II](https://youtu.be/v6yLT9cq3UA)
+  - [Video Lecture III](https://youtu.be/m3bMVZqcjIw)
 - Topic 4: Introduction to Inference Testing -- Comparison Testing, Paired Testing
 - Topic 5: Introduction to Inference Testing -- Equality Testing, Non-Parametric Testing
 - Topic 6: Case Study I
