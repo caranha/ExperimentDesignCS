@@ -1,0 +1,298 @@
+\section{Two sample testing}
+
+\begin{frame}
+
+  \begin{center}
+  {\bf Part I -- Two Sample Testing}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Statistical Inference for Two Samples}
+  Sometimes we are interested on the comparison between two different populations, based on information from their samples. This type of analysis is frequent when we compare the effect of a technique ({\bf or treatment}) against a \emph{control group}: a placebo, a classical technique, a random search, etc;\bigskip
+
+  The statistics used in this case are actually very similar to the statistics used for the analysis of single populations; and in general the experiment design follow the same principles.\bigskip
+
+  Usual questions involve:
+  \begin{itemize}
+    \item The comparison of means;
+    \item The comparison of variances;
+    \item The comparison of proportions;
+    \item Etc;
+  \end{itemize}
+\end{frame}
+
+\subsection{Example: Steel Rods}
+\begin{frame}{Comparison of two means}{Example: Length of Steel Rods}
+  \begin{columns}
+    \column{.2\textwidth}
+    \includegraphics[width=\textwidth]{../img/steelrods}
+    \ppagenote{Steel rod image: \url{http://www.shutterstock.com/pic-73207399/}}
+    \column{.8\textwidth}
+    One of the critical aspects of manufacturing steel rods is cutting the bars with a precise length, which is expected by the customers.\bigskip
+
+    This process is prone to errors, which result in additional costs for standardizing and reprocessing the rods.
+  \end{columns}
+  \bigskip
+
+  An engineer is interested in comparing the current cutting process with a new method that could potentially improve the performance of the system.
+\end{frame}
+
+\begin{frame}{Statistical Models}
+  A \structure{Statistical Model} is a useful way to characterize a population from which we obtain some sample. This model describes the possible values from an experiment, and how they are distributed.\bigskip
+
+  For example, when we measure some observed value ($y$) taken from one of several methods ($i = 1, 2,\ldots$), we understand that the value comes from some distribution with mean $\mu_i$, at it will also have an error ($\epsilon$) away from that mean, which is different for each observation. So we describe the $j$-th observation taken from the $i$-th method as
+
+  \begin{equation*}
+    y_{ij} = \mu_i + \epsilon_{ij}\begin{cases}i=1,2\\j=1,\ldots,n_i\end{cases}
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Statistical Models}{Two population Model}
+  \begin{equation*}
+    y_{ij} = \mu_i + \epsilon_{ij}\begin{cases}i=1,2\\j=1,\ldots,n_i\end{cases}
+  \end{equation*}\medskip
+
+  Using this model for the observed variable ($y_{ij}$), we assume that the residuals $\epsilon_{ij}$ are iid\footnote{Independent and Identically Distributed} and follow $\mathcal{N}\left(0,\sigma_i^2\right)$. Under these assumptions, the populations of the two samples look like this:
+
+  \begin{center}
+    \includegraphics[width=.6\textwidth]{../img/two_population_model}
+    \ppagenote{Two models image from D.C. Montgomery "Applied Statistics and Probability for Engineers", Wiley 2003}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Comparison of two means}{Null and Alternate Hypotheses}
+
+What should be the observed variable $y$? The goal of this experiment is to measure if the new method produces steel rods closer to the nominal value. In this case, a possible response variable would be the \structure{absolute error}, e.g., $y = |\ell - \ell_{nominal}|$.\bigskip
+
+Keeping in mind our statistical model, we can build the hypothesis around the \structure{mean} of the absolute error ($\mu_i$). In that case, we can state the null and alternate hypotheses as:
+\begin{equation*}
+\begin{cases}
+H_0: \mu_1 - \mu_2 = 0\\
+H_1: \mu_1 - \mu_2 < 0
+\end{cases}\ \ \ \mbox{\textbf{or, equivalently, }}\ \ \ \ \ \ \begin{cases}
+H_0: \mu_1 = \mu_2\\
+H_1: \mu_1 < \mu_2
+\end{cases}
+\end{equation*}
+\medskip
+\end{frame}
+
+
+
+\begin{frame}{Comparison of two means}{Calculating the statistic}
+
+  Lets assume (for the moment) that the variance of the process is unknown but similar for both systems. Since it is unknown, we have to estimate the variance from the sample data. As assume $\sigma^2_1\approx\sigma^2_2$, we can use the pooled variance estimator:
+
+\begin{equation*}
+s_p^2 = \frac{\left(n_1-1\right)s_1^2+\left(n_2-1\right)s_2^2}{n_1+n_2-2}=ws_1^2+\left(1-w\right)s_2^2
+\end{equation*}
+\bigskip
+
+Based on this estimator and the stated assumptions, we have that:
+\begin{equation*}
+T = \frac{\left(\bar{y_1} - \bar{y_2}\right) - \left(\mu_1 - \mu_2\right)}{s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}\sim t^{\left(n_1+n_2-2\right)}
+\end{equation*}
+\end{frame}
+
+
+\begin{frame}
+{Comparison of two means}
+{Rejection threshold}
+
+Suppose a desired significance level $\alpha = 0.05$, and that the engineer is interested in detecting any difference larger than $15cm$ in the mean absolute error with a power $(1-\beta) = 0.8$.\medskip
+
+If we recall our working hypotheses:
+
+\begin{equation*}
+\begin{cases}
+H_0: \mu_1 - \mu_2 = 0\\
+H_1: \mu_1 - \mu_2 < 0
+\end{cases}
+\end{equation*}
+
+\noindent we have that, \underline{under $H_0$}:
+
+\begin{equation*}
+t_0 = \frac{\left(\bar{y_1} - \bar{y_2}\right) - \cancelto{0}{\left(\mu_1 - \mu_2\right)}}{s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} = \frac{\left(\bar{y_1} - \bar{y_2}\right)}{s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}\sim t^{\left(n_1+n_2-2\right)}
+\end{equation*}
+
+We'll reject $H_0$ at the $(1-\alpha)$ confidence level if $t_0\leq t^{(n_1+n_2-2)}_{\alpha/2}$
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]{Comparison of two means}{Calculating the Statistic}
+Computationally, we can perform the t-test for comparing the means of two independent populations by:
+\bigskip
+{\smaller
+\begin{verbatim}
+> y <- read.table("steelrods.csv", header = TRUE)
+> t.test(y$Length.error ~ y$Process,
++        alternative = "less",
++        mu          = 0,
++        var.equal   = TRUE,
++        conf.level  = 0.95)
+
+data:  y$Length.error by y$Process
+t = -14.312, df = 32, p-value = 9.244e-16
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+      -Inf -7.156884
+sample estimates:
+mean in group new mean in group old
+         7.782353         15.900000
+\end{verbatim}}
+\end{frame}
+
+%=====
+
+\begin{frame}[fragile]{Comparison of two means}{Testing the assumptions}
+
+The assumptions of the test must be verified. In this particular case:
+
+\begin{columns}[T]
+  \column{0.7\textwidth}
+
+  {\smaller
+\begin{itemize}
+  \item \alert{Normality};
+  \item Equality of variances;
+  \item Independence.
+\end{itemize}
+
+{\smaller
+\begin{verbatim}
+> qqPlot(y$Length.error, groups = y$Process,
+        cex = 1.5, pch = 16,  las = 1,
+        layout = c(2, 1))
+> shapiro.test(y$Length.error[y$Process == "new"])
+# W = 0.92269, p-value = 0.164
+> shapiro.test(y$Length.error[y$Process == "old"])
+# W = 0.94971, p-value = 0.4519
+\end{verbatim}}}
+
+{\bf Reminder:} the t-test is quite robust to mild to moderate violations of the normality of the residuals / groups.
+\column{.3\textwidth}
+\includegraphics[width=1\textwidth]{../img/steelrodsqq.pdf}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Comparison of two means}{Testing the assumptions}
+The assumptions of the test must be verified. In this particular case:
+
+\begin{columns}[T]
+  \column{.7\textwidth}
+  {\smaller
+    \begin{itemize}
+      \item Normality;
+      \item \alert{Equality of variances};
+      \item Independence;
+    \end{itemize}
+    {\smaller
+\begin{verbatim}
+> fligner.test(Length.error ~ Process, data = y)
+# Fligner-Killeen:med chi-squared = 1.6837,
+# df = 1, p-value = 0.1944
+
+> resid <- tapply(X = y$Length.error,
+         INDEX = y$Process,
+         FUN   = function(x){x - mean(x)})
+
+> stripchart(x        = resid,
+             vertical = TRUE,
+             pch      = 16,
+             cex      = 1.5,
+             las      = 1,
+             xlab     = "mean",
+             ylab     = "residuals")
+\end{verbatim}}}
+\column{.3\textwidth}
+\includegraphics[width=\textwidth]{../img/steelrodsvar.pdf}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+{Comparison of two means}
+{Testing the assumptions}
+The assumptions of the test must be verified. In this particular case:
+
+{\smaller
+\begin{itemize}
+  \item Normality;
+  \item Equality of variances;
+  \item \alert{Independence};
+\end{itemize}}
+\bigskip
+
+As mentioned in the last class, there is no general test for the independence assumption, and it has to be guaranteed in the design phase.
+\bigskip
+
+One can at most test for serial autocorrelation in the residuals using Durbin-Watson's test, but this test is absolutely dependent on the ordering of the observations - very useful to detect ordering-related trends in the residuals, but not much more than that.
+\end{frame}
+
+\begin{frame}{Comparison of two means}{Unequal variances}
+Suppose now a more general case, in which the variances of the two populations are unknown and cannot be assumed equal.
+\bigskip
+
+For this cases, a modification on the t-test called \textit{Welch's t test} is usually employed. The Welch statistic can be calculated as:
+\begin{equation*}
+  t^*_0 = \frac{\bar{y_1} - \bar{y_2}}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+\end{equation*}
+\bigskip
+
+Under the null hypothesis $t^*_0$  is distributed approximately as a $t^{(\nu)}$ distribution, with:
+\begin{equation*}
+\nu = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{\left(s_1^2/n_1\right)^2}{n_1-1} + \frac{\left(s_2^2/n_2\right)^2}{n_2-1}}
+\end{equation*}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Comparison of two means}{Unequal variances}
+To illustrate this technique, let's use the data from the example\footnote[2]{Notice that this would not be necessary, since the data collected in the previous example did not violate the equality of variances assumption.}:
+\bigskip
+
+{\smaller{\smaller
+\begin{verbatim}
+> with(y,
++      t.test(Length.error~Process,
++             alternative = "two.sided",
++             mu = 0,
++             var.equal = FALSE,            %% <- We only change this.
++             conf.level = 0.95))
+Welch Two Sample t-test
+data:  Length.error by Process
+t = -14.312, df = 28.386, p-value = 1.645e-14
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+-0.09278780 -0.06956515
+sample estimates:
+mean in group new mean in group old
+      0.07782353        0.15900000
+\end{verbatim}}}
+\end{frame}
+
+%
+% \begin{ftst}
+% {Comparison of two means}
+% {Unequal variances}
+% The two-sample Welch t-test for considering unequal variances is usually the first test of choice, since it drops one (often inconvenient) assumption, at a very small cost in terms of power.
+% \vone
+% Calculating sample sizes for the general case (unequal variances, unequal sample sizes) is not particularly difficult, and can be done for either a \textit{balanced} case (i.e., $n_1 = n_2 = n$) or an optimal, \textit{unbalanced} case (in which $n_1 \neq n_2$).
+% \vone
+% For the unbalanced case, it is not particularly difficult to prove that the optimal allocation of observation is to keep:
+% $$\frac{n_1}{n_2} = \frac{\sigma_1}{\sigma_2}$$.
+%
+% (if a good estimate of the ratio of variances is available, of course).
+% \end{ftst}
+%=====
+
+\begin{frame}{Comparison of two means}{Summary}
+
+  To compare an estimator from samples of two populations that (we assume) follow a normal distribution, we set our statistic and the corresponding hypotheses to be the difference of the target variables.\bigskip
+
+  This technique for comparison testing is equally simple and extremely versatile.\bigskip
+
+  Of course, there are cases where this approach does not apply. Next we will see a relatively common case where using the difference of the target variables would lead to a wrong inferential result.
+\end{frame}

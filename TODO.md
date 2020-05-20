@@ -1,17 +1,14 @@
 # Current
-- Video lecture: Topic 00
-- Lecture Notes: Topic 1 Science, Experimentalism, Rigorous Research and Scientific Communication.
-- Sort References and upload to manaba
-- Sort links and add to UsefulLinks.md
+- Redo videos of lecture 1 and 2 to become shorter
+- Lecture 2: Add other point estimators: correlation, variance?
+- Lecture 3: Fix typos, add code examples
 
 # Talk about Scientists:
 - Marie Curie: Lesson 1 (many things you can do as a scientist)
 - Charles Darwin: Lesson 2 (data collection and publication)
 - Florence Nightingale: Lesson 3 (data visualization)
 
-- A religious scientist (thomas de aquina?)
-- A modern woman scientist (Lana? Science communicator?)
-- 1st commandment of felipe campelo: Always incorporate domain knowledge to your analysis (inference lecture, assumptions)
+- A current scientist?
 
 # Lectures
 - Topic 4: Introduction to Inference Testing -- Comparison Testing, Paired Testing
