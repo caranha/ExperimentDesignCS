@@ -28,6 +28,8 @@ You can also see the full [syllabus](syllabus.md) of the course.
   - [Video Lecture II](https://youtu.be/v6yLT9cq3UA)
   - [Video Lecture III](https://youtu.be/m3bMVZqcjIw)
 - Topic 4: Introduction to Inference Testing -- Comparison Testing, Paired Testing
+  - [Lecture Notes](topic04/lecture4.pdf)
+  - [Video Lecture]
 - Topic 5: Introduction to Inference Testing -- Equality Testing, Non-Parametric Testing
 - Topic 6: Case Study I
 - Topic 7: Power Analysis, Sample Size and Sample Choosing
