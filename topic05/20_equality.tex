@@ -9,10 +9,10 @@
 \end{frame}
 
 \begin{frame}{Testing equivalence}{Introduction}
-The tests introduced in the preceding chapters deal with situations in which one is interested in detecting \textit{differences} between a population parameter $\theta$ -- e.g., a population mean $\mu$ or a difference between population means $(\mu_1-\mu_2)$ -- and its nominal value $\theta_0$ under a null hypothesis;
-\bigskip
 
-Another useful class of experiments in engineering and science is one in which the experimenter is interesting in investigating \textit{equivalence} (within a given margin of error), for instance:
+In the previous lectures, we introduced tests that focus on detecting {\bf differences} between a population parameter $\theta$ and its nominal value $\theta_0$ under a null hypothesis.\bigskip
+
+In engineering and science, we are sometimes interested in investigating the {\bf equivalence}, within a given margin of error. Some example cases:\bigskip
 
 \begin{itemize}
   \item Conformity/compliance testing (industrial certification);
@@ -20,14 +20,14 @@ Another useful class of experiments in engineering and science is one in which t
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Testing equivalence}{Introduction}
+\begin{frame}{Testing equivalence}{Question of interest in usual studies}
 In principle, one could express this as a shift in focus from trying to establish whether a population parameter is different from a given reference to trying to determine whether it is equal to that reference.
-\bigskip
+\vfill
 
-In usual (two-sided) comparative studies, the alternative hypothesis (i.e., the one that presents novelty in relation to the current state of knowledge) is the one of difference between the parameters of interest - that is, unless there is strong evidence of differences, one cannot rule out the null hypothesis of equality;
+In usual (two-sided) comparative studies, the {\bf alternative hypothesis} (i.e., the one that presents novelty in relation to the current state of knowledge) is the one of difference between the parameters of interest - that is, unless there is strong evidence of differences, one cannot rule out the null hypothesis of equality;
 \end{frame}
 
-\begin{frame}{Testing equivalence}{Introduction}
+\begin{frame}{Testing equivalence}{Question of interest in equivalence studies}
 In equivalence testing, the situation is reversed: the (approximate) equality of two parameters is the novelty one hopes to establish. Consequently, the burden of proof shifts to providing evidence that there is no difference.
 \bigskip
 
@@ -37,7 +37,7 @@ The term \textit{equivalent} is not used strictly, but to mean the absence of pr
 Using this approach, the equivalence of two parameters can be established if a sample provides enough evidence that the true difference is smaller than $\delta^*$ units.
 \end{frame}
 
-\begin{frame}{Testing Non-inferiority}{Definition}
+\begin{frame}{Testing Non-inferiority}{Equivalence and non-inferiority}
 A similar concept to equivalence testing is the definition of non-inferiority of a given treatment/ process/ method in relation to another (e.g., a standard solution).
 \bigskip
 
@@ -76,6 +76,7 @@ An equivalence test for a single population mean can be expressed by the hypothe
   \end{cases}
 \end{equation*}
 \medskip
+
 The most usual way of testing these hypotheses is the TOST (\textit{two one-sided tests}) method. As the name suggests, two one-sided significance tests are constructed so that the desired statistical properties can be achieved. Using our standard notation:
 \begin{columns}[T]
 \column{0.5\textwidth}
@@ -97,7 +98,7 @@ H_1^2: &\Delta\mu < \delta^*
 If both tests reject their respective $H_0$, then equivalence (within the equivalence margin $\delta^*$) can be declared with significance level $\alpha$.
 \end{frame}
 
-\begin{frame}{Equivalence test for a single mean}{Graphical interpretation}
+\begin{frame}{Interpretation of the Two One Sided Hypothesis}
 \centering\includegraphics[width=.9\textwidth]{../img/TOST-errors.png}
 \ppagenote{TOST errors image: Matthews (2010), Sample Size Calculations, MMB. pg. 46}
 \end{frame}
@@ -115,7 +116,7 @@ If both tests reject their respective $H_0$, then equivalence (within the equiva
 % \end{frame}
 
 
-\begin{frame}{Equivalence of two means}{Hypotheses}
+\begin{frame}{Equivalence Testing by TOST}{Hypotheses for two samples}
 Analogously to the single sample test of equivalence, the hypotheses for testing the equivalence of two population means can be described as:
 \begin{equation*}
 \begin{cases}

@@ -3,7 +3,7 @@
 \begin{frame}
 
   \begin{center}
-    {\bf Non-normal Data}
+    {\bf Part II -- Non-normal Data}
   \end{center}
 
 \end{frame}
@@ -73,22 +73,25 @@ t.test(diet.a,diet.b)
 
 
 
-\begin{frame}{Non Normal data makes everything go wrong}{Weight Loss Example}
-\begin{columns}
-  \column{.5\textwidth}
-  Data with Outlier\\
-  \includegraphics[width=.8\textwidth]{../img/diet_outlier1}
-  \column{.5\textwidth}
-  Data without Outlier\\
-  \includegraphics[width=.8\textwidth]{../img/diet_outlier2}
-\end{columns}
+\begin{frame}{Non Normal data makes everything go wrong}{How can we solve this problem?}
 
-Remember that outliers are not always this obvious!
+  \begin{itemize}
+    \item Identify and remove the outlier?
+    \begin{itemize}
+      \item If the outlier is an experimental error, it makes sense to remove it;
+      \item On the other hand, maybe the outlier is some important effect worth being investigated;
+    \end{itemize}
+    \bigskip
+
+    \item Alternatively, we could use a test that is not sensitive to the outlier.
+  \end{itemize}
+
 \end{frame}
 
 
 \begin{frame}[fragile]{Non Normal data makes everything go wrong}{Weight Loss Example}
-Using a {\bf non-parametric test} solves the problem.
+
+A {\bf non-parametric test} will indicate a rejection of the null hypothesis of equality.
 
 {\small
 \begin{verbatim}
@@ -107,43 +110,50 @@ wilcox.test(diet.a,diet.b)
 
 \subsection{Concepts and Examples}
 
-\begin{frame}{Non Normality}{Examples of Non Normal data?}
-  There are many different ways that data can violate the assumption of normality:
+\begin{frame}{Examples of Non-Normal Data}
+  There are many different ways that data can violate the assumption of normality:\bigskip
 
   \begin{itemize}
-    \item \emph{Special Data Cases: Outliers and Limits}: We saw one example of outlier that challenges the assumption of normalty. Limits in the data (minimum time) can have a similar effect.\bigskip
+    \item \emph{Special Observations in the Data}:
+      \begin{itemize}
+        \item Outliers, data collection errors;
+        \item Absolute limits in the data (measuring time);
+      \end{itemize}
 
-    \item \emph{Extreme Non-Normal Distributions.} Power Distribution, Cauchy Distribution, etc.\bigskip
+    \item \emph{Extreme Non-Normal Distributions:}
+    \begin{itemize}
+      \item Power Distribution, Cauchy Distribution, etc.
+    \end{itemize}
 
-    \item \emph{Ordinal Data.} Ordinal data is numeric, in the sense
-    that it can be compared/ordered, but you can't rely on direct algebra.
-    (eg: Human opinion scales)\bigskip
+    \item \emph{Ordinal Data:}
+    \begin{itemize}
+      \item Ordinal data is data that can be ordered and compared by some criteria, but you cannot apply traditional algebra on it (ex: subjective scores);
+    \end{itemize}
 
-    \item \emph{Non-numerical data}: categorical data, class data, etc;
+    \item \emph{Completely Non-numerical data}:
+    \begin{itemize}
+      \item categorical data, class data, etc; (ex: colors)
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Non Normality}{Example: Random Processes} % TODO: Expand on this example
+\begin{frame}{Non-Normal Data Example: Random Processes}
 
-  Random processes in nature (such as plant growth or shell formation) very
-  often follow a normal distribution (or bell curve). However, random artificial
-  processes do not always follow a normal distribution: \bigskip
+  Random processes in nature, such as plant growth or shell formation, are often seen to follow a normal distribution or bell curve. On the other hand, random artificial processes not always do.\bigskip
 
   \begin{itemize}
+    \item In general, Pseudo Random Number Generators will use an {\bf Uniform Distribution}. Because of the CLT, aggregations of these results will tend to normal distributions.\medskip
 
-    \item Random numbers in computer very often use {\bf Uniform distributions}.
-    (Uniform distributions can be easily approximated to normal distributions
-    by the use of bootstrapping).\bigskip
+    \item On the other hand, random social processes will often show {\bf Power Distributions} (salaries, social networks) or {\bf Binomial Distributions} (queues);\medskip
 
-    \item Random numbers from social processes very often show {\bf Power
-    distributions}. Power distributions are characterized by "90\% of observations
-    have 10\% of values". Examples: Salary data, Social network data, etc.
-
+    \item It is important to study and understand the process being researched to know its characteristics;
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Non Normality}{Example: Likert Data} % TODO: Expand on this example
+\begin{frame}{Non Normality}{Example: Likert Data}
+% TODO: Add a slide or section about how we should deal with
+% LIKERT data.
 
 \emph{Likert} data is often collected from surveys and interview questions. It
 is usually  composed of multiple questions with 5 or 7 options, ranged from
@@ -169,17 +179,24 @@ Why can't we treat likert data directly as numerical?
 
 
 \begin{frame}{Non Normality}{Strategies for non normal data}
-  Let's discuss three things that we can do about non-normal data,
-  regarding statistical testing:\bigskip
+  When our data does not follow the normality assumption, there are many different strategies that we can apply, depending on the type of data, and the type of normality violation:\bigskip
 
   \begin{itemize}
-    \item Do nothing
-    \item Transform the Data
-    \item Non parametric Testing
+    \item {\bf Do Nothing}
+    \begin{itemize}
+      \item We can remove outliers that break the normality assumption, or trust that test will be robust for small deviations of normality;
+    \end{itemize}
+    \item {\bf Transform the Data}
+      \begin{itemize}
+        \item Transformation of the data can restore the normal property to data;
+      \end{itemize}
+    \item {\bf Non parametric Testing}
+    \begin{itemize}
+      \item Some statistical tests do not make the assumption of normality of the sampling distribution (in exchange for less power);
+    \end{itemize}
+    \item {\bf Look for a new statistics textbook}
   \end{itemize}\bigskip
 
-  Please note that this is a quick overview of the treatment of non-normal data.
-  {\bf Study your particular case carefully!}
 \end{frame}
 
 % TODO: DO NOTHING SECTION
@@ -244,7 +261,9 @@ sigma.hat <- sd(y)
 \end{verbatim}
 \end{frame}
 
-\begin{frame}{Data Transformation}{Other transformations}
+\begin{frame}{Data Transformation}{Skew Transformation}
+  A strong skew in the sampling distribution can be a larger problem for the standard statistical tests. It is possible to remove these through data transformations:\bigskip
+
   \begin{itemize}
     \item For left skewed data:
     \begin{itemize}
@@ -256,63 +275,90 @@ sigma.hat <- sd(y)
     \end{itemize}
   \end{itemize}\bigskip
 
-  Attention: Logarithm of 0 and negative data is not defined, so you may need to
-  add a constant before the transformation.
+  {\bf Attention:} Logarithm of 0 and negative data is not defined, so you may need to add a constant before the transformation.
 \end{frame}
-
+% TODO: Example of transformation to remove skew
 
 
 
 \begin{frame}{Data Transformation}{Be careful when transforming data}
   \begin{itemize}
-    \item Careful when reporting back the data on the paper.
+    \item Pay attention when describing the analysis on a paper or report:
     \begin{itemize}
-      \item Make sure to mention what data transformation was used in the analysis.
-      \item Apply {\bf back-transformation} before discussing results.
+      \item Any transformation used must be explained in the analysis;
+      \item The discussion of the results must be done on the transformed data as well as the original data;
     \end{itemize}\bigskip
 
-    \item Beware of when Null hypotheses are not equivalent!
+    \item Beware that the hypotheses may not be equivalent!
     \begin{itemize}
-      \item Example: Lognormal mean includes the variance. Transformed lognormal mean does not. Null hypothesis is only equivalent when variance is equal!
+      \item Example: The lognormal mean includes the variance. But the transformed lognormal mean does not. In this case, the null hypothesis is only equivalent when the variance of the transformed distribution is equal!
     \end{itemize}
   \end{itemize}
 \end{frame}
-
+%% TODO: Example of the mistakes above -- what wrong conclusions you can reach if you don't do this.
 
 \subsection{Bootstrapping}
 
 \begin{frame}{Bootstrapping}{}
-  Another way to make data follow a normal distribution is to use
-  the {\bf Bootstrapping} procedure. Bootstrapping uses the idea of the CLT
-  (central limit theorem) by creating a "sample mean distribution" that
-  will usually follow the normal distribution.
+
+  The Bootstrapping procedure is used to obtain an approximation of the "sample mean distribution" from the sample data.\bigskip
+
+  Following the properties of the Central Limit Theorem, the sample mean distribution will usually follow a normal distribution, even when the underlying distribution of observation values is not normal;
 \end{frame}
 
-\begin{frame}{Bootstrapping}{The Bootstrapping Procedure}
+\begin{frame}{The Bootstrapping Procedure}
   \begin{itemize}
-    \item Take $n$ samples of size $m$ (with repetition)
-    \item Calculate the mean of each sample.
-    \item Your bootstrapped data is the set of sample means.
+    \item Take an initial sample with $m$ observations;
+    \item Create $n$ {\bf bootstrap samples} by selecting $m_b < m$ from the initial sample $n$ times;
+    \item Calculate the mean of each bootstrap sample.
+    \item The set of bootstrap sample means are your {\bf bootstrapped data};
 
     \begin{center}
       \includegraphics[width=.8\textwidth]{../img/bootstrap_lowres}
     \end{center}
   \end{itemize}
-
-  % TODO: Code Example
 \end{frame}
 
-\begin{frame}{Bootstrapping}{Using Bootstrapped Data}
-  The R package "boot" can help you appropriate create tests
-  and confidence intervals from bootstrapped data.
+% TODO: Code Example
+
+
+\begin{frame}[fragile]{Generating Bootstrapped Data}
+  The R package "boot" creates bootstrapped data, c.i.s, and tests.
+  \begin{columns}[T]
+    \column{0.7\textwidth}
+    {\smaller
+\begin{verbatim}
+> city
+     u   x
+1  138 143
+2   93 104
+3   61  69
+4  179 260
+5   48  75
+6   37  63
+7   29  50
+8   23  48
+9   30 111
+10   2  50
+
+> library(boot)
+> ratio <- function(d, w) sum(d$x * w) / sum (d$u * w)
+> bootstrap <- boot(city, ratio, R = 999, stype = "w")
+> city.bootstrap <- bootstrap[[2]]
+\end{verbatim}
+    }
+    \column{0.3\textwidth}
+    \includegraphics[width=1\textwidth]{../img/bootstrap_original}
+    \includegraphics[width=1\textwidth]{../img/bootstrap_histogram}
+  \end{columns}
 \end{frame}
 
 \section{Non-Parametric Tests}
 
 \begin{frame}{Non Parametric Tests}{}
-  Non-parametric tests remove the assumption of normality from the
-  population distribution. On the other hand, they can be a bit weaker, and
-  cannot estimate the real-world distance between two samples.
+  Non-parametric Tests involve statistics that do not assume normality from the population distribution.\bigskip
+
+  Weak assumptions about the population, however, causes the non-parametric tests to be less strong than parametric ones. Also, usually non-parametric statistics usually do not calculate the distance between the parameter estimate and the hypothesis values.
   \bigskip
 
   \begin{itemize}
@@ -328,14 +374,14 @@ sigma.hat <- sd(y)
 
 \subsection{1 or 2 samples}
 
-\begin{frame}{Non Parametric Tests}{One or two Samples}
-  \begin{itemize}
-    \item unpaired test: Mann-Whitney U-test;
-    \item paired test: Wilcoxon signed-ranks test;
-  \end{itemize}
-\end{frame}
+% \begin{frame}{Non Parametric Tests}{One or two Samples}
+%   \begin{itemize}
+%     \item unpaired test: Mann-Whitney U-test;
+%     \item paired test: Wilcoxon signed-ranks test;
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}{Mann-Whitney U-test}{}
+\begin{frame}{Mann-Whitney U-test}{Unpaired test for two samples}
   \begin{center}
     \includegraphics[width=1\textwidth]{../img/MannWhitneyU}
   \end{center}
