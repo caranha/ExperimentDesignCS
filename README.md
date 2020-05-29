@@ -33,7 +33,8 @@ You can also see the full [syllabus](syllabus.md) of the course.
   - [Video Lecture II](https://youtu.be/23t4q_kTdyM)
 - Topic 5: Introduction to Inference Testing -- Equality Testing, Non-Parametric Testing
   - [Lecture Notes](topic05/lecture5.pdf)
-  - Video Lecture
+  - [Video Lecture I](https://youtu.be/XrrKsJdmaig)
+  - [Video Lecture II](https://youtu.be/EUqNpwaL078)
 - Topic 6: Case Study I
 - Topic 7: Power Analysis, Sample Size and Sample Choosing
 - Topic 8: Multiple Comparison: ANOVA and post-hoc testing
