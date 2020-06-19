@@ -1,0 +1,56 @@
+\section{Introduction}
+
+\begin{frame}{}
+  \centering
+  Topic 08 -- Multiple Comparisons
+\end{frame}
+
+
+\begin{frame}{Multiple Comparison Scenarios}
+  There are many situations in which we are interested in comparing multiple samples from possibly different populations at the same time. For example:
+  \begin{itemize}
+    \item {\bf Parameter Tuning}: We want to test multiple settings of a different parameter (should this network have two, three or four layers?);
+    \item {\bf Comparison of Multiple Algorithms}: You are comparing your proposed algorithm against a set of different algortihms from the state of the art;
+    \item Other situations...
+  \end{itemize}\bigskip
+
+  The {\bf t-test} that we studied in the last lecture can be used for hypotheses about one or two samples, so how do we test these cases?
+\end{frame}
+
+\begin{frame}{A common mistake: Repeated Testing}
+  One (wrong) solution that we see sometimes in the literature is to do "multiple pairwise testing": Out of 6 methods, test A against B, A against C, A against D, ... etc. And report the result for each comparison.\bigskip
+
+  What is the problem with that?\bigskip
+
+  Remember that each hypothesis test has an associated risk of {\bf TYPE I Error}. In other words, there is a chance that the test will reject the null hypothesis, even if the null hypothesis is true. (We called this parameter $\alpha$ in previous classes).\bigskip
+
+  When we repeat the same test several times, we open ourselves to {\bf compount probabilities}.
+\end{frame}
+
+\begin{frame}{A common mistake: Repeated Testing}{Compound Probabilities}
+  \begin{itemize}
+    \item Probability of Type I error on one test with ($\alpha = 0.05$):\\
+     $1 - 0.95 = 0.05$
+    \item Probability of Type I error on TWO tests with ($\alpha = 0.05$):\\
+     $1 - 0.95\times 0.95 = 0.09$
+    \item Probability of Type I error on SIX tests with ($\alpha = 0.05$):\\
+     $1 - 0.95^{6} = 0.26$
+    \item Probability of Type I error on TWENTY tests with ($\alpha = 0.05$):\\
+     $1 - 0.95^{20} = 0.64$
+  \end{itemize}\bigskip
+
+  See also: \url{https://xkcd.com/882/}
+\end{frame}
+
+
+\begin{frame}{Lecture Outline}
+  To avoid these problems, we need to use specific techniques for experiment designs involving multiple comparisons.\bigskip
+
+  In this lecture, we will study:
+  \begin{itemize}
+    \item ANOVA: A statistical test to detect differences in {\bf sets} of samples;
+    \item Post-hoc comparisons: Techniques for making statistical inferences after the ANOVA test.
+  \end{itemize}\bigskip
+
+  Of course, there are other statistics and techniques not covered in this lecture.
+\end{frame}
