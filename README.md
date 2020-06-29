@@ -37,6 +37,7 @@ You can also see the full [syllabus](syllabus.md) of the course.
   - [Video Lecture II](https://youtu.be/EUqNpwaL078)
 - Topic 6: Case Study I
 - Topic 7: Power Analysis, Sample Size and Sample Choosing
+  - [Lecture Notes](topic07/lecture7.pdf) 
 - Topic 8: Multiple Comparison: ANOVA and post-hoc testing
   - [Lecture Notes](topic08/lecture8.pdf)
   - [Video Lecture I](https://youtu.be/XzSNf0FLt3Q)

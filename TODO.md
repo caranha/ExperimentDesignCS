@@ -10,12 +10,19 @@
 
 - A current scientist?
 
+# The hidden Curriculum
+- Scientific Community -- Talking to Scientists outside of the lab
+- Taking control of your image -- webpage, volunteering, etc
+- Research Ethics
+- Publishing Venues
+- Other ideas?
+
 # Lectures
-- Topic 4: Introduction to Inference Testing -- Comparison Testing, Paired Testing
-- Topic 5: Introduction to Inference Testing -- Equality Testing, Non-Parametric Testing
-- Topic 6: Case Study I
+- Topic 6: Review and Case Study I
+  - Add material about review, case study, code study
 - Topic 7: Power Analysis, Sample Size and Choosing Samples
-- Topic 8: Multiple Comparison: ANOVA and post-hoc testing
+
+## Future
 - Topic 9: Blocking and selection of parameters for experiments;
 - Topic 10: Case Study II
 
@@ -55,3 +62,9 @@
   - "Future works" is not a place for advertising your work
 
 # Materials
+
+## Future:
+- Maybe actually switch lectures 7 and 8
+- Greatly improve sample size lecture;
+- Lecture 9
+- "invisible curriculum of graduate school"
