@@ -1,5 +1,7 @@
 # Experiment Design in Computer Science (01CH740)
 
+**2020 Version**
+
 ## Main Instructor
 - **Name**: Claus Aranha
 - **e-mail**: caranha (at) cs.tsukuba.ac.jp
