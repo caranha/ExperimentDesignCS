@@ -1,70 +1,25 @@
-# Current
-- Redo videos of lecture 1 and 2 to become shorter
-- Lecture 2: Add other point estimators: correlation, variance?
-- Lecture 3: Fix typos, add code examples
-
-# Talk about Scientists:
-- Marie Curie: Lesson 1 (many things you can do as a scientist)
-- Charles Darwin: Lesson 2 (data collection and publication)
-- Florence Nightingale: Lesson 3 (data visualization)
-
-- A current scientist?
-
-# The hidden Curriculum
-- Scientific Community -- Talking to Scientists outside of the lab
-- Taking control of your image -- webpage, volunteering, etc
-- Research Ethics
-- Publishing Venues
-- Other ideas?
-
-# Lectures
-- Topic 6: Review and Case Study I
-  - Add material about review, case study, code study
-- Topic 7: Power Analysis, Sample Size and Choosing Samples
-
-## Future
-- Topic 9: Blocking and selection of parameters for experiments;
-- Topic 10: Case Study II
-
-# Reports
-- Report 1: Simple experiment with basic statistical analysis
-- Report 2: Simple experiment with Simple Inference analysis
-- Report 3: Comparative experiment with multiple population analysis
-
-# Key Ideas
-- Reproducible science and its importance
-  - Data organization
-  - Science communication
-  - Open source
-
-- Reading a research paper
-  - Order of reading, how to bulk read papers
-  - Critically reading papers
-
+# Invisible Curriculum of Graduate School.
 - Writing papers and reports
   - Writing for reproducibility
   - Writing for clarity
+  - Limitations of the work
 
-- Scientific Experiments
-  - Noise and uncertainties
-  - Hacking and Science
-  - Bad science: cargo-cult science, 5% science
+- Keeping up with the Science
+  - Paper sources: Arxiv, Twitter
+    - How to read a paper
+  - Reading older books
+  - Keeping a paper list
+  - Keeping yourself excited about the topic: Dream note
+  - Not limiting yourself to your own topics.
 
-- You need to love your scientific topic
-  - Reading a lot
-  - Keeping up with the literature (arxiv, knowing the researchers)
-  - Being excited about the theme
-  - Do not limit yourself to your own study
+- Writing about Science
+  - Scientific Communication
+  - Blogs
+  - Online presence
+  - Putting out your ideas (don't Hog your ideas)
 
-- Limitations
-  - Our experiments show an indication of X and Y
-  - But we did not examine the influence of Z, so maybe Z has an effect that we did not consider
-  - "Future works" is not a place for advertising your work
-
-# Materials
-
-## Future:
-- Maybe actually switch lectures 7 and 8
-- Greatly improve sample size lecture;
-- Lecture 9
-- "invisible curriculum of graduate school"
+- Researching ethics
+  - Plagiarism
+  - Fudging Data
+  - Social Impacts
+  - Open Data and Replicability

@@ -1,0 +1,1 @@
+- Lecture 2: Add other point estimators: correlation, variance?
