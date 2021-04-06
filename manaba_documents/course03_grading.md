@@ -32,7 +32,7 @@ The students must submit two reports, each of them a "mini-paper". In each repor
 - Analyze the data, following the design
 - Make a conclusion, based on the analysis of the data
 
-The report, then, should summarize the design, the experiment, the data analysis and the conclusion. The report should be guided by the ideas introduced in the course, specially regarding the data collection (experiment) and analysis.
+The report, then, should summarize the design, the experiment, the data analysis and the conclusion. The report must be guided by the ideas introduced in the course, specially regarding the data collection (experiment) and analysis.
 
 In the first report, using statistical inference is not required or expected. The report will be graded by the understanding of what is a scientific question, how to design a data collection protocol coherent with the scientific question, and the discussion of the data (lectures 1 and 2).
 
@@ -48,3 +48,4 @@ Other Details:
 
 # Updates
 - 2021/04/05 -- First update
+- 2021/04/06 -- minor word change in report description.
