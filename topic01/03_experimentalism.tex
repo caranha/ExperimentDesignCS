@@ -1,0 +1,232 @@
+
+\section{Experimentalism}
+\begin{frame}
+  \begin{center}
+    Part II: Experimentalism
+  \end{center}
+\end{frame}
+
+\subsection{The Role of Experimentation}
+\begin{frame}{The Role of Experimentation}
+  \begin{itemize}
+    \item Both in the simple definition of the scientific method, and on the more complete one, the experiment takes a central role;
+    \bigskip
+
+    \item An experiment is how we test hypothesis, how we learn more about the world, how we examine our ideas;
+    \bigskip
+
+    \item But what is an experiment? It is more than just collecting data!
+  \end{itemize}
+\end{frame}
+
+
+\section{What is an Experiment?}
+% Talk a little bit about Karl Popper
+\begin{frame}{What is an experiment?}
+  \begin{columns}[t]
+    \column{0.8\textwidth}
+    \begin{itemize}
+      \item Philosophy of Science: How do we obtain knowledge about the world?
+      \bigskip
+
+      \item Scientific theories can only be tested by observing their implications;
+      \bigskip
+
+      \item Reject theories that cannot be confirmed by experiment;
+    \end{itemize}
+
+    \column{0.2\textwidth}
+    \includegraphics[width=1\textwidth]{../img/wikipedia_popper}\\
+    Karl Popper (1902--1994)
+    \ppagenote{Karl Popper picture from Wikipedia}
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}{What are the characteristics of a good experiment?}
+  \begin{itemize}
+    \item Falsifiable Hypothesis;
+    \item Useful predictions;
+    \item Data Collection;
+    \item Reproducibility;
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Falsifiability}
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{../img/existentialcomics_popper}
+    \ppagenote{"Froid and Popper" from \url{http://existentialcomics.com/}}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Falsifiability}
+  \begin{columns}
+    \column{0.8\textwidth}
+    A scientific hypothesis is {\bf falsifiable} if there is some observation that would render it false.
+    \column{0.2\textwidth}
+    \includegraphics[width=1\textwidth]{../img/pixabay_whiteswan}
+    \ppagenote{White swan image from pixabay}
+  \end{columns}
+  %% TODO: more specific examples
+  \begin{block}{Specific Predictions}
+    Falsifiable hypothesis make specific predictions about how the world behaves, not only if the hypothesis is true, but also if the hypothesis were false.
+  \end{block}
+  \begin{block}{Useful/Strong Predictions}
+    It is not very hard to make many trivial predictions about the world. Scientific hypothesis should not only be falsifiable, but also strong and/or useful.
+  \end{block}
+\end{frame}
+
+\section{Doing Experiments}
+\begin{frame}{Types of Experiments}
+
+  There are many different types of experiments, depending on what kind of data you want to obtain. Based on the data collection method, for example, we can classify an experiment in three types:
+  \bigskip
+
+  \begin{itemize}
+    \item Observational Experiments;
+    \item Retrospective Experiments;
+    \item Controlled Experiments;
+  \end{itemize}
+\end{frame}
+%% Three types of data collection
+
+\begin{frame}{Types of Experiments}{Observational Experiments}
+  In an \structure{Observational Experiment}, you obtain data by observing a phenomena without interacting with it directly.
+  \bigskip
+
+  {\bf Example:} you count the number of people who use the train with and without masks every day.
+  \bigskip
+
+  \begin{itemize}
+    \item Requires care to observe representative situations;
+    \item Allows the researcher to choose general conditions for observation;
+    \item The situation of interest may be too rare to observe naturally;
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Types of Experiments}{Retrospective Experiments}
+  In a \structure{Retrospective Experiment}, the researcher obtains data from historical records (newspaper, reports, other scientific papers).\bigskip
+
+  {\bf Example:} you search from the relationship between announcements of celebrity marriages, and total number of registered marriages;\bigskip
+
+  \begin{itemize}
+    \item Generally cheaper, and may be the only way to gather data over a very long period of time;
+    \item Susceptible to missing records or bias in recording;
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Types of Experiments}{Controlled Experiments}
+  In a \structure{Controlled Experiment}, the researcher is able to define several variables in the experiment, and perform it in the conditions desired.\bigskip
+
+  {\bf Example:} You develop a new algorithm, and test it on some selected data sets, on a collection of different computational architectures;\bigskip
+
+  \begin{itemize}
+    \item Gives a lot of control for the researcher;
+    \item If not designed carefully, allows for the introduction of biases into the experiment;
+    \item Can be the most expensive kind of experiment (although not always in CS);
+  \end{itemize}
+\end{frame}
+
+
+\subsection{Experiment Design}
+\begin{frame}{What is Experiment Design?}
+  To perform any experiment, we have to make several technical and scientific decisions:
+  \begin{itemize}
+    \item Which methods we compare in the experiment?
+    \item Which data sets are used?
+    \item How many times do we interview each participant?
+    \item In what order do we perform the experiments?
+    \item Which data is reported, and how is the data summarized?
+    \item What criteria determines that the hypothesis was accepted or rejected?
+    \item What hyper-parameters do we use?
+    \item How many times is the experiment repeated? How are these repetitions sumarized?
+  \end{itemize}
+  {\bf Experiment Design} is how we answer each of these questions.
+\end{frame}
+
+%% TODO: Talk a bit about design types? Educated guesses, factorial design, OVAT, etc?
+
+\begin{frame}{Experiment Design}{Example: Controlling for Variation}
+  \hfill\includegraphics[width=.2\textwidth]{../img/pixabay_clock}
+
+  Let's say you are comparing two computer programs by measuring their running time (wallclock time).
+  \bigskip
+
+  You know that the running time of a program is affected by other programs that are running in the background of the operational system. For example, if a software update happens in the background, it could make a run much slower.
+  \bigskip
+
+  To control for this variation, you make sure to run your experiment in a system with a minimum number of running processes, and you also repeat the experiment many times and take the average running time;
+  \ppagenote{Clock image from \url{https://pixabay.com}}
+\end{frame}
+
+\begin{frame}{Experiment Design}{Example: Controlling for Independence}
+  Imagine that you are comparing two website designs with the following experiment: You measure the time for a user to find some information on website A, then you measure the time for website B. \bigskip
+
+  If you make this comparison always in the same order for all users, you discover that the users are a bit faster for website B, because they get used to the testing environment and are more relaxed. \bigskip
+
+  To remove this influence, you make sure that the test order is always random, or you make sure that each user tests only one website.
+
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{../img/irasutoya_website1}\hspace{1cm}
+    \includegraphics[width=0.2\textwidth]{../img/irasutoya_website2}
+    \ppagenote{Website images from \url{https://www.irasutoya.com}}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Experiment Design}{Example: Controlling for Fairness}
+  You propose a neural network architecture for a new vision problem, and you compare it against traditional architectures.\bigskip
+
+  Because of the special characteristics of the problem, you fine-tune the hyper-parameters of your architecture to achieve the best performance.\bigskip
+
+  To make sure that the comparison is fair, you use the same fine-tune techniques to the traditional architecture that you are comparing against, not using its old hyper-parameters from the literature.
+
+  \hfill\includegraphics[width=0.2\textwidth]{../img/pixabay_neuralnetwork_gordonjohnson}
+  \ppagenote{Neural Network image by Gordon Johnson from \url{https://pixabay.com}}
+\end{frame}
+
+\begin{frame}{Pre-registered Experiments}
+  Pre-registration is the act of fully defining your research protocol {\bf before you begin to collect or analyze data}.
+  \bigskip
+
+  By pre-registering your research, you avoid modifying your methods to fit your hypothesis (or modifying your hypothesis to fit your data)
+  \bigskip
+
+  Public pre-registration can prevent the loss of negative results. Private pre-registration can help you keep yourself in check.\bigskip
+
+  \begin{columns}
+    \column{.7\textwidth}
+    Learn more: Center for Open Science \url{https://cos.io/prereg/}
+    \column{0.3\textwidth}
+    \includegraphics[width=1\textwidth]{../img/prereg-badge}
+  \end{columns}
+\end{frame}
+
+\subsection{Reproducible Experiments}
+\begin{frame}{Reproducible Experiments}
+  Reproducibility is an important property of good research:
+  \bigskip
+
+  \begin{itemize}
+    \item Others can confirm your results;
+      \medskip
+    \item Others can build on your results;
+      \medskip
+    \item Others can improve your results;
+      \medskip
+    \item Society can use your results;
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Reproducible Experiments}{How can we make experiments more reproducible?}
+  \begin{exampleblock}{Clear Experiment Design}
+    Detailed steps taken to perform the experiment; Values of relevant parameters; How the results are processed and evaluated;
+  \end{exampleblock}
+  \begin{exampleblock}{Open Data and Open Source}
+    Data acquisition protocol is clearly defined; Raw data and pre-processing scripts are available; Data is well documented;\bigskip
+
+    For CS, open source of proposed algorithms is essential;
+  \end{exampleblock}
+  \begin{exampleblock}{Open Documentation}
+    Code used for statistical analysis and data visualization;
+  \end{exampleblock}
+\end{frame}
