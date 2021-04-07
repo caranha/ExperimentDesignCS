@@ -6,33 +6,40 @@
   \end{center}
 \end{frame}
 
-\subsection{The Role of Experimentation}
-\begin{frame}{The Role of Experimentation}
-  \begin{itemize}
-    \item Both in the simple definition of the scientific method, and on the more complete one, the experiment takes a central role;
-    \bigskip
+\subsection{The role of an experiment in science}
 
-    \item An experiment is how we test hypothesis, how we learn more about the world, how we examine our ideas;
-    \bigskip
+\begin{frame}{The Role of Experiments in Science}
+  \begin{columns}
+    \column{.5\textwidth}
+      Experiments occupy a central role in science.
+      They are how we obtain information that help us answer our scientific
+      questions.
 
-    \item But what is an experiment? It is more than just collecting data!
-  \end{itemize}
+      \bigskip
+
+      So let's talk about what is an experiment, in detail.
+    \column{.5\textwidth}
+      \includegraphics[width=1\textwidth]{../img/understandingscience_zoom2}
+  \end{columns}
 \end{frame}
 
-
-\section{What is an Experiment?}
-% Talk a little bit about Karl Popper
-\begin{frame}{What is an experiment?}
-  \begin{columns}[t]
+\begin{frame}{The Role of Experiments in Science}{Philosophy and Experimentalism}
+  \begin{columns}
     \column{0.8\textwidth}
     \begin{itemize}
-      \item Philosophy of Science: How do we obtain knowledge about the world?
-      \bigskip
+      \item Philosophy of science: How can we know things?
+      \begin{itemize}
+        \item Can we know things through logic? Can we trust our senses? Is knowledge immutable? etc.
+      \end{itemize}\bigskip
 
-      \item Scientific theories can only be tested by observing their implications;
-      \bigskip
+      \item According to Popper, the only way to obtain knowledge about the world is through rigorous experimentation (\structure{Experimentalism});
+      \begin{enumerate}
+        \item Formulate a question as a \structure{scientific hypothesis};
+        \item Execute an experiment following the hypothesis;
+        \item Support or reject the hypothesis;
+      \end{enumerate}\bigskip
 
-      \item Reject theories that cannot be confirmed by experiment;
+      \item The definition of \structure{scientific hypothesis} is important. In Experimentalism, a scientific hypothesis is one that \structure{produces falsifiable predictions}.
     \end{itemize}
 
     \column{0.2\textwidth}
@@ -42,46 +49,76 @@
   \end{columns}
 \end{frame}
 
-
-\begin{frame}{What are the characteristics of a good experiment?}
-  \begin{itemize}
-    \item Falsifiable Hypothesis;
-    \item Useful predictions;
-    \item Data Collection;
-    \item Reproducibility;
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Falsifiability}
+\begin{frame}{Not everyone agrees with Popper, though...}
   \begin{center}
     \includegraphics[width=0.7\textwidth]{../img/existentialcomics_popper}
-    \ppagenote{"Froid and Popper" from \url{http://existentialcomics.com/}}
+    \ppagenote{"Freud and Popper" from \url{http://existentialcomics.com/}}
   \end{center}
 \end{frame}
 
-\begin{frame}{Falsifiability}
-  \begin{columns}
-    \column{0.8\textwidth}
-    A scientific hypothesis is {\bf falsifiable} if there is some observation that would render it false.
-    \column{0.2\textwidth}
-    \includegraphics[width=1\textwidth]{../img/pixabay_whiteswan}
-    \ppagenote{White swan image from pixabay}
-  \end{columns}
-  %% TODO: more specific examples
-  \begin{block}{Specific Predictions}
-    Falsifiable hypothesis make specific predictions about how the world behaves, not only if the hypothesis is true, but also if the hypothesis were false.
-  \end{block}
-  \begin{block}{Useful/Strong Predictions}
-    It is not very hard to make many trivial predictions about the world. Scientific hypothesis should not only be falsifiable, but also strong and/or useful.
-  \end{block}
+\subsection{Characteristics of an experiment}
+\begin{frame}{Defining a "fair" experiment}
+  Generally, we are interested in a "fair" experiment, that provides new evidence
+  for the scientific question that we are trying to answer. A fair experiment has the following characteristics:\vfill
+
+  \begin{itemize}
+    \item It provides something to compare against;\medskip
+    \item It controls the variables of interest;\medskip
+    \item It avoids bias in the results;\medskip
+    \item It is reproducible;\medskip
+    \item It separates chance results from real differences;
+  \end{itemize}
 \end{frame}
 
-\section{Doing Experiments}
-\begin{frame}{Types of Experiments}
+\subsection{1. Provides something to compare against}
+\begin{frame}{"Provides Something to Compare Against"}{Scientific Hypothesis}
 
-  There are many different types of experiments, depending on what kind of data you want to obtain. Based on the data collection method, for example, we can classify an experiment in three types:
-  \bigskip
+  A \structure{scientific hypothesis} is the question that we try to answer with an experiment. For an experiment to be useful, it is necessary that it has at least two possible results. Afterall, if you already know the result of your experiment, why do it?
+  \vfill
 
+  Examples of scientific hypothesis:
+  \begin{itemize}
+    \item {\bf Comparing different systems:}\\
+    Chocolate cookies taste better than mint.
+    \item {\bf Comparing explanations to a phenomenom:}\\
+    Bananas turn black in the refrigerator because of bacteria, not the temperature.
+    \item {\bf Test the characteristic of a system:}\\
+    One apple tree is enough to feed our home for the entire year.
+  \end{itemize}\bigskip
+\end{frame}
+
+\begin{frame}{Scientific Hypothesis}{Specific Hypothesis}
+  One characteristic of good scientific hypothesis is that they are \structure{specific}. The more detail you give to the question you want to answer, the easier it is to design a good experiment:\bigskip
+
+  Example:
+  \begin{itemize}
+    \item "my Optimization method is the best!"
+    \item "The optimization method proposed in this paper is better than existing methods!"
+    \item "Using Polynomial mutation is better than gaussian mutation for optimization methods!"
+    \item "Polynomial mutation increases the convergence rate of an optimization method, when compared to gaussian mutation!"
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Scientific Hypothesis}{Falsifiable Hypothesis}
+  Another important characteristic of good scientific hypothesis is that they are \structure{falsifiable}. A falsifiable hypothesis is one that {\bf could be proven false}, depending on the result of the experiment.\bigskip
+
+
+  \begin{itemize}
+    \item \alert{Non Falsifiable Hypothesis:} "This Neural Network can solve any problem if we find the right parameters".\\
+    {\smaller
+    If the method does not solve the problem, it just means that the parameters are wrong, so we do another experiment... and another... and another...}\bigskip
+
+    \item \structure{Falsifiable Hypothesis:} "Using algorithm A and parameters $\theta$, we achieve a speed-up of 1.5 on benchmark B."
+  \end{itemize}\bigskip
+\end{frame}
+
+\subsection{2. Controlling Variables Of Interest}
+\begin{frame}{An experiment control variables of interest}{Types of Experiments}
+  There are many \structure{variables} that affect the result of an experiment. For example, if you want to test if chocolate ice cream tastes better than coffee, the result may be different if you ask children or PhD students.\bigskip
+
+  If your scientific question is focused on the opinions of PhD students (WHY?), you can control the variables of the experiment, and not include children or professors in your survey.\bigskip
+
+  Depending on how much freedom you have to control the variable in your experiments, we can classify experiments in three types:
   \begin{itemize}
     \item Observational Experiments;
     \item Retrospective Experiments;
@@ -128,9 +165,21 @@
 \end{frame}
 
 
-\subsection{Experiment Design}
-\begin{frame}{What is Experiment Design?}
-  To perform any experiment, we have to make several technical and scientific decisions:
+\subsection{3. Controlling For Bias}
+
+\begin{frame}{3. A fair experiment control for biases}
+  \begin{block}{}
+    \hfill "With great power comes great responsibility"
+  \end{block}\bigskip
+
+  When you \structure{control the variables} of your experiment ({\bf or when you don't!}). You can introduce biases to the result.\bigskip
+
+  For example, if you compare the speed of two computer programs, it may be hard to see a difference, if you run your experiment in a very powerful computer. Or the difference may be exaggerated if you use a very slow one.\bigskip
+
+  To have a fair experiment, it is important to be aware of these source of biases, and change your experiment to avoid those biases. This is one of the main tasks of \structure{Experimental Design}.
+\end{frame}
+
+\begin{frame}{Some Experiment Design Questions}
   \begin{itemize}
     \item Which methods we compare in the experiment?
     \item Which data sets are used?
@@ -141,10 +190,9 @@
     \item What hyper-parameters do we use?
     \item How many times is the experiment repeated? How are these repetitions sumarized?
   \end{itemize}
-  {\bf Experiment Design} is how we answer each of these questions.
 \end{frame}
 
-%% TODO: Talk a bit about design types? Educated guesses, factorial design, OVAT, etc?
+%% TODO: Talk about techniques for experiment design (Educated Guesses, Factorial Design, OVAT, etc -- maybe in lecture 2 or later)
 
 \begin{frame}{Experiment Design}{Example: Controlling for Variation}
   \hfill\includegraphics[width=.2\textwidth]{../img/pixabay_clock}
@@ -201,9 +249,9 @@
   \end{columns}
 \end{frame}
 
-\subsection{Reproducible Experiments}
+\subsection{4. It is reproducible}
 \begin{frame}{Reproducible Experiments}
-  Reproducibility is an important property of good research:
+  Reproducibility is an important property of a good experiment:
   \bigskip
 
   \begin{itemize}
@@ -229,4 +277,26 @@
   \begin{exampleblock}{Open Documentation}
     Code used for statistical analysis and data visualization;
   \end{exampleblock}
+\end{frame}
+
+\subsection{5. Separates chance from reality}
+\begin{frame}{A good experiment separates chance from reality}
+  Experiments in the real world almost never give exactly the same result, even when perfectly replicated.\bigskip
+
+  These \structure{sources of noise} can hide the real truth of a scientific question behind a coincidence, or a spell of bad luck.\bigskip
+
+  Over the years, the field of statistics has developed many techniques to measure how much an experiment can be influenced by luck, and how to separate coincidences from real differences.\bigskip
+
+  This will be the topic of our future classes.
+\end{frame}
+
+\subsection{In short}
+\begin{frame}{Summary}
+  Many scientific discoveries and scientific advancements (as well as your own master thesis!) depend on good experiments and data collection.\bigskip
+
+  Unfortunately, good experiments are not as simple as simply going out on the streets and start collecting data.\bigskip
+
+  Careful planning is necessary, not only to make sure that your experiment is not affected by biases, but also to make sure that your experiment is able to answer the question that you are asking.\bigskip
+
+  {\bf Experiment Design} is the proccess of carefully planning an experiment to make sure that it is fair and effective.
 \end{frame}
