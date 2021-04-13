@@ -1,0 +1,147 @@
+---
+title: "Data Analysis Example: Student Height"
+subtitle: "Code Example -- Lecture 02"
+author: "Claus Aranha"
+---
+
+# Introduction
+
+This example analyses a survey from two classes of students about their height 
+and weight. What can we learn about these students from this data?
+
+# Data 
+
+The data for this example was obtained from Felipe Campelo's "Analysis and 
+Design of Experiments" course. and is available as a .csv file in the "rawdata"
+subdirectory.
+
+```{r}
+students <- read.csv("rawdata/student_data.csv")
+students # this is an R dataframe
+```
+
+> **Note:** When doing data analysis, it is always good to keep your raw 
+(original) data files in a separate directory. Data analysis usually requires 
+modifications to the data frame, so it is important to have the original, 
+non-modified data somewhere handy.
+
+# Simple Analysis and visualization:
+
+What is the mean height and weight of these students?
+
+```{r}
+mean.height <- mean(students$Height.m)   # Student mean height
+mean.weight <- mean(students$Weight.kg)   # Student mean weight
+
+print(c(mean.height, mean.weight))
+```
+
+We are interested in the BMI (Body Mass Index) of the students. The BMI is 
+sometimes used to indicate the relationship between the height and the 
+weight of a student, and is given by the formula:
+
+$BMI = \frac{Weight}{Height^2}$
+
+Let's calculate the BMI and add it to our `students` dataframe.
+
+```{r students_bmi}
+  bmi = students$Weight.kg / (students$Height.m ** 2)
+  students["BMI"] <- bmi
+  students
+```
+
+The mean BMI of all the students is `r mean(students$BMI)` with an estimated 
+error of `r sd(students$BMI)`.
+
+# Figures and confidence interval:
+
+When analyzing data, it is important to accompany point indicators (values) with
+statistical intervals. Using **figures** also gives the reader a good intuition
+of the relationship between all the values under study.
+
+Let's understand the BMI of the students in this class a little bit more, by
+plotting the 95% confidence interval for this estimator:
+
+Let's plot the mean BMI of the students, as well as the 95% confidence interval for this estimator:
+
+```{r students_plotbmi}
+values <- students$BMI  # shorter name for variable
+ci_alpha <- 0.05        # Alpha value for confidence interval. Confidence = 1 - alpha.
+# calculating low and high bounds for ci
+ci_low <- mean(values) + qt(ci_alpha/2, length(values)-1)*(sd(values)/sqrt(length(values))) 
+ci_hi <- mean(values) + qt(1 - ci_alpha/2, length(values)-1)*(sd(values)/sqrt(length(values)))
+
+# plot the values and the confidence interval of the mean
+plot(students$BMI, ylim = c(0,40), xlab = "Student ID", ylab = "BMI")
+title("BMI Values")
+abline(h = mean(students$BMI))
+abline(h = ci_low, lty=2)
+abline(h = ci_hi, lty=2)
+```
+
+*TODO*: Print a prettier plot with ggplot.
+
+# Investigating relationship between variables
+
+Is there a difference in BMI between male and female students in this class?
+
+```{r students_bmi_gender, echo=FALSE}
+# ECHO=FALSE hides the code in the report
+
+# Creating two separate data frames, one for males, one for females.
+students_male <- students[which(students$Gender == "M"),]
+students_female <- students[which(students$Gender == "F"),]
+
+# Create a function to calculate confidence intervals.
+ci_bounds <- function(x,alpha) {
+  low <- mean(x) + qt(alpha/2, length(x)-1)*(sd(x)/sqrt(length(x))) 
+  hi <- mean(x) + qt(1 - alpha/2, length(x)-1)*(sd(x)/sqrt(length(x)))
+  return(c(low,hi))
+}
+
+# plot confidence intervals for male and female students
+plot(students_male$BMI, ylim = c(0,40), xlim = c(0,40), xlab = "Student ID", ylab = "BMI", col="red")
+par(new = TRUE)
+plot(students_female$BMI, ylim = c(0,40), xlim = c(0,40), xlab = "Student ID", ylab = "BMI", col="blue")
+title("BMI Values")
+
+ci_male <- ci_bounds(students_male$BMI, 0.01)
+abline(h = mean(students_male$BMI), col="red")
+abline(h = ci_male, lty=2, col="red")
+abline(h = ci_male[2], lty=2, col="red")
+
+ci_female <- ci_bounds(students_female$BMI, 0.01)
+abline(h = mean(students_female$BMI), col="blue")
+abline(h = ci_female[1], lty=2, col="blue")
+abline(h = ci_female[2], lty=2, col="blue")
+
+# TODO: Add a legend to this plot, or make a pretties plot using ggplot.
+```
+
+The plot above shows that not only the mean BMI of the female students (blue line)
+is lower, but the 95% confidence interval of the two measures has very little 
+overlap. 
+
+But what does the confidence interval means in this scenario? Since we have 
+information about all the students in our class, the confidence interval does 
+not tells us much, unless we are assuming that this class is a representative 
+sample of a larger population. 
+
+But at least now we know how to calculate a confidence interval!
+
+# Other ways to observe data.
+
+The histogram allows us to visualize some data by breaking it down into 
+categories:
+
+```{r students_bmi_histogram, echo=FALSE}
+hist(students$BMI)
+```
+
+The boxplot gives us a good idea of the upper and lower limits in a sample,
+as well as the position of the majorities of the values in the sample.
+
+```{r students_bmi_boxplot, echo=FALSE}
+boxplot(BMI ~ Course, data=students)  # In R, the "X~Y" notation means "variable X explained by variable Y"
+title("Boxplot of BMI values of students depending on course")
+```
