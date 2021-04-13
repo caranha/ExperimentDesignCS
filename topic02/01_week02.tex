@@ -1,0 +1,74 @@
+\documentclass[aspectratio=169]{beamer}
+\input{../utils/beamerpreamble.tex}
+
+\subtitle[Statistical Indicators]{Topic 02 - Point and Interval Indicators}
+
+\begin{document}
+\begin{CJK}{UTF8}{ipxm}
+
+\begin{frame}
+  \maketitle
+
+  \vfill
+
+  \hfill \tiny{Version 2021.2 (Updated \today)}
+\end{frame}
+
+\input{03_indicators.tex}
+
+\section{Outro}
+\begin{frame}
+  \begin{center}
+    Part III - Outro
+  \end{center}
+\end{frame}
+
+\begin{frame}{Summary}{Descriptive Statistics}
+
+  Experiment Data can be used to \structure{estimate facts about the world}:
+  \bigskip
+
+  \begin{itemize}
+    \item Point estimators: Sample Means, Variance, Correlation, etc.
+    \begin{itemize}
+      \item Give us specific information about the model we want to study
+      \item "What is the average height of a student?"
+      \item {\bf An estimator is not the real value!}
+    \end{itemize}\bigskip
+
+    \item Interval estimators: Confidence Interval, IQR, etc.
+    \begin{itemize}
+      \item Give us more information than point estimators.
+      \item "How certain should I be about this point estimator".
+      \item Size of interval estimator depends on the number of samples.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Recommended Reading}
+  \begin{itemize}
+    \item \emph{D.W. Stockburger}, The Sampling Distribution. In: Introductory Statistics: Concepts, Models, and Applications -
+    \url{http://psychstat3.missouristate.edu/Documents/IntroBook3/sbk17.htm}
+    \item \emph{J.G. Ramírez}, Statistical Intervals: Confidence, Prediction, Enclosure: \url{https://git.io/v5ZFh}
+    \item Crash Course Statistics Playlist, in particular videos \#3 to \#7: \url{https://www.youtube.com/playlist?list=PL8dPuuaLjXtNM_Y-bUAhblSAdWRnmBUcr}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Programming in R}
+  The material for this week includes some coding examples. These examples are
+  written in the {\bf R} language.\bigskip
+
+  Although we will have an R tutorial in the future, you can read the
+  following material to get yourself acquainted with R:\bigskip
+
+  \begin{itemize}
+    \item R for beginners: \url{https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf}
+    \item Rstudio: \url{https://rstudio.com}
+  \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{../utils/lastslide.tex}
+\end{CJK}
+\end{document}
