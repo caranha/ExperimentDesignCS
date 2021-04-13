@@ -51,7 +51,7 @@
 
 \begin{frame}{Not everyone agrees with Popper, though...}
   \begin{center}
-    \includegraphics[width=0.7\textwidth]{../img/existentialcomics_popper}
+    \includegraphics[width=0.5\textwidth]{../img/existentialcomics_popper}
     \ppagenote{"Freud and Popper" from \url{http://existentialcomics.com/}}
   \end{center}
 \end{frame}
@@ -195,28 +195,32 @@
 %% TODO: Talk about techniques for experiment design (Educated Guesses, Factorial Design, OVAT, etc -- maybe in lecture 2 or later)
 
 \begin{frame}{Experiment Design}{Example: Controlling for Variation}
-  \hfill\includegraphics[width=.2\textwidth]{../img/pixabay_clock}
+  \begin{columns}
+    \column{0.8\textwidth}
+    Let's say you are comparing two computer programs by measuring their running time (wallclock time).
+    \bigskip
 
-  Let's say you are comparing two computer programs by measuring their running time (wallclock time).
-  \bigskip
+    You know that the running time of a program is affected by other programs that are running in the background of the operational system. For example, if a software update happens in the background, it could make a run much slower.
+    \bigskip
 
-  You know that the running time of a program is affected by other programs that are running in the background of the operational system. For example, if a software update happens in the background, it could make a run much slower.
-  \bigskip
-
-  To control for this variation, you make sure to run your experiment in a system with a minimum number of running processes, and you also repeat the experiment many times and take the average running time;
-  \ppagenote{Clock image from \url{https://pixabay.com}}
+    To control for this variation, you make sure to run your experiment in a system with a minimum number of running processes, and you also repeat the experiment many times and take the average running time;
+    \column{0.2\textwidth}
+    \includegraphics[width=\textwidth]{../img/pixabay_clock}
+    \ppagenote{Clock image from \url{https://pixabay.com}}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Experiment Design}{Example: Controlling for Independence}
+  {\smaller
   Imagine that you are comparing two website designs with the following experiment: You measure the time for a user to find some information on website A, then you measure the time for website B. \bigskip
 
   If you make this comparison always in the same order for all users, you discover that the users are a bit faster for website B, because they get used to the testing environment and are more relaxed. \bigskip
 
-  To remove this influence, you make sure that the test order is always random, or you make sure that each user tests only one website.
+  To remove this influence, you make sure that the test order is always random, or you make sure that each user tests only one website.}
 
   \begin{center}
-    \includegraphics[width=0.2\textwidth]{../img/irasutoya_website1}\hspace{1cm}
-    \includegraphics[width=0.2\textwidth]{../img/irasutoya_website2}
+    \includegraphics[width=0.15\textwidth]{../img/irasutoya_website1}\hspace{1cm}
+    \includegraphics[width=0.15\textwidth]{../img/irasutoya_website2}
     \ppagenote{Website images from \url{https://www.irasutoya.com}}
   \end{center}
 \end{frame}
@@ -244,7 +248,7 @@
   \begin{columns}
     \column{.7\textwidth}
     Learn more: Center for Open Science \url{https://cos.io/prereg/}
-    \column{0.3\textwidth}
+    \column{0.2\textwidth}
     \includegraphics[width=1\textwidth]{../img/prereg-badge}
   \end{columns}
 \end{frame}
