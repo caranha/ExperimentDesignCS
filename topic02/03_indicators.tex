@@ -2,83 +2,102 @@
 \section{Basic Concepts}
 \begin{frame}
   \begin{center}
-    Indicators, Part I - Basic Concepts
+    Part II.a: Indicators Basic Concepts
   \end{center}
 \end{frame}
 
 \begin{frame}{Lecture Outline}
-  In the last lecture, we talked about how experiments are important for the scientific endeavor. In this lecture, we will focus on basic concepts and techniques for representing experimental data.\bigskip
 
+  In the first lecture, we talked about what is science, and how experiments
+  (carefully designed experiments) are important in science.\bigskip
+
+  Starting from this lecture, we will talk about how we use statistics to
+  understand the data that we gather from experiments, and how we can draw
+  conclusions about them.\bigskip
+
+  Topics for today:
   \begin{itemize}
-    \item The importance of characterizing your data;
-    \item Statistical Concepts: Population and Sample;
-    \item Characterizing a Population: Point Estimators and Interval Estimators;
-    \item Visualizing Estimators;
+    \item \structure{Experimental Data}: Population, Observation and Sample;
+    \item \structure{Point indicators}: How we obtain information about the population from samples;
+    \item \structure{Interval indicators}: Indicators with quality info!
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Lecture Outline}{Data and "Experiment Data"}
+  When we talk about "data" in Computer Science, the first thing that comes to mind is "information that we feed to a program". {\bf For example}: images, network logs, user databases, etc.\bigskip
 
+  In this course, we are talking about "Experiment Data", which should be understood as "Data about the result of an experiment". {\bf For example}: How long did the experiment take? What is the success rate of my program?\bigskip
 
+  In fact, we can use the tecniques of this lecture for the first kind of data too! But to make things simpler, let's concentrate on the second kind of data.
+\end{frame}
 
-\begin{frame}{Using data to characterize a system}
-  In the last lecture, we talked about using experiments to obtain data.
-  How can we use the data to gain \structure{knowledge} about a system?
-  \bigskip
-
-
+\begin{frame}{Example of Data Collection}{Using Experiment Data to characterize a system}
   \begin{columns}
     \column{0.8\textwidth}
-    For example, let's say that we measure the \structure{height of one student}. Can I use this information to say something about the
-    \structure{height of all students} in the university?
+    How can we use experiment data to learn more about the world?\bigskip
+
+    \structure{Tsukuba University} is famous for many olympic athletes. Let's say
+    I want to investigate {\bf WHY}. After thinking a bit, I come up with two questions:
+    \begin{itemize}
+      \item Is the olympic performance related with the body of the students?
+      \item Are students in Tsukuba stronger / taller / healthier than other unis?
+    \end{itemize}\bigskip
+
+    The 1st question seems hard to answer, but maybe the 2nd is easier?\bigskip
+
+    Imagine I take one student from Tsukuba and measure their height.
+    Can this information help me answer the second question?
     \column{.2\textwidth}
     \includegraphics[width=\textwidth]{../img/irasutoya_height}
     \ppagenote{Height image from \url{https://www.irasutoya.com}}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Using data to characterize a system}
-  From a single student's height, it seems hard to learn anything about
+\begin{frame}{Using experiment data to characterize a system}
+  From the height of only one student, I cannot really learn anything about
   the height of the students of the university {\bf in general}.
-  A better approach would be to take the height of several students.\bigskip
+  A better approach would be to measure the height of several students.\bigskip
 
   \begin{center}
+    \includegraphics[width=0.09\textwidth]{../img/irasutoya_height}
+    \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
+    \includegraphics[width=0.08\textwidth]{../img/irasutoya_height}
+    \includegraphics[width=0.09\textwidth]{../img/irasutoya_height}
     \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
     \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
-    \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
-    \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
-    \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
-    \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
-    \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
+    \includegraphics[width=0.09\textwidth]{../img/irasutoya_height}
     \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
   \end{center}
   \bigskip
 
-  If I calculate the \structure{average height} of several students, what is the relationship between this value and height of students in general?
+  Now that I have the height of many students, what can I say about the height
+  of the students in the university, {\bf in general}?
 \end{frame}
 
 \subsection{Basic Concepts}
 \begin{frame}{Population and Sample}
-  This example introduces us to the concepts of statistical \structure{Population} and \structure{Sample}.\bigskip
+  This example introduces us to some important concepts in statistics:
+  \structure{Population, Observation, and Sample}.\bigskip
 
   \begin{itemize}
-    \item {\bf Population}: It is a large set of objects that are of interest as a whole. It can be a real set (all students in a university) or a theoretical set (all possible results of an experiment).\medskip
+    \item {\bf Population}: This is a set of objects that we want to learn more about, using experiments. It can be a real set (all students of the university), or a theoretical set (all possible results of running a program).
 
-    \item {\bf Observation}: It is one element from the population. One student from the university, or one execution of an experiment.\medskip
+    \item {\bf Observation}: This is one element from the population. One student from the university, or one execution of the program. One data point from an experiment.\medskip
 
-    \item {\bf Sample}: It is a subset of the population. By examining the sample, we can \structure{make inferences} about the population as a whole.
+    \item {\bf Sample}: This is a set of observations. A subset of the population.
   \end{itemize}
   \bigskip
 
-  "Making inferences of the population from the sample". What does it mean?
+  Our goal, when we analyse data from an experiment, is to {\bf "learn something about the population, by examining the observations in the sample"}.
 \end{frame}
 
-\begin{frame}{Population and Sample}{Making Inferences from the sample}
+\begin{frame}{Population and Sample}{Learn something about the population, by examining the observations in the sample}
   \begin{block}{Population}
     \begin{columns}
       \column{.18\textwidth}
       \includegraphics[width=1\textwidth]{../img/ballpool}
       \column{.65\textwidth}
-      A pool has many colorful balls. If you knew exactly how many, you could calculate the \structure{probability} of picking a ball of a certain color at random. {\bf But you don't know!}
+      You want to know the proportion of colorful balls in a pool (you like the red ones). Because we don't know exactly how many there are, we need to {\bf make an estimation}.
     \end{columns}
   \end{block}
   \begin{block}{Sample}
@@ -86,25 +105,35 @@
       \column{.14\textwidth}
       \includegraphics[width=1\textwidth]{../img/ballhand}
       \column{.65\textwidth}
-      It is possible to {\bf estimate} the proportion of balls in the pool. To do that, we pick up a number of balls, and examine the \structure{proportion of the sample}.
+      To learn the proportion of red balls, we pick a number of balls, and {\bf estimate that the proportion of red balls in the pool is equal to the proportion in my hand}.
     \end{columns}
   \end{block}
-
-  \structure{CS Example:} Estimate total transfer time of
-  a large file from the arrival time of a sample of packets.
-  What could go wrong?
 \end{frame}
 
-\begin{frame}{Population and Parameters}
+\begin{frame}{Population, Model and Parameters}{What is a model?}
+  A model is a description of the population, focused on the scientific questions that we want to make.\bigskip
+
+  \begin{itemize}
+    \item The balls are distributed evenly in the pool, so I can take my sample from any part.
+    \item The height of the students in the university can be represented by a {\bf normal curve}, with mean $\mu$ and standard deviation $sd$.
+    \item The SIR infection model says that {\bf susceptible} people become {\bf infected}, and then {\bf Recovering}, so if we can learn the \structure{number of people in each group} and the \structure{transition probability}, we can predict the progress of a disease.
+  \end{itemize}\bigskip
+
+  The goal of many experiments is to use data to {\bf estimate the parameters of a model}.
+\end{frame}
+
+\begin{frame}{Population, Model and Parameters}{Example of model parameters}
   \begin{columns}
     \column{0.5\textwidth}
-      Our usual goal when obtaining and analysing experimental data is to estimate values for \structure{parameters} of the population.\bigskip
+      The usual goal of the analysis of experiment data is to estimate the
+      values of the parameters of the model, from data in the sample.\bigskip
 
-      A {\bf parameter} $\theta$ of the population is an unknown value of interest that characterizes some important aspect for our research.\bigskip
+      The true value ({\bf unknown}) of the parameters in the model is usually called $\theta$. The value that we estimate from the experiment, is usually called $\hat{\theta}$.\bigskip
 
-      Because we cannot observe the population directly, we have to estimate the parameter's true value from information gathered from the sample.
+      The {\bf model} must be determined during the experiment design phase.
+      A bad model may lead to wrong conclusions from the data...
     \column{0.5\textwidth}
-    \includegraphics[width=1\textwidth]{../img/wikipedia_triceratops}
+    \includegraphics[width=.8\textwidth]{../img/wikipedia_triceratops}
     \ppagenote{Triceratops information table CC by Zachi Evenor and MathKnight}
   \end{columns}
 \end{frame}
