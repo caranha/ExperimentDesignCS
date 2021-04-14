@@ -74,7 +74,6 @@
   of the students in the university, {\bf in general}?
 \end{frame}
 
-\subsection{Basic Concepts}
 \begin{frame}{Population and Sample}
   This example introduces us to some important concepts in statistics:
   \structure{Population, Observation, and Sample}.\bigskip
@@ -123,15 +122,18 @@
 \end{frame}
 
 \begin{frame}{Population, Model and Parameters}{Example of model parameters}
-  \begin{columns}
+  \begin{columns}[T]
     \column{0.5\textwidth}
-      The usual goal of the analysis of experiment data is to estimate the
-      values of the parameters of the model, from data in the sample.\bigskip
+      By analysing the sample data obtained from an experiment, we can estimate
+      values for the parameters of the model.\bigskip
 
-      The true value ({\bf unknown}) of the parameters in the model is usually called $\theta$. The value that we estimate from the experiment, is usually called $\hat{\theta}$.\bigskip
+      The {\bf true value} of the parameters in the model (what we don't know) is usually called $\theta$. The values \structure{estimated from the experiment data} is named $\hat{\theta}$. Note the difference!\bigskip
 
-      The {\bf model} must be determined during the experiment design phase.
-      A bad model may lead to wrong conclusions from the data...
+      The {\bf model} is determined during the experiment design phase.\medskip
+
+      {\smaller
+      \emph{Every model is wrong, but some models are useful!}
+      }
     \column{0.5\textwidth}
     \includegraphics[width=.8\textwidth]{../img/wikipedia_triceratops}
     \ppagenote{Triceratops information table CC by Zachi Evenor and MathKnight}
@@ -140,58 +142,76 @@
 
 
 
-\begin{frame}{Samples and Statistics}
-  By observing data obtained from a sample, we can {\bf characterize} (estimate) parameters from a population of interest. For example:\bigskip
+\begin{frame}{Sample Data, Statistics, and Parameters}{Statistics are functions on the data}
+  \begin{block}{}
+    A \structure{statistic} (singular) is a function, that takes experiment data as its input.
+  \end{block}\medskip
+
+  We estimate the value of the parameter of a model, by calculating a statistic, based on data we obtained from the sample. For example:\bigskip
 
   \begin{itemize}
-    \item We calculate the average of the running time of multiple executions of a program, and estimate the mean running time;
-    \item We ask the age of several students in a school, and estimate the maximum and minimum age of the students;
-    \item We estimate the efficacy of a remedy by counting what percentage of patients get better after drinking it;
-    \item We determine which of two neural networks is more precise by subtracting the test error of the two networks from each other;
+    \item How long does it take to run a program? Run the program many times (sample), and calculate the \structure{mean execution time} (statistic).
+    \item How effective is a drug? We give the drug to sick patients (sample), and count \structure{how~many~patients} get better after two days (statistic);
+    \item Is it better to add more perceptrons to a neural network? We run the network with different sizes (sample), and calculate the \structure{correlation between size and accuracy} (statistic).
   \end{itemize}\bigskip
-
-  \begin{block}{Statistic}
-    A statistic is a {\bf function} calculated from data obtained from a sample.
-  \end{block}
 \end{frame}
 
 \begin{frame}{Point and Interval Indicators}
-  The idea of estimating parameters of a population using information
-  obtained from a sample is called {\bf statistical inference}.
-  \bigskip
-
-  In this lecture, we will focus on two central concepts of statistical inference: {\bf Point Estimators} and {\bf Interval Estimators}.\bigskip
+  In this lecture, we focus on two types of statistics: {\bf Point Estimators} and
+  {\bf Interval Estimators}.\bigskip
 
   \begin{itemize}
-    \item {\bf Point Estimators}: are statistics that estimate the value of a population parameter from information in a sample;
+    \item {\bf Point Estimators}: estimate \structure{one value} for a parameter from a sample;
 
-    \item {\bf Interval Estimators}: are statistics that estimate a \structure{range of values} of a population parameter from information in a sample;
+    \item {\bf Interval Estimators}: estimate a \structure{range of values} for a parameter;
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Statistics and Sampling Distributions}
-  Suppose that you want to obtain a point estimate for an arbitrary parameter of the population (e.g. mean size);\medskip
+\begin{frame}{Statistics are Random Variables}{The estimated value depends on the population and the sample}
 
-  Random samples of the population can be interpreted as a {\bf random variable}, and any function of these samples (any statistic) will
-  be a random variable as well.\medskip
+  \begin{itemize}
+    \item The value of an \structure{statistic} is calculated from the \structure{sample}, that we obtained from the experiment.
+    \item The \structure{sample}, in turn, is a subset of the \structure{population}, which is what we want to study.\bigskip
 
-  \begin{columns}
+    \item The implication is that {\bf every time we do a new experiment, the value calculated by an statistic will be a little bit different}.
+  \end{itemize}\vfill
+
+  \begin{exampleblock}{Don't Worry!}
+    These differences are expected and, if your experiment design is good, can be controlled. Just remember that a value you calculate from a sample is not necessarily {\bf the truth}$^{tm}$
+  \end{exampleblock}
+
+
+\end{frame}
+
+\begin{frame}{Statistics are Random Variables}{What is measured by statistical tests?}
+  \begin{columns}[T]
     \column{.3\textwidth}
       \includegraphics[width=1\textwidth]{../img/sampling_distribution}
     \column{.7\textwidth}
-      As a random variable, any statistic also has its own \structure{probability distribution}, called {\bf sampling distribution}.\bigskip
+    A statistic can show different values, depending on the sample obtained.
+    So it is useful to treat statistics as \structure{Random~Variables}.\bigskip
 
-      Most statistical tests use properties of the sampling distributions (which are not the same as the true distribution of the population). We will talk more about those later.
+    As a Random Variable, a statistic has a {\bf sampling distribution}.
+    The sampling distribution is a model that describes what values we expect
+    to obtain from a statistic, when we perform an experiment.\bigskip
+
+    In general, statistical tests work by estimating the sampling distribution,
+    and using the sampling distribution to understand the population under study.
+    (We will study statistical tests next week).
   \end{columns}
 
 \end{frame}
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 %% TODO: this part was taken directly from campelo's materials, Needs update.
 \section{Point Estimators}
-\section{Basic Concepts}
 \begin{frame}
   \begin{center}
-    Indicators, Part II - Point Estimators
+    Part II.b - Point Estimators
   \end{center}
 \end{frame}
 
