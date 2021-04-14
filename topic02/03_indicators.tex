@@ -398,63 +398,86 @@ Note that the error of the estimator depends on the sample size. So if we collec
 \subsection{The Central Limit Theorem}
 
 %% TODO: this part was taken directly from campelo's materials, Needs update.
-\begin{frame}{The Central Limit Theorem}
-In the previous example, the production operation followed a normal distribution. But even for a population with an arbitrary distribution, the sampling distribution of its mean tends to be approximately normal.
-%(with $E[\bar{x}] = \mu $ and $s_{\bar{x}} = \sigma^2/n$).
+\begin{frame}{The Central Limit Theorem}{We love Normal distributions.}
+
+In the previous example, the resistance of cables in our imaginary factory follows a normal distribution. \bigskip
+
+So the \structure{sample average} statistic for this model will also follow a normal distribution.\bigskip
+
+Normal distributions have some very nice properties (that we will explore in the next class), so it is nice when our statistics follow them.\bigskip
+
+Does this only happen when the population ("real") distribution is real?\bigskip
+\end{frame}
+
+\begin{frame}{The Central Limit Theorem}{Sample-based statistics follow a normal distribution under certain conditions}
+
+The {\bf Central Limit Theorem} states that, under certain conditions, the sampling distribution of the mean will tend to be approximately normal, even for populations with arbitrary distributions.
 \bigskip
 
-More generally, let $x_1,\ldots,x_n$ be a sequence of \textbf{independent and identically distributed} (\textbf{iid}) random variables, with mean $\mu$ and finite variance $\sigma^2$. Then:
+More formally, let $x_1,\ldots,x_n$ be a sequence of \textbf{independent and identically distributed} (\textbf{iid}) random variables, with mean $\mu$ and finite variance $\sigma^2$. We define the statistic $z_n$ as:
 \begin{equation*}
 z_n = \frac{\sum\limits_{i=1}^{n}{(x_i)} - n\mu}{\sqrt{n\sigma^2}} = \frac{\bar{x} - \mu}{\sqrt{\sigma^2/n}}
 \end{equation*}
 
-is distributed asymptotically as a standard Normal variable, that is, $z_n\sim\mathcal{N}(0,1)$.
+Under these conditions, $z_n$ is distributed asymptotically as a standard Normal variable, that is, $z_n\sim\mathcal{N}(0,1)$.
 \end{frame}
 
-%% TODO: this part was taken directly from campelo's materials, Needs update.
-\begin{frame}
-{The Central Limit Theorem}
-This result is known as the \textit{Central Limit Theorem}\footnote{For more details on the CLT, see \url{https://www.encyclopediaofmath.org/index.php/Central_limit_theorem}}, and is one of the most useful properties for statistical inference. The CLT allows the use of techniques based on the Normal distribution, even when the population under study is not normal.\bigskip
+\begin{frame}{The Central Limit Theorem}
 
-For ``well-behaved'' distributions (continuous, symmetrical, unimodal - the usual bell-shaped pdf we all know and love) even small sample sizes are commonly enough to justify invoking the CLT and using parametric techniques.\bigskip
+The {\bf Central Limit Theorem} is one of the most useful properties for statistical inference. The CLT allows the use of techniques based on the Normal distribution, even when the population under study is not normal.\bigskip
+
+For ``well-behaved'' distributions (continuous, symmetrical, unimodal - the usual bell-shaped pdf we all know and love) even small sample sizes are commonly enough to justify invoking the CLT and using techniques that assume a model with a normal distribution.\bigskip
+
+For more details on the CLT, see \url{https://www.encyclopediaofmath.org/index.php/Central_limit_theorem}
 \end{frame}
 
-\begin{frame}
-{Sampling Distributions}
-{The Central Limit Theorem}
-For an interactive demonstration of the CLT, download the files in {\small\url{https://git.io/vnPj8}} and run on RStudio.
-\bigskip
+%% TODO: Set up my own CLT code example
 
-{\centering\includegraphics[width=\textwidth]{../img/CLTdemo.png}}
-\end{frame}
+% \begin{frame}
+% {Sampling Distributions}
+% {The Central Limit Theorem}
+% For an interactive demonstration of the CLT, download the files in {\small\url{https://git.io/vnPj8}} and run on RStudio.
+% \bigskip
+%
+% {\centering\includegraphics[width=\textwidth]{../img/CLTdemo.png}}
+% \end{frame}
+%
+% \section{Interval Estimators}
+% \section{Basic Concepts}
+% \begin{frame}
+%   \begin{center}
+%     Indicators, Part III - Interval Estimators
+%   \end{center}
+% \end{frame}
 
-\section{Interval Estimators}
-\section{Basic Concepts}
+%% TODO: This part is too technical. Add a concrete example of the Confidence Interval, with actual numbers, when explaining what it is.
+\section{Interval Indicators}
 \begin{frame}
   \begin{center}
-    Indicators, Part III - Interval Estimators
+    Part II.c - Interval Estimators
   \end{center}
 \end{frame}
 
-%% TODO: need to review the entire section
+\begin{frame}{Statistical Intervals}{How sure are you?}
+As we saw, point indicators are statistics (functions) that estimate values of a population parameter, from data in the sample.\bigskip
 
-\begin{frame}{Statistical Intervals}
-Statistical intervals are important in quantifying the uncertainty associated to a given estimate;
+\structure{Statistical intervals} are functions that quantify {\bf the uncertainty} associated to an estimate;
 \bigskip
 
-As an example, let's recap the coaxial cables example: \textit{a coaxial cable manufacturing operation produces cables with a target resistance of $50\Omega$ and a standard deviation of $2\Omega$. Assume that the resistance values can be well modeled by a normal distribution}.
-\bigskip
+Let's remember the coaxial cable factory example:
+\begin{itemize}
+  \item A cable factory produces cable, and we are interested in their resistance.
+  \item The cable producion can be described as a normal distribution, with $\mu = 50, \sigma = 2$.
+\end{itemize}\bigskip
 
-Let us now suppose that a sample mean of $n=25$ observations of resistance  yields $\bar{x} = 48$. Given the sampling variability, it is very likely that this value is not exactly the true value of $\mu$, but we are so far unable quantify how much uncertainty there is in this estimate.
+Let's now suppose that we obtained a sample with $n=25$ observations, and calculated a sample mean of $\bar{x} = 48$. Because of the sample variability, it is likely that this estimate is not the true value of $\mu$, but how much error can we assume exist in this statistic?
 \end{frame}
 
-%=====
-
-\begin{frame}{Definition}
-\textit{Statistical intervals} define regions that are likely to contain the true value of an estimated parameter.
+\begin{frame}{Statistical Intervals}{Definition}
+A {\bf statistical interval} defines a region that is\structure{likely to contain the true value of an estimated parameter}.
 \bigskip
 
-More formally, it is generally possible to quantify the level of uncertainty associated with the estimation, thereby allowing the derivation of sound conclusions at predefined levels of certainty.
+The statistic interval allows us to quantify the {\bf level of uncertainty} associated with the estimation. This information helps us arrive at sound conclusions about the parameter, at {\bf predefined} levels of certainty.
 \bigskip
 
 Three of the most common types of interval are:
@@ -469,7 +492,7 @@ Three of the most common types of interval are:
 
 %=====
 
-\begin{frame}{How to Interpret a Confidence Interval}
+\begin{frame}{What is a Confidence Interval?}
 Confidence intervals quantify the degree of uncertainty associated with the estimation of population parameters such as the mean or the variance.\bigskip
 
 Can be defined as ``\textit{the interval that contains the true value of a given population parameter with a confidence level of $100(1-\alpha)$}'';\bigskip
@@ -486,19 +509,9 @@ Another useful definition is to think about confidence intervals in terms of con
 \footnote{For an interactive demonstration of the factors involved in the definition of a confidence interval, Run the files at \url{https://git.io/vxXGj} on RStudio.}
 \end{frame}
 
-%=====
-% WARNING: The lecture picks up too fast in the next three slides
-% Break them up with examples and more text.
-%=====
 
+%% TODO: the explanation of $z$ and $t$ comes out of nowhere in the definition of CI. This part needs to be broken down a bit more.
 
-%% TODO -- TODO: z and t came out of nowhere here!!!
-% Topics that the students don't know:
-% Z distribution
-% T distribution
-% Degrees of freedom.
-% Need to explain this (maybe when explaining the distribution
-% of an indicator)
 \begin{frame}{CI on the Mean of a Normal Variable}
 The two-sided $CI_{(1-\alpha)}$ for the mean of a normal population with known variance $\sigma^2$ is given by:
 \begin{equation*}
