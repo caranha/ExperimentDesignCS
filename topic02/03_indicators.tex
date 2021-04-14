@@ -206,8 +206,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%% TODO: this part was taken directly from campelo's materials, Needs update.
 \section{Point Estimators}
 \begin{frame}
   \begin{center}
@@ -216,56 +214,75 @@
 \end{frame}
 
 \subsection{Definition}
-\begin{frame}{Definition of Point Indicator}
-  A \emph{point estimator} is a statistic which provides the value of maximum plausibility for an (unknown) population parameter $\theta$.
-  \bigskip
 
-  Consider a random variable $X$ distributed according to a given $f(X|\theta)$.\bigskip
+\begin{frame}{Definition of a Point Indicator}
 
-  Consider also a random sample from this variable: $x=\{x_1,x_2,\ldots,x_n\}$;\bigskip
+A more formal definition of \structure{Point Indicator} is: \emph{a statistic
+that provides the value of maximum plausibility for an (unknown) population
+parameter $\theta$}.\bigskip
 
-  A given function $\hat{\Theta}=h\left(x\right)$ is called a \emph{point estimator} of the parameter $\theta$, and a value returned by this function for a given sample is referred to as a \emph{point estimate} $\hat{\theta}$ of the parameter.
-\end{frame}
-
-%% TODO: this part was taken directly from campelo's materials, Needs update.
-\begin{frame}{Examples}
-Point estimation problems arise frequently in all areas of science and engineering, whenever there is a need for estimating, e.g.,:\bigskip
+In other words, a P.I. is a function that, given a sample obtained in an
+experiment, calculates the {\bf more plausible} value for a parameter $\theta$
+that describes the population of interest.\bigskip
 
 \begin{itemize}
-  \item a population  mean, $\mu$;
-	\item a population variance, $\sigma^2$;
-	\item a population proportion, $p$;
+  \item Consider a random variable $X$, and a parameter $\theta$ that describes its distribution.
+  \item Consider a sample $x = \{x_1, x_2, \ldots, x_n\}$ obtained from $X|\theta$
+  \item The function $\hat{\Theta} = h\left(x\right)$ is a \structure{point estimator} of $\theta$, and the value $\hat\theta$ calulated from this function is a \structure{point estimate} of $\theta$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Examples}
+Point estimation problems arise frequently in all areas of science and engineering, whenever there is a need for estimating, a population parameter. For example:\bigskip
+
+\begin{itemize}
+  \item the population mean, $\mu$;
+	\item the population variance, $\sigma^2$;
+	\item the population proportion, $p$;
 	\item the difference in the means of two populations, $\mu_1-\mu_2$;
-	\item etc..
+	\item etc...
 \end{itemize}\bigskip
 
-In each case there are multiple ways of performing the estimation task, and the decision about which estimators to use is based on the mathematical properties of each statistic.
+{\bf Important!} For each case, there are multiple statistics that can estimate a parameter from the sample (multiple functions). Which estimator should be used, depends on the mathematical properties of the statistic.
 \end{frame}
 
-\begin{frame}{Errors and Biases}
-  Note that we are being very careful to always use the word {\bf estimate} when we talk about statistics. Why is that?
-  \bigskip
+\subsection{Statistical Errors and Biases}
+\begin{frame}{Statistical Errors and Biases}
+  We said before that the value calculated by a point estimator (\structure{the estimate, $\hat\theta$}) depends on the sample. So if we are unlucky with our sample, the estimated value can be very different from the true parameter value, $\theta$.\bigskip
 
-  In all the examples that we mentioned, if we are unlucky\footnote{or careless, or malicious}, we could obtain an estimate that is very different from the true value of the population:
-  \begin{alertblock}{Bad statistics example}
-    To estimate the height of the students of a school, we pick 10 students, and we measure the height of the youngest one.
-  \end{alertblock}\medskip
+  Talking about this difference, we want to consider {\bf Statistical Error} and {\bf Statistical Bias}:
+
   \begin{itemize}
-    \item {\bf Error}: The difference between an estimate and the true value of a population's parameter;
-    \item {\bf Bias}: The property of a statistic that systematically produces wrong estimates;
-  \end{itemize}
+    \item {\bf Error}: The difference between an estimate and the true value of a parameter;
+    \item {\bf Bias}: The property of a statistic that \structure{systematically} produces wrong estimates;
+  \end{itemize}\vfill
+
+  It is important to note that besides \structure{Statistical Bias}, we also have \structure{Structural Bias}, which depends a lot on the design of the experiment. Today, we will focus on the first one.
 \end{frame}
 
-%% TODO: this part was taken directly from campelo's materials, Needs update.
+
+\begin{frame}{Statistical Errors and Biases}{Example of a biased statistic}
+  Imagine that we want to know the typical height of the students of the CS Program.\bigskip
+
+  Our experiment design is to get a random sample of 10 students, measure their height, and use a statistic to calculate the point estimate of the height, from the sample data. Let's consider two statistics:
+  \begin{itemize}
+    \item The point estimate of the height is {\bf the minimum height} from the sample.
+    \item The p. e. of the height is {\bf the height of a random observation} from the sample;
+  \end{itemize}\bigskip
+
+  The first statistic will give you a result that is {\bf usually smaller} than what we could consider a representative value for the students' height.\bigskip
+
+  \alert{To think about}: What could we say (mathematically) about the second statistic?
+\end{frame}
+
 \begin{frame}{Unbiased estimators}
-A good estimator should consistently generate estimates that lie close to the real value of the parameter $\theta$.\bigskip
+\begin{itemize}
+  \item A good estimator should consistently generate estimates that are close to the real value of the parameter $\theta$.
+  \item An \structure{unbiased} estimator will generate estimates where the errors, when they happen, are equally distributed above and below the real value of $\theta$.
+\end{itemize}\bigskip
 
-A given estimator $\hat{\Theta}$ is said to be \textit{unbiased} for parameter $\theta$ if:\bigskip
+Mathematically, we say that an estimator $\hat{\Theta}$ is said to be \textit{unbiased} for parameter $\theta$ if its \structure{expected value} is $\theta$ ($E\left[\hat\Theta\right] = \theta$). or, equivalently:\bigskip
 
-\begin{equation*}
-E\left[\hat{\Theta}\right] = \theta
-\end{equation*}
-\noindent or, equivalently:
 \begin{equation*}
 E\left[\hat{\Theta}\right] - \theta = 0
 \end{equation*}\bigskip
@@ -273,53 +290,54 @@ E\left[\hat{\Theta}\right] - \theta = 0
 The difference $E\left[\hat{\Theta}\right] - \theta$ is referred to as the \textit{bias} of a given estimator.
 \end{frame}
 
-%% TODO: this part was taken directly from campelo's materials, Needs update.
-\begin{frame}{Unbiased estimators}
-For example, the usual estimators for mean is an unbiased estimator;
-\bigskip
+\begin{frame}{Unbiased estimators}{Example: sample's average}
+Let's show briefly that the average of a sample of values is an unbiased estimator for the mean of the population:\bigskip
 
-Let $x_1,\ldots,x_n$ be a random sample from a given population $X$, characterized by its mean $\mu$ and variance $\sigma^2$. In this situation, it is possible to show that:
-\bigskip
+Let $x_1,\ldots,x_n$ be a random sample from a given population $X$, and $\bar{x}$ be the average of the sample. The {\bf value of interest} in this population is modeled by a distribution with mean $\mu$.\bigskip
+
+Noting that the expected value of one observation $x_i$ is the mean $\mu$ of the population, the expected value of the average of the sample will be:\bigskip
 
 \begin{equation*}
-E\left[\bar{x}\right] = E\left[\frac{1}{n}\sum\limits_{i=1}^{n}x_i\right] = \mu
+E\left[\bar{x}\right] = E\left[\frac{1}{n}\sum\limits_{i=1}^{n}x_i\right] =
+\frac{1}{n}\sum\limits_{i=1}^{n}E\left[x_i\right] =
+\frac{1}{n}\sum\limits_{i=1}^{n}\mu = \mu
 \end{equation*}
 \vfill
-
-(Remember that the expected value of one observation is the mean value of the population)
-
 \end{frame}
 
-%% TODO: this part was taken directly from campelo's materials, Needs update.
-\begin{frame}{Unbiased estimators}
+\begin{frame}{Unbiased estimators}{If statistical bias is the same, what else is important for a statistic?}
 
-Fora a population parameter $\theta$, it is usually possible to define more than one unbiased estimator. The variances of these estimators may, however, be different\bigskip
+It is usually possible to define multiple unbiased estimators for a parameter $\theta$. However, the \structure{variance} of these estimators may be different.\bigskip
 
 \begin{columns}[T]
-    \column{0.5\textwidth}\vspace{-1.5em} \includegraphics[width=1\textwidth]{../img/unbiased_variance.png}
-    \column{0.5\textwidth} In these cases, we usually want to obtain the unbiased estimator of minimal variance. This is generally called the \textit{minimal-variance unbiased estimator} (MVUE).
-\end{columns}\bigskip
+    \column{0.5\textwidth}\includegraphics[width=1\textwidth]{../img/unbiased_variance.png}
+    \column{0.5\textwidth}
+    For example, the \structure{average value of a sample} and the \structure{value of a single observation} are both unbiased estimators of the mean. The first one has smaller variance.\bigskip
 
-MVUE are generally chosen as estimators due to their ability of generating estimates $\hat{\theta}$ that are (relatively) close to the real value of $\theta$.
+    We usually want to obtain the \textit{minimal-variance unbiased estimator} (MVUE).
+\end{columns}\bigskip
+This is because they will usually generate estimates $\hat\theta$ that are closer to the real value of $\theta$.
+
 \ppagenote{Image: D.C.Montgomery,G.C. Runger, \textit{Applied Statistics and Probability for Engineers},Wiley 2003.}
 \end{frame}
 
-
-%% TODO: this part was taken directly from campelo's materials, Needs update.
+\subsection{Statistics about Statistics}
 \begin{frame}{Standard error of a point estimator}
-Remember that because a point estimator is a random variable, it has an associated distribution and error. For example, the standard error of an estimator $\hat{\Theta}$ is
+In the last slide we showed that a point estimator $\hat\Theta$ will have an associated distribution, with its mean ($\mu_{\hat\Theta}$) and variance ($Var\left[\hat{\Theta}\right]$).\bigskip
+
+So we can talk about the \structure{standard error} of an estimator $\hat{\Theta}$ as:
 \begin{equation*}
 \sigma_{\hat{\Theta}} = \sqrt{Var\left[\hat{\Theta}\right]}
 \end{equation*}\bigskip
 
-However, we can't know this directly. We can {\bf estimate} the standard error of the estimator from the data in the sample. In this case, we refer to it as the \textit{estimated standard error}, $\hat{\sigma}_{\hat{\Theta}}$ (the notations $s_{\hat{\Theta}}$ and $se(\hat{\Theta})$ are also common).
+Because the values of the estimator depend on the parameters of the population, we cannot know precisely the value of $\sigma_{\hat\Theta}$ or $\mu_{\hat\Theta}$. But we can {\bf estimate the error of the estimator}, using data from the sample. In this case, we refer to it as the \textit{estimated standard error}, $\hat{\sigma}_{\hat{\Theta}}$ (the notations $s_{\hat{\Theta}}$ and $se(\hat{\Theta})$ are also common).
 
 \hfill\includegraphics[width=.1\textwidth]{../img/yodawg}
 \end{frame}
 
-%% TODO: this part was taken directly from campelo's materials, Needs update.
+%% TODO: this part was taken directly from campelo's materials, Needs update?
 \begin{frame}{Standard error of a point estimator}{Examples}
-  Assuming a random variable $X$ from a gaussian distribution, and a sample error $s$, we can calculate the standard errors of several common point indicators\footnote{See Ahn and Fessler (2003), \textit{Standard Errors of Mean, Variance, and Standard Deviation Estimators}: \url{https://git.io/v5Z5v}}
+  Assuming a random variable $X$ under a gaussian distribution, and a sample error $s$, we can calculate the standard errors of several common point indicators\footnote{See Ahn and Fessler (2003), \textit{Standard Errors of Mean, Variance, and Standard Deviation Estimators}: \url{https://git.io/v5Z5v}}
 
 \begin{equation*}
 \hat{\sigma}_{\bar{X}} = \frac{s}{\sqrt{n}}
@@ -334,34 +352,48 @@ However, we can't know this directly. We can {\bf estimate} the standard error o
 \end{equation*}\bigskip
 \end{frame}
 
+\subsection{Example}
 \begin{frame}{Point Estimator Use Case}
-  \includegraphics[width=.4\textwidth]{../img/pixabay_cable}
-  \ppagenote{Coaxial cable image from \url{https://pixabay.com}}
-  \bigskip
+  \begin{columns}[T]
+    \column{0.4\textwidth}
+    \hspace{.05\textwidth}\includegraphics[width=.9\textwidth]{../img/pixabay_cable}
+    \ppagenote{Coaxial cable image from \url{https://pixabay.com}}
 
-  Consider an operation to produce coaxial cables\footnote{Example inspired on \url{https://www.sas.com/resources/whitepaper/wp_4430.pdf}}. The mean resistance of the production is $50\Omega$, with a standard deviation of $2\Omega$ (Population mean, and population deviation).\bigskip
+    \column{0.6\textwidth}
+    Consider a factory that produces coaxial cables.\bigskip
 
-  Let's assume that the resistance value of the produced cables are distributed follow a normal distribution ($X\sim\mathcal{N}\left(\mu=50,\sigma^2=4\right)$)
+    Let's assume that the resistance values of the cables produced by this factory
+    are distributed following a normal distribution, with mean $50\Omega$ and variance $4\Omega$.\bigskip
+
+    $X\sim\mathcal{N}\left(\mu=50,\sigma^2=4\right)$
+\end{columns}
 \end{frame}
 
-\begin{frame}{Point estimator use case}
-  \begin{columns}
-    \column{.35\textwidth}
-    \includegraphics[width=1\textwidth]{../img/pixabay_cable}
-    \column{.65\textwidth}
-    Suppose that we take a random sample of $25$ cables is taken from
-    this production process (an experiment, to measure if the process
-    is correct, for example).
+\begin{frame}{Point Estimator Use Case}
+  \begin{columns}[T]
+    \column{.4\textwidth}
+    \hspace{.05\textwidth}\includegraphics[width=.9\textwidth]{../img/pixabay_cable}
+    \column{.6\textwidth}
+    Let's imagine an experiment, where we take a random sample of $25$ cables
+    from the production process (to see if the resistance of the cables is as
+    expected).\bigskip
+
+    The \structure{sample mean} of the the observations is:
+    \begin{equation*}
+    \bar{x} = \frac{1}{25}\sum\limits_{i=1}^{25}{x_i}
+    \end{equation*}
   \end{columns}
   \bigskip
-The \structure{sample mean} of the the observations is:
-\begin{equation*}
-\bar{x} = \frac{1}{25}\sum\limits_{i=1}^{25}{x_i}
-\end{equation*}
 
-The \structure{sample mean} follows a normal distribution, with $E[\bar{x}] = \mu = 50\Omega$\footnote{since the sample mean is an unbiased estimator} and $\sigma_{\bar{x}} = \sqrt{\sigma^2/25} = 0.4\Omega$. The error depends on the sample size.
+
+
+The \structure{sample mean} follows a normal distribution, with $E[\bar{x}] = \mu = 50\Omega$ and $\sigma_{\bar{x}} = \sqrt{\sigma^2/25} = 0.4\Omega$.\bigskip
+
+Note that the error of the estimator depends on the sample size. So if we collect a bigger or smaller sample, the error will decrease or increase, respectively.
 \end{frame}
 
+%% TODO: add one slide with examples of estimating the mean resistance of
+%% the cables, with smaller and bigger sample sizes.
 
 \subsection{The Central Limit Theorem}
 
