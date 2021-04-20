@@ -68,15 +68,15 @@ Let's plot the mean BMI of the students, as well as the 95% confidence interval 
 values <- students$BMI  # shorter name for variable
 ci_alpha <- 0.05        # Alpha value for confidence interval. Confidence = 1 - alpha.
 # calculating low and high bounds for ci
-ci_low <- mean(values) + qt(ci_alpha/2, length(values)-1)*(sd(values)/sqrt(length(values))) 
-ci_hi <- mean(values) + qt(1 - ci_alpha/2, length(values)-1)*(sd(values)/sqrt(length(values)))
+ci_low <- mean(values) + qt(ci_alpha/2, length(values)-1) * (sd(values)/sqrt(length(values))) 
+ci_hi <- mean(values) + qt(1 - ci_alpha/2, length(values)-1) * (sd(values)/sqrt(length(values)))
 
 # plot the values and the confidence interval of the mean
-plot(students$BMI, ylim = c(0,40), xlab = "Student ID", ylab = "BMI")
+plot(students$BMI, ylim = c(0,40), xlab = "Student ID", ylab = "BMI") # plot all the values
 title("BMI Values")
-abline(h = mean(students$BMI))
-abline(h = ci_low, lty=2)
-abline(h = ci_hi, lty=2)
+abline(h = mean(students$BMI)) # plot a line for the sample mean
+abline(h = ci_low, lty=2) # plot a line for the lower CI bound
+abline(h = ci_hi, lty=2) # plot a line for the upper CI bound
 ```
 
 *TODO*: Print a prettier plot with ggplot.
