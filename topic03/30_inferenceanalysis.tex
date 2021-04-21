@@ -1,0 +1,107 @@
+\section{Interpretation of the Statistical Test}
+
+\begin{frame}
+  \begin{center}
+    {\bf Part III.a -- Interpretation of the Statistical Test}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}{What is the result of a statistical test?}
+  The result of the statistical test procedure can be reported as:
+  \begin{block}{}
+    \begin{center}
+      \emph{Sufficient (or insufficient) evidence for rejecting $H_0$ at the significance level $\alpha$.}
+    \end{center}
+  \end{block}
+  \bigskip
+
+  This report is correct, but not very informative:
+  \begin{itemize}
+    \item How strong is the evidence for rejection/non-rejection?
+    \item The significance level is fixed and predetermined. Is it the best one?
+    \item If $H_0$ is rejected, big is the difference observed?
+      ("magnitude of the effect size")
+    \item How sensitive is the test to effect sizes?
+  \end{itemize}
+\end{frame}
+
+\subsection{p-value}
+\begin{frame}{Hypothesis testing and the p-value}
+  \begin{block}{}
+      {\bf p-value:}\emph{The lowest significance level $\alpha$ that would lead to the rejection of $H_0$ for the available data.}
+  \end{block}
+
+  The p-value can be used to obtain more information about a statistical hypothesis test. It is the probability, under $H_0$, that the test statistic would assume a value at least as extreme as the one observed.\bigskip
+
+  For the previous example, the p-value would be calculated as:
+  \begin{equation*}
+    p = 2*P(t_0 \leq -1.597|H_0 = \text{TRUE}) = 2*\int^{-1.597}_{-\infty}t^{(9)}dt = 0.1447
+  \end{equation*}
+
+  So, to reject $H_0$ in this experiment, we would have needed significance $\alpha = 0.1447$.\bigskip
+
+  One interpretation of the p-value is \structure{"How surprised we are to see this result under $H_0$".}
+\end{frame}
+
+\begin{frame}{p-value problems}{a priori definition of significance level}
+
+  The p-value calculates the smallest $\alpha$ that would be necessary to reject $H_0$.\bigskip
+
+  A wrong conclusion is that deciding $\alpha$ before the experiment is not necessary: We could just evaluate the strength of the conclusion from the p-value!\bigskip
+
+  In reality, it is still important to define de desired $\alpha$ during the experiment design. This avoids the \structure{moving goal posts} problem, where we decide what is a good result {\bf after} we see the result.
+\end{frame}
+
+\begin{frame}{p-value problems}{number of repetitions and p-hacking}
+  It is possible to \alert{inflate the p-value artificially} by increasing the size of $n$.\bigskip
+
+  Suppose an experiment where $H_0: \mu = 500$, $H_1: \mu \neq 500$.\\
+  Sample size is $n=5000$, sample average $\bar{x} = 499$, error $s=5$. p-value calculation:\medskip
+
+  \begin{itemize}
+    \item $t_0 = -14.142$
+    \item $p = 1.02 \times 10^{-23}$
+  \end{itemize}\bigskip
+
+  The p-value is minuscule, but the difference between sample mean and $H_0$ is {\bf smaller than the error}! \alert{Is this result meaningful?}\bigskip
+
+  In CS, it is very easy to artificially inflate the p-value using multiple simulations.\bigskip
+
+  \hfill p-hacking is bad. Don't do it.
+\end{frame}
+
+\begin{frame}{Using the p-value responsibly}{Significance and effect sizes}
+  To "tell the whole story" of the experiment, it is necessary to use {\bf effect size estimators} together with the tests of statistical significance.\bigskip
+
+  While there are whole books on the subject\footnote{See, for instance, Paul D. Ellis' \emph{"The Essential Guide to Effect Sizes"}, Cambridge University Press, 2010}, the main idea is quite simple: to quantify the magnitude of the observed deviation from the null hypothesis.\bigskip
+
+  Examples of effect size estimators include the simple {\bf point estimator for the difference $\bar{x} - \mu_0$}, or the dimensionless {\bf $d$ estimator}:
+  \begin{equation*}
+    d = \frac{\bar{x} - \mu_0}{s}.
+  \end{equation*}
+  Alternatively, {\bf report confidence intervals} together with p-values in your results!
+\end{frame}
+
+
+
+% \begin{frame}[fragile]{The p-value}{Effect sizes and confidence intervals}
+%   \begin{block}{}
+%     \begin{center}
+%       \emph{Point estimators + confidence intervals quantify the magnitude and accuracy of effects, and must be reported alongside the results of significance testing whenever possible.}
+%     \end{center}
+%   \end{block}
+%   Suppose we are testing $H_0: \mu = 50$ against $H_1: \mu \neq 50$, with $n=10$ and $\alpha = 0.01$. Assume also that the population is known to be normal, with unknown variance. Using the same data as before:
+% {\smaller
+% \begin{verbatim}
+% > t.test(my.sample, mu = 50, conf.level = 0.99)
+% (...)
+% t = -1.5969, df = 9, p-value = 0.1447
+% alternative hypothesis: true mean is not equal to 50
+% 99 percent confidence interval:
+% 48.93166 50.36434
+% sample estimates:
+% mean of x
+% 49.648
+% \end{verbatim}}
+% \end{frame}

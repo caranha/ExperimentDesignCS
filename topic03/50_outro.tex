@@ -1,36 +1,41 @@
-\section{Introduction}
+\section{Outro}
 
-\subsection{Outline}
-\begin{frame}{Lecture 3: Statistical Inference}
+\begin{frame}
+  \begin{center}
+    Part IV -- Outro
+  \end{center}
+\end{frame}
+
+\subsection{Summary}
+
+\begin{frame}{Conclusion: A framework for statistical testing}
+  In this lecture, we introduced the concept of "hypothesis testing" as a way to use data obtained from an experiment to make conclusions about a population. Let's think back to the steps of this procedure:
+  \bigskip
+
   \begin{itemize}
-    \item In the last lecture, we described {\bf descriptive statistics}, such as point and interval estimators.\bigskip
-
-    \item Point and interval estimators are very useful to define the value of parameters in the population, and to estimate their margins of errors.\bigskip
-
-    \item However, in some cases, we need {\bf decision making tools}, in order to deal with information from random samples.\bigskip
-
-    \item {\bf Statistical Inference} is one of these tools that can help us \structure{make a decision based on a random sample}.
+    \item Formulate the question of interest, and define the hypotheses;
+    \item Define the minimally interesting effect;
+    \item Define desired confidence and power for the test;
+    \item Calculate required sample size;\hfill {\bf <- Future Lecture}
+    \item Collect the data;
+    \item Perform Statistial Analysis, and validate the assumptions;
+    \item Draw conclusions and recommendations;
   \end{itemize}
+  \bigskip
+
+  In future lectures, we will study variations and special cases of this testing procedure;
 \end{frame}
 
-\begin{frame}{Statistical Inference}{Motivating Example}
+\begin{frame}{Recommended Reading}
 
-  \begin{columns}
-    \column{.8\textwidth}
-    Imagine you are the owner of a factory that produces delicious chocolate. Its packages should contain \structure{300g of chocolate}.
-    \column{.2\textwidth}
-    \hfill\includegraphics[width=1\textwidth]{../img/irasutoya_cocoa}
-    \ppagenote{Cocoa image from \url{https://www.irasutoya.com}}
-  \end{columns}
+  \begin{itemize}
+    \item University of Guelph: "Statistical Significance vs Practical Significance: A tutorial."\url{https://atrium.lib.uoguelph.ca/xmlui/bitstream/handle/10214/1869/A_Statistical_versus_Practical_Significance.pdf?sequence=7}
 
-  You take a sample of {\bf 30 packages} produced by your factory. Using the tools from lecture 2, you calculate the mean weight with a 95\% confidence interval of {\bf 283g to 307g}.\bigskip
+    \item J.T. Mordkoff, "The Assumption(s) of Normality", 2016 \url{http://www2.psychology.uiowa.edu/faculty/mordkoff/GradStats/part\%201/I.07\%20normal.pdf}
+  \end{itemize}
 
-  Is everything normal? Or should you investigate the production line of your factory?\bigskip
-
-  \begin{alertblock}{Remember!}
-    The confidence interval does not say whether {\bf any of the values inside it} are more or less likely than any other!
-  \end{alertblock}
 \end{frame}
+
 
 
 \subsection{Scientist}
@@ -61,7 +66,7 @@
   \begin{center}
 
 
-    \includegraphics[width=.7\textwidth]{../img/florence_diagram}
+    \includegraphics[width=.6\textwidth]{../img/florence_diagram}
   \end{center}
 \end{frame}
 
@@ -73,7 +78,7 @@
   Musgrave et al (preprint): several ML methods for metric learning perform exaclty the same when the hyperparameters are properly tuned for all methods.
 
   \begin{center}
-    \includegraphics[width=.8\textwidth]{../img/musgrave_faircomparison}\\
+    \includegraphics[width=.6\textwidth]{../img/musgrave_faircomparison}\\
     {\tiny Figure from Musgrave et al. "A Metric Learning Reality Check"}
     \ppagenote{Figure from Musgrave et al. "A Metric Learning Reality Check" \url{https://arxiv.org/pdf/2003.08505.pdf}}
   \end{center}
@@ -91,14 +96,5 @@
     \item Coding with modern libraries vs old algorithms;
     \item Different computational environments;
     \item etc...
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Lecture 3: Outline}
-  \begin{itemize}
-    \item What is Statistical Inference?\bigskip
-    \item Statistical Hypothesis and Errors;\bigskip
-    \item Z testing on a single sample;\bigskip
-    \item Statistical Testing Assumptions;\bigskip
   \end{itemize}
 \end{frame}
