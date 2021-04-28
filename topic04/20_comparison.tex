@@ -135,26 +135,46 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}[t]{Modeling the cutting process}{What is the cutting error?}
+\begin{frame}[t]{Modeling the cutting process}{Comparing Errors}
   \begin{columns}[T]
     \column{.2\textwidth}
     \includegraphics[width=\textwidth]{../img/steelrods}
     \column{.8\textwidth}
-    Let's look at the first two questions:
     \begin{block}{}
     {\smaller
     \begin{itemize}
-      \item How do we calculate / measure the cutting error of one of the methods?
-      \item What is the observation / sample necessary to estimate this value?
+      \item What is the variable that measures the cutting error difference between the two methods?
+      \item What is a \emph{statistical hypothesis} that represents the question of interest for this experiment?
     \end{itemize}}
-    \end{block}\bigskip
+    \end{block}
+    Let's consider these two questions. Remember that the error from each method is modeled as a random variable following a normal distribution.
+    \begin{center}
+      \includegraphics[width=.5\textwidth]{../img/two_population_model}
+      \ppagenote{Two models image from D.C. Montgomery "Applied Statistics and Probability for Engineers", Wiley 2003}
+    \end{center}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Statistical Models}
-  A \structure{Statistical Model} is a useful way to characterize a population from which we obtain some sample. This model describes the possible values from an experiment, and how they are distributed.\bigskip
+\begin{frame}[t]{Modeling the cutting process}{Comparing Errors}
+    \begin{center}
+      \includegraphics[width=.4\textwidth]{../img/two_population_model}
+      \ppagenote{Two models image from D.C. Montgomery "Applied Statistics and Probability for Engineers", Wiley 2003}
+    \end{center}
 
-  For example, when we measure some observed value ($y$) taken from one of several methods ($i = 1, 2,\ldots$), we understand that the value comes from some distribution with mean $\mu_i$, at it will also have an error ($\epsilon$) away from that mean, which is different for each observation. So we describe the $j$-th observation taken from the $i$-th method as
+    The sum of two normal variables also follow a normal distribution. So, we can describe the difference between the cutting errors as the random variable $e_{\text{diff}}  = (e_{\text{old}} - e_{\text{new}})$.\bigskip
+
+    Because $e_{\text{diff}}$ also follows a normal distribution, we can use the null hypothesis method to test the difference of the two methods:
+    \begin{itemize}
+      \item $H_0: e_{\text{diff}} = 0$
+      \item $H_1: e_{\text{diff}} \neq 0$
+    \end{itemize}
+\end{frame}
+
+\subsection{General Statistical Model}
+\begin{frame}{A General Model for Comparing two Samples}
+  Using the ideas from the previous example, let's describe a general statistical model to use when we want to test if two methods are quantitatively different.\bigskip
+
+  Consider that we measure some observed value ($y$) taken from one of several methods ($i = 1, 2,\ldots$), we understand that the value comes from some distribution with mean $\mu_i$, at it will also have an error ($\epsilon$) away from that mean, which is different for each observation. So we describe the $j$-th observation taken from the $i$-th method as
 
   \begin{equation*}
     y_{ij} = \mu_i + \epsilon_{ij}\begin{cases}i=1,2\\j=1,\ldots,n_i\end{cases}
@@ -166,11 +186,10 @@
     y_{ij} = \mu_i + \epsilon_{ij}\begin{cases}i=1,2\\j=1,\ldots,n_i\end{cases}
   \end{equation*}\medskip
 
-  Using this model for the observed variable ($y_{ij}$), we assume that the residuals $\epsilon_{ij}$ are iid\footnote{Independent and Identically Distributed} and follow $\mathcal{N}\left(0,\sigma_i^2\right)$. Under these assumptions, the populations of the two samples look like this:
+  Under this model for the observed variable ($y_{ij}$), we assume that the residuals $\epsilon_{ij}$ are independent and follow $\mathcal{N}\left(0,\sigma_i^2\right)$. Under these assumptions, the populations of the two samples look like this:
 
   \begin{center}
-    \includegraphics[width=.6\textwidth]{../img/two_population_model}
-    \ppagenote{Two models image from D.C. Montgomery "Applied Statistics and Probability for Engineers", Wiley 2003}
+    \includegraphics[width=.5\textwidth]{../img/two_population_model}
   \end{center}
 \end{frame}
 
@@ -198,24 +217,23 @@ H_1: \mu_1 < \mu_2
   Lets assume (for the moment) that the variance of the process is unknown but similar for both systems. Since it is unknown, we have to estimate the variance from the sample data. As assume $\sigma^2_1\approx\sigma^2_2$, we can use the pooled variance estimator:
 
 \begin{equation*}
-s_p^2 = \frac{\left(n_1-1\right)s_1^2+\left(n_2-1\right)s_2^2}{n_1+n_2-2}=ws_1^2+\left(1-w\right)s_2^2
+s_p^2 = \frac{\left(n_1-1\right)s_1^2+\left(n_2-1\right)s_2^2}{n_1+n_2-2}
 \end{equation*}
 \bigskip
 
-Based on this estimator and the stated assumptions, we have that:
+Based on this estimator and the stated assumptions, we calculate the T statistic:
 \begin{equation*}
 T = \frac{\left(\bar{y_1} - \bar{y_2}\right) - \left(\mu_1 - \mu_2\right)}{s_p\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}\sim t^{\left(n_1+n_2-2\right)}
 \end{equation*}
 \end{frame}
 
+\subsection{Calculation of the Statistic}
 
 \begin{frame}
-{Comparison of two means}
-{Rejection threshold}
+{Back to the Steel Rods Example}
+{Calculation of the Rejection threshold}
 
-Suppose a desired significance level $\alpha = 0.05$, and that the engineer is interested in detecting any difference larger than $15cm$ in the mean absolute error with a power $(1-\beta) = 0.8$.\medskip
-
-If we recall our working hypotheses:
+If we recall our working hypotheses for the steel rod example:
 
 \begin{equation*}
 \begin{cases}
@@ -233,19 +251,34 @@ t_0 = \frac{\left(\bar{y_1} - \bar{y_2}\right) - \cancelto{0}{\left(\mu_1 - \mu_
 We'll reject $H_0$ at the $(1-\alpha)$ confidence level if $t_0\leq t^{(n_1+n_2-2)}_{\alpha/2}$
 \end{frame}
 
+\begin{frame}
+{Back to the Steel Rods Example}
+{Statistic Test Parameters}
+
+  Remember that we need to decide \structure{three parameters} that will specify the statistical test:
+
+  \begin{itemize}
+    \item {\bf Significance level}: The probability of a {\bf Type I error}. Let's assume that the desired significance level is $\alpha = 0.05$.\bigskip
+
+    \item {\bf Power}: The probability of a {\bf Type II Error}. Let's assume that the desired sensitivity is $1 - \beta = 0.8$.\bigskip
+
+    \item {\bf Meaningful difference}: What is the minimum difference between the two methods that we are interested in detecting? Let's assume $15cm$.
+  \end{itemize}\bigskip
+
+The values for these variables depend on the needs of the specific experiment and/or application.
+
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]{Comparison of two means}{Calculating the Statistic}
+\begin{frame}[fragile]{Calculating the Statistic}
 Computationally, we can perform the t-test for comparing the means of two independent populations by:
 \bigskip
 {\smaller
 \begin{verbatim}
 > y <- read.table("steelrods.csv", header = TRUE)
-> t.test(y$Length.error ~ y$Process,
-+        alternative = "less",
-+        mu          = 0,
-+        var.equal   = TRUE,
-+        conf.level  = 0.95)
+> t.test(y$Length.error ~ y$Process, alternative = "less",
++        mu          = 0, var.equal   = TRUE, conf.level  = 0.95)
 
 data:  y$Length.error by y$Process
 t = -14.312, df = 32, p-value = 9.244e-16
@@ -262,10 +295,12 @@ mean in group new mean in group old
 
 \begin{frame}[fragile]{Comparison of two means}{Testing the assumptions}
 
-The assumptions of the test must be verified. In this particular case:
 
 \begin{columns}[T]
   \column{0.7\textwidth}
+
+  The assumptions of the test must be verified. In this particular case:
+
 
   {\smaller
 \begin{itemize}
@@ -287,7 +322,7 @@ The assumptions of the test must be verified. In this particular case:
 
 {\bf Reminder:} the t-test is quite robust to mild to moderate violations of the normality of the residuals / groups.
 \column{.3\textwidth}
-\includegraphics[width=1\textwidth]{../img/steelrodsqq.pdf}
+\includegraphics[width=.7\textwidth]{../img/steelrodsqq.pdf}
 \end{columns}
 \end{frame}
 

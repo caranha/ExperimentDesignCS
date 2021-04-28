@@ -11,13 +11,6 @@
   - Part III: Outro
 
 - [ ] Two Sample testing
-  - Better summary of past lecture (measure normal model)
-  - Motivating: Comparing two values 
-  - We can compare each value as a normal: Both models are the same, with diff variables
-  - Model of a test for difference: We can add normals, so the model of the difference
-    is also testable using the methods from the last lecture!
-  - We can use the same t- or n- test from last lecture. How do we estimate
-    the variance for two samples?
   - Numerical calculation example (explain what alpha, beta, gamma means again)
   - Testing assumptions (remember to remember the assumptions)
   - Extra: different variance case
