@@ -1,41 +1,154 @@
 \section{Two sample testing}
 
 \begin{frame}
-
   \begin{center}
-  {\bf Part I -- Two Sample Testing}
-\end{center}
-
+    {\bf Part I -- Two Sample Testing}
+  \end{center}
 \end{frame}
 
-\begin{frame}{Statistical Inference for Two Samples}
-  Sometimes we are interested on the comparison between two different populations, based on information from their samples. This type of analysis is frequent when we compare the effect of a technique ({\bf or treatment}) against a \emph{control group}: a placebo, a classical technique, a random search, etc;\bigskip
+\subsection{Motivation}
 
-  The statistics used in this case are actually very similar to the statistics used for the analysis of single populations; and in general the experiment design follow the same principles.\bigskip
+\begin{frame}{Last Lecture Recap}
+  In the last lecture we studied how we can use \structure{Statistical Inference} to determine the answer to questions about experimental data. For example: {\bf "are the observations produced by process B different from an expected value N?"}\bigskip
 
-  Usual questions involve:
+  We used the \structure{Null Hypothesis Statistical Testing} method to answer this question:
+  The process of interest is modeled as a Random Variable under a normal distribution. From the sample data, we calculate a {\bf test statistic} that tells us "how surprising" that sample is under the null hypothesis.\bigskip
+
+  Based on this information, we could answer that simple question. What about more complex situations?
+\end{frame}
+
+
+\begin{frame}{Comparison of two processes}
+  The comparison between two different approaches is a very common situation in scientific research:\bigskip
+
   \begin{itemize}
-    \item The comparison of means;
-    \item The comparison of variances;
-    \item The comparison of proportions;
-    \item Etc;
+    \item The efficacy of a new drug is compared against a control group;
+
+    \item The precision of a new algorithm is compared against an old one;
+
+    \item Two different website design proposals are compared regarding user preference;
+
+    \item etc;
   \end{itemize}
+  \bigskip
+
+  How can we adapt the Hypothesis testing procedure studied in the last lecture to these situations?\bigskip
+
+  The analisys of these situations involves the calculation of statistics based on data from two different samples, so we will call it {\bf two sample testing}.
 \end{frame}
 
-\subsection{Example: Steel Rods}
-\begin{frame}{Comparison of two means}{Example: Length of Steel Rods}
-  \begin{columns}
+
+% \begin{frame}{Statistical Inference for Two Samples}
+%   Sometimes we are interested on the comparison between two different populations, based on information from their samples. This type of analysis is frequent when we compare the effect of a technique ({\bf or treatment}) against a \emph{control group}: a placebo, a classical technique, a random search, etc;\bigskip
+%
+%   The statistics used in this case are actually very similar to the statistics used for the analysis of single populations; and in general the experiment design follow the same principles.\bigskip
+%
+%   Usual questions involve:
+%   \begin{itemize}
+%     \item The comparison of means;
+%     \item The comparison of variances;
+%     \item The comparison of proportions;
+%     \item Etc;
+%   \end{itemize}
+% \end{frame}
+
+\subsection{Steel Rods Example}
+\begin{frame}[t]{Example: Comparing Methods for cutting steel rods}
+
+  \begin{block}{}
+  We will use the following situation to illustrate the hypothesis testing method:
+  \end{block}
+
+  \begin{columns}[T]
     \column{.2\textwidth}
     \includegraphics[width=\textwidth]{../img/steelrods}
     \ppagenote{Steel rod image: \url{http://www.shutterstock.com/pic-73207399/}}
     \column{.8\textwidth}
-    One of the critical aspects of manufacturing steel rods is cutting the bars with a precise length, which is expected by the customers.\bigskip
+    A critical aspects of manufacturing steel rods is cutting the bars with a precise length. \bigskip
 
-    This process is prone to errors, which result in additional costs for standardizing and reprocessing the rods.
+    Errors when cutting the bars will cause costs for reprocessing the rods.\bigskip
+
+    An engineer is interested in comparing the current cutting process with a new method that could potentially improve the performance of the system by reducing the cutting error.
   \end{columns}
   \bigskip
+\end{frame}
 
-  An engineer is interested in comparing the current cutting process with a new method that could potentially improve the performance of the system.
+\begin{frame}[t]{Comparing cutting methods}{Quiz}
+  \begin{columns}[T]
+    \column{.2\textwidth}
+    \includegraphics[width=\textwidth]{../img/steelrods}
+    \column{.8\textwidth}
+    We have two methods for cutting steel rods (old and new), and we want to find out which one has the smallest cutting error. Consider the following questions:
+    {\smaller
+    \begin{itemize}
+      \item How do we calculate / measure the cutting error of one of the methods?
+      \item What is the observation / sample necessary to estimate this value?
+      \item What is the variable that measures the cutting error difference between the two methods?
+      \item What is a \emph{statistical hypothesis} that represents the question of interest for this experiment?
+    \end{itemize}}\bigskip
+
+    \alert{Pause the video}! Take some time to seriously answer these questions before you continue the material!
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Modeling the cutting process}{What is the cutting error?}
+  \begin{columns}[T]
+    \column{.2\textwidth}
+    \includegraphics[width=\textwidth]{../img/steelrods}
+    \column{.8\textwidth}
+    Let's look at the first two questions:
+    \begin{block}{}
+    {\smaller
+    \begin{itemize}
+      \item How do we calculate / measure the cutting error of one of the methods?
+      \item What is the observation / sample necessary to estimate this value?
+    \end{itemize}}
+    \end{block}\bigskip
+
+    Let's consider a cutting error to be the difference between the length of a rod $i$ and the target length $l$: ($|x_i - l|$). \bigskip
+
+    Assuming that the cutting error is a property of the method, we can estimate the \structure{mean cutting error} using a sample $X$ of $n$ rods:
+    \begin{equation*}
+      \hat\mu_e \text{ estimated by } e_X = \frac{\sum{|x_i - l|}}{n}
+    \end{equation*}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Modeling the cutting process}{Cutting Error and Hypothesis}
+  \begin{columns}[T]
+    \column{.2\textwidth}
+    \includegraphics[width=\textwidth]{../img/steelrods}
+    \column{.8\textwidth}
+    \begin{equation*}
+      \hat\mu_e \text{ estimated by } e_X = \frac{\sum{|x_i - l|}}{n}
+    \end{equation*}
+
+    Using $e_X$ as an estimate of the cutting error, it is possible to to perform statistical inference about \structure{one of the methods}. For example:\bigskip
+
+    \begin{itemize}
+      \item Is the error of method $Y$ equal or under a required value $r$?
+      \item $H_0: e_Y \leq r$
+      \item $H_1: e_Y \geq r$
+    \end{itemize}\bigskip
+
+    We can use the technique from the last lecture to solve this problem. But if we want to compare two methods: $Y_1$ and $Y_2$, what do we do?
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Modeling the cutting process}{What is the cutting error?}
+  \begin{columns}[T]
+    \column{.2\textwidth}
+    \includegraphics[width=\textwidth]{../img/steelrods}
+    \column{.8\textwidth}
+    Let's look at the first two questions:
+    \begin{block}{}
+    {\smaller
+    \begin{itemize}
+      \item How do we calculate / measure the cutting error of one of the methods?
+      \item What is the observation / sample necessary to estimate this value?
+    \end{itemize}}
+    \end{block}\bigskip
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Statistical Models}
