@@ -343,15 +343,12 @@ The assumptions of the test must be verified. In this particular case:
 # Fligner-Killeen:med chi-squared = 1.6837,
 # df = 1, p-value = 0.1944
 
-> resid <- tapply(X = y$Length.error,
-         INDEX = y$Process,
-         FUN   = function(x){x - mean(x)})
+> residuals <- tapply(X = y$Length.error,
+               INDEX = y$Process,
+               FUN   = function(x){x - mean(x)})
 
-> stripchart(x        = resid,
-             vertical = TRUE,
-             pch      = 16,
-             cex      = 1.5,
-             las      = 1,
+> stripchart(x        = residuals, vertical = TRUE,
+             pch      = 16, cex = 1.5, las = 1,
              xlab     = "mean",
              ylab     = "residuals")
 \end{verbatim}}}
@@ -398,17 +395,15 @@ Under the null hypothesis $t^*_0$  is distributed approximately as a $t^{(\nu)}$
 
 
 \begin{frame}[fragile]{Comparison of two means}{Unequal variances}
-To illustrate this technique, let's use the data from the example\footnote[2]{Notice that this would not be necessary, since the data collected in the previous example did not violate the equality of variances assumption.}:
+Let's illustrate the calculation of a comparison test with unequal variances in R. We will use the same data as before.\footnote{Note that this would not have been necessary, since we already checked the "equal variances" assumption.}
 \bigskip
 
 {\smaller{\smaller
 \begin{verbatim}
-> with(y,
-+      t.test(Length.error~Process,
-+             alternative = "two.sided",
-+             mu = 0,
-+             var.equal = FALSE,            %% <- We only change this.
-+             conf.level = 0.95))
+> t.test(y$Length.error ~ y$Process, alternative = "two.sided",
++        mu = 0,
++        var.equal = FALSE,            %% <- We only change this.
++        conf.level = 0.95))
 Welch Two Sample t-test
 data:  Length.error by Process
 t = -14.312, df = 28.386, p-value = 1.645e-14
@@ -438,9 +433,9 @@ mean in group new mean in group old
 
 \begin{frame}{Comparison of two means}{Summary}
 
-  To compare an estimator from samples of two populations that (we assume) follow a normal distribution, we set our statistic and the corresponding hypotheses to be the difference of the target variables.\bigskip
+  To compare an estimator from samples of two populations that follow a normal distribution, we set our statistic and the corresponding hypotheses to be the difference of the target variables.\bigskip
 
-  This technique for comparison testing is equally simple and extremely versatile.\bigskip
+  This technique for comparison testing is simple and extremely versatile.\bigskip
 
   Of course, there are cases where this approach does not apply. Next we will see a relatively common case where using the difference of the target variables would lead to a wrong inferential result.
 \end{frame}
