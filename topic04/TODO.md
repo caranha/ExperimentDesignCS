@@ -13,15 +13,5 @@
     in huge benchmark suites)
 
 - [ ] Outro
-  - Reminder about calendar
-  - Reminders about reports
-    - PDF format
-    - Report, not a collection of code and images.
-      - Description of the experiment
-      - Data gathering
-      - Analysis
-      - Conclusion
-    - Reproducibility
-    - Some report examples
-  - Comments from Surveys
-  - Code examples
+  - TODO: Example of good reports
+  - TODO: Code examples

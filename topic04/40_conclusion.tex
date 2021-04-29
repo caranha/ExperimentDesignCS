@@ -1,7 +1,7 @@
 \section{Conclusion}
 \begin{frame}
   \begin{center}
-    {\bf Conclusion}
+    {\bf Part III - Outro}
   \end{center}
 \end{frame}
 
@@ -10,7 +10,7 @@
     \item In the Last class, we described the Null Hypothesis testing method to perform {\bf Statistical Inference} on a population parameter from a single sample;
     \bigskip
 
-    \item In this cless, we generalize this procedure to a common situation, where we want to compare two samples regarding a population parameter;
+    \item In this class, we generalized this procedure to a common situation, where we want to compare two samples regarding a population parameter;
     \bigskip
 
     \item The {\bf Two Sample Hypothesis Testing} uses inference on a statistic based on the \structure{difference between sample estimators}.\bigskip
@@ -19,56 +19,99 @@
   \end{itemize}
 \end{frame}
 
-\subsection{Report 02}
-
-\begin{frame}{Report 2}{Design, Execute and Analize a Scientific Experiment}
-  In this report, you must choose a simple experiment to design, perform and analyze the results. Like in Report 1, your report must have:
+\begin{frame}{Calendar Reminder}
+  A quick reminder of future lectures:
   \begin{itemize}
-    \item {\bf Introduction}: Description of Scientific Question;
-    \item {\bf Experiment Design}: Plan of data collection \structure{and analysis}
-    \item {\bf Data Collection:} Report on the data and results;
-    \item {\bf Analysis:} \structure{Conclusion based on hypotheses and statistic};
+    \item Class 1: Introduction, What is Experimentation
+    \item Class 2: Point and Interval Indicators
+    \item Class 3: Inference Testing I
+    \item \alert{Class 4}: Inference Testing II
+    \item Class 5: R Tutorial / Review and Discussion of Project I
+    \item Class 6: Inference Testing III
+    \item Class 7: Case Studies: Inference Testing in CS papers
+    \item Class 8: Sample Size and Experiment Power
+    \item Class 9: Final Review
+    \item Class 10: Project II presentation
+    \item \alert{Final Exam}
   \end{itemize}
+\end{frame}
 
-  \begin{alertblock}{Important Notes}
+\begin{frame}{Report 1 Reminder}{Some important points about report 1}
+  \begin{itemize}
+    \item The report must be in PDF format. Do not forget your name and student ID!\medskip
+
+    \item The report is not only a collection of data and figures. General structure:
     \begin{itemize}
-      \item Use techniques of \structure{Statistical Inference} to analyze the results;
-      \item In the Experiment Design section, describe the hypotheses used, and the variable of interest;
-      \item In the Analysis section, do not forget to test the inferential assumptions (normality, variance, etc);
-      \item Remember to follow practices of reproducible science!
+      \item Description of the objective of the experiment;
+      \item Description of the data gathering (method, precautions, facts);
+      \item Data analysis (calculate necessary point and area estimators);
+      \item Discussion and conclusion about results; (limitations, etc)
+    \end{itemize}\medskip
+
+    \item Make sure your experiment is reproducible!
+    \begin{itemize}
+      \item Include enough information to replicate your data collection;
+      \item Include the data used in your analysis (csv file with observation values, etc);
+      \item Include the code used to generate your estimators and any figures;
+      \item \alert{Important:} Data files and scripts should be in separate files!
     \end{itemize}
-  \end{alertblock}
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{A note about data re-use}
-  Because this report is very similar to Report 01, a natural question is "Can I use the same data as in the first report, and just change the analysis?".\bigskip
+\begin{frame}{Comments from Attendance Survey}
 
-  \alert{The short answer is {\bf NO}}.\bigskip
-
-  The idea of experimental design is that the setup of the experiment, including the choice of variable, statistic, hypotheses, etc, should guide the data collection, not the other way around. \structure{Choosing the analysis {\bf after} data collection is an easy way to bias the results}.
-
-  \begin{exampleblock}{How you can use your initial data:}
-    You can, however, use your previous experiment data to guide the design of the new experiment. For example, you can use it to estimate variance, reasonable values for the hypotheses, etc.
-  \end{exampleblock}
 \end{frame}
 
-\subsection{Related Reading}
+% \subsection{Report 02}
+%
+% \begin{frame}{Report 2}{Design, Execute and Analize a Scientific Experiment}
+%   In this report, you must choose a simple experiment to design, perform and analyze the results. Like in Report 1, your report must have:
+%   \begin{itemize}
+%     \item {\bf Introduction}: Description of Scientific Question;
+%     \item {\bf Experiment Design}: Plan of data collection \structure{and analysis}
+%     \item {\bf Data Collection:} Report on the data and results;
+%     \item {\bf Analysis:} \structure{Conclusion based on hypotheses and statistic};
+%   \end{itemize}
+%
+%   \begin{alertblock}{Important Notes}
+%     \begin{itemize}
+%       \item Use techniques of \structure{Statistical Inference} to analyze the results;
+%       \item In the Experiment Design section, describe the hypotheses used, and the variable of interest;
+%       \item In the Analysis section, do not forget to test the inferential assumptions (normality, variance, etc);
+%       \item Remember to follow practices of reproducible science!
+%     \end{itemize}
+%   \end{alertblock}
+% \end{frame}
+%
+% \begin{frame}{A note about data re-use}
+%   Because this report is very similar to Report 01, a natural question is "Can I use the same data as in the first report, and just change the analysis?".\bigskip
+%
+%   \alert{The short answer is {\bf NO}}.\bigskip
+%
+%   The idea of experimental design is that the setup of the experiment, including the choice of variable, statistic, hypotheses, etc, should guide the data collection, not the other way around. \structure{Choosing the analysis {\bf after} data collection is an easy way to bias the results}.
+%
+%   \begin{exampleblock}{How you can use your initial data:}
+%     You can, however, use your previous experiment data to guide the design of the new experiment. For example, you can use it to estimate variance, reasonable values for the hypotheses, etc.
+%   \end{exampleblock}
+% \end{frame}
+
+% \subsection{Related Reading}
 % \begin{frame}{Related Reading}
 % \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Pre-lecture Comments}
-
-\begin{frame}{Comments on Report 01}
-  \begin{itemize}
-    \item I gave a quick look at the reports, but the full grading will take a bit of time, so please be patient;
-    \item In general, everyone did great reports, I am very happy with the results;
-    \item However, there were some common mistakes:
-    \begin{itemize}
-      \item Many people did not include code for reproducibility; or the data used in the analysis; \alert{Non-reproducible reports will receive a lower grade}.
-      \item A few students did not submit reports in PDF; \alert{The main file of the report MUST be a PDF}
-      \item One student asked to use secret experimental data in the report; \alert{It is acceptable, but I recommend against it in the future};
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \subsection{Pre-lecture Comments}
+%
+% \begin{frame}{Comments on Report 01}
+%   \begin{itemize}
+%     \item I gave a quick look at the reports, but the full grading will take a bit of time, so please be patient;
+%     \item In general, everyone did great reports, I am very happy with the results;
+%     \item However, there were some common mistakes:
+%     \begin{itemize}
+%       \item Many people did not include code for reproducibility; or the data used in the analysis; \alert{Non-reproducible reports will receive a lower grade}.
+%       \item A few students did not submit reports in PDF; \alert{The main file of the report MUST be a PDF}
+%       \item One student asked to use secret experimental data in the report; \alert{It is acceptable, but I recommend against it in the future};
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
