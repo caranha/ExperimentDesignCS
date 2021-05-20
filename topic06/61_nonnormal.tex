@@ -1,25 +1,25 @@
+
+
+
 \section{Non-normal Data}
 
 \begin{frame}
-
   \begin{center}
-    {\bf Part II -- Non-normal Data}
+    {\bf Part I -- Dealing with Non-normal Data}
   \end{center}
-
 \end{frame}
 
 \begin{frame}{Non Normality}{What is non-normality?}
   \begin{itemize}
-    \item Until now we studied methods which {\bf assume} that the experimental
-      data follows a normal distribution (or close enough).\bigskip
-    \item In many cases, this assumption {\bf does not hold}. In this condition,
+    \item Until now we studied test statistics which assume that the {\bf estimator} calculated from the sample comes from a normal distribution (or close enough).\bigskip
+    \item In some cases, this assumption {\bf does not hold}. In this condition,
       how can we perform the statistical analysis of the results?
   \end{itemize}
 \end{frame}
 
 \subsection{Motivation Example}
 
-\begin{frame}[fragile]{Non Normal data makes everything go wrong}{Weight Loss Example}
+\begin{frame}[fragile]{Non Normal data make everything different}{Weight Loss Example}
 A researcher is examining two different diets, {\bf Diet A} and {\bf Diet B},
 and wants to compare the weight loss by people following one diet or the other.
 They obtained the following data:
@@ -30,10 +30,16 @@ diet.b <- c(-8,-10,-12,-16,-18,-20,-21,-24,-26,-30)
 \end{verbatim}
 \bigskip
 
-As you can see, Diet A has one big outlier\footnote{Why does this outlier exist? Data input error? Very rare case?} that makes the data not normal. How much does this affect the statistical test?
+As you can see, Diet A has one big outlier that makes the data not normal. How much does this affect the statistical test?\bigskip
+
+{\smaller
+\begin{block}{Note!}
+  Remember that in real research we need to ask ourselves: Why does this outlier exist? Is it an error in the experiment? An error in the data input? A new discovery? This is part of research!
+\end{block}}
+
 \end{frame}
 
-\begin{frame}{Non Normal data makes everything go wrong}{Weight Loss Example}
+\begin{frame}{Non Normal data make everything different}{The visualization of the data is very different with and without the outlier.}
   \begin{columns}
     \column{.5\textwidth}
     Data with Outlier\\
@@ -47,7 +53,9 @@ As you can see, Diet A has one big outlier\footnote{Why does this outlier exist?
   overall. Except for that outlier. What happens with the T-test?
 \end{frame}
 
-\begin{frame}[fragile]{Non Normal data makes everything go wrong}{Weight Loss Example}
+\begin{frame}[fragile]{Non Normal data make everything different}
+  {The outlier influences the result of the t-test}
+
 The standard T-test does not indicate a difference between these samples,
 and even suggests that the mean of the first sample is lower!\bigskip
 
@@ -58,11 +66,9 @@ diet.b <- c(-8,-10,-12,-16,-18,-20,-21,-24,-26,-30)
 t.test(diet.a,diet.b)
 
 ##  Welch Two Sample t-test
-##
 ## data:  diet.a and diet.b
 ## t = -0.53945, df = 9.1048, p-value = 0.6025
-## alternative hypothesis: true difference in
-##                         means is not equal to 0
+## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -82.9774  50.9774
 ## sample estimates:
@@ -72,26 +78,28 @@ t.test(diet.a,diet.b)
 \end{frame}
 
 
-
-\begin{frame}{Non Normal data makes everything go wrong}{How can we solve this problem?}
+\begin{frame}{Non Normal data make everything different}{What can we do about it?}
 
   \begin{itemize}
-    \item Identify and remove the outlier?
+    \item Should we find and remove outliers?
     \begin{itemize}
       \item If the outlier is an experimental error, it makes sense to remove it;
-      \item On the other hand, maybe the outlier is some important effect worth being investigated;
+      \item Sometimes, the outlier is a important effect that needs to included in the analysis;
     \end{itemize}
     \bigskip
 
-    \item Alternatively, we could use a test that is not sensitive to the outlier.
+    \item It is also possible to use statistical methods that are not sensitive to the outlier.
   \end{itemize}
 
 \end{frame}
 
 
-\begin{frame}[fragile]{Non Normal data makes everything go wrong}{Weight Loss Example}
+\begin{frame}[fragile]{Non Normal data make everything different}{Non-parametric methods}
 
-A {\bf non-parametric test} will indicate a rejection of the null hypothesis of equality.
+{\bf Non-parametric tests} use statistics that come from \structure{non-parametric distributions}.
+\bigskip
+
+In this case, a non-parametric test will indicate the difference between the {\bf location shift} of the two samples (i.e., the first sample has smaller observations than the second).
 
 {\small
 \begin{verbatim}
@@ -103,8 +111,8 @@ wilcox.test(diet.a,diet.b)
 ##
 ## data:  diet.a and diet.b
 ## W = 82, p-value = 0.01469
-## alternative hypothesis: true location shift
-## is not equal to 0
+##
+## alternative hypothesis: true location shift is not equal to 0
 \end{verbatim}}
 \end{frame}
 
@@ -127,7 +135,7 @@ wilcox.test(diet.a,diet.b)
 
     \item \emph{Ordinal Data:}
     \begin{itemize}
-      \item Ordinal data is data that can be ordered and compared by some criteria, but you cannot apply traditional algebra on it (ex: subjective scores);
+      \item Ordinal data is data that can be ordered and compared by some criteria, but you cannot apply traditional algebra on it (ex: subjective scores);\hfill $\leftarrow$\alert{Important!}
     \end{itemize}
 
     \item \emph{Completely Non-numerical data}:
@@ -140,7 +148,9 @@ wilcox.test(diet.a,diet.b)
 
 \begin{frame}{Non-Normal Data Example: Random Processes}
 
-  Random processes in nature, such as plant growth or shell formation, are often seen to follow a normal distribution or bell curve. On the other hand, random artificial processes not always do.\bigskip
+  Random processes in nature, such as plant growth or shell formation, are often seen to follow a normal distribution or bell curve.\bigskip
+
+  On the other hand, {\bf random artificial processes not always follow a normal}.\bigskip
 
   \begin{itemize}
     \item In general, Pseudo Random Number Generators will use an {\bf Uniform Distribution}. Because of the CLT, aggregations of these results will tend to normal distributions.\medskip
@@ -151,24 +161,24 @@ wilcox.test(diet.a,diet.b)
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Non Normality}{Example: Likert Data}
+\begin{frame}{Non Normal Data Example: Likert Data}
 % TODO: Add a slide or section about how we should deal with
 % LIKERT data.
 
-\emph{Likert} data is often collected from surveys and interview questions. It
-is usually  composed of multiple questions with 5 or 7 options, ranged from
-"Strongly Agree" to "Strongly Disagree", or "Always" to "Never".\bigskip
+\structure{Likert} data is the format often collected from surveys and interview questions.\medskip
 
 \begin{center}
-  \includegraphics[width=0.9\textwidth]{../img/likert_scale}
+  \includegraphics[width=0.8\textwidth]{../img/likert_scale}
 \end{center}
 
-Why can't we treat likert data directly as numerical?
+Why can't we treat likert data directly as numerical? A few reasons:
 \begin{itemize}
   \item Values outside of the 0-5 range have no meaning;
-  \item Algebra on likert data has no meaning (Neutral+Disagree=?)
-  \item The difference between levels is not clear. Is "Agree" equally
-  distant from "Slightly Agree" and "Neutral"?
+  \item Algebra on likert data has no meaning (Example: Neutral$+$Disagree$=$???)
+  \item The difference between levels is not clear.
+  \begin{itemize}
+    \item Is "slightly agree" closer to "agree" or closer to "neutral"?
+  \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -177,14 +187,15 @@ Why can't we treat likert data directly as numerical?
 %   Some data may not have a clear numerical correspond
 % \end{ftstf}
 
-
-\begin{frame}{Non Normality}{Strategies for non normal data}
+\subsection{Strategies}
+\begin{frame}{Strategies for working with Non-Normal data}
   When our data does not follow the normality assumption, there are many different strategies that we can apply, depending on the type of data, and the type of normality violation:\bigskip
 
   \begin{itemize}
     \item {\bf Do Nothing}
     \begin{itemize}
-      \item We can remove outliers that break the normality assumption, or trust that test will be robust for small deviations of normality;
+      \item We can just remove the outliers that break the normality assumption;
+      \item We can trust that test will be robust for small deviations of normality;
     \end{itemize}
     \item {\bf Transform the Data}
       \begin{itemize}
@@ -192,9 +203,12 @@ Why can't we treat likert data directly as numerical?
       \end{itemize}
     \item {\bf Non parametric Testing}
     \begin{itemize}
-      \item Some statistical tests do not make the assumption of normality of the sampling distribution (in exchange for less power);
+      \item Some statistical tests do not assume normal data (in exchange for smaller power);
     \end{itemize}
     \item {\bf Look for a new statistics textbook}
+    \begin{itemize}
+      \item There are entire books dedicated to the analysis of non-normal data.
+    \end{itemize}
   \end{itemize}\bigskip
 
 \end{frame}
@@ -236,30 +250,33 @@ Why can't we treat likert data directly as numerical?
 % qqnorm(y)
 
 
-\section{Data Transformation}
+%\section{Data Transformation}
 
-\begin{frame}{Data Transformation}{Log Transformation}
-  We can apply certain transformations to "normalize" some data.
-  \begin{center}
-    \includegraphics[width=0.75\textwidth]{../img/lognormal_transformation}
-  \end{center}
-\end{frame}
-
-%% TODO: Add images here
-\begin{frame}[fragile]{Log Transformation}{}
+\begin{frame}[fragile]{Data Transformation}{Using Log Transformation to transform from Lognormal to Normal distribution}
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{center}
+      \includegraphics[width=1\textwidth]{../img/lognormal_transformation}
+    \end{center}
+    \column{0.4\textwidth}
+{\smaller
 \begin{verbatim}
-# Generate lognormal data
-#
-set.seed(17)
+# R Example of log transform:
+
+# example lognormal data
 z <- exp(rnorm(200, -2, 0.4))
 
 # Log transformation
-#
 y <- log(z)
+
+# Normal estimators
+# from lognormal data:
 mu.hat <- mean(y)
 sigma.hat <- sd(y)
-\end{verbatim}
+\end{verbatim}}
+  \end{columns}
 \end{frame}
+
 
 \begin{frame}{Data Transformation}{Skew Transformation}
   A strong skew in the sampling distribution can be a larger problem for the standard statistical tests. It is possible to remove these through data transformations:\bigskip
@@ -275,7 +292,7 @@ sigma.hat <- sd(y)
     \end{itemize}
   \end{itemize}\bigskip
 
-  {\bf Attention:} Logarithm of 0 and negative data is not defined, so you may need to add a constant before the transformation.
+  {\bf Attention:} The logarithm of 0 and negative data is not defined. If your data includes 0 or negatives, you may need to add a constant before the transformation.
 \end{frame}
 % TODO: Example of transformation to remove skew
 
@@ -285,8 +302,11 @@ sigma.hat <- sd(y)
   \begin{itemize}
     \item Pay attention when describing the analysis on a paper or report:
     \begin{itemize}
-      \item Any transformation used must be explained in the analysis;
-      \item The discussion of the results must be done on the transformed data as well as the original data;
+      \item When you talk about the analysis, you need to explain the transformation used;
+
+      \item When you discuss the results, you must consider the transformed data, as well as the original data;
+
+      \item In particular, the {\bf Meaningful difference} must be discussed on the original data;
     \end{itemize}\bigskip
 
     \item Beware that the hypotheses may not be equivalent!
@@ -299,11 +319,13 @@ sigma.hat <- sd(y)
 
 \subsection{Bootstrapping}
 
-\begin{frame}{Bootstrapping}{}
+\begin{frame}{Bootstrapping}{Using the CLT to make the data more normal}
 
   The Bootstrapping procedure is used to obtain an approximation of the "sample mean distribution" from the sample data.\bigskip
 
-  Following the properties of the Central Limit Theorem, the sample mean distribution will usually follow a normal distribution, even when the underlying distribution of observation values is not normal;
+  By the Central Limit Theorem, the sample mean distribution of a random variable will usually follow a normal distribution; even when the underlying distribution of observation values is not normal;\bigskip
+
+  So how can we use this to transform non-normal data?
 \end{frame}
 
 \begin{frame}{The Bootstrapping Procedure}
@@ -311,49 +333,44 @@ sigma.hat <- sd(y)
     \item Take an initial sample with $m$ observations;
     \item Create $n$ {\bf bootstrap samples} by selecting $m_b < m$ from the initial sample $n$ times;
     \item Calculate the mean of each bootstrap sample.
-    \item The set of bootstrap sample means are your {\bf bootstrapped data};
 
     \begin{center}
-      \includegraphics[width=.8\textwidth]{../img/bootstrap_lowres}
+      \includegraphics[width=.7\textwidth]{../img/bootstrap_lowres}
+      % TODO: Redo picture or find source.
     \end{center}
   \end{itemize}
 \end{frame}
 
-% TODO: Code Example
 
 
 \begin{frame}[fragile]{Generating Bootstrapped Data}
-  The R package "boot" creates bootstrapped data, c.i.s, and tests.
+  {R Package "boot" for bootstrapping, confidence intervals, and tests.}
   \begin{columns}[T]
     \column{0.7\textwidth}
     {\smaller
 \begin{verbatim}
+% Non-normal data:
 > city
-     u   x
-1  138 143
-2   93 104
-3   61  69
-4  179 260
-5   48  75
-6   37  63
-7   29  50
-8   23  48
-9   30 111
-10   2  50
+    1    2    3    4    5    6    7    8    9   10
+u 138   93   61  179   48   37   29   23   30    2
+x 143  104   69  260   75   63   50   48  111   50
 
-> library(boot)
+% We are interested in the ratio of u and x
 > ratio <- function(d, w) sum(d$x * w) / sum (d$u * w)
+
+% Using library boot to create bootstrapped data:
+> library(boot)
 > bootstrap <- boot(city, ratio, R = 999, stype = "w")
-> city.bootstrap <- bootstrap[[2]]
+> bootstrap.city <- bootstrap[[2]]
 \end{verbatim}
     }
     \column{0.3\textwidth}
-    \includegraphics[width=1\textwidth]{../img/bootstrap_original}
-    \includegraphics[width=1\textwidth]{../img/bootstrap_histogram}
+    \includegraphics[width=.9\textwidth]{../img/bootstrap_original}
+    \includegraphics[width=.9\textwidth]{../img/bootstrap_histogram}
   \end{columns}
 \end{frame}
 
-\section{Non-Parametric Tests}
+\subsection{Non-Parametric Tests}
 
 \begin{frame}{Non Parametric Tests}{}
   Non-parametric Tests involve statistics that do not assume normality from the population distribution.\bigskip
@@ -372,7 +389,7 @@ sigma.hat <- sd(y)
 %   % TODO: Generally explain the basic idea of non-parametric tests
 % \end{frame}
 
-\subsection{1 or 2 samples}
+\subsection{Non-Parametric test, 1 or 2 samples}
 
 % \begin{frame}{Non Parametric Tests}{One or two Samples}
 %   \begin{itemize}
@@ -389,7 +406,7 @@ sigma.hat <- sd(y)
 
 \begin{frame}{Mann-Whitney U-test}{}
   \begin{center}
-    \includegraphics[width=.6\textwidth]{../img/MannWhitneyU}
+    \includegraphics[width=.5\textwidth]{../img/MannWhitneyU}
   \end{center}
 
   \begin{itemize}
@@ -412,37 +429,38 @@ sigma.hat <- sd(y)
 \end{frame}
 
 
-\begin{frame}[fragile]{Wilcoxon Signed Rank Test}{R example}
+\begin{frame}[fragile]{Wilcoxon Signed Rank Test}{R code example}
 
 {\smaller
 \begin{verbatim}
 ## Hollander & Wolfe (1973), 29f.
-## Hamilton depression scale factor measurements in 9
-## patients with mixed anxiety and depression, taken at
-## the first (x) and second (y) visit after initiation
+## Hamilton depression scale factor measurements in 9 patients with mixed anxiety
+## and depression, taken at the first (x) and second (y) visit after initiation
 ## of a therapy (administration of a tranquilizer).
 
-x <- c(1.83,  0.50,  1.62,  2.48, 1.68, 1.88,
-       1.55, 3.06, 1.30)
-y <- c(0.878, 0.647, 0.598, 2.05, 1.06, 1.29,
-       1.06, 3.14, 1.29)
+# Data:
+% x <- c(1.83,  0.50,  1.62,  2.48, 1.68, 1.88, 1.55, 3.06, 1.30)
+% y <- c(0.878, 0.647, 0.598, 2.05, 1.06, 1.29, 1.06, 3.14, 1.29)
 
-wilcox.test(x, y, paired = TRUE, alternative = "greater")
+# Running the test:
+% wilcox.test(x, y, paired = TRUE, alternative = "greater")
 
 Wilcoxon signed rank test
 data:  x and y
 V = 40, p-value = 0.01953
-alternative hypothesis: true location shift
-is greater than 0
+alternative hypothesis: true location shift is greater than 0
 \end{verbatim}}
 \end{frame}
 
-%% TODO: Move this to the multiple samples (ANOVA) lecture
-% \subsection{Multiple Samples}
-%
-% \begin{ftstf}{Non Parametric Tests}{Multiple Samples}
-%   \begin{itemize}
-%     \item unpaired test: Kurskal-Wallis test
-%     \item paired test: Friedman test
-%   \end{itemize}
-% \end{ftstf}
+\subsection{Recommended Reading}
+\begin{frame}{Recommended Reading}{}
+
+  {\smaller
+  \begin{itemize}
+    \item Kristin L Sainani, "Dealing with Non-Normal Data."\\ \url{https://onlinelibrary.wiley.com/doi/full/10.1016/j.pmrj.2012.10.013}
+    \item Feng et al., "Log transformation and its implication for data analysis."\\ \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4120293/}
+    \item Bommae Kim, "Should I always Transform My Variables to Make them Normal?"\\ \url{https://data.library.virginia.edu/normality-assumption/}
+%    \item Hideyuki Takagi, "Tutorial on Statistical Tests"\\ \url{http://www.design.kyushu-u.ac.jp/~takagi/TAKAGI/downloadablefile.html\#StatisticalTests}
+  \end{itemize}}
+
+\end{frame}

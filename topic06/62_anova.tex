@@ -1,34 +1,86 @@
+\section{Multiple-Sample Testing}
 
-
-
-\section{ANOVA}
-
-
-\begin{frame}{Comparison of multiple means}{Introduction}
-
-In previous lectures, we have (hopefully) developed a solid understanding of the main concepts associated with comparing the means of two groups;\bigskip
-
-There are many cases, however, in which one may want to perform inference about differences of the means of multiple populations;\bigskip
-
-\begin{columns}
-  \column{.7\textwidth}
-  We will develop the main concepts and ideas related with this kind of test by examining a simple example, related to a paper manufacturing operation.
-
-  \column{.3\textwidth}
-  \includegraphics[width=\textwidth]{../img/papermill.jpg}
-  \ppagenote{Paper Mill Image from \url{http://goo.gl/xYVW0M}}
-\end{columns}
+\begin{frame}{}
+  \centering
+  {\bf Part II -- Multiple Sample Testing}
 \end{frame}
 
-\subsection{Motivating Example}
-  \begin{frame}{Example: paper manufacturing}{Problem definition}
+\subsection{Motivation}
+
+\begin{frame}{Multiple Comparison Examples}
+  There are many situations in which we are interested in comparing more than two samples at the same time, to test if they belong to the same population or not.\bigskip
+
+  \begin{itemize}
+    \item {\bf Parameter Tuning}: We want to test multiple sets of parameters for one algorithm (ex: Compare a network with $N_1$, $N_2$, $N_3$ or $N_4$ layers);
+    \item {\bf Comparison of Multiple Algorithms}: Compare a proposed algorithm with four different algorithms from the state-of-the-art;
+  \end{itemize}\bigskip
+
+  Can we use the {\bf t-test} from previous class in this case?\\
+  (compare A vs B, A vs C, A vs D, etc...)
+\end{frame}
+
+\begin{frame}{Multiple Comparison}{A common mistake: Repeated Testing}
+
+  A \alert{common mistake} is to perform "multiple pairwise testing": Test A against B, A against C, A against D, ... etc. And report the result for each comparison.\bigskip
+
+  What is the problem with that?\bigskip
+
+  Remember that every test has a probability {\bf TYPE I Error}. (test parameter $\alpha$).\bigskip
+
+  When we repeat the same test many times, these errors are {\bf multiplied!}.
+\end{frame}
+
+\begin{frame}{A common mistake: Repeated Testing}{Compound Probabilities}
+  \begin{itemize}
+    \item Probability of Type I error on one test with ($\alpha = 0.05$):\\
+     $1 - 0.95 = 0.05$
+    \item Probability of Type I error on TWO tests with ($\alpha = 0.05$):\\
+     $1 - 0.95\times 0.95 = 0.09$
+    \item Probability of Type I error on SIX tests with ($\alpha = 0.05$):\\
+     $1 - 0.95^{6} = 0.26$
+    \item Probability of Type I error on TWENTY tests with ($\alpha = 0.05$):\\
+     $1 - 0.95^{20} = 0.64$
+  \end{itemize}\bigskip
+
+  See also: \url{https://xkcd.com/882/}
+\end{frame}
+
+
+% \begin{frame}{Lecture Outline}
+%   To avoid these problems, we need to use specific techniques for experiment designs involving multiple comparisons.\bigskip
+%
+%   In this lecture, we will study:
+%   \begin{itemize}
+%     \item ANOVA: A statistical test to detect differences in {\bf sets} of samples;
+%     \item Post-hoc comparisons: Techniques for making statistical inferences after the ANOVA test.
+%   \end{itemize}\bigskip
+%
+%   Of course, there are other statistics and techniques not covered in this lecture.
+% \end{frame}
+
+
+
+
+\subsection{Multiple Comparison Example}
+
+\begin{frame}{Example: paper manufacturing}{Problem definition}
+\begin{columns}
+  \column{.7\textwidth}
   Tensile strength (TS) is an important characteristic for certain types of paper for industrial use;
   \bigskip
 
   A reasonable conjecture is that this characteristic is influenced by the kind of wood fiber used in the manufacturing process.
   \bigskip
 
-  The process engineer wants to investigate whether four different wood fibers result in papers with relevant differences of TS, using a pilot plant as his experimental unit.\footnote{Example adapted from Montgomery \& Runger (2010), Ch. 13.}
+  The process engineer wants to investigate whether four different wood fibers result in papers with relevant differences of TS, using a pilot plant as his experimental unit.
+
+  \column{.3\textwidth}
+    \includegraphics[width=\textwidth]{../img/papermill.jpg}
+    \ppagenote{Paper Mill Image from \url{http://goo.gl/xYVW0M}}
+  \end{columns}
+
+  \vfill
+{\tiny (Example adapted from Montgomery \& Runger (2010), Ch. 13.)}
 \end{frame}
 
 \begin{frame}{Example: paper manufacturing}{Problem definition}
@@ -36,7 +88,7 @@ There are many cases, however, in which one may want to perform inference about 
 Suppose that the total budget allocated for the experiment allows only six production runs for each kind of wood fiber.
 \bigskip
 
-Under these specifications, the experiment has a single experimental \textit{factor} (\textit{wood fiber}) with $a = 4$ \textit{levels} (fiber types \textit{A}, \textit{B}, \textit{C} and \textit{D}) and $n = 6$ \textit{replicates} at each level.
+Under these specifications, the experiment has a single {\bf experimental factor} (\textit{wood fiber}) with $a = 4$ \textit{levels} (fiber types \textit{A}, \textit{B}, \textit{C} and \textit{D}) and $n = 6$ \textit{replicates} at each level.
 \bigskip
 
 The response variable will be the tensile strength of paper (measured, e.g., in kPa). The engineering team is interested in finding out whether any fiber type leads to an increase in the mean TS value of the paper.
@@ -52,19 +104,22 @@ The minimum difference of practical meaning is defined as $5 kPa$, and a reasona
   It is always a good idea first to perform exploratory data analysis.\medskip
 
   As we are interested in the differences between the four wood types, we plot each of them as a boxplot and observe the differences.
+
+  {\smaller
+  \begin{verbatim}
+> paper <- read.table(file = "paper_strength.csv",
++                     header = TRUE, sep    = ",")
+
+> library(ggplot2)
+> ggplot(paper, aes(x = Fiber.type, y = TS.kPa,
++                   fill = Fiber.type)) +
++        geom_boxplot() + geom_point()
+  \end{verbatim}}
+
   \column{0.4\textwidth}
   \includegraphics[width=1\textwidth]{../img/paperboxplot.png}
 \end{columns}
 
-{\tiny
-\begin{verbatim}
-> paper <- read.table(file   = "../data files/paper_strength.csv",
-+                     header = TRUE, sep    = ",")
-
-> library(ggplot2)
-> ggplot(paper, aes(x = Fiber.type, y = TS.kPa, fill = Fiber.type)) +
-+        geom_boxplot() + geom_point()
-\end{verbatim}}
 \end{frame}
 
 
@@ -90,6 +145,7 @@ The minimum difference of practical meaning is defined as $5 kPa$, and a reasona
 % %=====
 %
 
+\subsection{Statistical Modeling}
 \begin{frame}
 {Example: paper manufacturing}
 {Statistical model}
@@ -109,9 +165,8 @@ y_{ij} = \mu + \tau_i + \epsilon_{ij}\begin{cases}i=1,\ldots,a\\j=1,\ldots,n\end
 
 %=====
 
-\begin{frame}
-{Example: paper manufacturing}
-{Statistical model}
+\begin{frame}{Example: paper manufacturing}
+
 If these assumptions are correct, the populations are expected to be distributed as:
 
 \centering\includegraphics[width=0.7\textwidth]{../img/papermodels.png}
@@ -139,7 +194,7 @@ This approach to modeling the mean effects of specific factor levels is known as
 
 This approach is appropriate to testing hypotheses in situations when factor levels are arbitrarily defined by the experimenter;\bigskip
 
-For these cases, the inference is made over the mean values for each level, and cannot be extended to similar levels that were not tested (e.g., other types of wood fiber);\bigskip
+For these cases, the inference is made over the mean values for each level, and {\bf cannot be extended to similar levels that were not tested} (e.g., other types of wood fiber);\bigskip
 
 Other situations may require different kinds of modeling, such as \textit{random} or \textit{mixed effects models}, but these will not be explored here.
 \end{frame}
@@ -183,17 +238,21 @@ SS_T = \sum_{i=1}^{a}{\sum_{j=1}^{n}{\left(y_{ij} - \bar{y}_{\bullet\bullet}\rig
 \begin{frame}
 {The Fixed Effects Model}
 {Development}
-Dividing the sums of squares by their respective number of degrees of freedom yields quantities known as \textit{mean squares}.
+Dividing the sums of squares by their respective number of degrees of freedom gives a quantity known as \textit{mean squares}.
 \bigskip
 
 The relevant means squares for our test will be the \textit{levels mean square} and the \textit{residual mean square}:
 \begin{equation*}
-MS_E = \frac{SS_E}{a\left(n-1\right)}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \
 MS_{\mbox{\tiny\textit{Levels}}} = \frac{SS_{\mbox{\tiny\textit{Levels}}}}{a-1}
+\ \ \ \ \ \ \ \ \ \ \ \ \ \
+MS_E = \frac{SS_E}{a\left(n-1\right)}
 \end{equation*}
+
 The expected values of these quantities are:
 \begin{equation*}
-E\left[MS_E\right] = \sigma^2\ \ \ \ \ \ \ \ \ \ \ \ \ \ E\left[MS_{\mbox{\tiny\textit{Levels}}}\right] = \sigma^2 + \frac{n\sum_{i=1}^{a}{\tau_i^2}}{a-1}
+E\left[MS_{\mbox{\tiny\textit{Levels}}}\right] = \sigma^2 + \frac{n\sum_{i=1}^{a}{\tau_i^2}}{a-1}
+\ \ \ \ \ \ \ \ \ \ \ \ \ \
+E\left[MS_E\right] = \sigma^2
 \end{equation*}
 
 \end{frame}
@@ -204,7 +263,9 @@ E\left[MS_E\right] = \sigma^2\ \ \ \ \ \ \ \ \ \ \ \ \ \ E\left[MS_{\mbox{\tiny\
 {The Fixed Effects Model}
 {Development}
 \begin{equation*}
-E\left[MS_E\right] = \sigma^2\ \ \ \ \ \ \ \ \ \ \ \ \ \ E\left[MS_{\mbox{\tiny\textit{Levels}}}\right] = \sigma^2 + \frac{n\sum_{i=1}^{a}{\tau_i^2}}{a-1}
+E\left[MS_{\mbox{\tiny\textit{Levels}}}\right] = \sigma^2 + \frac{n\sum_{i=1}^{a}{\tau_i^2}}{a-1}
+\ \ \ \ \ \ \ \ \ \ \ \ \ \
+E\left[MS_E\right] = \sigma^2
 \end{equation*}
 
 Notice that $MS_E$ is an unbiased estimator for the common variance of the residuals, while $MS_{\mbox{\tiny\textit{Levels}}}$ is biased by a term that is proportional to the squared values of the $\tau_i$ coefficients.
@@ -234,16 +295,15 @@ If $H_0$ is false, the expected value of $MS_{\mbox{\tiny\textit{Levels}}}$ is l
 %
 % %=====
 %
-\subsection{Example Application}
+\subsection{Performing the F-test}
+
 \begin{frame}[fragile]
 {Example: paper manufacturing}
 {Computational analysis}
 
 {\smaller
 \begin{verbatim}
-> my.model <- aov(TS.kPa ~ Fiber.type,
-+              data = paper)
->
+> my.model <- aov(TS.kPa ~ Fiber.type, data = paper)
 > summary.aov(my.model)
 
 Df Sum Sq Mean Sq F value   Pr(>F)
@@ -287,7 +347,7 @@ For this analysis to be complete, we still need to answer two questions:
 \begin{frame}
 {Assumptions}
 {Model validation}
-As mentioned earlier, the ANOVA model is based on three assumptions on the behavior of the residuals:
+The ANOVA model is based on three assumptions on the behavior of the residuals:
 \begin{itemize}
   \item \textit{Independence};
   \item \textit{Homoscedasticity}, i.e., equality of variances across groups;
@@ -321,12 +381,30 @@ W = 0.9722, p-value = 0.7225
 > qqPlot(my.model$residuals,
 pch = 16, lwd = 3, cex = 2, las = 1)
 \end{verbatim}}
-    The ANOVA is relatively robust to moderate violations of normality, as long as the other assumptions are verified (or the sample size is large enough).
+
   \column{.4\textwidth}
     \includegraphics[width=1\textwidth]{../img/paperqq.png}
   \end{columns}
 \end{frame}
 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Assumptions -- Model Validation}{What if the residuals do not follow a normal distribution?}
+
+  The ANOVA is relatively robust to moderate violations of normality, as long as the other assumptions are verified (or the sample size is large enough).\bigskip
+
+  If the sample size is not large, or the other assumptions cannot be verified, then a non-parametric test of multiple samples should be considered.\bigskip
+
+  There are several tests, but you should begin here:
+  \begin{itemize}
+    \item Unpaired non-parametric test for multiple samples: Kurskal-Wallis test
+    \item Paired non-parametric test for multiple samples: Friedman test
+  \end{itemize}
+\end{frame}
+
+
+
+
 % %=====
 %
 \begin{frame}[fragile]
@@ -338,23 +416,19 @@ pch = 16, lwd = 3, cex = 2, las = 1)
 
   {\smaller
 \begin{verbatim}
-> fligner.test(TS_kPa~Hardwood,
-+              data = paper)
-Fligner-Killeen test of homogeneity of
-variances
+> fligner.test(TS_kPa~Hardwood, data = paper)
+Fligner-Killeen test of homogeneity of variances
 data:  data:  TS.kPa by Fiber.type
 Fligner-Killeen:
-med chi-squared = 1.0622, df = 3,
-p-value = 0.7862
+med chi-squared = 1.0622, df = 3, p-value = 0.7862
 > plot(x = my.model$fitted.values,
 +      y = my.model$residuals)
-
 \end{verbatim}}
 
   \column{.4\textwidth}
-  \includegraphics[width=\textwidth]{../img/papervar.png}
+  \includegraphics[width=.9\textwidth]{../img/papervar.png}
 \end{columns}
-ANOVA is relatively robust to modest violations of homoscedasticity, as far as the sample is \textit{balanced}.
+ANOVA is relatively robust to modest violations of homoscedasticity, as long as the sample is \textit{balanced}.
 
 \end{frame}
 %
@@ -383,7 +457,7 @@ To test for serial correlations, we can use the Durbin-Watson test, but that onl
 %+        col  = as.numeric(paper[,1]), ...)
 %\end{rcode}
 
-The ANOVA can be quite sensitive to violations of independence. Randomization and attention to possibly influential factors can help avoiding violations of this assumption.
+\alert{The ANOVA can be quite sensitive to violations of independence}. Randomization and attention to possibly influential factors can help avoiding violations of this assumption.
 %\begin{tikzpicture}[remember picture,overlay]
 %\node[anchor=north east,yshift=-78pt,xshift=0pt] at (current page.north east) {\includegraphics[width=.43\textwidth]{../Images/paperind.png}};
 %\end{tikzpicture}
@@ -460,167 +534,167 @@ Two of the most common (and most conservative) are the Bonferroni and the \v{S}i
 %
 % %=====
 %
-\begin{frame}
-{Multiple comparisons}
-{All vs. all}
-Pairwise comparisons of the \textit{all vs. all} type appear whenever we are simply interested in detecting which levels are significantly different from which, without any prior information or special interest in one specific level or ordering.\bigskip
-
-In these cases, the number of comparisons is $K=a(a-1)/2$, where $a$ is the number of levels.\bigskip
-
-The sample size calculations for this case can follow the same equations used for the t test for two independent samples, but with the $\alpha$ value corrected for multiple hypotheses and the number of degrees of freedom of the reference distribution equal to those of the residual term in the ANOVA, i.e., $a(n-1)$.
-\end{frame}
+% \begin{frame}
+% {Multiple comparisons}
+% {All vs. all}
+% Pairwise comparisons of the \textit{all vs. all} type appear whenever we are simply interested in detecting which levels are significantly different from which, without any prior information or special interest in one specific level or ordering.\bigskip
 %
-% %=====
+% In these cases, the number of comparisons is $K=a(a-1)/2$, where $a$ is the number of levels.\bigskip
 %
-\begin{frame}
-{Multiple comparisons}
-{All vs. all}
-For performing \textit{all vs. all} multiple comparisons, a common alternative is to use Tukey's \textit{Honest Significant Difference} (HSD) approach. This method is generally chosen because it provides a slightly higher power when compared to the Bonferroni correction\footnote[4]{\tiny The difference is due to Tukey's approach using a modified value for the $t_{\beta}$ term in the power calculations. See Mathews (2011) and Montgomery (2010) for details.}.\bigskip
-
-A simple approach is to calculate the sample size using Bonferroni-corrected $\alpha$-values (for simplicity), and performing the tests using Tukey's HSD corrections (for increased power):
-
-\begin{equation*}
-n \approxeq 2\left(\frac{\left(t_{(\alpha_{adj}/2)}+t_{\beta}\right)\hat{\sigma}}{\delta^*}\right)^2
-\end{equation*}
-\noindent with $a(n-1)$ degrees of freedom for the $t$ variables.
-\end{frame}
+% The sample size calculations for this case can follow the same equations used for the t test for two independent samples, but with the $\alpha$ value corrected for multiple hypotheses and the number of degrees of freedom of the reference distribution equal to those of the residual term in the ANOVA, i.e., $a(n-1)$.
+% \end{frame}
+% %
+% % %=====
+% %
+% \begin{frame}
+% {Multiple comparisons}
+% {All vs. all}
+% For performing \textit{all vs. all} multiple comparisons, a common alternative is to use Tukey's \textit{Honest Significant Difference} (HSD) approach. This method is generally chosen because it provides a slightly higher power when compared to the Bonferroni correction\footnote[4]{\tiny The difference is due to Tukey's approach using a modified value for the $t_{\beta}$ term in the power calculations. See Mathews (2011) and Montgomery (2010) for details.}.\bigskip
 %
-% %=====
+% A simple approach is to calculate the sample size using Bonferroni-corrected $\alpha$-values (for simplicity), and performing the tests using Tukey's HSD corrections (for increased power):
 %
-\begin{frame}[fragile]
-{Multiple comparisons}
-{All vs. all}
-%Suppose that was the case for our wood fiber example:
-
-\begin{columns}
-  \column{0.6\textwidth}
-{\smaller
-\begin{verbatim}
-> library(multcomp)
-> mc1    <- glht(my.model, linfct = mcp(Fiber.type = "Tukey"))
-> mc1_CI <- confint(mc1, level = 0.95)
-
-Simultaneous Confidence Intervals
-Multiple Comparisons of Means:
-95% family-wise confidence level
-
-Linear Hypotheses:
-           Estimate lwr     upr
-B - A == 0 -1.9867  -4.6478  0.6745
-C - A == 0  3.6500   0.9889  6.3111
-D - A == 0  2.2333  -0.4278  4.8945
-C - B == 0  5.6367   2.9755  8.2978
-D - B == 0  4.2200   1.5589  6.8811
-D - C == 0 -1.4167  -4.0778  1.2445
-> plot(mc1_CI)
-\end{verbatim}}
-\column{.4\textwidth}
-\includegraphics[width=1\textwidth]{../img/papertukey.png}
-\end{columns}
-\end{frame}
+% \begin{equation*}
+% n \approxeq 2\left(\frac{\left(t_{(\alpha_{adj}/2)}+t_{\beta}\right)\hat{\sigma}}{\delta^*}\right)^2
+% \end{equation*}
+% \noindent with $a(n-1)$ degrees of freedom for the $t$ variables.
+% \end{frame}
+% %
+% % %=====
+% %
+% \begin{frame}[fragile]
+% {Multiple comparisons}
+% {All vs. all}
+% %Suppose that was the case for our wood fiber example:
 %
-% %=====
+% \begin{columns}
+%   \column{0.6\textwidth}
+% {\smaller
+% \begin{verbatim}
+% > library(multcomp)
+% > mc1    <- glht(my.model, linfct = mcp(Fiber.type = "Tukey"))
+% > mc1_CI <- confint(mc1, level = 0.95)
 %
-\begin{frame}
-{Multiple comparisons}
-{All vs. one}
-Pairwise comparisons of the \textit{all vs. one} type usually emerge in the context of comparing levels against a control:
-
-\begin{itemize}
-  \item Comparison of a proposed approach vs. existing ones;
-  \item Comparison of different approaches vs. a standard one (or a placebo-like group);
-\end{itemize}
-In these cases, the number of comparisons is $K = a-1$, where $a$ is the number of levels. Each test can again be performed (at least in principle) using the $t_0$ test statistic:
-
-\begin{equation*}
-t^i_0 = \frac{\bar{y}_i - \bar{y}_0}{\hat{\sigma}\sqrt{\left(\frac{1}{n_i}+\frac{1}{n_0}\right)}}
-\end{equation*}
-\end{frame}
+% Simultaneous Confidence Intervals
+% Multiple Comparisons of Means:
+% 95% family-wise confidence level
 %
-% %=====
+% Linear Hypotheses:
+%            Estimate lwr     upr
+% B - A == 0 -1.9867  -4.6478  0.6745
+% C - A == 0  3.6500   0.9889  6.3111
+% D - A == 0  2.2333  -0.4278  4.8945
+% C - B == 0  5.6367   2.9755  8.2978
+% D - B == 0  4.2200   1.5589  6.8811
+% D - C == 0 -1.4167  -4.0778  1.2445
+% > plot(mc1_CI)
+% \end{verbatim}}
+% \column{.4\textwidth}
+% \includegraphics[width=1\textwidth]{../img/papertukey.png}
+% \end{columns}
+% \end{frame}
+% %
+% % %=====
+% %
+% \begin{frame}
+% {Multiple comparisons}
+% {All vs. one}
+% Pairwise comparisons of the \textit{all vs. one} type usually emerge in the context of comparing levels against a control:
 %
-\begin{frame}
-{Multiple comparisons}
-{All vs. one}
-There are two main approaches to calculating sample size for \textit{all vs. one} comparisons:
-
-\begin{itemize}
-  \item Balanced design;
-  \item Optimal allocation of units.
-\end{itemize}
-
-With a balanced design (that is, all levels have the same number of observations), the calculation of $n$ follows the same approach as the \textit{all vs. all} comparisons, but correcting $\alpha$ for only $a-1$ comparisons.\bigskip
-
-For the optimal allocation of units, an unbalanced design is used.
-\end{frame}
+% \begin{itemize}
+%   \item Comparison of a proposed approach vs. existing ones;
+%   \item Comparison of different approaches vs. a standard one (or a placebo-like group);
+% \end{itemize}
+% In these cases, the number of comparisons is $K = a-1$, where $a$ is the number of levels. Each test can again be performed (at least in principle) using the $t_0$ test statistic:
 %
-% %=====
+% \begin{equation*}
+% t^i_0 = \frac{\bar{y}_i - \bar{y}_0}{\hat{\sigma}\sqrt{\left(\frac{1}{n_i}+\frac{1}{n_0}\right)}}
+% \end{equation*}
+% \end{frame}
+% %
+% % %=====
+% %
+% \begin{frame}
+% {Multiple comparisons}
+% {All vs. one}
+% There are two main approaches to calculating sample size for \textit{all vs. one} comparisons:
 %
-\begin{frame}
-{Multiple comparisons}
-{All vs. one - optimal allocation}
-
-As several levels will be compared against the single control group, the relative importance of the latter is greater and therefore it should have a larger sample size.
-\bigskip
-
-To maximize the power of this multiple comparisons procedure, the sample size of the control group should be:
-\begin{equation*}
-n_0 = n_i\sqrt{K}
-\end{equation*}
-
-\noindent where $n_i$ is the common sample size for the non-control levels:
-\begin{equation*}
-n_i \approxeq \left(1 + \frac{1}{\sqrt{K}}\right)\left(\frac{(t_{(\alpha_{adj}/2)}+t_{\beta})\hat{\sigma}}{\delta^*}\right)^2
-\end{equation*}
-\footnote{A good free software for doing sample size calculations and power analysis in nontrivial contexts such as this one is G*Power 3, \url{http://www.gpower.hhu.de/} . It is also relatively simple to implement these calculations in R.}
-\end{frame}
+% \begin{itemize}
+%   \item Balanced design;
+%   \item Optimal allocation of units.
+% \end{itemize}
 %
-% %=====
+% With a balanced design (that is, all levels have the same number of observations), the calculation of $n$ follows the same approach as the \textit{all vs. all} comparisons, but correcting $\alpha$ for only $a-1$ comparisons.\bigskip
 %
-\begin{frame}
-{Multiple comparisons}
-{All vs. one - \textbf{Dunnett's test}}
-As in the case of \textit{all vs. all} comparisons, there is a test that is usually employed for its superior sensitivity: Dunnett's test.\bigskip
-
-The control group sample size $n_0$ calculated assuming that Bonferroni-corrected t-tests will be used is slightly overestimated in relation to the required $n_0$ for Dunnett's test, but in practice the differences are small enough not to matter;
-\end{frame}
+% For the optimal allocation of units, an unbalanced design is used.
+% \end{frame}
+% %
+% % %=====
+% %
+% \begin{frame}
+% {Multiple comparisons}
+% {All vs. one - optimal allocation}
 %
-% %=====
+% As several levels will be compared against the single control group, the relative importance of the latter is greater and therefore it should have a larger sample size.
+% \bigskip
 %
-\begin{frame}[fragile]
-{Multiple comparisons}
-{All vs. one}
-Assuming that in our example the \textit{B} level is the standard one, against which the other ones are to be compared:
-
-\begin{columns}
-  \column{.6\textwidth}
-  {\tiny
-\begin{verbatim}
-> paper$Fiber.type <- relevel(paper$Fiber.type,
-                              ref = "B")
-> model2           <- aov(TS.kPa ~ Fiber.type,
-                          data = paper)
-> mc2              <- glht(model2,
-                       linfct = mcp(Fiber.type = "Dunnett"))
-> mc2_CI           <- confint(mc2, level = 0.95)
-
-Simultaneous Confidence Intervals
-Multiple Comparisons of Means: Dunnett Contrasts
-95% family-wise confidence level
-Linear Hypotheses:
-Estimate lwr     upr
-A - B == 0  1.9867  -0.4275  4.4008
-C - B == 0  5.6367   3.2225  8.0508
-D - B == 0  4.2200   1.8058  6.6342
-
-> plot(mc2_CI)
-\end{verbatim}}
-  \column{.4\textwidth}
-\includegraphics[width=1\textwidth]{../img/paperdunnett.png}
-\end{columns}
-\end{frame}
+% To maximize the power of this multiple comparisons procedure, the sample size of the control group should be:
+% \begin{equation*}
+% n_0 = n_i\sqrt{K}
+% \end{equation*}
 %
-% %=====
+% \noindent where $n_i$ is the common sample size for the non-control levels:
+% \begin{equation*}
+% n_i \approxeq \left(1 + \frac{1}{\sqrt{K}}\right)\left(\frac{(t_{(\alpha_{adj}/2)}+t_{\beta})\hat{\sigma}}{\delta^*}\right)^2
+% \end{equation*}
+% \footnote{A good free software for doing sample size calculations and power analysis in nontrivial contexts such as this one is G*Power 3, \url{http://www.gpower.hhu.de/} . It is also relatively simple to implement these calculations in R.}
+% \end{frame}
+% %
+% % %=====
+% %
+% \begin{frame}
+% {Multiple comparisons}
+% {All vs. one - \textbf{Dunnett's test}}
+% As in the case of \textit{all vs. all} comparisons, there is a test that is usually employed for its superior sensitivity: Dunnett's test.\bigskip
+%
+% The control group sample size $n_0$ calculated assuming that Bonferroni-corrected t-tests will be used is slightly overestimated in relation to the required $n_0$ for Dunnett's test, but in practice the differences are small enough not to matter;
+% \end{frame}
+% %
+% % %=====
+% %
+% \begin{frame}[fragile]
+% {Multiple comparisons}
+% {All vs. one}
+% Assuming that in our example the \textit{B} level is the standard one, against which the other ones are to be compared:
+%
+% \begin{columns}
+%   \column{.6\textwidth}
+%   {\tiny
+% \begin{verbatim}
+% > paper$Fiber.type <- relevel(paper$Fiber.type,
+%                               ref = "B")
+% > model2           <- aov(TS.kPa ~ Fiber.type,
+%                           data = paper)
+% > mc2              <- glht(model2,
+%                        linfct = mcp(Fiber.type = "Dunnett"))
+% > mc2_CI           <- confint(mc2, level = 0.95)
+%
+% Simultaneous Confidence Intervals
+% Multiple Comparisons of Means: Dunnett Contrasts
+% 95% family-wise confidence level
+% Linear Hypotheses:
+% Estimate lwr     upr
+% A - B == 0  1.9867  -0.4275  4.4008
+% C - B == 0  5.6367   3.2225  8.0508
+% D - B == 0  4.2200   1.8058  6.6342
+%
+% > plot(mc2_CI)
+% \end{verbatim}}
+%   \column{.4\textwidth}
+% \includegraphics[width=1\textwidth]{../img/paperdunnett.png}
+% \end{columns}
+% \end{frame}
+% %
+% % %=====
 %
 \begin{frame}
 {Multiple comparisons}
@@ -631,13 +705,6 @@ The kind of comparisons that are to be performed after an ANOVA should be planne
 There are a myriad of approaches for post-ANOVA multiple comparisons\footnote[5]{\tiny Check Hothorn \textit{et al.} (2008) for an idea on how varied this can get.}, but in general the formulas for sample size calculation will follow the ideas outlined above: correct the $\alpha$ value to account for type-I error inflation and calculate $n$ based on formulas for two-sample $t$ tests.
 \end{frame}
 %
-
-
-
-
-
-
-
 
 
 
