@@ -1,18 +1,67 @@
-\section{Sample Size}
+\section{Sample Size Calculation}
 
-\begin{frame}{How do we choose sample size?}
-  During this course, we talked many times about the importance of taking repeated observations of an experiment. The reasons for this included:\bigskip
-
-  \begin{itemize}
-    \item Obtaining more precise point estimators for population parameters;
-    \item Calculating confidence intervals for parameter estimators;
-    \item Increasing the confidence or the power of a test;
-    \item Reducing variance, detecting outliers, etc;
-  \end{itemize}\bigskip
-
-But until now, we left open the question: "How many observations do we need?"
+\begin{frame}{}
+  \begin{center}
+    {\bf Part I -- Introductio and Motivation}
+  \end{center}
 \end{frame}
 
+\subsection{Introduction}
+
+\begin{frame}{Lecture Outline}
+
+  In this course we talked several times about the necessity
+  of collecting {\bf a sample}: A set of (multiple) observations
+  that are used to calculate the value of interest.
+  \bigskip
+
+  However, up until now we have avoided talking about {\bf how big} this sample should be. This is the topic of today's lecture.\bigskip
+
+  \begin{itemize}
+    \item What is sample size?
+    \item Why do we need to worry about it?
+    \item What factors influence the choice of sample size?
+    \item How to calculate the desired sample size?
+  \end{itemize}
+
+\end{frame}
+
+
+\subsection{Motivation}
+
+\begin{frame}{Why take samples?}{Review: Noise Factors}
+  As we discussed before, the result of an experiment is affected by several factors, some of which are unknown, or difficult to control.\bigskip
+
+  Because of these {\bf Noise Factors}, sometimes there will be a small variance in the result of repeated experiments. To measure this variance, and take it into account for our analysis, we repeat the experiment several times, and gather those repetitions into a {\bf sample}.\bigskip
+
+
+  \begin{columns}
+    \column{0.2\textwidth}
+      \includegraphics[width=\textwidth]{../img/irasutoya_dice}
+    \column{0.8\textwidth}
+      {\bf For example:} The true mean of throwing three dice and adding their values is {\bf 10.5}. However, every time we throw the dice, the result will be a bit different.
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Why take samples}{What are repetitions good for?}
+
+  - Estimator Variance is based on the sample error
+  - Test Confidence
+  - Test Power
+
+\end{frame}
+
+
+% - Power and Sample size, what it is, and why it matters?
+%   - Power: probability of type II error
+%   - Sample size: number of observations, related to experiment robustness
+%     - When sample size goes up: In general, error of estimators (mean, deviation) goes down
+%     - The deviation of the data itself does not go down!
+%       - Dice example: estimation of the mean goes down, but the error of one dice remains.
+%       - So this allows us to separate "sampling error" from "natural deviation of the observed phenomenon"
+%     - cost of experiment goes up!
+
+%%%% Is sample size always good?
 \begin{frame}{Is "the more the merrier" the answer?}
 
   From the previous slide, we could think that "the more observations the better", but that is not quite right.\bigskip
@@ -30,31 +79,18 @@ But until now, we left open the question: "How many observations do we need?"
 \end{frame}
 
 
-\subsection{30 Repetitions}
 
-\begin{frame}{"We repeated each experiment 30 times"}
-  In Computer Science papers, it is common to see papers stating that they repeated computational experiments "30 times" (or sometimes 20). Where does this rule of thumb comes from?\bigskip
 
-  The Central Limit Theorem (CLT) states that the distribution of sample means tends to follow a normal distribution. This effect can be observed even on means of much smaller samples for well-behaved distributions. However, in general the CLT will hold for $n > 30$, except for extreme cases of non-normality;\bigskip
+\subsection{Fixed Sample Size}
 
-  As many testing procedures require the assumption of normality from the underlying distribution, an "oral tradition" of using $n=30$ began in some CS groups. But it is much better to try to actively identify the correct sampling size for your experiment.
-\end{frame}
-
-\begin{frame}{When is sample size 30 not appropriate?}
-  \begin{itemize}
-    \item The underlying distribution of the population is very well behaved;
-    \item Your planned analysis does not require assumption of normality; \bigskip
-
-    \item You are comparing samples with very different variants; \bigskip
-
-    \item Your budget does not allow for sample size equal to 30;
-    \item Your experiment is dangerous (example, drug tests), and you want to minimize the number of experiments;
-  \end{itemize}\bigskip
-
-  All of these cases are strong reasons for a more explicit sample size calculation;
-\end{frame}
-
-\subsection{Experiment Power and Sample Size}
+% - How to determine sample Size
+%   - When sample size is chosen for you:
+%     - Experiment cost
+%     - Experiment restriction
+%   - What can we do, when we cannot choose sample size?
+%     - Cancel the experiment? Not necessarily
+%     - We can measure the power of the experiment, and determine how much we can rely on the results
+%     - We can improve the power of an experiment by changing delta.
 
 \begin{frame}{Experiment Power}{Budget Constrained case}
   When an experiment is constrained by budget (not enough time,
@@ -128,6 +164,66 @@ alternative = one.sided        High chance for false negatives
                                *For this effect size*
 \end{verbatim}}
 \end{frame}
+
+
+\subsection{}
+\begin{frame}{}
+  \begin{center}
+    {\bf Part II -- Sample Size Calculation}
+  \end{center}
+\end{frame}
+
+
+\subsection{The magic number "30"}
+
+% - Sample size = 30
+%   - Why do we see this value so often?
+%     - Because in general, it guarantees that the estimator will be normally distributed.
+%   - Is this a bad or good value?
+%     - (There are no bad or good values, there are things the value gives you, or not give you)
+%     - As sample size 30 will in general guarantee that your mean estimator will follow a normal distribution, except in extreme cases
+%     - But this is all that it guarantees you! It does not guarantee anything
+%       about the alpha or beta of the experiment.
+%     - If your variation is too high, you will need more samples
+%     - but if your variation is low (or you have good pairs), then
+%       you are wasting money / time / other costs with too many experiments.
+%     - You need to do power calculations, even if you use N = 30
+%     - Also, you need to guarantee other assumptions
+
+\begin{frame}{"We repeated each experiment 30 times"}
+  In Computer Science papers, it is common to see papers stating that they repeated computational experiments "30 times" (or sometimes 20). Where does this rule of thumb comes from?\bigskip
+
+  The Central Limit Theorem (CLT) states that the distribution of sample means tends to follow a normal distribution. This effect can be observed even on means of much smaller samples for well-behaved distributions. However, in general the CLT will hold for $n > 30$, except for extreme cases of non-normality;\bigskip
+
+  As many testing procedures require the assumption of normality from the underlying distribution, an "oral tradition" of using $n=30$ began in some CS groups. But it is much better to try to actively identify the correct sampling size for your experiment.
+\end{frame}
+
+\begin{frame}{When is sample size 30 not appropriate?}
+  \begin{itemize}
+    \item The underlying distribution of the population is very well behaved;
+    \item Your planned analysis does not require assumption of normality; \bigskip
+
+    \item You are comparing samples with very different variants; \bigskip
+
+    \item Your budget does not allow for sample size equal to 30;
+    \item Your experiment is dangerous (example, drug tests), and you want to minimize the number of experiments;
+  \end{itemize}\bigskip
+
+  All of these cases are strong reasons for a more explicit sample size calculation;
+\end{frame}
+
+
+\subsection{Sample Size Calculation}
+
+% - Sample size calculation
+%   - sample size calculation for single sample test
+%   - sample size calculation for post-hoc multi-sample test
+%   - Methods for z tests, methods for post-hoc tests
+% - Be careful with sample size calculations:
+%   - Pseudo-replication (it is not the sample size the matters, but how you choose it.)
+%     - An extreme example: We develop an algorithm to solve optimization problems.
+%     - The optimization problems have "Types", "Sub-types", and "Sub-Sub types"
+%     - We are interested
 
 \begin{frame}[fragile]{Sample size and Type-II error}
 {Example of sample size calculation}
@@ -260,20 +356,17 @@ alternative = one.sided
 \end{verbatim}}
 \end{frame}
 
-\subsection{Sample Size for Two Means: Special Cases}
-
-
-\begin{frame}{Case of Two Means -- Unequal Variance}
-
-The two-sample Welch t-test for considering unequal variances is usually the first test of choice, since it drops one (often inconvenient) assumption, at a very small cost in terms of power.\bigskip
-
-Calculating sample sizes for the general case (unequal variances, unequal sample sizes) is not particularly difficult, and can be done for either a \textit{balanced} case (i.e., $n_1 = n_2 = n$) or an optimal, \textit{unbalanced} case (in which $n_1 \neq n_2$).\bigskip
-
-For the unbalanced case, it is not particularly difficult to prove that the optimal allocation of observation is to keep:
-$$\frac{n_1}{n_2} = \frac{\sigma_1}{\sigma_2}$$.
-
-(if a good estimate of the ratio of variances is available, of course).
-\end{frame}
+% \begin{frame}{Case of Two Means -- Unequal Variance}
+%
+% The two-sample Welch t-test for considering unequal variances is usually the first test of choice, since it drops one (often inconvenient) assumption, at a very small cost in terms of power.\bigskip
+%
+% Calculating sample sizes for the general case (unequal variances, unequal sample sizes) is not particularly difficult, and can be done for either a \textit{balanced} case (i.e., $n_1 = n_2 = n$) or an optimal, \textit{unbalanced} case (in which $n_1 \neq n_2$).\bigskip
+%
+% For the unbalanced case, it is not particularly difficult to prove that the optimal allocation of observation is to keep:
+% $$\frac{n_1}{n_2} = \frac{\sigma_1}{\sigma_2}$$.
+%
+% (if a good estimate of the ratio of variances is available, of course).
+% \end{frame}
 
 \begin{frame}{Comparison of two means -- Paired design}
 Paired designs can require smaller sample sizes for equivalent power in cases where the {\bf between-units variation} is relatively high, and the {\bf in-unit variation} is relatively homogeneous.\bigskip
@@ -286,27 +379,27 @@ More specifically, if the within-level variation is given by $\sigma_\epsilon$ a
 \end{frame}
 
 
-% Equivalence testing
-\begin{frame}{Sample size for Equivalence of a single mean}
-Sample sizes for testing equivalence of a single mean can be derived using essentially the same considerations used for the usual tests. In the case of a single sample:
-
-\begin{equation*}
-n\geq\left(\frac{\left(t_{\alpha}+t_{\beta}\right)\hat{\sigma}}{\delta^* - \Delta\mu}\right)^2
-\end{equation*}
-\bigskip
-
-As in the previous cases, iteration is needed to solve for $n$ (since the quantiles of the t distribution depend on $n$). Use $t_x$ = $z_x$ for the first iteration.
-\end{frame}
-
-\begin{frame}
-{Sample size for Equivalence of two means}
-
-Sample size for the $n_1 = n_2 = n$ case can be approximated based on the Zhang formula.
-$$n \geq \left(t_{\alpha;\nu}+t_{(1-c)\beta;\nu}\right)^2\left(\frac{\hat{\sigma}_1^2+\hat{\sigma}_2^2}{\delta^*-\Delta\mu^*}\right)^2$$
-
-\noindent with $\Delta\mu^*<\delta^*$ as the maximum real difference between the two means for which a power of $(1-\beta)$ is desired, and:
-$$c = \frac{1}{2}\exp\left(-7.06\frac{\Delta\mu^*}{\delta^*}\right)$$
-\end{frame}
+% % Equivalence testing
+% \begin{frame}{Sample size for Equivalence of a single mean}
+% Sample sizes for testing equivalence of a single mean can be derived using essentially the same considerations used for the usual tests. In the case of a single sample:
+%
+% \begin{equation*}
+% n\geq\left(\frac{\left(t_{\alpha}+t_{\beta}\right)\hat{\sigma}}{\delta^* - \Delta\mu}\right)^2
+% \end{equation*}
+% \bigskip
+%
+% As in the previous cases, iteration is needed to solve for $n$ (since the quantiles of the t distribution depend on $n$). Use $t_x$ = $z_x$ for the first iteration.
+% \end{frame}
+%
+% \begin{frame}
+% {Sample size for Equivalence of two means}
+%
+% Sample size for the $n_1 = n_2 = n$ case can be approximated based on the Zhang formula.
+% $$n \geq \left(t_{\alpha;\nu}+t_{(1-c)\beta;\nu}\right)^2\left(\frac{\hat{\sigma}_1^2+\hat{\sigma}_2^2}{\delta^*-\Delta\mu^*}\right)^2$$
+%
+% \noindent with $\Delta\mu^*<\delta^*$ as the maximum real difference between the two means for which a power of $(1-\beta)$ is desired, and:
+% $$c = \frac{1}{2}\exp\left(-7.06\frac{\Delta\mu^*}{\delta^*}\right)$$
+% \end{frame}
 
 \subsection{Sample Size for Multiple Means}
 
@@ -409,4 +502,13 @@ It is important to remember that these are the sample sizes required for the ANO
   \url{https://link.springer.com/article/10.1007/s10732-018-9396-7}\bigskip
 
   I highly recommend reading this paper as a complement to this lecture.
+\end{frame}
+
+\begin{frame}{Recommended Reads}
+  \begin{itemize}
+    \item Felipe Campelo \emph{"Sample size estimation for power and accuracy in the experimental comparison of algorithms"}, 2019
+    \url{https://link.springer.com/article/10.1007/s10732-018-9396-7}
+    \item Paul Mathews' \textit{Sample Size Calculations}, MMB, 2010.
+    \item Zhang (2003), J. Biopharm. Stat. 13(3):529-538.
+  \end{itemize}
 \end{frame}
