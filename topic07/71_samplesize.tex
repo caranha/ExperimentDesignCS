@@ -43,127 +43,163 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Why take samples}{What are repetitions good for?}
+\begin{frame}[fragile]{Why take samples?}{Sample size and estimation error}
 
-  - Estimator Variance is based on the sample error
-  - Test Confidence
-  - Test Power
+  \begin{columns}
+    \column{0.2\textwidth}
+      \includegraphics[width=\textwidth]{../img/irasutoya_dice}
+    \column{0.8\textwidth}
+      If we want to estimate the mean value of a noisy process (for example, the mean of three dice), we can observe the process multiple times (a sample), and take the average of the sample values.\bigskip
 
+      As the sample size gets larger, the sample error \alert{usually} gets smaller. {\bf However, the noise of the original process does not change!}
+  \end{columns}
+{\smaller
+\begin{verbatim}
+> sample_2 <- replicate(2, sum(sample(6,3)))
+9 6
+> sample_5 <- replicate(5, sum(sample(6,3)))
+11 10  9 11 12
+> sample_10 <- replicate(10, sum(sample(6,3)))
+9 11 12 11  7  9 14 11 13 10
+> mean(sample_2)          #    7.5       > sd(sample_2)          # 2.12
+> mean(sample_5)          #   10.6       > sd(sample_5)          # 1.14
+> mean(sample_10)         #   10.7       > sd(sample_10)         # 2.05
+\end{verbatim}}
 \end{frame}
 
+\begin{frame}{Why take samples?}{}
 
-% - Power and Sample size, what it is, and why it matters?
-%   - Power: probability of type II error
-%   - Sample size: number of observations, related to experiment robustness
-%     - When sample size goes up: In general, error of estimators (mean, deviation) goes down
-%     - The deviation of the data itself does not go down!
-%       - Dice example: estimation of the mean goes down, but the error of one dice remains.
-%       - So this allows us to separate "sampling error" from "natural deviation of the observed phenomenon"
-%     - cost of experiment goes up!
+Larger sample sizes help us isolate the error related to the {\bf noise of the
+process}. This has an influence on:\bigskip
 
-%%%% Is sample size always good?
-\begin{frame}{Is "the more the merrier" the answer?}
+\begin{itemize}
+  \item Size of the confidence interval of the estimator;
+  \item Confidence of statistical tests;
+  \item Power of statistical tests;
+\end{itemize}\bigskip
 
-  From the previous slide, we could think that "the more observations the better", but that is not quite right.\bigskip
+This is why we are interested in having "big enough" sample sizes.
+\end{frame}
+
+\begin{frame}{Is "as much as possible" the answer for sample size?}
+
+  From what we talked until now, it is natural to think that "more observations is always better". In general, it is a good idea to have a large sample size, but
+  there are other things that need to be considered:\bigskip
+
 
   \begin{itemize}
-    \item As we saw in the first class on hypothesis testing, it is possible to
-    reduce $p$ to arbitrary values by largely increasing $n$.\bigskip
+    \item Many experiments have a cost associated with obtaining each observation. So large sample sizes result in large experimental cost.\medskip
 
-    \item On the other hand, increasing the number of observations can be costly (financial costs, time costs, human costs, etc)\bigskip
-
-    \item The choice of $n$ influences how the data will be selected and analyzed, so it is helpful to know this value during experiment design;
+    \item Some experiments require materials or conditions that are hard to obtain
+    (for example, interviews);
   \end{itemize}\bigskip
 
-  Because of this, we are interested in a more formal way to define the number of observations necessary in an experiment;
+  The increase in sample size has \alert{diminishing returns} in terms of confidence and power of tests. So, sometimes the cost of collecting more observations is higher than the benefit of those observations.
+  \medskip
+
+  So, what is the appropriate sample size for a given experiment?
 \end{frame}
 
+\begin{frame}{What is a good sample size?}
+  For the choice of sample size, you usually take three things in consideration:
+  \bigskip
 
-
+  \begin{itemize}
+    \item The cost of the experiment;
+    \item The desired confidence ($\alpha$, Confidence interval size);
+    \item The desired power ($\beta$)
+  \end{itemize}\bigskip
+\end{frame}
 
 \subsection{Fixed Sample Size}
 
-% - How to determine sample Size
-%   - When sample size is chosen for you:
-%     - Experiment cost
-%     - Experiment restriction
-%   - What can we do, when we cannot choose sample size?
-%     - Cancel the experiment? Not necessarily
-%     - We can measure the power of the experiment, and determine how much we can rely on the results
-%     - We can improve the power of an experiment by changing delta.
+\begin{frame}{Calculating Sample Size: When you don't have a choice}
 
-\begin{frame}{Experiment Power}{Budget Constrained case}
-  When an experiment is constrained by budget (not enough time,
-  not enough money, etc), we might not have a choice of sample size.\bigskip
+When an experiment is constrained by budget (not enough time,
+not enough money, etc), we might not have a choice of sample size.\bigskip
 
-  However, even in this cases the calculation of sample size is important,
-  because it can be used to give us information about {\bf experiment power}.\bigskip
+But even if the sample size is fixed by the experimental conditions, it is still
+important to calculate the power of the experiment. The result of power
+calculation tells us how we should interpret the results of the experiment.\bigskip
 
-  The power of an experiment is an expression of the probability of {\bf Type II errors} (False Negatives). It tells us {\bf how sensitive our experiment is to actually find the effect that we are looking for}.\bigskip
-
-  If our experiment is budget-constrained, a power analysis may tell us if the experiment is not useful at all, or if we need to settle for a larger minimum effect.
+To calculate the power of the experiment, we need to first define the minimum
+interesting effect size $\delta^*$.
 \end{frame}
 
-\begin{frame}{Sample size and Type-II error}
-  The probability of Type-II error can be easily (and often wrongly) evaluated \textit{a posteriori}, but its definition \textit{a priori} requires some care; \bigskip
+\begin{frame}[fragile]{Example of power calculation}
 
-  Given a desired test, its power is essentially a function of 4 elements:
-  \begin{itemize}
-    \item Actual size of the difference;
-  	\item Variability of the observations;
-  	\item Significance level;
-  	\item Sample size.
-  \end{itemize}\bigskip
-
-  The experimenter generally has very little control over the first two.\\
-  But they can be estimated.
-\end{frame}
-
-\begin{frame}{Sample size and Type-II error}
-  {Estimating Experimental Power}
-  A strategy for estimating an effective lower bound for the power of a test includes a definition of an \textit{minimally interesting effect} $\delta^*$.
-  \bigskip
-
-  This value must be derived from technical and scientific knowledge about the phenomenon or system under experimentation.
-  \bigskip
-
-  \begin{block}{}
-  \centering It is essential to have a good understanding of the field in which the experiment will be conducted.
-  \end{block}\bigskip
-
-  Once $\delta^*$ is defined, the experimenter can obtain an estimate of the variability of observations (e.g., by a pilot study), which can then be used to obtain an approximate power value for the experiment;
-\end{frame}
-
-%=====
-
-\begin{frame}{Sample size and Type-II error}{Some considerations}
-  Having obtained this estimation of the Type-II error probability, one can run his/her experiment with a better understanding of its ability to detect effects of interest.\bigskip
-
-  The test will have lower power for differences smaller than $\delta^*$, but these differences are below the minimally interesting effect; any effect greater than $\delta^*$ will result in a higher power for the test;\bigskip
-
-  This technique is most useful to compute the required sample size for the   experiment.
-\end{frame}
-
-\begin{frame}[fragile]{Sample size and Type-II error}{Example of power calculation}
 Consider an one-sample experiment with the following parameters: Alternate hypothesis is one-sided, sample size is 10, $\delta^*=0.5$, estimate of standard deviation is $\sigma=1$, desired significance $\alpha=0.01$.\medskip
 
 What is the power of this experiment?
 
 {\smaller
 \begin{verbatim}
-> power.t.test(n = 10, delta = 0.5, sd = 1, sig.level = 0.01,
-+        type = "one.sample", alternative = "one.sided")
+> power.t.test(n = 10, sd = 1, sig.level = 0.01, type = "one.sample",
++              alternative = "one.sided", delta = 0.5)
 
-One-sample t test power calculation
-n = 10
-delta = 0.5
-sd = 1
-sig.level = 0.01
-power = 0.1654013           <- Power = 0.16 - Very low!
-alternative = one.sided        High chance for false negatives
-                               *For this effect size*
+  One-sample t test power calculation
+
+           n = 10
+       delta = 0.5
+          sd = 1
+   sig.level = 0.01
+       power = 0.1654013           <- Power = 0.16 - Very low!
+ alternative = one.sided              High chance for false negatives
+                                      *For this effect size*
 \end{verbatim}}
 \end{frame}
+
+\begin{frame}[fragile]{Example of power calculation}{Increasing the power by increasing $\delta^*$}
+
+If we want to increase the power of the experiment, but we cannot increase the
+number of observations, we could increase the size of the "minimal difference"
+that this test detects. This calculation will tell us what is the minimum difference
+that our test will observe.
+
+{\smaller
+\begin{verbatim}
+> power.t.test(n = 10, sd = 1, sig.level = 0.01, type = "one.sample",
++              alternative = "one.sided", power = 0.8)
+
+   One-sample t test power calculation
+
+            n = 10
+        delta = 1.185308         <- When we fix the power and the sample size,
+           sd = 1                   the calculation tells us that the minimum
+    sig.level = 0.01                effect size becomes "1.18". If the real
+        power = 0.8                 effect is less than this, the probability
+  alternative = one.sided           of a false negative increases.
+\end{verbatim}}
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \begin{frame}{Sample size and Type-II error}
+% {Estimating Experimental Power}
+%   A strategy for estimating an effective lower bound for the power of a test includes a definition of an \textit{minimally interesting effect} $\delta^*$.
+%   \bigskip
+%
+%   This value must be derived from technical and scientific knowledge about the phenomenon or system under experimentation.
+%   \bigskip
+%
+%   \begin{block}{}
+%   \centering It is essential to have a good understanding of the field in which the experiment will be conducted.
+%   \end{block}\bigskip
+%
+%   Once $\delta^*$ is defined, the experimenter can obtain an estimate of the variability of observations (e.g., by a pilot study), which can then be used to obtain an approximate power value for the experiment;
+% \end{frame}
+%
+% %=====
+
+\begin{frame}{Power calculations}{Some considerations}
+  Using power calculations, we can obtain the estimation of the Type-II error probability. This gives us a better understanding of the ability of an experiment
+  to detect effects of interest.\bigskip
+
+  The statistical test will have lower power for differences smaller than $\delta^*$, but these differences are below the minimally interesting effect; any effect greater than $\delta^*$ will result in a higher power for the test;\bigskip
+
+  This technique is most useful to compute the required sample size for the   experiment.
+\end{frame}
+
 
 
 \subsection{}
@@ -176,47 +212,58 @@ alternative = one.sided        High chance for false negatives
 
 \subsection{The magic number "30"}
 
-% - Sample size = 30
-%   - Why do we see this value so often?
-%     - Because in general, it guarantees that the estimator will be normally distributed.
-%   - Is this a bad or good value?
-%     - (There are no bad or good values, there are things the value gives you, or not give you)
-%     - As sample size 30 will in general guarantee that your mean estimator will follow a normal distribution, except in extreme cases
-%     - But this is all that it guarantees you! It does not guarantee anything
-%       about the alpha or beta of the experiment.
-%     - If your variation is too high, you will need more samples
-%     - but if your variation is low (or you have good pairs), then
-%       you are wasting money / time / other costs with too many experiments.
-%     - You need to do power calculations, even if you use N = 30
-%     - Also, you need to guarantee other assumptions
+\begin{frame}{"We repeat each experiment 30 times"}
+  We see many papers use this sample size without much explanation.
+  \bigskip
 
-\begin{frame}{"We repeated each experiment 30 times"}
-  In Computer Science papers, it is common to see papers stating that they repeated computational experiments "30 times" (or sometimes 20). Where does this rule of thumb comes from?\bigskip
-
-  The Central Limit Theorem (CLT) states that the distribution of sample means tends to follow a normal distribution. This effect can be observed even on means of much smaller samples for well-behaved distributions. However, in general the CLT will hold for $n > 30$, except for extreme cases of non-normality;\bigskip
-
-  As many testing procedures require the assumption of normality from the underlying distribution, an "oral tradition" of using $n=30$ began in some CS groups. But it is much better to try to actively identify the correct sampling size for your experiment.
+  Why 30 repetitions? Is it a good value?
 \end{frame}
 
-\begin{frame}{When is sample size 30 not appropriate?}
-  \begin{itemize}
-    \item The underlying distribution of the population is very well behaved;
-    \item Your planned analysis does not require assumption of normality; \bigskip
+\begin{frame}{Why 30 repetitions?}
+  Remember that the {\bf Central Limit Theorem} (CLT) states that the distribution
+  of the "sample mean" estimator becomes closer to normal, as the sample
+  $n$ size increases.\bigskip
 
-    \item You are comparing samples with very different variants; \bigskip
+  When $n > 30$, the CLT holds (the sample mean follows a normal distribution)
+  for most cases (except very extreme cases of non-normality). This is important,
+  because many test statistics require the assumption of normality.
+  \bigskip
 
-    \item Your budget does not allow for sample size equal to 30;
-    \item Your experiment is dangerous (example, drug tests), and you want to minimize the number of experiments;
-  \end{itemize}\bigskip
+  {\bf However!} Other than (potentially) guaranteeing that the estimator
+  is a normally distributed random variable, there is nothing special about
+  using 30 repetitions.\bigskip
 
-  All of these cases are strong reasons for a more explicit sample size calculation;
+  \structure{In particular, $n=30$ does not guarantee anything about the power or confidence of the experiment, so you still need to perform power calculations! (And you also need to guarantee the other assumptions of the experiment.)}
 \end{frame}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Sample Size Calculation}
 
 % - Sample size calculation
 %   - sample size calculation for single sample test
+
+\begin{frame}[fragile]{Sample Size Calculation}{One Sample Testing}
+
+The sample size calculation in related to the power calculation. If we fix
+the value of power and $\delta^*$, the calculation will give us the minimum sample size:
+
+{\smaller
+\begin{verbatim}
+> power.t.test(sd = 1, sig.level = 0.01, type = "one.sample",
+               alternative = "one.sided",   power = 0.85,     delta = 0.5)
+
+  One-sample t test power calculation
+           n = 47.98044   # <-- Round this value up!
+       delta = 0.5
+          sd = 1
+   sig.level = 0.01
+       power = 0.85
+ alternative = one.sided
+\end{verbatim}}
+
+We need at least 48 observations to detect a one-sided effect of $\delta^* = 0.5$ or more on the mean with a power level of $0.85$.
+\end{frame}
+
 %   - sample size calculation for post-hoc multi-sample test
 %   - Methods for z tests, methods for post-hoc tests
 % - Be careful with sample size calculations:
@@ -225,28 +272,6 @@ alternative = one.sided        High chance for false negatives
 %     - The optimization problems have "Types", "Sub-types", and "Sub-Sub types"
 %     - We are interested
 
-\begin{frame}[fragile]{Sample size and Type-II error}
-{Example of sample size calculation}
-
-With only $n=10$ samples, the experiment is {\bf underpowered}. What is the smallest sample size needed to obtain a desired power of $0.85$?
-
-{\smaller
-\begin{verbatim}
-> power.t.test(power = 0.85, delta = 0.5, sd = 1,
-               sig.level = 0.01,
-               type = "one.sample", alternative = "one.sided")
-
-One-sample t test power calculation
-n = 47.98044                      <-- Round this value up!
-delta = 0.5
-sd = 1
-sig.level = 0.01
-power = 0.85
-alternative = one.sided
-\end{verbatim}}
-
-We need at least 48 observations to detect a one-sided deviation of 0.5 or more on the mean  with a power level of $0.85$.
-\end{frame}
 
 \subsection{Sample Size for Two Means}
 
@@ -274,14 +299,35 @@ n \approxeq 2\left(\frac{t^{(2n-2)}_{\alpha/2}+t^{(2n-2)}_{\beta}}{d^*}\right)^2
 \end{equation*}
 
 where $d^* = \delta^*/\sigma$ is the (standardized) minimally interesting effect size; and $t^{(2n-2)}_{\alpha/2}$ and $t^{(2n-2)}_{\beta}$ are the $\alpha/2$ and $\beta$ quantiles of the $t^{(2n-2 )}$ distribution.\bigskip
-
-Can we do this calculation? Or is there something missing?
-
 \end{frame}
 
-\begin{frame}{Sample Size Calculation}{How to obtain the variance estimate}
+\begin{frame}[fragile]{Sample Size Calculation}{Calculation Example}
 
-These formulas are very convenient, but leave us with a riddle: we need variance estimate in order to calculate the sample size, but we need observations to be able to estimate the variance!\bigskip
+Back to the original example, with an estimation of standard deviation $= 15$,
+we would calculate the sample size as:
+
+{\smaller
+\begin{verbatim}
+> ss.calc <- power.t.test(delta = 15,  sd = 15,
+                          sig.level = 0.05,  power = 0.8,
+                          type = "two.sample", alternative = "one.sided")
+
+  Two-sample t test power calculation
+           n = 13.09777       <- NOTE: n is the size of *EACH* sample.
+       delta = 15
+          sd = 15
+   sig.level = 0.05
+       power = 0.8
+ alternative = one.sided
+\end{verbatim}}
+\end{frame}
+
+
+\begin{frame}{Sample Size Calculation}{Obtaining the variance estimate}
+
+The Power calculation formulas and functions are convenient, but leave us
+with a problem: we need a variance estimate to calculate the sample size,
+but we need observations to estimate the variance!\bigskip
 
 There are a few ways to proceed in this case. The most practical are:
 
@@ -294,67 +340,44 @@ There are a few ways to proceed in this case. The most practical are:
 Each approach has its own advantages and drawbacks.
 \end{frame}
 
-\begin{frame}{Sample Size Calculation}{Pilot Study}
-If no information is available to estimate the variance, a pilot study must be performed to obtain this value. The sample size required for this pilot study is given by:
+% \begin{frame}{Sample Size Calculation}{Pilot Study}
+% If no information is available to estimate the variance, a pilot study must be performed to obtain this value. The sample size required for this pilot study is given by:
+%
+% \begin{equation*}
+% n_{\mbox{\textit{pilot}}}\approx 2\left(\frac{z_{\alpha_n/2}}{e_{n}}\right)^2
+% \end{equation*}
+%
+% \noindent where $(1-\alpha_{n})$ is the desired confidence level for the sample size estimate of the main study, and $e_n$ is the maximum relative error allowed for the sample size.\bigskip
+%
+% This calculation can yield some scarily large sample sizes for a pilot study (much larger than would be actually required for the main study itself), so use this with caution.
+% \end{frame}
+%
+%
+% \begin{frame}{Calculation of Sample Sizes}{Case of Known Standard Deviation}
+% Suppose that the engineer uses data available from the system manuals, as well as historical measurements, to estimate a reasonable upper bound for the common standard deviation as $\sigma \approxeq 15$.\bigskip
+%
+% Assuming that equal sample sizes are desired, we can simply use the formula:
+%
+% \begin{equation*}
+% n \approxeq 2\left[\left(t^{(2n-2)}_{\alpha/2}+t^{(2n-2)}_{\beta}\right)\frac{\sigma}{\delta^*}\right]^2
+% \end{equation*}
+% \vfill
+%
+% \hfill Easy, right?
+% \end{frame}
+%
+% \begin{frame}{Calculation of Sample Sizes}{Case of Known Standard Deviation}
+%
+% The last problem we have to solve is that the values of $t^{(2n-2)}_{\alpha/2}$ and $t^{(2n-2)}_{\beta}$ are also dependent of $n$, which makes the sample size equation transcendental in $n$.\bigskip
+%
+% We can solve that by using an initial estimate of $t^{(2n-2)}_{\kappa}\approx z_{\kappa}$, and iterating until we find the smallest $n$ that satisfies:
+%
+% \begin{equation*}
+%   n \geq 2 \left(\frac{\hat{\sigma}}{\delta^*}\right)^2\left(t_{\alpha/2}+t_{\beta}\right)^2
+% \end{equation*}
+% \end{frame}
 
-\begin{equation*}
-n_{\mbox{\textit{pilot}}}\approx 2\left(\frac{z_{\alpha_n/2}}{e_{n}}\right)^2
-\end{equation*}
 
-\noindent where $(1-\alpha_{n})$ is the desired confidence level for the sample size estimate of the main study, and $e_n$ is the maximum relative error allowed for the sample size.\bigskip
-
-This calculation can yield some scarily large sample sizes for a pilot study (much larger than would be actually required for the main study itself), so use this with caution.
-\end{frame}
-
-
-\begin{frame}{Calculation of Sample Sizes}{Case of Known Standard Deviation}
-Suppose that the engineer uses data available from the system manuals, as well as historical measurements, to estimate a reasonable upper bound for the common standard deviation as $\sigma \approxeq 15$.\bigskip
-
-Assuming that equal sample sizes are desired, we can simply use the formula:
-
-\begin{equation*}
-n \approxeq 2\left[\left(t^{(2n-2)}_{\alpha/2}+t^{(2n-2)}_{\beta}\right)\frac{\sigma}{\delta^*}\right]^2
-\end{equation*}
-\vfill
-
-\hfill Easy, right?
-\end{frame}
-
-\begin{frame}{Calculation of Sample Sizes}{Case of Known Standard Deviation}
-
-The last problem we have to solve is that the values of $t^{(2n-2)}_{\alpha/2}$ and $t^{(2n-2)}_{\beta}$ are also dependent of $n$, which makes the sample size equation transcendental in $n$.\bigskip
-
-We can solve that by using an initial estimate of $t^{(2n-2)}_{\kappa}\approx z_{\kappa}$, and iterating until we find the smallest $n$ that satisfies:
-
-\begin{equation*}
-  n \geq 2 \left(\frac{\hat{\sigma}}{\delta^*}\right)^2\left(t_{\alpha/2}+t_{\beta}\right)^2
-\end{equation*}
-\end{frame}
-
-
-\begin{frame}[fragile]{Calculation of Sample Sizes}
-{Case of Known Standard Deviation}
-
-In practice, there are many sample size calculators in statistical software. But it is important to known the idea behind the calculation, for when we find ourselves in special situations.
-
-{\smaller
-\begin{verbatim}
-> ss.calc <- power.t.test(delta       = 15,
-                          sd          = 15,
-                          sig.level   = 0.05,
-                          power       = 0.8,
-                          type        = "two.sample",
-                          alternative = "one.sided")
-
-Two-sample t test power calculation
-n = 13.09777       <- NOTE: n is the number in *each* group
-delta = 15
-sd = 15
-sig.level = 0.05
-power = 0.8
-alternative = one.sided
-\end{verbatim}}
-\end{frame}
 
 % \begin{frame}{Case of Two Means -- Unequal Variance}
 %
@@ -371,10 +394,10 @@ alternative = one.sided
 \begin{frame}{Comparison of two means -- Paired design}
 Paired designs can require smaller sample sizes for equivalent power in cases where the {\bf between-units variation} is relatively high, and the {\bf in-unit variation} is relatively homogeneous.\bigskip
 
-More specifically, if the within-level variation is given by $\sigma_\epsilon$ and the between-units variation is $\sigma_u$, we have that, for large enough $N$\\(e.g., $N\geq 10$),
+More specifically, if the within-level variation is given by $\sigma_\epsilon$ and the between-units variation is $\sigma_u$, we have that, for large enough $n$\\(e.g., $n\geq 10$),
 
 \begin{equation*}
-\frac{N_{\mbox{\tiny unpaired}}}{N_{\mbox{\tiny paired}}}\approx\sqrt{2\left[\left(\frac{\sigma_u}{\sigma_\epsilon}\right)^2+1\right]}
+\frac{n_{\mbox{\tiny unpaired}}}{n_{\mbox{\tiny paired}}}\approx\sqrt{2\left[\left(\frac{\sigma_u}{\sigma_\epsilon}\right)^2+1\right]}
 \end{equation*}
 \end{frame}
 
@@ -432,42 +455,23 @@ $$ \tau = \left\{-\frac{\delta^*}{2}, \frac{\delta^*}{2}, 0, 0\right\}$$
 $$ \tau = \left\{-\frac{(a-1)\delta^*}{a}, \frac{\delta^*}{a}, \frac{\delta^*}{a}, \frac{\delta^*}{a}\right\}$$
 \end{frame}
 
-\begin{frame}{Sample size formulas for ANOVA}
+
+
+\begin{frame}[fragile]{Sample size formulas for ANOVA}
 For the first case we have a noncentrality parameter of:
 
 $$\phi = \frac{4\left(6^2+6^2+0+0\right)}{7^2} = 5.88$$
 
-Which allows us to calculate the required sample size by iterating on $n$ until:
-
-$$F_{(1-\alpha)} \leq F_{\beta;\phi}$$
-
-\end{frame}
-
-%=====
-
-\begin{frame}[fragile]
-{Sample size formulas for ANOVA}
-{Doing it manually:}
+And we can calculate it as:
 
 {\smaller
 \begin{verbatim}
 > a       <- 4                         > alpha   <- 0.05
 > sigma   <- 7                         > delta   <- 12
 > beta    <- 0.2
->
-> tau <- c(-delta/2, delta/2, rep(0, a - 2)) # define tau vector
-> n   <- 2
-> while (qf(1 - alpha, a - 1, a*(n - 1)) >
-+        qf(beta, a - 1, a*(n - 1), n*sum(tau^2)/sigma^2))
-+    n <- n + 1
-> print(n)
-[1] 9
-\end{verbatim}}
-
-Using \verb|power.anova.test()|:
-{\smaller
-\begin{verbatim}
+> tau <- c(-delta/2, delta/2, rep(0, a - 2))
 > vartau <- var(tau)
+
 > power.anova.test(groups = 4, between.var = vartau,
 +                  within.var = sigma^2, sig.level = alpha,
 +                  power = 1 - beta)$n
@@ -475,8 +479,11 @@ Using \verb|power.anova.test()|:
 \end{verbatim}}
 \end{frame}
 
+%=====
+
+
 \begin{frame}[fragile]{Sample size formulas for ANOVA}
-The second case (one level biased in relation to all others) is also quite easy to calculate manually, but lets keep it simple:
+The second case (one level biased in relation to all others) is also quite easy to calculate:
 
 {\smaller
 \begin{verbatim}
