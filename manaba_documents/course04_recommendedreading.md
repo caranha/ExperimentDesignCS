@@ -28,7 +28,3 @@ The entire playlist, although interesting, is outside of the course scope. Two o
 - [R for beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf). An introduction to the R programming language, and its main characteristics.
 - [Rstudio](https://rstudio.com/). A graphical interface for R, very useful for writing, reading and executing R code.
 - [ggplot2 library](https://ggplot2.tidyverse.org/). ggplot2 is a very powerful R library for creating beautiful plots from data. Much better than the native plotting functions in R.
-
-
-# Updates
-- 2021/04/05 -- First update

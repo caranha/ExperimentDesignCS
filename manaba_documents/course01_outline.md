@@ -1,46 +1,25 @@
 # Course goals:
-This course aims to educate the student about the basics of the scientific
-method, and in particular on how to conduct good scientific experiments, and
-analyze their data using statistical techniques. The contents of this course
-will focus on Computer Science experiments, although the topics can be applied
-to other disciplines as well.
+
+This course aims to educate the student about how to conduct good scientific experiments, and how to analyze data obtained from these experiments using statistical techniques.
+
+The contents of this course focus on Computer Science experiments, although the topics can be applied to other disciplines as well.
 
 # Teaching format:
-Each week, the lecture notes will be published to manaba, and video lectures
-will be published to TEAMS. The students are expected to follow the video
-lectures and the lecture notes in full, at the time of their preference.
-(On demand online lecture)
 
-Additionally, the instructor will hold "office hours" during the regular
-lecture times. These office hours will be held online, on TEAMS, and the
-students can ask questions about the material, or guidance about the report.
+Lecture Notes will be published every week to manaba, along with video lectures expanding on the contents of the notes. The students are expected to follow the video lectures and the lecture notes in full, at the time of their preference. ("on demand" online lecture style)
 
-Also, every week a quiz will be posted on manaba, about the material of
-that week's lecture. Answering this quiz will count as the attendance check.
-The student must answer the quiz, although it will not be graded.
+Each lecture is accompanied by an "attendance quiz". This quiz is not graded, but the students are expected to answer it to the best of their abilities, so that I can gauge learning progress from the students. Answering this quiz counts as the attendance for this course, and is a requirement for passing the course.
 
-One exception about the "on demand" format is the last class (06/18) when
-every student must present their report, and the final exam (06/25),
-which will be either in person, or synchronous, depending on the status
-of the covid-19 situation. This will be determined at the beginning of June.
+Additionally, I will hold "office hours" during the regular lecture times (Friday 15:15 to 18:00 JST). These office hours will be held online on TEAMS. The student can use this time to ask questions about the material, the report, or even to just ask advice about graduate school.
 
 # Course policies:
-- **Language policy**: The course will be held in English, and the materials
-are distributed in English as well. The instructor will accept questions in
-Japanese by e-mail, but the reports and final exam must be submitted in English.
 
-- **Plagiarism policy**: No form of plagiarism in the reports or final examination
-will be accepted. Plagiarism can be cause for failing the entire course. Reports
-for this year are individual.
-
-- **Exam policy**: You can prepare and bring one A4 page of handwritten notes for
-the final exam. These notes can be in any language. Other than that, not consultation
-is allowed during the final exam. Your notes must be turned in together with the exam,
-but they will not be graded.
+- *Language policy*: The course will be held in English, and the materials are distributed in English as well. The instructor will accept questions in Japanese by e-mail, but the reports and final exam must be submitted in English.
+- *Plagiarism policy*: No form of plagiarism in the reports or final examination will be accepted. If plagiarism is detected, you will fail the entire course, and may suffer further punishment to be determined by the program leader.
+- *Exam policy*: You can prepare and bring one A4 page of handwritten notes for the final exam. These notes can be in any language. You are also allowed to consult translation websites (such as deepl.com or Google Translate). Other than that, not consultation is allowed during the final exam.
 
 # Questions:
-You are welcome to send any questions about the course to the instructor
-by e-mail: caranha (at) cs.tsukuba.ac.jp
 
-# Updates
-- 2021/04/05 -- First update
+The favored way to ask questions about the course to the instructor is by using the "Bulletin Board" feature in manaba. This allows other students to benefit from your question and my answer to it as well.
+
+If your question requires some sort of privacy, feel free to send an e-mail directly to the instructor in English or Japanese: caranha(at)cs.tsukuba.ac.jp
