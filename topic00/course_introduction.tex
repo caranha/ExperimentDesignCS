@@ -6,16 +6,22 @@
 \begin{document}
 \begin{CJK}{UTF8}{ipxm}
 
-
 \begin{frame}
   \maketitle
 
   \vfill
 
-  \hfill Version 2021.1
+  \hfill Version 2022.1
 \end{frame}
 
 \section{Course Motivation}
+
+\begin{frame}
+  \begin{center}
+    Part I -- What is this course about?
+  \end{center}
+\end{frame}
+
 \begin{frame}{What is this course about?}
 
   \begin{block}{From the syllabus}
@@ -23,39 +29,43 @@
   \end{block}
   \bigskip
 
-  ... {\bf TL;DR?}
+  What does this mean?
 \end{frame}
 
-\begin{frame}{What is this course about?}{TL;DR; (Too Long, Didn't Read)}
+\begin{frame}{What is this course about?}{}
 
-  The key idea of this course is to learn how to \structure{plan, execute, analyse and interpret} a scientific experiment.\bigskip
+  The key idea of this course is to learn \structure{how to do an experiment in a systematic manner}.\bigskip
 
-  Another way to think is: "Experiment Design" is how to apply the PDCA cycle for science.
   \begin{center}
     \includegraphics[width=.6\textwidth]{../img/irasutoya_pdca}\ppagenote{PDCA flowchart from \url{https://www.irasutoya.com}}
-  \end{center}
+  \end{center}\bigskip
+
+  i.e., "how to apply the PDCA cycle for science?"
 \end{frame}
 
-\begin{frame}{What is this course about?}{Why is a course on "Experiment Design" necessary?}
-  There are some common errors that I see from students many times:
+\begin{frame}{Why is this course necessary?}{Frequent errors when designing an experiment}
+
+  There are some errors that are often found in CS experiments:
   \bigskip
 
   \begin{itemize}
-    \item The experiment does control for noise factors;\\
-      \structure{Is the result just a coincidence?}
-    \item The experiment that compare two methods is not fair;\\
-      \structure{Is the new method really better than the old one?}
-    \item The experiment is not reproducible;\\
-      \structure{How can this experiment help other people?}
-    \item The conditions and assumptions of the experiment are not clear;\\
-      \structure{The results and conclusions are questionable}
+    \item The experiment does control for noise;\\
+      \structure{Problem: Is the result just a coincidence?}
+    \item The experiment does unfair comparisons between methods;\\
+      \structure{Problem: Is the result valid in the general case?}
+    \item The experiment is not clear / not reproducible;\\
+      \structure{Problem: Can this experiment help other people?}
     \item etc...
-  \end{itemize}
+  \end{itemize}\bigskip
+
+  Many of these errors happen because of experiments done carelessly. So let's learn to think more carefully about them!
+
+
 \end{frame}
 
-\begin{frame}{What is this course about?}{The "Dark Curriculum"}
+\begin{frame}{Why is this course necessary?}{The "Invisible Curriculum" -- things that are not taught in classes}
 
-  The \structure{Dark Curriculum} are things that are necessary for your work as an academic, but that you usually can't learn in a lecture, and must discover by \alert{trial and error}. For example:\bigskip
+  The \structure{Invisible Curriculum} are things that are necessary for your work as an academic, but that you usually can't learn in a lecture, and must discover by \alert{trial and error}. For example:\bigskip
 
   \begin{columns}
     \column{0.7\textwidth}
@@ -69,7 +79,7 @@
     \end{itemize}\bigskip
 
     The goal of this course is to shed light in one of these points:\\
-    \emph{What is an experiment, and how do I prepare it?}.\bigskip
+    \emph{What is an experiment, and how do I prepare it?}
 
     \column{0.3\textwidth}
     \includegraphics[width=1\textwidth]{../img/irasutoya_cave}\ppagenote{Cave illustration from \url{https://www.irasutoya.com}}
@@ -116,67 +126,74 @@
   Each experiment, in each research, will require a different way of doing statistical analysis. Also, some advanced topics (bayesian statistical analysis) will not be covered here. I hope that after this course you will have a solid understanding of the concepts to read and learn the advanced tests required of your own research.
 \end{frame}
 
+\begin{frame}
+  \begin{center}
+    Part II -- Practical Details
+  \end{center}
+\end{frame}
+
 \section{Practical Details}
 \begin{frame}
   \frametitle{Practical Details about the course}
   \begin{itemize}
-    \item Teaching Format;
+    \item Class Format;
+    \item Communication Channels;
     \item Course Materials;
     \item Course Schedule;
     \item Grading;
-    \item Course Policy;
+    \item Other topics;
   \end{itemize}\vfill
 
-  \alert{Note}: these details have small differences from the syllabus. The latest information is always on manaba.
+  \alert{Note}: The latest and most correct information about course policy is always on manaba.
 \end{frame}
 
 \subsection{Course Format}
-\begin{frame}{Course Format (Fri, 15:15 to 18:00)}
-  \begin{block}{Online (On demand) Format}
-    Video lectures and lecture notes published on manaba by the official lecture time. Please read the video lecture in full, at the time of your preference.
-    \bigskip
-
-    During the official lecture time, I will hold "office hours" on TEAMS. A link will be on manaba (I hope! :-)).
-  \end{block}
-
-  \begin{alertblock}{Two Exceptions:}
-    Last class (06/18) is an online presentation of the final report. If you have problems with live presentation (time zones, etc), lemme know.\bigskip
-
-    Final exam (06/25) will be live (online or in person, depends on covid situation in June). Tell me if you have timezone problems.
-  \end{alertblock}
-\end{frame}
-
-\begin{frame}{Course Format}{Student / Teacher communication}
+\begin{frame}{Class Format -- Online, On demand}
   \begin{itemize}
-    \item \structure{Office hours}: Friday, 15:15-18:00, TEAMs meeting.\bigskip
+    \item We have students in several time zones, so I will teach you using pre-recorded videos and lecture materials.
+    \begin{itemize}
+      \item Please watch the videos in full, at a time and speed of your convenience. Videos are published on Youtube and Teams.
+    \end{itemize}
+    \item On Fridays, 15:15-18:00 JST, I will hold "office hours" to answer questions about the class and anything else.
+    \begin{itemize}
+      \item I will not count attendance on office hours. Come if you have questions.
+      \item I will be online on TEAMS, and you can also come to my office if you want (SB904).
+      \item Please send a message if you come to my office.
+      \item If you cannot come to the office hours, please see the next slide.
+    \end{itemize}
+    \item \alert{Exception: The final exam is Online Syncronous. If this is too difficult for your timezone, please talk to me.}
+  \end{itemize}
 
-    \item \structure{manaba Forums}: This is the preferred way for asynchronous communication, since all students can see the question. Other students are highly encouraged to answer or add their opinions.\bigskip
-
-    \item \structure{e-mail}: If you need to ask a private question.
-  \end{itemize}\bigskip
-
-  One goal of this course is to shed light on the "Dark Curriculum". Please feel free to ask any questions at all about life as a scientist / academic / etc.
 \end{frame}
 
-%Teaching Format;
-%Course Materials;
+\begin{frame}{Communication Channels}{}
+  Communication between us is very important. Do not leave questions unanswered!\bigskip
+
+  Communication channels by priority:
+  \begin{enumerate}
+    \item Office Hours, Friday, 15:15-18:00 on Teams (or my office)
+    \item Manaba Forum, Other students can benefit from your questions.
+    \item E-mail, if it really needs to be private.
+  \end{enumerate}\bigskip
+
+  Also, every lecture I post an {\bf Attendance Survey} on manaba. The survey is not graded, but \alert{you must take the survey to count for attendance!}
+\end{frame}
 
 \subsection{Course Materials}
 \begin{frame}{Course Materials}
-  Required materials are posted on the "manaba" system. If you want to follow the course, but not take credit, you can access the manaba materials using the self-registration number: \structure{4054723}.
-  \bigskip
+  \begin{itemize}
+    \item The lecture notes are published in the "manaba" system.\medskip
 
-  If you cannot access manaba, the course is also available on the following github repository: (not official) \url{https://caranha.github.io/ExperimentDesignCS/}.
-  \bigskip
+    \item If you are a student of the University of Tsukuba, but not registered for the course, you can access manaba with the following key: \alert{7745902}\medskip
 
-  Report submission, and some recommended readings are only available on manaba.
+    \item If you are not a student of UT, you can access the course material in the following github repository (caveat emptor!)\\
+    \url{https://caranha.github.io/ExperimentDesignCS/}.\medskip
+
+    \item Videos are published on Youtube and Teams, and you can watch them later (I will de-list videos from the previous year).
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{Course Materials}{Lecture Notes}
-  The main materials for this course are these lecture notes.
-  Make sure to read them and ask questions if anything is unclear!
-  \bigskip
-
+\begin{frame}{Course Materials}{Acknowledgements}
   \begin{columns}
     \column{0.8\textwidth}
     The lecture notes were produced based on the "Design and Analysis of Experiments" material produced by Felipe Campelo. You can reach the original lecture notes on: \url{https://github.com/fcampelo/Design-and-Analysis-of-Experiments}
@@ -199,27 +216,26 @@
   \end{columns}
   \vspace{1cm}
 
-  In manaba there will be an expanded list of resources for
-  extra study. Make sure to check it out!
+  I add more links, papers, and other resources on manaba / github.
 \end{frame}
 
 
 
 \subsection{Course Schedule}
-\begin{frame}{Course Schedule}{Friday, 15:15--18:00, no "change days"}
+\begin{frame}{Course Schedule}{}
 \begin{itemize}
-  \item 4/09 : Introduction, What is Experimentation (Today)
-  \item 4/16 : Point and Interval Indicators
-  \item 4/23 : Inference Testing I
-  \item 4/30 : Inference Testing II
-  \item \alert{5/07 : Golden Week, no Class}
-  \item 5/14 : R Tutorial / Review and Discussion of Project I
-  \item 5/21 : Inference Testing III
-  \item 5/28 : Case Studies: Inference Testing in CS papers
-  \item 6/04 : Sample Size and Experiment Power
-  \item 6/11 : Final Review
-  \item 6/18 : Project II presentation
-  \item 6/25 : \alert{Final Exam}
+  \item 4/15 Topic 01 -- Course Introduction, What is Experimentation
+  \item 4/22 Topic 02 -- Point and Interval Indicators
+  \item 4/29 Topic 03 -- Inference Testing I
+  \item \alert{5/06 (Golden Week, no Class)}
+  \item 5/13 Review 01 -- Class Review and Discussion of Report I
+  \item 5/20 Topic 04 -- Inference Testing II
+  \item 5/27 Topic 05 -- Factorial Designs
+  \item 6/03 Topic 06 -- Inference Testing III
+  \item 6/10 Topic 07 -- Sample Size and Experiment Power
+  \item 6/17 Topic 08 -- Case Study: Statistical Comparisons of Classifiers over Multiple Data Sets
+  \item 6/24 Review 02 -- Class Review and Consultation about Report II
+  \item \alert{7/01 Final Exam (Online)}
 \end{itemize}
 \end{frame}
 
@@ -254,8 +270,8 @@
       \item The notes have no fixed format, and can be in any language.
       \item The notes must include your name and student ID, and must be turned in with the exam. The notes will not be graded.
     \end{itemize}
+    \item You can bring a dictionary to the exam.
     \item No other consultation is allowed in the exam.
-    \item The exact format of the exam (online or in person), will be defined in June.
   \end{itemize}
 \end{frame}
 
@@ -268,36 +284,9 @@
     \item Execute the experiment, following the design
     \item Analyze the data, following the design
     \item Make a conclusion, based on the analysis of the data
-  \end{itemize}
-\end{frame}
+  \end{itemize}\bigskip
 
-\begin{frame}{Grading}{Reports -- More Details}
-  \begin{itemize}
-    \item \structure{Report 1}: Choose a good experiment for a scientific question, and presenting the data (lectures 1 and 2). \bigskip
-    \item \structure{Report 2}: Choose a proper hypothesis pre-data collection, and perform the appropriate inferential statistical test (lectures 1-7).
-    \begin{itemize}
-      \item Students must present their reports on lecture 10.
-    \end{itemize}\bigskip
-    \item \structure{Topic}: The experiment can be on any topic, but using the same topic as your research theme is recommended.
-    \begin{itemize}
-      \item If your research includes private data, consult with your advisor first.
-    \end{itemize}\bigskip
-
-    \item \structure{Important}: Your experiment will {\bf not} be judged based on the "success" of the experiment. Report your results honestly.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Grading}{Reports -- Final Details}
-  \begin{itemize}
-    \item Report must be in English.\bigskip
-    \item Report text must be in pdf format.\bigskip
-    \item In addition to the PDF, you must also submit all the information necessary to reproduce your experimental results.
-    \begin{itemize}
-      \item This depends on the experiment, but tipically include data files obtained from the experiment, and scripts used to process this data, generate figures and statistical tests.
-      \item Data from the reports will be used only to evaluate the report, and deleted at the end of the course.
-    \end{itemize}\bigskip
-    \item Deadline for the reports will be posted on manaba.
-  \end{itemize}
+  The different between report 1 and report 2 are the expectations.\\ Please see details in manaba.
 \end{frame}
 
 \section{Others}
@@ -309,7 +298,8 @@
   \begin{itemize}
     \item Your name (ASCII and Kanji)
     \item Student ID
-  \end{itemize}
+  \end{itemize}\bigskip
+
 
   For more information, see the orientation material at the "New Student Orientation" course on manaba.
 \end{frame}
@@ -333,7 +323,7 @@
         \item Game Programming;
         \item Geocaching;
       \end{itemize}
-        \medskip
+        \smallskip
 
       \item \structure{webpage:}\\
       {\smaller \url{http://conclave.cs.tsukuba.ac.jp}}
@@ -344,6 +334,82 @@
     }
   \end{columns}
 \end{frame}
+
+\begin{frame}{}
+  \begin{center}
+    Part III - Report I
+  \end{center}
+\end{frame}
+
+\begin{frame}{Report I}{General Information}
+  Write a "mini paper" about an experiment that you choose, prepare, execute and analyze. Specifically, you must:\medskip
+
+  \begin{itemize}
+    \item Choose a question to investigate using a scientific experiment.
+    \item Design the experiment (choose variables, data collection and analysis protocol)
+    \item Execute the experiment following the data collection protocol.
+    \item Analyze the data obtained following the data analysis protocol.
+    \item Take note of any surprising or unsurprising findings, and prepare a conclusion for the experiment.
+  \end{itemize}\medskip
+
+  The report must summarize the above points (the question, experiment designs, data collection, data analysis, and conclusion).
+\end{frame}
+
+\begin{frame}{Report I}{Expectations}
+  In the first report, you should select a simple experiment with a single dependent variable and a single independent variable, and calculate simple statistical intervals of values observed for the dependent variable. These topics are covered in lectures 1 and 2.\smallskip
+
+  The report will be graded by:
+  \begin{itemize}
+    \item Whether it describes a coherent scientific experiment to answer the chosen question;
+    \item The quality of the data analysis;
+    \item The quality of the result presentation and discussion;
+  \end{itemize}\bigskip
+
+\alert{Note that you are NOT expected to use the null-hypothesis model in this report (lectures 4-6). Doing the test wrongly may deduct points.}
+\end{frame}
+
+
+
+\begin{frame}{Report I}{How to choose an experiment topic}
+  \begin{itemize}
+    \item If possible, choose something from your own research;
+    \medskip
+
+    \item Experiments from your day to day life are also good;
+    \begin{itemize}
+      \item Comparing cooking techniques is always fun;
+      \item When collecting data, be careful of measuring errors;
+    \end{itemize}
+    \medskip
+
+    \item When in doubt, comparing algorithms is an easy choice;
+    \begin{itemize}
+      \item Make sure to choose an appropriate metric to report!
+    \end{itemize}
+    \medskip
+
+    \item Make sure you choose an experiment that you can perform!
+    \bigskip
+
+    \item This article might be insightful: \url{https://williamghunter.net/articles/101-ways-to-design-an-experiment}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Report 1}{Rules and Deadlines}
+  \begin{itemize}
+    \item {\bf Report Deadline: 05/02, 23:00} -- submit on manaba\bigskip
+
+    \item The report must be in English.\bigskip
+
+    \item Submit the report as a PDF file, don't forget your name/ID.
+    \item Submit also a ZIP file with all the data/scripts necessary to reproduce your analysis.
+    \bigskip
+
+    \item Plagiarism will be severely punished.
+  \end{itemize}
+
+\end{frame}
+
 
 \input{../utils/lastslide.tex}
 \end{CJK}

@@ -4,12 +4,12 @@
 
 - Update Files in LectureNotes
   - Decide when to Submit the Reports -- 2022, OK
-  - README
-  - Schedule
-  - Manaba files
-  - Course_Outline.org
+  - README -- 2022 OK
+  - Schedule -- 2022 OK
+  - Manaba files -- 2022 OK
+  - Course_Outline.org -- 2022 OK
 
-- Fix the Lecture Code.
+- Fix the Lecture Code. -- 2022 OK
 
 # Per Lecture TODO
 

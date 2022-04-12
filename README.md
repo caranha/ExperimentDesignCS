@@ -15,7 +15,7 @@ You can see more information in the full [syllabus](syllabus.md) of the course.
 
 # Materials
 ## Topic 0: Introduction and Housekeeping
-  - [Lecture Notes]() -- TBA
+  - [Lecture Notes](topic00/course_introduction.pdf)
   - [Video Lecture]() -- TBA
 
 ## Topic 1: What is Experimentalism
