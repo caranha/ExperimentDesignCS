@@ -52,3 +52,34 @@ Separate the lectures notes in "Topics (material)" and "Reviews" -- Review slide
 
   A lot of focus on this paper about thinking of the nature of the
   problem and the assumptions of the Statistical testing.
+
+# Open ended reflections (Lower Priority)
+
+Things that happened in lectures/reports, that I need to make clearer in the next course.
+
+## Talk about success and surprise in science.
+
+A lot of people want to "find positive results", but negative results are very important (learn why this went wrong), and are necessary in science too.
+
+## About student reports
+- Some students think that submit code means including screenshots of jupyter notebooks in their pdfs. Need to make clear that this is not acceptable: Code and data must be submitted as separate files.
+
+- In cases where the data is available online, it needs to be explained where, how to obtain, and conditions for use, as well as any pre-processing that was done.
+
+## Add a separate, entire lecture about reproducible researche
+- Not a section of the first lecture.
+
+
+## Exam:
+- Exam should include "hidden curriculum" and interpretation of
+  text in papers (but I need to include these in class)
+  - Think about Japanese style ethical exams
+
+## Other Lectures
+- Idea: paired vs non paired: Use the example of testing a clustering
+  NN method with different features. First it is tested on a sinlge
+  dataset (unpaired), then explain that this test does not generalize,
+  and a paired test on multiple datasets would be much better.
+
+- Idea: Add self exercises (questions and exercise sheets) for
+  students to test their own knowledge about the topics.

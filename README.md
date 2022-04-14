@@ -20,7 +20,7 @@ You can see more information in the full [syllabus](syllabus.md) of the course.
 
 ## Topic 1: What is Experimentalism
 
-- [Lecture Notes]() -- TBA
+- [Lecture Notes](topic01/01_week01.pdf)
 - [Video Lecture]() -- TBA
 
 ## Topic 2: Point and Interval Indicators.
