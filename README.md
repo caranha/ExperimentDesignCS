@@ -25,7 +25,7 @@ You can see more information in the full [syllabus](syllabus.md) of the course.
 
 ## Topic 2: Point and Interval Indicators.
 
-- [Lecture Notes]() -- TBA
+- [Lecture Notes](topic02/01_week02.pdf)
 - [Video Lecture]() -- TBA
 
 ## Topic 3: Inference Testing I -- Hypothesis testing.

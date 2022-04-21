@@ -1,33 +1,34 @@
-# General TODO
-- Import Manaba files from previous year -- 2022, OK
-  - Update General Manaba files -- 2022, OK
+# Tasks
 
-- Update Files in LectureNotes
-  - Decide when to Submit the Reports -- 2022, OK
-  - README -- 2022 OK
-  - Schedule -- 2022 OK
-  - Manaba files -- 2022 OK
-  - Course_Outline.org -- 2022 OK
+## Week 2
+- Get comments -- DONE
+- Check TODO -- DONE
+  - Will not change contents this year because of time
+  - Will only make script from video subtitles and make minor corrections
+    to slides.
+- (DOING) Make scripts from video subtitles
+- (QUESTION) Do I do the code video again or not?
+- Record videos
 
-- Fix the Lecture Code. -- 2022 OK
+## General Workflow
+- Get comments from manaba and create a 2022_comments.md file for each year/topic
+  - Mostly raw answers from students
+  - My comments for the thread
+  - Things to discuss in the "comments" video
+  - Extract points for the TODO of previous (or future!) lectures
 
-# Per Lecture TODO
+- Read and update the local TODO for that year
+- Re-read the material and further update the TODO
 
-- Write the "COMMENTS.md" file, and record the "comments" video.
-  - Add new ideas to the TODO of the previous lecture.
+- Update the material based on the TODO
 
-- Read and Update the LOCAL TODO:
-  - Note the TODO from last year
-  - Re-read the material to add new TODOs
+- Record new videos and set up Manaba
 
-- Improve the material following the TODO
-
-- Record new videos
-
-- Add/Remove new ideas to the TODO of the lecture
-
-# Specific for 2022:
-Separate the lectures notes in "Topics (material)" and "Reviews" -- Review slides
+# Ideas for 2022:
+- Lectures are separated in "Topics" and "Reviews":
+  - Topics: Introduce new concepts (current slides)
+  - Reviews: Review the reports, summarize past concepts, and also case studies and papers
+    (Make new folders for this, check schedule for details)
 
 ## New "Topic 05" -- Simple Experiment design
 - In Lecture the lectures so far, we assumed always one independent variable, and one dependent variable (and possibly some blocking factors). What if we have more than one variable?
@@ -66,7 +67,7 @@ A lot of people want to "find positive results", but negative results are very i
 
 - In cases where the data is available online, it needs to be explained where, how to obtain, and conditions for use, as well as any pre-processing that was done.
 
-## Add a separate, entire lecture about reproducible researche
+## Add a separate, entire lecture about reproducible research
 - Not a section of the first lecture.
 
 

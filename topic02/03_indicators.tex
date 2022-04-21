@@ -1,10 +1,5 @@
 
-\section{Basic Concepts}
-\begin{frame}
-  \begin{center}
-    Part II.a: Indicators Basic Concepts
-  \end{center}
-\end{frame}
+\section{Indicators: Basic Concepts}
 
 \begin{frame}{Lecture Outline}
 
@@ -34,19 +29,16 @@
 \begin{frame}{Example of Data Collection}{Using Experiment Data to characterize a system}
   \begin{columns}
     \column{0.8\textwidth}
-    How can we use experiment data to learn more about the world?\bigskip
-
-    \structure{Tsukuba University} is famous for many olympic athletes. Let's say
-    I want to investigate {\bf WHY}. After thinking a bit, I come up with two questions:
+    \structure{Tsukuba University} is famous for many olympic athletes. Let's say we want to investigate if this is because some special characteristic of the students. After thinking a bit, I come up with the following question:
     \begin{itemize}
-      \item Is the olympic performance related with the body of the students?
-      \item Are students in Tsukuba stronger / taller / healthier than other unis?
+      \item Is the olympic performance related with the height of the students?
+      \item Are students in Tsukuba taller than normal in Japan?
     \end{itemize}\bigskip
 
-    The 1st question seems hard to answer, but maybe the 2nd is easier?\bigskip
+    The 1st question seems hard to answer right now, but 2nd question seems easier.\bigskip
 
-    Imagine I take one student from Tsukuba and measure their height.
-    Can this information help me answer the second question?
+    Imagine I take ONE student from Tsukuba and measure their height.
+    Can this information answer the second question? Why?
     \column{.2\textwidth}
     \includegraphics[width=\textwidth]{../img/irasutoya_height}
     \ppagenote{Height image from \url{https://www.irasutoya.com}}
@@ -209,7 +201,7 @@
 \section{Point Estimators}
 \begin{frame}
   \begin{center}
-    Part II.b - Point Estimators
+    Part II - Point Estimators
   \end{center}
 \end{frame}
 
@@ -232,8 +224,10 @@ that describes the population of interest.\bigskip
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Examples}
-Point estimation problems arise frequently in all areas of science and engineering, whenever there is a need for estimating, a population parameter. For example:\bigskip
+\begin{frame}{Example of model parameters}
+We use point estimators to calculate several parameters for
+population models. Some common parameters that we are interested
+in estimating include:\bigskip
 
 \begin{itemize}
   \item the population mean, $\mu$;
@@ -243,7 +237,7 @@ Point estimation problems arise frequently in all areas of science and engineeri
 	\item etc...
 \end{itemize}\bigskip
 
-{\bf Important!} For each case, there are multiple statistics that can estimate a parameter from the sample (multiple functions). Which estimator should be used, depends on the mathematical properties of the statistic.
+Note that for each of these parameters, there are many different statistics that we could use to calculate an estimate. Which statistic / which point estimator should be used, depends on the mathematical properties of the statistic AND the model under study.
 \end{frame}
 
 \subsection{Statistical Errors and Biases}
@@ -454,7 +448,7 @@ For more details on the CLT, see \url{https://www.encyclopediaofmath.org/index.p
 \section{Interval Indicators}
 \begin{frame}
   \begin{center}
-    Part II.c - Interval Estimators
+    Part III - Interval Estimators
   \end{center}
 \end{frame}
 
@@ -474,7 +468,7 @@ Let's now suppose that we obtained a sample with $n=25$ observations, and calcul
 \end{frame}
 
 \begin{frame}{Statistical Intervals}{Definition}
-A {\bf statistical interval} defines a region that is\structure{likely to contain the true value of an estimated parameter}.
+A {\bf statistical interval} defines a region that is \structure{likely to contain the true value of an estimated parameter}.
 \bigskip
 
 The statistic interval allows us to quantify the {\bf level of uncertainty} associated with the estimation. This information helps us arrive at sound conclusions about the parameter, at {\bf predefined} levels of certainty.
@@ -594,16 +588,38 @@ A two-sided confidence interval on the variance of a normal variable can be easi
 
 %=====
 
-\begin{frame}{Wrapping up}
-Statistical intervals quantify the uncertainty associated with different aspects of estimation;
-\bigskip
-
-Reporting intervals is always better than point estimates, as it provides the necessary information to quantify the location and uncertainty of your estimated values;
-\bigskip
-
-The correct interpretation is a little tricky (although not very difficult)\footnote{See the table at the end of  \url{https://git.io/v5ZFh}}, but it is essential in order to derive the correct conclusions based on the statistical interval of interest.
-\end{frame}
+% \begin{frame}{Wrapping up}
+% Statistical intervals quantify the uncertainty associated with different aspects of estimation;
+% \bigskip
+%
+% Reporting intervals is always better than point estimates, as it provides the necessary information to quantify the location and uncertainty of your estimated values;
+% \bigskip
+%
+% The correct interpretation is a little tricky (although not very difficult)\footnote{See the table at the end of  \url{https://git.io/v5ZFh}}, but it is essential in order to derive the correct conclusions based on the statistical interval of interest.
+% \end{frame}
 
 
 %% TODO: Data visualization (types of graphs for indicators)
 % \subsection{Visualizing indicators}
+
+\begin{frame}{Summary}{Descriptive Statistics}
+
+  Experiment Data can be used to \structure{estimate facts about the world}:
+  \bigskip
+
+  \begin{itemize}
+    \item Point estimators: Sample Means, Variance, Correlation, etc.
+    \begin{itemize}
+      \item Give us specific information about the model we want to study
+      \item "What is the average height of a student?"
+      \item {\bf An estimator is not the real value!}
+    \end{itemize}\bigskip
+
+    \item Interval estimators: Confidence Interval, etc. %IQR
+    \begin{itemize}
+      \item Give us more information than point estimators.
+      \item "How certain should I be about this point estimator".
+      \item Size of interval estimator depends on the number of samples.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
