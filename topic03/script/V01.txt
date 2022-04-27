@@ -1,0 +1,299 @@
+Hello Everyone, this is Claus Aranha at
+the University of Tsukuba, and this is
+Experiment Designs in Computer Science,
+Week 03, "Statistical Inference".
+
+This is going to be an important one,
+so pay attention!
+
+In this first video, I will introduce the
+general concept of "Statistical Inference".
+
+==
+
+Last week, I introduced what is called
+"descriptive statistics". They can use
+to describe a system that we are studying.
+
+For example, the confidence interval of the mean
+can tell me what is the expected height
+of students in a university, or the expected time
+for running a computer program.
+
+It can also tell me how certain I am of this description.
+Is it a sure description, or do I need more data?
+
+However, what I cannot do with descriptive statistics,
+well, at least not directly, is to make more categorical
+affirmations.
+
+For example, I can not, or it would be better to say, I should
+not purely use confidence intervals to say "Program A is faster
+than program B". That's not what the confidence interval
+was made for.
+
+So when I want to say if program A is faster than program B,
+what can I do? One very important tool to do this kind
+of analysis is the "Statistical Inference".
+
+==
+
+Let's start with an example.
+
+Imagine I am a very lucky person, I own a factory that
+produces delicious chocolate.
+
+My factory produces packages of cocoa, and each package
+should contain 300g. Of course, the factory is not
+perfect. Sometimes a package will have a little bit
+less, a little bit more, but as long as the average is
+300g, and the variance is not too big, I am happy.
+
+So, every 6 months, I want to check if my production
+is working right, and if it is not working right,
+I need to execute a maintenance to fix any problems.
+
+How would you do this check? How would you,
+concretely, decide if the factory needs maintenance?
+
+Think for a bit before continuing.
+
+==
+
+So, from what we learned in the class last week,
+we can think: "Ok, I can do an experiment to solve this problem".
+
+That's great.
+
+So every six months, we want do an experiment to check if the average
+package weight produced by our factory is 300g, or not.
+
+To do this experiment, first we obtain a sample of chocolate from the factory.
+This sample could have 30 observations, let's not worry about this
+number right now, but we want a large number to reduce the error of
+our estimate.
+
+There are other things that we need to take care: For example, it would be
+better if these 30 observations came from different machines in the factory,
+produced on different days, so we can have an idea of the general production
+of the factory. On the other hand, if we suspect that there is some
+factor that influences the result, like one specific machine that is broken,
+we may want to take that into account when we collect observations.
+We will talk about this more in a future class.
+
+Anyway, we calculate the mean estimate from this sample, and since we remember
+last lecture, we can also calculate the confidence interval. Let's say the
+estimated weight was 295g, and the 95% confidence interval was 283g to 307g.
+
+Now what, do I need to do a maintenance of my factory, or not?
+
+==
+
+"Statistic Inference" is a technique to establish the "probable truth"
+of an statement. In the chocolate factory case, it could be "The factory
+probably needs maintenance", or more specifically, "The factory true mean
+is probably under 300g".
+
+To do statistical inference, we follow many of the same steps that we
+did with descriptive statistics. We create a probabilistic model
+that describes our system, and we calculate statistics using data
+from samples and observations that we obtain in an experiment.
+
+The difference here is that we use the data and the statistics to
+compare the calculated model (the sample model) with a theoretical
+model (population model).
+
+One way to think about statistical inference is to compare it with
+logical inference. In logical inference (A implies B), we establish
+the truth value of statement "A", and it tells us the truth value of
+statement "B".
+
+In statistical inference (This data implies this conclusion), we
+calculate estimators from the data to calculate the probability that
+the conclusion is true.
+
+==
+
+A Key idea for statistical inference are "Statistical Hypothesis".
+
+You probably heard this term before. A hypothesis is a sentence that
+explains, or describe, something about the world.
+
+A statistical hypothesis is something a bit more specific. It
+also describes the world, or the model under study, but it describes
+it from a specific, statistical point of view.
+
+So, in our example, our statistical hypothesis would be:
+The true mean weight of packages produced in our factory is at least 300
+grams.
+
+By the way, note how important it is that we started from
+a general situation, then consider the question of interest, and finally
+create the statistical hypothesis:
+
+- We have a chocolate factory
+- We want to know when we should do maintenance on the factory
+- We should do maintenance if the production is less than expected.
+- Our hypothesis (our expectation) is that the true mean is above 300g.
+
+Starting from the hypothesis is a bad habit, because it may force you
+to invent number that are not related to what you really want to know.
+
+==
+
+I think it is important to spend a little more time talking about
+how we use the word "Hypothesis". Hypothesis is a word that people
+like to use, because it feels "serious", it feels "science",
+but it is a word with a specific meaning, and it is nice to use it correctly.
+
+A common hypothesis is a statement about the world, in general.
+
+But a statistical hypothesis a statement about a statistical model of the
+world. Usually we are talking about specific parameters of that model.
+
+So see some of these examples.
+
+(examples)
+
+One easy way to think about it, is that a statistical hypothesis can
+always be represented as an equation. If you can't transform your
+statistical hypothesis into a clear equation, then you are not being
+specific enough.
+
+==
+
+When we do an analysis using statistical inference, one of the first
+steps is to choose the statistical hypothesis that we are going to test.
+
+We talked a little bit about common hypothesis and statistical hypothesis,
+but there are more things to keep in mind so that you can make useful
+hypothesis.
+
+One is the predictive power of the hypothesis. The simple way to describe it is
+how useful can this hypothesis be in the future? If the hypothesis
+only describe the past, it is not very useful for statistical inference.
+
+Note that studying the past can be useful for other reasons, but right now we
+are focusing on statistical inference.
+
+(example)
+
+Another is the principle of parsimony. It means that we usually want a
+hypothesis that is as simple to describe as possible. The general idea is that
+parsimonious hypothesis are easier to understand, to investigate, and to
+analyze. Even if we confirm a complex hypothesis, sometimes we don't learn much
+from that.
+
+(example)
+
+Finally, there is the external consistency hypothesis. A statistical hypothesis
+is an equation. It is not hard to make equations reach numbers that make
+no sense, so you need always double check your statistical analysis against
+what we know. Sometimes, the difference changes what we know. But sometimes
+the difference shows that our analysis might be wrong.
+
+(example)
+
+==
+
+Now that wave a nice hypothesis, what do we do with them?
+
+The general idea to use hypothesis and an experiment is that
+we create multiple hypothesis to describe a system that
+we are studying, and then we do an experiment so that,
+from the data in the experiment, we can tell which hypothesis fits
+the data best.
+
+For example, for the factory example, we can create a few hypothesis:
+
+H1- The factory does not need maintenance, the mean weight of the packages
+produced is above 300g.
+
+H2- The factory needs maintenance, the mean weight of the packages produced is
+below 300.
+
+Note how these hypothesis also follow our research interest. We want to know
+if the factory needs maintenance, so we create hypothesis that follow
+this decision criteria.
+
+After we have our hypotheses, we do an experiment to collect the data that
+we will analyze. In this case, we collect 10 cocoa packages from the factory,
+and measure their weight.
+
+==
+
+The process of statistical inference is that, given the data that
+we observe in the experiment, we observe the probability that
+this data would happen if hypothesis 1 was true, and the probability
+that this data would happen if hypothesis 2 was true.
+
+So that is the calculation we want to make: if the experiment data
+is x, we calculate P of x given H1, P of x given H2, P of x given H3,
+etc.
+
+So, if we take the two hypothesis from the last slide, our
+statistical inference calculation would focus on trying to answer the
+following question:
+
+Given that we observed this data: Weight of the packages is
+293g, 325g, 271g, 313g, etc. For this data, what is the
+probability that this data would be happen if Hypothesis 1
+was true, and what is the probability that this data would happen
+if Hypothesis 2 was true.
+
+==
+
+There are several ways to define hypothesis and calculate inference
+from them. In this course, I want to focus on one that is used
+very often, which is the "Null Hypothesis Significance Test".
+
+The key idea is that we choose two hypothesis for our experiment.
+
+Remember that we are talking about statistical hypothesis here.
+So hypothesis here means a statistical description of the model
+that represents how the world works.
+
+So our two hypothesis are the Null Hypothesis and the Alternate
+Hypothesis, usually called H0, and H1.
+
+The "Null" hypothesis represents the world as we expect it to be,
+while the "Alternate" hypothesis represents some surprising or
+unexpected effect.
+
+In this formulation, the goal of our analysis is to calculate
+if the probability of the alternate hypothesis is high enough
+that we should conclude the null hypothesis is no longer
+good enough to represent the "expected world".
+
+==
+
+In this methodology, it is very important to define a reasonable
+null hypothesis. The Null hypothesis is usually formulated to
+describe the world as we "expect" it to be.
+
+We can usually formulate the Null Hypothesis model from existing
+knowledge, values from the theory, or models, or the
+requirements of a system, such as in our factory example.
+
+On the other hand, on the other hand, the alternate hypothesis is
+a model that describes something "different" that is happening in
+the world. Something that requires an action, or a change in
+how we understand the world.
+
+For example, we expect our chocolate factory to be working, but
+someone on twitter complained that our packages are smaller
+than advertised. So we conduct an experiment to see if
+there is a problem in the production.
+
+The choice of these two hypothesis is not always simple, but
+also it is not something that you should worry too much about.
+In many cases the choice will end up revealing itself, so don't
+worry.
+
+==
+
+Ok, this ends our first video, where I explain the general idea
+of Statistical Inference and Hypothesis testing.
+
+In the next video I will talk about how we actually calculate those
+probabilities and make the inference decision. See you there.

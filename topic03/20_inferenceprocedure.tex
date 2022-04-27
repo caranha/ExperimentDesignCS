@@ -8,31 +8,32 @@
 
 \subsection{Ideas}
 \begin{frame}{Outline of the Procedure for the NHST}
-  Given a good $H_0$ and $H_1$, the objective of the statistical test is to answer the question:\\
+  The objective of the statistical test is to answer the question:\\
   "Do we have enough evidence to prefer the Alternate Hypothesis to the Null Hypothesis"?\bigskip
 
-  More usually, the phrase "reject the null hypothesis" is used.\bigskip
+  In other words, $P(x|H_0)$ low enough that we need to {\bf reject} the null hypothesis?\bigskip
 
-  The overall procedure is to calculate the \structure{parameter estimate} for our parameter of interest, and see if this value falls into a \structure{Rejection Region}. An estimate that falls in this region leads us to reject the null hypothesis as {\bf unlikely.}
-
+  To make this decision, we calculate an {\bf estimate} for the parameter of interest (x) in the hypothesis, and compare this value with a {\bf Expected/Rejection Region}.
   \begin{center}
     \includegraphics[width=.8\textwidth]{../img/critical_region}
   \end{center}
 \end{frame}
 
 \begin{frame}{Outline of the Procedure for the NHST}{Inference Errors}
-  Remember that the statistic that estimate a parameter is a {\bf random variable}. So there is an \structure{error} associated with the statistic, and we can reach \alert{wrong conclusions}.\bigskip
-
+  There are four possible results to a Statistical Inference Test:
   \begin{itemize}
-    \item Sample error is too large: statistic is in the rejection region when the $H_0$ is true;
+    \item The estimate falls in the expected region: We can't reject the Null Hypothesis.
+    \item The estimate falls in the reject region: We reject the Null Hypothesis.
+    \item (Type I error): Estimate falls in the rejection region, but the Null Hypothesis is correct.
+    \item (Type II error): Estimate falls in the expected region, but the Null Hypothesis is incorrect.
+  \end{itemize}
 
-    \item $\Delta$ is too large: statistic is in expected region when $H_0$ is not true;
-  \end{itemize}\bigskip
   \begin{center}
     \includegraphics[width=.5\textwidth]{../img/critical_region}
   \end{center}
 
-  Designing the experiment correctly, we want to control the probability of these errors.
+  These errors can happen because of large errors in the estimate, and/or because of error in the calculation of the expected region. By selecting good experiment parameters, we can control these errors to a degree.
+
 \end{frame}
 
 \subsection{Two Types of Errors}
@@ -162,7 +163,7 @@ The two conclusions of a test of hypothesis are normally considered as follows:
 \begin{frame}{Hypothesis Testing Example 1}{Estimate the mean of a normal distribution, the variance known}
   Given these characteristics, we can define the test statistic $Z_0$:
   \begin{equation*}
-    Z_0 = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}}
+    Z_0 = \frac{\bar{x} - \mu_0}{\sigma / \sqrt{n}}, \bar{x}: \text{sample mean}, \mu_0: \text{H0 mean}, \sigma: \text{standard error}, n: \text{sample size}
   \end{equation*}
   {\bf Under the null hypothesis}, the value of ${Z_0}$ follows a standard normal $N(0,1)$. With probability $1-\alpha$, the value of $Z_0$ will fall between the $\alpha/2$ and $1-\alpha/2$ quantiles of N(0,1):
   \begin{equation*}
@@ -177,7 +178,7 @@ The two conclusions of a test of hypothesis are normally considered as follows:
 \end{frame}
 
 \begin{frame}{Hypothesis Testing Example 1}{Putting Numbers in the Equation}
-  Assume that we took $n=10$ observations, and obtained the mean estimate $\bar{x} = 49.65$kg. Assume too that we know that the variance is $\sigma = 1$kg. We calculate $z_0$ as:
+  Assume that we took $n=10$ observations, and obtained the mean estimate $\bar{x} = 49.65$kg. Assume too that we know that the standard error is $\sigma = 1$kg. We calculate $z_0$ as:
   \begin{equation*}
     z_0 = \frac{49.65 - 50}{1 / \sqrt{10}} = -1.113
   \end{equation*}\bigskip

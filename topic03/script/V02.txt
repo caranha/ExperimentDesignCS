@@ -1,0 +1,342 @@
+Hello everyone, I'm Claus Aranha from the
+University of Tsukuba, and this is Experiment
+Design for Computer Science, week 3,
+statistical inference.
+
+Last video I explained to you what is the
+procedure of Statistical Inference, and in
+this video I will explain to you how to
+calculate it. Let's go.
+
+==
+
+In the last video, we talked about the
+procedure for the Null Hypothesis
+testing.
+
+The idea is that we select a Null Hypothesis,
+an Alternate Hypothesis, and from the
+experimental data we try to decide which one
+we think is more probable.
+
+To be more precise, what we want to do is
+answer the question: "Do we have enough
+evidence to prefer the Alternate Hypothesis
+to the Null Hypothesis?"
+
+To answer this question, we want to calculate
+the statistic in our hypothesis, let's say x,
+and see if the probability of this statistic
+to have the observed value, is low enough,
+under the Null hypothesis, that we have to
+"reject" the null hypothesis.
+
+Let me repeat, because this is important. We calculate
+the statistic, for example, the mean weight.
+Then we calculate the probability of this statistic
+under the Null hypothesis. Finally, based on this
+value, we reject the null hypothesis if this
+probability is low enough.
+
+In other words, if the value of the statistic is
+*too unlikely* under the model defined by the Null
+hypothesis.
+
+By this definition, we have to define a
+"expected region", which is a region where the
+value of the statistic has high probability under the
+Null hypothesis, and a "rejection region", where the
+value of the statistic has low probability under the
+null hypothesis.
+
+==
+
+Let's consider the possible results of a
+hypothesis test.
+
+In the last slide, we considered two possible results:
+
+1- The estimated value under the null hypothesis
+falls in the expected region. This means that the
+probability of this value is high, so we *do not
+reject* the null hypothesis.
+
+2- The estimated value under the null hypothesis
+falls in the rejected region. This means that the
+probability of this value, under the null hypothesis,
+is too low, so we *reject* the null hypothesis.
+
+However, you must remember that there is an error
+associated with our estimator. The TRUE value
+that we are trying to measure can be different
+of the value that we estimated.
+
+This makes us consider two more possible results:
+
+3- The estimated value falls in the rejection region,
+but the null hypothesis is correct (Type I error). This
+usually happens because the error of our estimator is too large, or
+if we are too strict with this delta, which determines
+the error threshold of the expected region.
+
+4- The estimated value falls in the expected region,
+but the null hypothesis is not correct (Type II error).
+This can happen because the error of the estimator is large, but it
+can also happen if we are too generous with the size of the
+expected region.
+
+During the experiment design stage, it is possible
+to choose the parameters of our experiment, to control
+the size of the rejection region, and limit the
+probability of an error, to a certain degree.
+
+==
+
+So let me give you a little more detail on the Type I
+error.
+
+Type I error happens when your estimate tells you to reject
+the null hypothesis, while the Null Hypothesis is true.
+Type I error is a *false positive* kind of error.
+
+We describe the probability of a Type I error as alpha.
+Sometimes we also say that alpha is the *significance* of
+the test. Finally we can also say that the test has a
+"confidence" of 1 - alpha.
+
+==
+
+Let's think about what this means, from a statistical
+point of view.
+
+Remember that the statistic that estimates a parameter
+is a random variable. So there is a distribution
+that describes the possible values that we can find
+when we calculate an estimate.
+
+So from this point of view, alpha, the probability
+of Type 1 error, is equivalent to the probability that
+a value from this distribution falls in the
+rejection region.
+
+If we understand the distribution of the estimate,
+we can can control alpha, by changing the size of the
+rejection region.
+
+For example, if we assume that our estimate follows
+a normal distribution with the mean equal to the
+true value (in other word, it is an unbiased estimator),
+we can calculate delta, the size of the rejection region,
+so that the probability of the estimate to be
+inside it is alpha.
+
+This is equivalent to the size of this blue area
+in this image.
+
+==
+
+Now let's think about the type II error.
+
+A type II error (False negative) happens when
+the Null Hypothesis is NOT true, but our estimate
+falls inside the "acceptable area".
+
+It is represented by the letter "beta". Another
+name for the type two probability is
+the "Power of the test". 1 - beta is the power
+of the test.
+
+==
+
+We can think about the Type II error in terms of distributions
+of probability for the estimate, in the same way that
+we did for the Type I error.
+
+However, it is a bit harder to control the probability beta,
+than it is the probability alpha.
+
+This is because, when we try to calculate the area of the
+estimate distribution that corresponds to a false negative,
+we need to take into consideration the TRUE value of the parameter,
+that we don't know.
+
+In this image, the blue distribution is the probability distribution
+of the estimate under the Null hypothesis. We control the null hypothesis,
+so this distribution is fixed.
+
+The red distribution, however, is the TRUE distribution. It could be really
+close to the Null Hypothesis distribution, like on the top figure,
+but it could be very far away, like in the bottom figure. So under the same
+experimental design, the probability of beta can change a lot.
+
+==
+
+So, the power of the experiment can change because of many factors. Some
+of these factors we control, and some we don't.
+
+The factors we control: The significance level alpha, and the size
+of the sample.
+
+The factors we do not control: The true value of the parameter, and the
+variance of the data.
+
+In general, it is possible to estimate the power of a test by
+defining a target minimum difference between the null hypothesis and the
+alternate hypothesis.
+
+So we can say that "if the difference between the null hypothesis and the
+true value is at least this much, then probability of a type II error is beta"
+
+==
+
+So to summarize the errors,
+
+Type I Error, alpha, is the significance of the test, and it depends on the
+distribution described by the Null Hypothesis.
+
+Type II error, beta, is the power of the test, and depends also on the
+real value of the parameter, which we don't know.
+
+Alpha is easier to control than beta.
+
+Because of this difference in the difficulty to control alpha and beta, we
+consider that when a test Rejects the Null hypothesis it is a strong
+conclusion, but when a test does not Reject the Null hypothesis, it is a
+weak conclusion.
+
+Another way to put this is that "failing to reject the null hypothesis"
+is NOT evidence that the null hypothesis is true. It only says that
+the null hypothesis is better than the alternate hypothesis.
+
+==
+
+Ok, now that we understand how to interpret the result of
+the hypothesis test, let's review the steps to conduct the test.
+
+First we identify the parameter that we are trying to estimate, let's say
+the mean.
+
+Then we define the two hypothesis, and the desired alpha and beta values.
+
+Next we define the "minimal effect size of interest", delta, which we will
+talk about in a second.
+
+Using these parameters, we will calculate the sample size (which
+we will talk about near the end of the course).
+
+With all these parameters, we can calculate the statistic for the test,
+and the critical region, the reject region for the Null hypothesis.
+
+After we calculate the rejection region, we can obtain the data
+from the experiment, calculate the test statistic, and decide from the
+result if we should reject the null hypothesis or not.
+
+==
+
+Let's consider an example of calculation of the hypothesis tests.
+
+The idea is similar to the chocolate factory example that we worked
+with until now. There is a brand of peas, and you are a consumer
+that wants to check if the weight of the bag of peas is different
+from the amount that is listed in the bag.
+
+Let's assume that we know the true variance of the production
+distribution. In this case, we can define the Null hypothesis
+and the alternate hypothesis as:
+
+Null Hypothesis: The true mean value of the weight is 50kgs
+Alternate Hypothesis: The true mean value of the weight is not 50kgs.
+
+Note that in the alternate hypothesis, the true mean value could be
+more or less than 50. This is what we call a "two sided test".
+
+Let's consider that the desired significance of the test is 0.05.
+
+So our model assumes that the sample distribution of our estimator
+"mean of the weight" (bar x) is a normal curve, with variance
+sigma squared divided by the sample size.
+
+If the null hypothesis is true, the mean of this distribution is 50.
+
+==
+
+We can use these numbers to calculate the "test statistic" Z. It is
+calculated with this simple formula.
+
+This formula transforms the value of x-bar into a variable Z0 following
+a normal distribution with mean 0 and standard error 1. If we think
+about the cumulative density function of the normal curve,
+the value of Z0 falls within the alpha quantiles of the normal
+distribution with probability 1 minus alpha.
+
+This allows us to calculate our critical zone: If Z0 is smaller than the
+alpha by two percentile of the normal, or greater than the 1-alpha divided
+by two percentile, then we reject the null hypothesis. Otherwise,
+we fail to reject the null hypothesis.
+
+==
+
+Let's replace these variables with some numbers. Let's say we have 10
+observations, and their average is 49.65. Then assume the standard error
+is 1 kg.
+
+We put these values in the equation, and the value of Z is -1.113.
+
+Now remember that our critical region is defined by the percentile values
+of a normal curve. For alpha equal to 0.05, divided by two, these values will
+be -1.96 and 1.96.
+
+So if Z0 falls outside of this range, we reject the null hypothesis, and if
+it falls inside this range, we do not reject the null hypothesis.
+
+So in this case, the data does not support the rejection of the null hypothesis.
+
+==
+
+Now let us imagine a more realistic situation, where we don't know the
+real variance of the data.
+
+Also, let's assume that we want a more strict test, so we set our confidence
+to 99%, or alpha = 0.01.
+
+In this case, our test statistic changes from Z0 to T0. T0 is a test
+statistic calculated on the student t-test distribution, with
+n-1 degrees of freedom.
+
+In this equation, s is the error calculated from the sample, and t_d is the
+t distribution with d degrees of freedom. You should look up in
+a statistics textbook about the t distribution to understand
+what I mean "degrees of freedom", but in a general way it is the amount of data
+that I have in a experiment.
+
+==
+
+Now, if we plug in the values, we can calculate the t-statistic, -1.597,
+and if we compare it to the critical values of the t-distribution,
+for this confidence level, we are again inside the critical threshold
+of the distribution.
+
+So we can again conclude that the evidence of the experiment is not strong
+enough to reject the null hypothesis at the 99% confidence level.
+
+==
+
+One thing that I want to emphasize is that you do not need to
+calculate these numbers by hand.
+
+It is important to understand the principle behind these formulas.
+What these formulas say about the meaning of the statistical tests.
+
+But in practice, you will usually create a small
+script in R like this one, to read your experiment data
+automatically, and calculate the information you need
+from the statistical test.
+
+==
+
+An this finishes this video. In the next video, I want
+to talk a little bit more about how to interpret
+the results of a statistical test, and the conditions necessary
+to validate these results.
+
+See you there.

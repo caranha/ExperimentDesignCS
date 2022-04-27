@@ -3,7 +3,7 @@ from the University of Tsukuba, and this
 is Experiment Design for Computer Sciences.
 
 In this video, I am going to explain
-what are "Point Estimators".
+what are "Point Indicators".
 
 By the way, this video and the next one
 will be a bit mathematical. If you have any
@@ -17,9 +17,9 @@ In the last video, we explained that
 a "statistic" is a function calculated
 from experimental data.
 
-A point estimator is a type of statistic.
+A point indicator is a type of statistic.
 
-Formally, we say that a point estimator
+Formally, we say that a point indicator
 is the statistic that provides the value of
 maximum plausibility of a given population parameter.
 
@@ -29,7 +29,7 @@ Let's say that we have a model M, and we have a
 parameter "theta" in this model. For example, the
 mean height of students in the university.
 
-A "Point Estimator" will calculate an estimate
+A "Point Indicator" will calculate an estimate
 for this parameter from the data that we obtained
 in our experiment.
 
@@ -38,7 +38,7 @@ the parameter theta, for the population X.
 
 ==
 
-There are many different point estimators
+There are many different point indicators
 that we use in science and engineering to calculated
 parameters of interest in our models.
 
@@ -49,7 +49,7 @@ One thing that is important to note is that for each of these parameters, there 
 
 ==
 
-The value calculated by the point estimator is a random Variable, and depends on the sample. This means that if we are really unlucky, the estimate that we calculated can be very different from the true parameter.
+The value calculated by the point indicator is a random Variable, and depends on the sample. This means that if we are really unlucky, the estimate that we calculated can be very different from the true parameter.
 
 For example, imagine again that we want to calculate the average height of the students in the university of Tsukuba. But because we are a bit lazy, we did our experiment using only students from our circle.
 

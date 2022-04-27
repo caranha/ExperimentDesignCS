@@ -1,0 +1,540 @@
+Hello everyone, this is experienced
+science in computer science
+week three statistical inference
+Part 4 Ultra final video.
+So in this video I'm going
+to just go some loose ends,
+answer some questions that I got
+and also summarize the class.
+So in this lecture, let's go to it.
+So the idea of this lecture was specially
+the concept of hypothesis testing.
+This is a way to use data that we
+obtained from an experiment to make
+conclusions about a population.
+OK, let's think back about the procedure
+of statistical testing that we study this.
+First we formulated the question of interest.
+They think that we want to research
+and based on that we defined the
+hypothesis that we are comparing.
+Then we define the minimal
+interesting effect.
+What is the minimal difference between
+the two hypothesis that we watch it
+attacked based on this information we
+can define the confidence and the power
+of the test and on this information
+we can calculate a simple size.
+Now calculation of sample size will be
+the topic of a future language lecture.
+Then we can finally do it.
+Experiment and collect the data and
+based on the data we execute the
+statistical analysis and that will
+give me like reject new hypothesis
+or do not relate to hypothesis.
+We also have to validate the assumptions,
+do the data that I obtained
+from my experiment follow the
+statistical model they expected to
+follow that describes this test.
+Finally, based on this I can draw
+some conclusions and I can make a
+recommendation based on my results.
+In the future lectures in the next
+few lectures we going to study.
+Today we saw a very simple case.
+We have one sample and we want
+to check one value.
+Is it equal equal to this value or
+is the mean equal to this value
+wisdom in different from this value
+in the following lectures we're going
+to discuss some variations in some
+special cases for this static procedure.
+However,
+it's very important that you
+understand this lecture.
+So think about what parts you don't
+understand all this lecture and
+make questions on the survey on the
+attendance survey or on the office hours.
+Some recommended reading for this lecture.
+There is this link from the University
+of Golf is statistical significance
+versus practical significance.
+It's attached that talks a little
+bit more about what is the P value
+and why do we need to also calculate
+the practical significance.
+The meaningful of the result
+besides the testicle significance.
+And there's a second text that is
+the assumptions of normality that
+talk a little bit about how the
+models inform our statistical tests.
+Talking about recommended tests.
+So when you talk about recommended scientist,
+so in the first lecture I ask you
+to suggest the scientists that you
+found inspiring and I decided to
+every lecture if I have the time,
+talk a little bit about one scientists
+that are some topics that I think
+it would be interesting for you.
+So today I want to talk about Florence
+Nightingale so Florence Nightingale.
+She was a she was a British nurse.
+OK and she made a great contribution to.
+Medicine evidence based medicine in general,
+so why she was a nurse.
+She was not like, oh,
+I'm going to be a sense.
+She was a nurse that worked in
+the British Army.
+She was also a mathematician.
+OK,
+this is interesting that she put
+these two these two careers together now.
+What should it is that she did
+a great contributions for the
+professionalization of nursing,
+the nursing profession.
+She is considered to be the person that
+made nursing more than just someone
+who is there to help the doctor and
+actually someone that has a rule.
+A specific role in the health
+care industry now.
+So what should did the big thing
+that Florence Nightingale did that
+is very related to this course is
+that she had a tireless drive to
+write down everything that she did.
+And draw the conclusions and
+put information together.
+She could be said that the person
+who invented the info graph in
+a way so she would get data.
+For example, here is a diagram of
+the different causes of mortality
+of some patients that she was
+supervising or some doctors so so OK,
+this person died of this and
+this person died of this.
+But this person just.
+Calls like this and she would put
+all of that together and based
+on this data she could figure out
+different things that could be done
+to improve the quality of life.
+The survival rate of the person she
+with the people who were taking care about,
+for example.
+So if we wash your hands before
+we touch the patients,
+they will die less and she could show
+that by date or here's some data of
+nurses that wash their hands and
+nurses that don't wash their hands.
+And here are the results of the treatments.
+And here you see that the results improved.
+So she started to do this
+very important push about.
+OK,
+let's let's use the evidence to
+support the hypothesis that we're using.
+Should we treat the patient like this
+or should we treat a patient like that?
+So I think that's interesting to
+study the history of Florence Nightingale,
+to think about how we changed over
+the last two centuries to use more
+data to decide how we're going to do
+Med seen how we going to science,
+etc.
+A second thing I want to recommend.
+This was an article that came last year
+and I found it really interesting,
+specially for computer scientists.
+It's a little bit unrelated to the latch.
+What I talked about from inside here,
+but it's kind of related to the idea of
+doing tests to compare compare experience.
+So this paper is called metric learning
+reality check by Musgrave at all
+and what it did is that they wanted
+to study metric learning machine
+learning models for metric learning.
+Now, what exactly is metric learning
+and what models the models that
+compare is not really important,
+but important is what they did and this
+is very common in computer science,
+so many papers in machine learning
+and other areas of computer science.
+They work like this.
+I have an algorithm.
+And I will do an experiment to
+calculate if my algorithm is
+precise or if my algorithm is fast,
+or if my algorithm is reliable
+and then I get the results.
+Now I need to compare this with
+other algorithms that already exist.
+So what I will do is that they will
+look at the paper of this other
+algorithms and I'll compare my
+results with the results that were
+compared to these other papers.
+So that's what a lot of people do.
+Well, what Musgrave did is that
+he took this results,
+but instead of just comparing of the papers,
+he also implemented all the results
+from many of the different papers again.
+And he made sure to adjust
+the parameters to do the.
+There's something called parameter settings.
+So before you run the algorithm,
+you have to adjust many parameters
+and they're just admit of the
+parameters depends on the data,
+depends on their computer,
+depends on the architecture.
+Depends on many things.
+So what he did is that he took many
+different methods and adjusted all
+the parameters and run the experiment
+again and you can see this tree images.
+The image on the left is the
+results that were published in the
+papers and if you look at the
+results published on the papers.
+You can see that overtime the
+results get better and better.
+Each new algorithm has better
+results than the other algorithms.
+When was grave implemented,
+all the algorithms again when the
+authors implemented all the algorithms
+again and adjusted all the parameters.
+What he noted is that all the
+algorithms of all the papers they
+have about the same performance.
+So. What was the problem?
+The problem is that when you compare
+your algorithm that you programmed
+that you fix the bugs that you adjust
+the parameters that you run many
+times and it was running very well.
+When you compare that with the results
+that are on the paper that were submitted
+last that were published last year
+or five years ago or 10 years ago,
+the comparison that you're doing
+is not a fair comparison.
+You're comparing an algorithm that you
+worked a lot on it with an algorithm
+that you did not work on it maybe.
+And that comparison is not fair
+and you can see here the results.
+The results were very different.
+Results come based only on paper
+comparisons and the result based on
+reimplementing all the all the code.
+So what is a fair comparison?
+OK, of course the definition
+of Fair comparison depends on
+the field being studied at the.
+What exactly is the experiment
+and what data is available.
+But in general if we talk about
+comparing algorithms in computer science,
+there are some points that we
+want to make sure that to make
+sure that the comparison is fair.
+For example, parameters we talked
+about finely tuned parameters.
+If we use a very,
+very detailed method to fine tune
+the parameters of our method,
+but we don't find tune the
+parameters of the other methods.
+Then maybe you're using some data or
+some conditions that are not fair.
+Also, discarding valid things variations.
+So let's say that you are creating a new
+method and you try method A, it fails.
+You change method a little bit.
+You tried method B,
+it fails you chant meant to be a little bit.
+You try method see it fails,
+you chant methods.
+See a little bit of time at D and it
+succeeds if you just publish method
+D and you don't talk about the other
+methods and all the changes that you did.
+Basically what you're doing is that
+you are overfitting to the data.
+Modifying the algorithm is kind of learning,
+it's a learning done by the scientist,
+but it's a kind of learning that
+will influence the results if you're
+using the same data and trying
+one algorithm and then another,
+and then another,
+and then another on the same data.
+You are overfitting to that data,
+and if you compare with the
+previous result that was not.
+Maybe dunno,
+maybe not developed on that data.
+Your algorithm will have an advantage
+because you did that overfitting beforehand.
+That's why it's good that at the end,
+after you develop your algorithm,
+you try it on a completely different
+data that you never seen before.
+Also, only comparing data favorable to
+one of the algorithms or coding with
+modern libraries versus old algorithms,
+so sometimes say Oh my algorithm is
+must faster than the old algorithm.
+But maybe the algorithm old algorithm
+was using node version of Python
+that was not very optimized,
+so it would be interesting to recompile
+the old algorithm to see if it becomes
+faster just by re compiling it in a
+modern compiler on another interpreter
+or a modern version of the language.
+Also different computational
+environments etc etc etc.
+The important message here is the
+best way to make sure that multiple
+algorithms have a fair comparison
+is to rip lament all of them,
+run all of them in the same environment,
+do the same for attorney.
+Of course, that's not always possible,
+but if that's not possible,
+you have to make clear when you report that
+that these are limitations of your method.
+That maybe if you find tune
+the methods you are comparing,
+maybe they would perform better.
+Also to make sure that other
+people can fine tune your methods,
+it's super important.
+To publish the code of any method
+that you publish as a research.
+Of course you are making a company.
+Maybe you don't want to publish your cold,
+or maybe you do,
+but if you are a scientist and
+you are proposing a new algorithm,
+if you don't publish the code
+of your new algorithm,
+other scientists will not be able
+to do fair comparisons of your
+algorithm with their algorithm.
+OK.
+Alright, these are the things
+that I wanted to recommend.
+I still have a little bit of time.
+I'm just going to comment on
+some questions from last week,
+so let's put this questions here.
+Let's see? OK, so as you can see,
+last week I asked if people
+preferred YouTube or teams.
+There were a lot of people
+that said both are fine.
+We had about seven people that prefer
+YouTube and five people that prefer teams.
+I'm going to try to publish the videos
+to both platforms in the future.
+I made a question about bias in
+computer science that bias in the
+statistical bias in an estimator.
+If one Randall sample from a one
+observation from the population
+was a biased estimator to the
+mean of the population,
+and many students gave the wrong
+as they said, yes, it's biased.
+No, remember the definition of the
+definition of statistical bias
+is not that the value is wrong.
+Bias is not only the value being wrong,
+bias is the value being systematically
+wrong or wrong always in the same way.
+For instance, if I'm wrong,
+but I'm always wrong for more
+than I'm biased if I'm wrong,
+but I'm wrong for both more
+and less then I'm wrong.
+Yes, I'm not a very reliable person.
+But I'm not statistically biased.
+It's important to make this difference OK,
+and here.
+Remember, I'm talking about statistical bias.
+It's a bias about a statistical formula.
+It's a bias of a formula.
+A formula is statistically biased
+if the error of this formula is not
+equally distributed on both sides.
+So if my formula is,
+I take one observation and I say that.
+Their value of the observation is my being,
+well,
+the estimated the expected value
+of that observation is equal
+to the value of the mean.
+So when the observation is wrong,
+there is an equal probability of the
+observation being wrong for more and
+the observation being wrong formulas.
+So in that case that estimator is not biased.
+Some people said oh it's biased becauses
+it's it has a very high variance or it's
+biased because it could be very extreme.
+Yes, it could be very extreme.
+Yes,
+it has a very big variance,
+but because these various
+has equal distribution.
+On both sides of the truth value,
+then you cannot say that it's
+statistically bias so big a little
+bit careful because of that.
+These properties of models they
+are very important to interpret
+how we use certain tests,
+which tests we use, or which.
+Which formulas we use so
+be careful about that.
+We have a few more questions.
+Is electronic dictionary allowed?
+I was thinking about it.
+Yes, I will allow it later.
+Tradic dictionary.
+Just make sure that you only
+use our Lektronic dictionary to
+check for the meaning of words.
+Don't store data ferryport don't
+store data in your electronic
+dictionary in advance.
+If you do that,
+I will find you and you're going to suffer.
+OK, some people said please change
+the visual language to English.
+Sorry my mistake I will make sure
+that the English this link English the
+language is set to English this time.
+Some person asked I cannot
+understand this equation.
+What is MU MU is the mean?
+I'm sorry new is an obvious that is a value
+that is usually used to mean the mean,
+just like Sigma is usually
+used to mean the variance OK?
+Is copying and pasting from
+your slide to this quiz OK, OK,
+you are a very smart person.
+Yes, you can use my slides for anything,
+even for coping in the quiz,
+not in the final exam because you cannot
+check my slides in the final exam.
+But here's the thing,
+I am not grading the kiss.
+OK, the quiz I'm not grading the
+idea of this quiz is to take your
+attendance and to make sure that
+you are understanding the class.
+So for instance, in this case,
+if I ask a question in the quiz
+and I see that a lot of people
+are giving the wrong answer,
+I can give an extra explanation.
+So if you copy paste.
+I slide but you don't understand
+what you copy paste then you are
+fooling me because you're pretending
+that you know when you don't know,
+so I cannot explain to you and you're
+fooling yourself because you're
+pretending that you know and you don't know.
+So for the quiz,
+try to answer with your own knowledge,
+not with copy paste.
+Unless you are absolutely sure that you
+understand what you're copy, paste.
+It would be better if speaking speed
+is slower. I'm sorry about that.
+If you are using Microsoft streams
+or even if you are using YouTube,
+you can reduce the speed of the video.
+So let's see if I can show this here.
+OK, so.
+If I go here with Microsoft Streams.
+And let's see my contents.
+And they go to the video.
+So when you play the video.
+Let me just mute here.
+When you play the video here,
+you have playback speed.
+And then you can choose the
+playback speech behalf.
+If you watch OK,
+I will put it on YouTube.
+In YouTube. You can also put 75%
+if you think that half is too slow.
+Also because if the video you
+can always pause the video many
+times and repeat if you don't
+understand or look at the text.
+I was a little bit confused about
+the definition of estimator bias.
+When you say the errors when they
+happen are equally distributed above and
+below the real value of the parameter,
+do you mean the error calculated using
+the population X or the sample X?
+So here I'm talking about this simple error.
+OK so when we calculate the
+sample error will be distributed.
+It's not the error of the sample,
+it's the set where it's a
+little bit tricky and ice.
+I get confused as well when I say
+the error of the sample, I'd say OK,
+I have 10 samples and I will calculate.
+I would take the take the
+average in that ticket.
+That's the error of the sample,
+but the sample error is the error that I
+get from the sample when I calculate that.
+When I calculate that that statistic is
+the error that the sampling method causes
+to the calculation of my statistic,
+and in the case the sampling error
+will be distributed equally above and
+below the value of the parameter.
+If you don't understand come to
+the come to the.
+Office hours and we can talk again
+and again until you understand it.
+Recommend problem sets.
+I don't have any problems sets at the
+top of my head because we're doing a
+lot of things that are very theoretical,
+but I will try to find some.
+Give me some time about that,
+refine some problem sets.
+Alright, that's it for today.
+I thank you very much for watching the
+videos and I'll see you again next week.
+Bye bye.

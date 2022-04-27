@@ -30,7 +30,7 @@ You can see more information in the full [syllabus](syllabus.md) of the course.
 
 ## Topic 3: Inference Testing I -- Hypothesis testing.
 
-- [Lecture Notes]() -- TBA
+- [Lecture Notes](topic03/lecture3.pdf)
 - [Video Lecture]() -- TBA
 
 ## Topic 4: Inference Testing II -- Comparison testing and Paired testing.

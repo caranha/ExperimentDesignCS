@@ -1,6 +1,7 @@
 # TODO:
 
-- Add example/discussion about other important point estimators:
+## TODO 2023
+- Add example/discussion about other important point and interval estimators:
   - Variance
   - Correlation
 
@@ -12,7 +13,9 @@
   - Talk in more detail why it is important, and add references.
   - Add a code example about CLT
 
+- Add example (with data/problem) about variance and correlation estimators
 
+# General TODO
 ## Improve interval indicator part
 - This part is too technical. Add a concrete motivating example
   in the beginning, with actual numbers.
@@ -34,4 +37,4 @@
 - Maybe add a better example with context, describing the initial
   experiment used to gather data, and the R code used to calculate
   things. Introduce RMD later.
-- Find a good link for data wrangling with R 
+- Find a good link for data wrangling with R

@@ -1,0 +1,508 @@
+Hello Everyone, I'm Claus Aranha from
+the University of Tsukuba, and this
+is Experiment Design in Computer
+Sciences, Week 3.
+
+In this video, we will talk about
+interpretation and validation of
+statistical tests.
+
+==
+
+In the last video, we talked about
+how to execute a statistical inference
+calculation.
+
+We described the result of the test as
+"There is Sufficient (or insufficient) for
+ rejecting H0 at the significance level alpha".
+
+Now, this is a correct description of the
+test result, but it is incomplete.
+
+For example, we don't know how strong is the
+result found by the experiment, and we don't
+know how big was the difference observed,
+or how sensitive was the test.
+
+Giving this extra information would make our
+analysis more useful right? So let's talk about this.
+
+==
+
+So let's talk first about the "p-value",
+which some of you might have heard about.
+
+A lot of people use p-values wrongly though, so
+let's try to explain this carefully.
+
+We define the p-value as the smallest value of alpha
+that would cause the calculation of the statistical
+test to reject the Null Hypothesis.
+
+Another way to think about it: it is the highest
+possible confidence that we can obtain for the
+test, given the available data.
+
+So, for the last example in the previous video, we would
+calculate the p-value following this formula, The total
+probability area in T distribution when the value of the
+statistic is equal os rmaller than -1.597.
+
+Calculating this value gives us a p-value of 0.1447,
+which means that only a value alpha of 0.1447 or higher would
+reject the null hypothesis.
+
+One nice way to interpret the p-value is "how surprised do some we are
+to see this result under the null hypothesis". The lower the p-value,
+the more surprising is the experiment result.
+
+==
+
+The p-value can be very useful, since it can quantify how surprising the
+experiment result was. However, we need to be careful too.
+
+For example, when you learn that the p-value measures the minimum
+alpha that rejects the Null hypothesis, you can naturally think something like:
+"So we don't need to define alpha before the experiment, we can just use
+ the p-value as a replacement to alpha!"
+
+That would be a wrong conclusion, because changing the value of alpha AFTER
+you get the experiment data would be similar to a "moving goalposts" problem.
+You need to determine what confidence value is relevant for your experiment
+before you look at the data.
+do some
+==
+
+Another problem with relying too much on the p-value is that it is not
+difficult to inflate the p-value by manipulating the experiment design.
+
+For example, if we can increase the number of samples easily, we can
+reduce the p-value to a very very small number, even if the difference
+between the Null hypothesis and the true value is very small.
+
+Look at this example, the difference between the null hypothesis and
+the data is smaller than the error, but because we have a large number of
+observations, the p-value is very tiny.
+
+In computer science, this is an extra problem, because in many cases we
+can artificially inflate N by using simulations or cross-validation.
+
+==
+
+To avoid this kind of problem, we can calculate something called an
+"effect size estimator".
+
+Remember that the P value calculates "how surprised" we are at a result,
+but it does not calculate the size of the result.
+
+The effect size estimator calculates the size of the result, or how
+far away it is from the expected Null Hypothesis. We can calculate
+it by dividing the difference observed in the experiment by the
+error of the sample.
+
+Another way to improve our understand of the result is to
+calculate confidence intervals together with the p-value in our report.
+
+The confidence interval also gives us the size of the estimated error,
+and can be very useful to understand the result of an experiment.
+
+==
+
+Ok, next I want to talk about a different topic,
+Model validation.
+
+==
+
+If you pay attention to the lecture today, you can
+understand that the Null Hypothesis Testing method
+that I have introduced depends on several assumptions
+about the problem that we are studying for this experiment.
+
+Some of these assumptions are statistical, probably
+the one that you can understand right away is that the
+estimated value follows a normal distribution.
+
+Some of the assumptions are also from a technical point of
+view, in other words, about the set up of the experiment.
+
+For example, when we use the mean weight of the packagesdo some
+as our representative value, we are assuming that one
+package being under the average is not a big problem, as
+long as the average of all packages is correct.
+
+Note that this would be very different if we were
+talking, for example, about a medicine shipment. In that
+case, we would like to be sure that all vaccines have at
+least the minimum effective weight.
+
+Also, we are assuming that our observations come from
+the regular production of the factory, they were not
+produced specially for this tests. And other assumptions like
+these.
+
+Note that for this kind of assumptions, there is not much
+that we can do in terms of statistics, but it is important
+to be aware of these assumptions when we decide the format
+and important variables of the experiment.
+
+==
+
+We also have a few statistical assumptions, that are much
+more narrow in scope, but still important to consider.
+
+The refer to the properties that we assume for the underlying
+model of the statistical test.
+
+For this test, we are concerned with three assumptions:
+- Assumption of normality,
+- Assumption of Independence, and
+- Assumption of Variance.
+
+==
+
+The assumption of Normality is that the distribution of the
+sample mean that we calculate is roughly normal. In other words,
+if we calculate the sample mean for many samples from the same population,
+we will obtain a normal curve for these results.
+
+If you remember, the calculation of the z and the t statistic use
+the normal (or student t) curve to calculate the critical reason, that is why
+this assumption is necessary.
+
+Now, in most cases, the CLT guarantees that this assumption holds,
+but we can test it if necessary.
+
+==
+
+To test the assumption of normality, we can use the QQ plot to visually
+inspect the distribution of the residuals of our observation data. The
+QQ plot plots a set of data points in the horizontal axis, and
+the theoretical values of a normal distribution on the vertical
+axis.
+
+If the data follows a normal distribution, the QQ plot will be roughly a
+straight diagonal, bounded by these red dotted lines. This plot
+also helps us spot outliers in the data, so it is useful for that.
+
+==
+
+We can also test the normal assumption using statistical tests, such as the
+Shapiro-Wilk test. These tests use the same idea of the hypothesis test,
+but here the null and alternate hypotheses are about whether the distribution
+is normal or not.
+
+Even if the CLT helps guarantee the assumption of normality, it is still very
+useful to investigate these characteristics of the data when analyzing the
+results of an experiment.
+
+==
+
+To finish the lecture today, I want to talk about the assumption of Independence,
+because this is a really important one.
+
+The assumption of independence says that the observations in a sample
+are independent from each other. In other words, obtaining observation X
+from the experiment does not influence the result of observation X+1.
+
+It is easy to explain with an example. Imagine that your experiment involves
+calculating the speed of a robot. This robot has a battery. If you
+run the experiment 20 times, and do not recharge the battery, the robot will
+run slower and slower, and it will be slower in the last observations when
+compared to the first observations.
+
+In this example, the assumption of independence is violated, and the
+statistical test would give us a result that is not reliable.
+
+In general, it is not possible to guarantee or even test independence
+purely by mathematical tests. The Durbin-Watson test can detect
+time-related dependence, but it fails if the order of the observations is
+mixed. In the end, to preserve independence of the observations, we
+need to design our experiment carefully to remove any factors
+that would violate the independence assumption.
+
+==
+
+This finishes the videos for this week. You will notice that we still have
+a few slides to go. I highly recommend that you spend some time
+on the extra reading of this class.
+
+If you have any questions, as always, come to the office hours.
+See you there!
+
+
+
+
+
+
+
+
+
+
+OK, now let's talk about model validation.
+Another thing that is very important
+to use tests in a responsible manner.
+So today in the 1st and the second video we
+studied the new hypothesis statistical tests.
+It adopts a number of assumptions.
+Some of these assumptions are
+statistical and some are technical.
+The technical assumptions
+we talk on the first video,
+the statistical assumptions, are like this.
+When you do the new hypothesis statistical
+test, we are assuming that the mean is a
+good measure for the question of interest.
+For example, this assumes that the various
+is small enough in the various too big.
+That mean doesn't really mean anything.
+The weight of the package is independent
+if the weight of the package is.
+If the weight of the second package
+depends on the weight of the first first,
+since, let's say that you are in a
+game and when you get the first one,
+the second one will be a little bit bigger.
+The third one with bigger,
+the 4th one will be a little bit quicker.
+If you have this relationship
+between the samples,
+the mean does not mean anything anymore.
+OK, it doesn't.
+It doesn't make sense to
+calculate the mean in that sense.
+When we are using the mean,
+it means that anyone that is buying our
+chocolate buys always like many packages.
+If they, if everyone only buys one package,
+it doesn't matter that the mean is 300.
+If this one person bought one package and
+that one package is like 200 and 52150 grams,
+that person will be very angry.
+It doesn't matter if I tell them
+about all the mean, on average,
+my samples is around 200 critic,
+300 grams.
+In that case my test would have
+to be different.
+Instead of making a test of the mean,
+I would have to make an experiment to
+guarantee the minimum value of my production,
+so that would be a completely different test.
+So these are some assumptions.
+Another assumption that we make is
+that the sample that we took on the
+experiment is a representative sample.
+For example,
+if I have 10 factories and I take
+all of the samples from one factory,
+maybe that factory is broken,
+but the others are not.
+Or maybe that factor is OK,
+but the others are not.
+So if I have 10 factories and
+I want to analyze everything,
+I have to take samples from the
+different factors or in another way.
+If I do,
+if I know that there is going to be a test,
+I might want to before doing the test.
+I clean my factory and I repaired the
+factory and they get the best workers
+to work in the factory and that
+would affect the value of my test.
+I want you to fast into regular condition
+that I usually produce the chocolate.
+OK, or sometimes like the contents of
+the package are actually chocolate.
+OK,
+so if there is if I if the weight
+is not only chocolate but also the package,
+then the test of the mean might not
+be very good because the weight that
+changes would be just a small proportion.
+So these are our assumptions that
+you need to be careful about.
+Now if we talking about
+statistical assumptions,
+so those are technical assumptions.
+The statistical assumptions are
+a little bit more fixed.
+OK, these are a little bit easier
+to study for the case of the T test
+and the Z test that we studied,
+we have the following assumptions.
+The sample distribution follows
+a normal curve.
+This is called the assumption of normality.
+The observations in the sample
+are independent.
+This is the assumption of independence.
+The variance is constant,
+so this is the very day
+assumptions of variance.
+So before you use this new
+hypothesis statistical testing,
+you need to make sure that these
+assumptions are maintained.
+While we can maybe do the the
+test before or you can check
+the assumptions before,
+or you can take check the assumptions later,
+but you need to make sure to test
+their assumptions or the result
+of your test will not be valid.
+So let's talk about some of these
+assumptions assumptions of normality.
+So the assumption of normality.
+Is not that the observations are of
+1 sample are normally distributed,
+or even that the observations of the
+entire population are normal distribution.
+The idea is that the distribution
+of the sample means is normal,
+and as we saw last class,
+the distribution of the sample
+means will be normal in many
+cases if it follows the CLT,
+the central limit theorem.
+So to guarantee the assumption
+of normality is usually enough to
+make sure that the CLT is working.
+For our experiment.
+So if we cannot assume the
+conditions of the CLT priority.
+If it's not possible to detect
+the assumptions of the CLT,
+we can do some tests on the sample
+to see if it's normal distribution.
+The simplest test is the QQ plot.
+The QQ Plot is a plot on where on
+one axis you plot the observations
+of your sample and another axis
+you plot the theoretical value
+of the normal distribution.
+If your sample follows roughly
+a normal curve,
+then did not the QQ Templat will show
+a roughly a linear relationship here.
+OK,
+if it does not then you start you have
+to all to try a more precise test to
+see if there is deviations of normality.
+Or you can maybe try to see if they are.
+How do you say?
+Extreme values that might have been
+caused by errors in the experiment,
+so that's also another why that's important.
+Test,
+let's say that you expect your
+sample to follow a normal,
+but when you do experiment,
+you see an outlier.
+A very big outlier.
+You can investigate that experiment
+and that can tell you something
+you that you didn't know before.
+Maybe it's because actually you're there
+was a broken equipment on your test,
+or maybe there is a special case
+that you did not think it before,
+so it's important to tag test
+the assumptions of your test.
+Another way without using visual you
+can also do a test to check if your
+data follows the normal T assumption.
+We can use the Shapiro Wilk test or the
+Anderson Darling test Lily for test.
+There are several tests in this course.
+I usually recommend the Shapiro Wilk test.
+It has a lot of like so this tests
+they are statistical tests like
+the ones we describe before the
+new hypothesis of this test is
+that the population is normal.
+The alternate hypothesis is that
+the population is not normal.
+OK, in this case,
+if we reject the new hypothesis,
+it indicates that the sample
+that we obtained came from the
+normal normal distribution.
+So we can check that again to
+see if there is anything that
+is happening like a problem in
+the test or something about the
+experiment that we didn't.
+You before.
+Now the independence assumption
+is actually a more important one,
+and one problem with the independence
+assumption is that we don't have a
+test for the independence assumption.
+The independence assumption depends
+very highly on how you do the test.
+OK, the meaning of the independence
+assumption is that the values of the
+observations are not dependent on each other.
+So in your sample you have 10 observations.
+The value of the second observation does not
+depend on the value of the first observation.
+That's the independence assumption.
+For example, let's say that you
+are measuring the speed of a robot.
+OK, if you run the robot 10 times in a row,
+maybe the battery of the robot becomes slow
+and the robot will start to become slow.
+That means that your experiment
+is not independent anymore.
+So how do you make the
+experiment independent?
+Well, in this case,
+before every experiment will recharge
+the battery of the robot to fall.
+Another example,
+let's say that we are using an algorithm
+that predicts a time series curve.
+So.
+We tried the algorithm 20 different
+curves that are our sample are
+20 different curves and we're
+going to measure all of them.
+However,
+five of those curves are actually
+different instances of the same model,
+and the 15 of the curves are
+completely different models.
+In this case,
+this five curves are related
+to each other and the results
+are related to each other.
+So or samples are not as independent
+are not completely independent anymore.
+If the if the if the algorithm
+is good on sample one,
+it will be good on sample.
+True it will be good on sample tree.
+OK,
+so in general we want to guarantee
+that all the samples are independent
+through careful experiment design,
+there's a test that's a Durbin Watson test
+that can be used to detect some dependence.
+The problem with doing what's on test is
+that it depends on the order of the sample.
+So if the independence is not related
+with the order that the depths of what,
+some tests will not detect that.
+So it's not a very reliable test.
+For this.
+The best way to guarantee independent.
+You should be very careful when
+you think about your experiment.
+OK, that's the end for this video.
+In the last video, I'm going to
+summarize the topics of this lecture,
+and I'm going to answer some of the
+questions that were asked last week.
+See you there. Thank you very much.

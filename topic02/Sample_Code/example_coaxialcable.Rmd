@@ -17,7 +17,7 @@ standard deviation **2**:
 ```{r coaxial_generate_data}
 # Generating the data. 
 set.seed(42)                    # Set PRNG seed (for reproducibility)
-x<-rnorm(n=25, mean=50, sd=2)   # Draw 25 samples from N(mu=50,sigma=2)
+x<-rnorm(n=50, mean=50, sd=2)   # Draw 25 samples from N(mu=50,sigma=2)
 
 x                               # Lists the resistances of each cable in the sample
 ```
@@ -25,7 +25,7 @@ x                               # Lists the resistances of each cable in the sam
 So our hypothetical factory generated cables with the resistances above. 
 That is our data for this example.
 
-# Point estimators.
+# Point indicators.
 
 When we get data from an experiment, we are usually interested in calculating
 *point estimators* that describe the characteristics of the process that 
@@ -72,4 +72,10 @@ For a sample with 10 cables, the sample mean is `r mean(csample_10)`, and the sa
 For a sample with 25 cables, the sample mean is `r mean(csample_25)`, and the sample mean error is `r sme(csample_25)`.
 
 For a sample with 50 cables, the sample mean is `r mean(csample_50)`, and the sample mean error is `r sme(csample_50)`.
+
+# TODO
+- Write a function that shows that the average is a unbiased estimator (it counts the number of times that the average overestimates and underestimates, and maybe the magnitude as well)
+
+- Write a function that plots how the sample error decreases as the sample size increases (this would indicate the rate of diminishing returns)
+
 

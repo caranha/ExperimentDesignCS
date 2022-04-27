@@ -1,14 +1,12 @@
 # Tasks
 
-## Week 2
-- Get comments -- DONE
-- Check TODO -- DONE
-  - Will not change contents this year because of time
-  - Will only make script from video subtitles and make minor corrections
-    to slides.
-- (DOING) Make scripts from video subtitles
-- (QUESTION) Do I do the code video again or not?
-- Record videos
+## Week 3
+- First check of Material and TODOs -- DONE
+- Get and Process Comments -- DONE
+- Download and process 2021 Scripts -- DONE
+- Rewrite Scripts and Fix Materials
+- Record Lectures
+
 
 ## General Workflow
 - Get comments from manaba and create a 2022_comments.md file for each year/topic

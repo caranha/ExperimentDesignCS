@@ -177,28 +177,31 @@ pre code {
 <p>First, let’s create a hypothetical data set of cables produced by a process that follows a Gaussian distribution, with mean <strong>50</strong> and standard deviation <strong>2</strong>:</p>
 <pre class="r"><code># Generating the data. 
 set.seed(42)                    # Set PRNG seed (for reproducibility)
-x&lt;-rnorm(n=25, mean=50, sd=2)   # Draw 25 samples from N(mu=50,sigma=2)
+x&lt;-rnorm(n=50, mean=50, sd=2)   # Draw 25 samples from N(mu=50,sigma=2)
 
 x                               # Lists the resistances of each cable in the sample</code></pre>
 <pre><code>##  [1] 52.74192 48.87060 50.72626 51.26573 50.80854 49.78775 53.02304 49.81068
 ##  [9] 54.03685 49.87457 52.60974 54.57329 47.22228 49.44242 49.73336 51.27190
 ## [17] 49.43149 44.68709 45.11907 52.64023 49.38672 46.43738 49.65617 52.42935
-## [25] 53.79039</code></pre>
+## [25] 53.79039 49.13906 49.48546 46.47367 50.92019 48.72001 50.91090 51.40967
+## [33] 52.07021 48.78215 51.00991 46.56598 48.43108 48.29818 45.17158 50.07225
+## [41] 50.41200 49.27789 51.51633 48.54659 47.26344 50.86564 48.37721 52.88820
+## [49] 49.13711 51.31130</code></pre>
 <p>So our hypothetical factory generated cables with the resistances above. That is our data for this example.</p>
 </div>
-<div id="point-estimators." class="section level1">
-<h1>Point estimators.</h1>
+<div id="point-indicators." class="section level1">
+<h1>Point indicators.</h1>
 <p>When we get data from an experiment, we are usually interested in calculating <em>point estimators</em> that describe the characteristics of the process that generated that data.</p>
 <p>So if we see a list of resistances for cables in a factory, we want to know the average resistance of a “standard” cable from that factory.</p>
 <p>The <strong>sample mean</strong> is an unbiased estimator of the population mean, so we can use the <strong>sample mean</strong> from the data, to <strong>estimate</strong> the mean of the factory.</p>
 <pre class="r"><code>sample_mean &lt;- sum(x) / length(x) # Sample mean: sum of obs / sample size
 sample_mean</code></pre>
-<pre><code>## [1] 50.37507</code></pre>
-<p>Note that the <strong>sample mean</strong> (50.3750723) is different from the <strong>population mean</strong> (50), because it is an <strong>estimator</strong>.</p>
+<pre><code>## [1] 49.92866</code></pre>
+<p>Note that the <strong>sample mean</strong> (49.9286564) is different from the <strong>population mean</strong> (50), because it is an <strong>estimator</strong>.</p>
 <p>Since it is an estimator, the sample mean has an error. We can calculate the estimated error as follows:</p>
 <pre class="r"><code>sample_mean_error &lt;- sd(x)/sqrt(length(x)) # sample mean error: slide 25
 sample_mean_error</code></pre>
-<pre><code>## [1] 0.5225459</code></pre>
+<pre><code>## [1] 0.3256867</code></pre>
 <p>If we collect a larget sample, our estimated error for the sample mean becomes smaller. This is one reason why we want to do many experiments:</p>
 <pre class="r"><code>csample_10 &lt;- rnorm(n=10, mean=50, sd=2) # sample 10 cables
 csample_25 &lt;- rnorm(n=25, mean=50, sd=2) # sample 25 cables
@@ -207,9 +210,9 @@ csample_50 &lt;- rnorm(n=50, mean=50, sd=2) # sample 50 cables
 sme &lt;- function(x) {
   sd(x) / sqrt(length(x))
 }</code></pre>
-<p>For a sample with 10 cables, the sample mean is 49.8921241, and the sample mean error is 0.5314076.</p>
-<p>For a sample with 25 cables, the sample mean is 49.540106, and the sample mean error is 0.4374049.</p>
-<p>For a sample with 50 cables, the sample mean is 50.2857444, and the sample mean error is 0.2419586.</p>
+<p>For a sample with 10 cables, the sample mean is 50.0367878, and the sample mean error is 0.7660774.</p>
+<p>For a sample with 25 cables, the sample mean is 50.3004686, and the sample mean error is 0.3298116.</p>
+<p>For a sample with 50 cables, the sample mean is 49.8435968, and the sample mean error is 0.2800289.</p>
 </div>
 
 
