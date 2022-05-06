@@ -1,6 +1,6 @@
 # TODO
 
-## Code sample for this lecture
+## Make Code sample for this lecture (TA?)
 - In the code sample, comment with the important of defining and framing
     the experiment before experimental analysis begins
 
@@ -13,6 +13,10 @@
 - Framing the experiment before defining the analysis is better because we don't
 need to contort the experiment factors and objectives to fit the analysis.
 
+## Add a more gentle explanation (with more numbers) about distribution curves, percentiles, etc.
+
 ## Future:
 When do we talk about isolating experimental factors in a more formal way?
 - Blocking, randomization, etc.
+
+## Remove Outro from main slides into a spearate thing (maybe separate folder)

@@ -1,0 +1,74 @@
+---
+title: 'Data Analysis Example: Green Pea Weight'
+author: "Yifan He"
+subtitle: Code Example -- Lecture 03
+---
+
+# Introduction
+
+For a certain brand of peas, we want to determine if there is any significant deviation in the mean weight of sacks from an advertised amount (50 KG). Assume (for now) that the true variance of the process is known. 
+
+# Data 
+
+The data for this example was obtained from Felipe Campelo's "Analysis and 
+Design of Experiments" course. and is available as a .csv file in the "rawdata" subdirectory.
+
+```{r}
+pea <- read.table("rawdata/greenpeas.txt", col.names = c("Weight"))
+pea # this is an R dataframe
+```
+
+# Statistical inference
+
+For a certain brand of peas, we want to determine if there is any significant deviation in the mean weight of sacks from an advertised amount (50 KG). Assume (for now) that the true variance of the process is known. The test hypotheses are defined as:
+
+$H_0:\mu=50$
+
+$H_1:\mu\neq50$
+
+```{r pea_test}
+t.test(pea$Weight, mu = 50, conf.level = 0.95)
+```
+
+Given p-value of 0.1447 (>0.05), we conclude that the evidence from the sample is insufficient to reject $H_0$ at the 95% confidence level. The mean weight is 50 KG.
+
+# Effect Size
+
+The effect size could be calculated by Cohen's $d$ metric as follows. $s$ is the standard deviation with n-1 degrees of freedom of the samples.
+
+$$
+d=\frac{\bar{x}-\mu}{s}
+$$
+
+```{r pea_effectsize}
+n <- length(pea$Weight)
+s <- sd(pea$Weight) * sqrt((n-1)/n) # standard deviation with n-1 degrees of freedom
+d <- abs((mean(pea$Weight)-50)) / s # cohen's d metric
+print(d)
+```
+
+The effect size is 0.53.
+
+# Assumption of Normality
+
+The one sample t-test requires the normality of the population. It is important to verify this assumption. The normality of the data could be tested by Shapiro-Wilk test. The hypothesis of Shapiro-Wilk test are defined as:
+
+$H_0$: the population is normal
+
+$H_1$: the population is not normal
+
+```{r pea_shapirotest}
+shapiro.test(pea$Weight)
+```
+
+Given p-value of 0.1335 (>0.05), we conclude that the evidence from the sample is insufficient to reject $H_0$ at the 95% confidence level. The population is normal.
+
+An easier and intuitive way to check the normality is using QQ-plot. In R, there are several methods to draw a QQ-plot. Here, we use `qqPlot()` in `car` library.
+
+```{r qqplot}
+# install.packages("car") # install car library
+library(car) # import car library
+qqPlot(pea$Weight)
+```
+
+As all the points fall approximately along the reference line, we can assume normality of the population.

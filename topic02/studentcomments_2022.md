@@ -5,7 +5,6 @@
   - You should frame the experiment as "get information about A and B", not "Is A or B better". This will help think about exploring the question with curiosity rather than just trying to answer a question with the minimum of information possible.
 
   Example: Rather than "Do shirts dry faster inside or in the varanda", "measure the drying speed of shirts inside and in the varanda"
-  (Future TODO: more detailed example?)
 
 # Question: Is one Random Uniform Sample Biased?
 
