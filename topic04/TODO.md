@@ -13,5 +13,4 @@
     in huge benchmark suites)
 
 - [ ] Outro
-  - TODO: Example of good reports
   - TODO: Code examples
