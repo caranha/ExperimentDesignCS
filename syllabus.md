@@ -51,6 +51,7 @@ No designated textbook: The course will be based on lecture notes to be distribu
 
 - D.C. Montgomery, "Design and Analysis of Experiments", Wiley, 2005,
 - Felipe Campelo "Lecture Notes on Design and Analysis of Experiments", [Online](https://github.com/fcampelo/Design-and-Analysis-of-Experiments), 2018,
+- Peter Hoff, "Lecture Notes on Design of Experiments", [Online](http://www2.stat.duke.edu/~pdh10/Teaching/421-502/LectureNotes/notes.pdf)
 - Other recommended readings on available on manaba
 
 ## Evaluation 	

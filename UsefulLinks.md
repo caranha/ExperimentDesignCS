@@ -14,8 +14,20 @@ These are links to complementary materials to increase your knowledge on the sev
 
 - [Design and Analysis of Experiments](https://github.com/fcampelo/Design-and-Analysis-of-Experiments). Lecture notes by Felipe Campelo, sister course to this one.
 
+- [Applied Statistics Courses by Peter Hoff](https://pdhoff.github.io/teaching/)
+
 - D.W. Stockburger, [The Sampling Distribution. In: Introductory Statistics: Concepts, Models, and Applications](http://psychstat3.missouristate.edu/Documents/IntroBook3/sbk17.htm). A more detailed look at the concept of "sampling distribution" from lecture 02.
 - J.G. Ramírez, [Statistical Intervals: Confidence, Prediction, Enclosure](https://git.io/v5ZFh). In lecture 02 we learned about confidence interval. This text extends the discussion a bit by talking about other types of interval indicators.
+
+### Statistic Reviews By Whitley And Ball
+A series of short articles that offer a good review of the topics discussed in this course.
+
+- Review 1: Visualization -- https://ccforum.biomedcentral.com/articles/10.1186/cc1455
+- Review 2: Samples and Population -- https://ccforum.biomedcentral.com/articles/10.1186/cc1473
+- Review 3: Hypothesis Test -- https://link.springer.com/article/10.1186/cc1493
+- Review 4: Sample Sizes -- https://link.springer.com/article/10.1186/cc1521
+- Review 5: Comparison of Means -- https://link.springer.com/article/10.1186/cc1548
+- Review 6: Non-Parametric Methods -- https://link.springer.com/article/10.1186/cc1820
 
 ## R Programming Language
 - [R for beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf). An introduction to the R programming language, and its main characteristics.
@@ -25,6 +37,8 @@ These are links to complementary materials to increase your knowledge on the sev
 - [ggplot2](https://ggplot2.tidyverse.org/). ggplot2 is a very powerful R library for creating beautiful plots from data. Much better than the native plotting functions in R.
 
 ## Academic Materials
+
+
 
 ## Others
 - [Existential Comics](http://existentialcomics.com). Online comics about philosophy. Sometimes contain insightful discussions about the philosophy of science.

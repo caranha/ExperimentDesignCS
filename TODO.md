@@ -1,5 +1,12 @@
 # Tasks
 
+**IMPORTANT**
+Shift topics 5 and 6
+- Topic 5: ANOVA - what to do when you have multiple levels
+- Topic 6: Factorial Design - what to do when you have interacting factors
+  (1 factor anova vs additive model -- focus on additive model only?)
+
+
 ## Week 3
 - First check of Material and TODOs -- DONE
 - Get and Process Comments -- DONE
@@ -82,3 +89,9 @@ A lot of people want to "find positive results", but negative results are very i
 
 - Idea: Add self exercises (questions and exercise sheets) for
   students to test their own knowledge about the topics.
+
+# ideas for 2023
+Review P.Hoff
+http://www2.stat.duke.edu/~pdh10/Teaching/421-502/
+
+Rewrite some of topics 2-6 taking into account this course.

@@ -1,0 +1,139 @@
+\section{One Variable at a Time}
+\begin{frame}
+  \begin{center}
+    {\bf Part I -- One Variable At a Time (OVAT)}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Factors and Levels}
+  \begin{itemize}
+    \item {\bf Factors}: Input variables in the experiment / "control variables";
+    \item {\bf Levels}: The values that a factor can assume / "treatments";
+  \end{itemize}
+
+  \begin{block}{Example: Carrying Speed Experiment}
+    I want to measure how the weight of my luggage affects my speed. I measure
+    how far I walk in 5 minutes, when carrying 10, 20 and 40kgs of luggage.\bigskip
+
+    \begin{itemize}
+      \item Response Variable: distance walked in 5 minutes;
+      \item Factors: Weight of luggage;
+      \item Levels: 10kgs, 20kgs, 40kgs;
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}{Experiments with One Factor}
+  Until now, we considered experiments with 1 factor and 1 return variable;
+  \begin{itemize}
+    \item {\bf t-test}: 1 factor, two levels
+    \item {\bf ANOVA}: 1 factor, many levels
+  \end{itemize}
+
+  \begin{block}{Example}
+    We want to compare how long it takes to train a neural network until a certain
+    error value is reached. We compare four optimization algorithms: SGD, Adam, Adagrad, CMA-ES.
+
+    \begin{itemize}
+      \item Response Variable: Time until error threshold is reached;
+      \item Factor: Optimization Algorithm;
+      \item Levels: 1- SGD, 2- Adam, 3- Adagrad, 4- CMA-ES
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Experiment with Two Factors}
+  \begin{block}{
+    We add a new factor to the experiment: The number of layers
+    in the network (2, 5 or 10)}
+    \begin{itemize}
+      \item Response Variable: Time until error threshold is reached;
+      \item Factor 1, 4 levels: Optimization Algorithm: SGD, Adam, Adagrad, CMA-ES;
+      \item Factor 2, 3 levels: 2, 5, 10 layers;
+    \end{itemize}
+  \end{block}
+
+  \begin{itemize}
+    \item {\bf Experiment with 1 factor:} Only consider the effect of the levels on the response variable.
+    \item {\bf Experiment with 2 factors:} Consider main effect and interference effects:
+    \begin{itemize}
+      \item {\bf Main Effect:} Effect of the levels of each factor in the response variable.
+      \item {\bf Interaction Effects:} Combined effects of levels of both factors in the response variable.
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Number of Factors and Experiment Complexity}
+
+  The higher the number of factors and levels, the more complex becomes the experiment.
+  \begin{itemize}
+    \item 2 factors, 4 levels each: 16 total combinations; 2nd order interactions;
+    \item 3 factors, 3 levels each: 27 total combinations; 3rd order interactions;
+    \item 4 factors, 3 levels each: 81 total combinations; 4th order interactions;
+    \item ...
+  \end{itemize}\bigskip
+
+  Because of this, it is desirable to keep experiments simple, even if there are statistical techniques to detect interaction effects.
+\end{frame}
+
+\begin{frame}{OVAT -- One Variable at a Time}
+  The simplest design to use with multiple factors is the OVAT Design.\bigskip
+
+  \begin{itemize}
+    \item For $N$ factors, perform $N$ different experiments, one for each factor.
+    \item The levels of the other factors are fixed at a "standard" value.
+    \item For each factor, you perform the statistical analysis independently (t-test, anova, visualizations, etc);
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{OVAT -- Example}
+  \begin{block}{Fine tuning Cr and F for Differential Evolution (DE)}
+    DE is an effective optimization algorithm where the performance depends
+    strongly on two parameters: Cr and F.\bigskip
+
+    To find the optimal values for these parameters, you perform a preliminary
+    experiment on a synthetic benchmark.
+  \end{block}
+
+  OVAT Design:
+  \begin{itemize}
+    \item Choose standard values for Cr and F from the literature.
+    \item Analyze Cr using an experiment. Fix the value of F and try 10
+      different values (levels) for CR.
+    \item Analyze F using another experiment. Fix the value of Cr and try 10
+      different values (levels) for F.
+    \item The execution and analysis of these two experiments follow the
+      methods that we already studied.
+  \end{itemize}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%

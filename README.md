@@ -15,48 +15,39 @@ You can see more information in the full [syllabus](syllabus.md) of the course.
 
 # Materials
 ## Topic 0: Introduction and Housekeeping
-  - [Lecture Notes](topic00/course_introduction.pdf)
-  - [Video Lecture]() -- TBA
+- [Lecture Notes](topic00/course_introduction.pdf)
 
 ## Topic 1: What is Experimentalism
 
 - [Lecture Notes](topic01/01_week01.pdf)
-- [Video Lecture]() -- TBA
 
 ## Topic 2: Point and Interval Indicators.
 
 - [Lecture Notes](topic02/01_week02.pdf)
-- [Video Lecture]() -- TBA
 
 ## Topic 3: Inference Testing I -- Hypothesis testing.
 
 - [Lecture Notes](topic03/lecture3.pdf)
-- [Video Lecture]() -- TBA
 
 ## Topic 4: Inference Testing II -- Comparison testing and Paired testing.
 
-- [Lecture Notes]() -- TBA
-- [Video Lecture]() -- TBA
+- [Lecture Notes](topic04/lecture4.pdf)
 
-## Topic 5: Factorial Designs
+## Topic 5: Inference Testing III -- Non-normality and Anova for Multiple comparison
 
-- [Lecture Notes]() -- TBA
-- [Video Lecture]() -- TBA
+- [Lecture Notes](topic05/lecture5.pdf)
 
-## Topic 6: Inference Testing III -- Multiple Comparison Testing
+## Topic 6: Sample Size and Experimental Power
 
 - [Lecture Notes]() -- TBA
-- [Video Lecture]() -- TBA
 
-## Topic 7: Sample Size and Experimental Power
-
-- [Lecture Notes]() -- TBA
-- [Video Lecture]() -- TBA
-
-## Topic 8: Case Study: Statistical Comparison of Classifiers over Multiple Data Sets
+## Topic 7: Factorial Designs and Anova for Additive effects
 
 - [Lecture Notes]() -- TBA
-- [Video Lecture]() -- TBA
+
+## Case Study 1: Case Study: Statistical Comparison of Classifiers over Multiple Data Sets
+
+- [Lecture Notes]() -- TBA
 
 # Useful Links
 University of Tsukuba Students will want to check out the [manaba page](https://manaba.tsukuba.ac.jp/ct/course_2421383) for this course to submit feedback surveys and reports.

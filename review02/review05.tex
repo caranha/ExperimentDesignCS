@@ -1,0 +1,38 @@
+
+\section{05a -- Non-normal}
+
+\begin{frame}[t]{Topic 05 -- Non-normal data}
+  The t-test assumes that the residuals follow a normal distribution.
+  \begin{itemize}
+    \item Large outliers;
+    \item Extreme non-normal distributions;
+    \item Multi-modal data;
+    \item Non-continuous data;
+  \end{itemize}\bigskip
+
+
+  When this assumption does not hold, some sort of treatment is necessary.
+  \begin{itemize}
+    \item Removing outliers;
+    \item Log transformation, square root transformation;
+    \item Bootstrap transformation;
+    \item Non-parametric tests\\(Wilcoxon Rank Sum, Mann-Whitney U-test, Kruskal Wallis, etc)
+  \end{itemize}\bigskip
+\end{frame}
+
+
+\section{05b -- Anova}
+
+\begin{frame}[t]{Topic 05 -- Multiple sample testing (ANOVA)}
+  A comparison of multiple samples (for example, multiple algorithms) can be modeled as an experiment with one discrete control factor and multiple levels;\bigskip
+
+  Testing is done in two stages:
+  \begin{itemize}
+    \item ANOVA -- Tests all samples at the same time, indicates if at least one level has a significant effect;
+
+    \item post-hoc testing -- series of pairwise tests between the levels to identify which level has the significant effect;
+  \end{itemize}\bigskip
+
+  The strategy for post-hoc testing (one-vs-all, all-vs-all) must be defined during the experiment design stage. The alpha value of the post-hoc tests must be adjusted to take multiple comparisons into account;
+
+\end{frame}

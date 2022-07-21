@@ -1,0 +1,57 @@
+\section{03 -- Hypothesis Testing}
+
+\begin{frame}[t]{Topic 03 -- Hypothesis Testing}
+  \begin{itemize}
+    \item {\bf Statistical Inference} procedures use data from an experiment to establish the probability of an statement being true.\vfill
+    \item {\bf Null Hypothesis Significance Testing} uses statistical inference to compare different hypothesis about the model under study.
+    \begin{itemize}
+      \item Null Hypothesis: Standard assumptions about the model. No clear effect.
+      \item Alternate Hypothesis: Unexpected effects. Anomalies.
+    \end{itemize}\vfill
+    \item The Hypothesis test procedure consists of collecting data through experiment, and then using that data to compare the probabilities of the null and alternate hypothesis.\vfill
+    \item Possible outcomes:
+    \begin{itemize}
+      \item Null Hypothesis cannot be rejected;
+      \begin{itemize}
+        \item Data evidence towards the alternate hypothesis is not strong enough to reject NH;
+        \item Type II error: Null Hypothesis is actually false;
+      \end{itemize}
+      \item Reject the Null hypothesis;
+      \begin{itemize}
+        \item Alternate hypothesis is more likely than NH by a large margin, given the data;
+        \item Type I error: Null Hypothesis is actually true;
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Topic 03 -- Hypothesis Parameters}
+  \begin{itemize}
+    \item $\alpha$: Desired probability of a type I error.
+    \begin{itemize}
+      \item Test confidence level: 1-$\alpha$
+      \item Used as probability threshold for rejecting the null hypothesis;
+    \end{itemize}
+    \item $\beta$: Desired probability of a type II error
+    \begin{itemize}
+      \item Test power: 1-$\beta$
+      \item Actual probability of a Type II error is controlled also by unknown factors;
+    \end{itemize}
+    \item $\delta^*$: Minimal Interesting effect size;
+    \begin{itemize}
+      \item Minimal difference in the experiment result that has practical interest,
+      \item {\bf regardless of the hypothesis test result}
+    \end{itemize}
+    \item $n$: Sample size -- Number of observations \emph{for each experimental condition}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Topic 03 -- Hypothesis Tests}
+  \begin{itemize}
+    \item {\bf Z test}: Compares the indicator against a fixed value. Calculates the probability of the sample when the Null hypothesis is true. Assumes the sample residuals come from a Normal distribution with known variance; \bigskip
+
+    \item {\bf T test}: Compares the indicator against a fixed value. Calculates the probability of the sample when the Null hypothesis is true. Assumes the sample residuals come from a t distribution with $n-1$ degrees of freedom. Estimates the variance from the sample error.\bigskip
+
+    \item {\bf p-value}: Maximum value of $\alpha$ (lowerst significance level) that would reject the null hypothesis of a test.
+  \end{itemize}
+\end{frame}
