@@ -35,37 +35,51 @@ This course is centered around lectures with plenty of examples and study cases.
 
 ## Course plan 	
 
-- Class 1: Introduction - What is science, and what is a scientific experiment? What is rigorous research?
-- Class 2: Statistics review - Point Indicators and Interval Indicators (Random Variables, Means, Variances, Distributions, Confidence Intervals)
-- Class 3: Introduction to Inference Testing -- Hypothesis, Type Errors, Z testing.
-- Class 4: Introduction to Inference Testing -- Comparison Testing, Paired Testing
-- Class 5: Introduction to Inference Testing -- Equality Testing, Non-Parametric Testing
-- Class 6: Lecture Review and Case Study
-- Class 7: Power Analysis, Sample Size and Sample Choosing
-- Class 8: Multiple Comparison: ANOVA and post-hoc testing
-- Class 9: Blocking and selection of parameters for experiments;
-- Class 10: Lecture Review and Case Study
+- Topic 01 -- Course Introduction, What is Experimentation
+- Topic 02 -- Point and Interval Indicators
+- Topic 03 -- Inference Testing I
+- Review -- Class Review and Discussion of Report I
+- Topic 04 -- Inference Testing II
+- Topic 05 -- Inference Testing III
+- Topic 06 -- Sample Size and Experiment Power
+- Topic 07 -- Block and Factorial Designs I
+- Topic 08 -- Block and Factorial Designs II
+- Review -- Class Review and Consultation about Report II
+- Final Exam
 
 ## Textbooks
-No designated textbook: The course will be based on lecture notes to be distributed electronically on manaba. Some of the main references are:
+No designated textbook: The course will be based on lecture notes to
+be distributed electronically on manaba. Some of the main references
+are:
 
 - D.C. Montgomery, "Design and Analysis of Experiments", Wiley, 2005,
-- Felipe Campelo "Lecture Notes on Design and Analysis of Experiments", [Online](https://github.com/fcampelo/Design-and-Analysis-of-Experiments), 2018,
-- Peter Hoff, "Lecture Notes on Design of Experiments", [Online](http://www2.stat.duke.edu/~pdh10/Teaching/421-502/LectureNotes/notes.pdf)
+- Felipe Campelo "Lecture Notes on Design and Analysis of
+  Experiments",
+  [Online](https://github.com/fcampelo/Design-and-Analysis-of-Experiments),
+  2018,
+- Peter Hoff, "Lecture Notes on Design of Experiments",
+  [Online](http://www2.stat.duke.edu/~pdh10/Teaching/421-502/LectureNotes/notes.pdf)
 - Other recommended readings on available on manaba
 
 ## Evaluation 	
-There will be no final examination. The grade is based on the evaluation of three individual reports.
+The grade is based on two reports and a final examination.
 
-Each report is a case study, where the student will have to: Design an experiment to answer a scientific question, obtain experimental data (usually by performing an experiment, sometimes from the instructor), analyze the experimental data using the tools studied in the lecture, and prepare a report discussing the experimental conclusions.
+Each report is a case study, where the student will have to: Design an
+experiment to answer a scientific question, obtain experimental data
+(usually by performing an experiment, sometimes from the instructor),
+analyze the experimental data using the tools studied in the lecture,
+and prepare a report discussing the experimental conclusions.
 
-The report is evaluated on the quality of the experiment design, the correctness of the statistical analysis, and the quality of the discussion of the results (note that positive or negative results do not factor in the grade of the report).
+Please see manaba for more information about the reports.
 
-- The first report is due before lecture 3, and worth 30% of the grade;
-- The second report is due before lecture 7, and worth 30% of the grade.
-- The third report is due by the date of the final exam and worth 40% of the grade.
+The report is evaluated on the quality of the experiment design, the
+correctness of the statistical analysis, and the quality of the
+discussion of the results (note that positive or negative results do
+not factor in the grade of the report).
+
+- The first report is worth 20% of the grade;
+- The second report is worth 40% of the grade;
+- The final exam is worth 40% of the grade;
 
 ## Notes:
 Lecture in English
-
-**Bring Your Own Data (BYOD)**: I expect the students to contribute with questions and discussions during the class. Additionally, I will recommend that the students use data from their own research to prepare the reports. Students who cannot provide their own data will be provided with sample data, however you will learn much more if you can use your own data.
