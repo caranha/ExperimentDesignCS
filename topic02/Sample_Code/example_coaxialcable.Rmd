@@ -54,7 +54,7 @@ sample_mean_error <- sd(x)/sqrt(length(x)) # sample mean error: slide 25
 sample_mean_error
 ```
 
-If we collect a larget sample, our estimated error for the sample mean 
+If we collect a large sample, our estimated error for the sample mean 
 becomes smaller. This is one reason why we want to do many experiments:
 
 ```{r coaxial_sample_size}

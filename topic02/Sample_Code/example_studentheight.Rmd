@@ -71,6 +71,8 @@ ci_alpha <- 0.05        # Alpha value for confidence interval. Confidence = 1 - 
 ci_low <- mean(values) + qt(ci_alpha/2, length(values)-1) * (sd(values)/sqrt(length(values))) 
 ci_hi <- mean(values) + qt(1 - ci_alpha/2, length(values)-1) * (sd(values)/sqrt(length(values)))
 
+print(c(ci_low, ci_high))
+
 # plot the values and the confidence interval of the mean
 plot(students$BMI, ylim = c(0,40), xlab = "Student ID", ylab = "BMI") # plot all the values
 title("BMI Values")

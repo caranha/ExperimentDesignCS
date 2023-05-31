@@ -1,40 +1,5 @@
 # Tasks
 
-**IMPORTANT**
-Shift topics 5 and 6
-- Topic 5: ANOVA - what to do when you have multiple levels
-- Topic 6: Factorial Design - what to do when you have interacting factors
-  (1 factor anova vs additive model -- focus on additive model only?)
-
-
-## Week 3
-- First check of Material and TODOs -- DONE
-- Get and Process Comments -- DONE
-- Download and process 2021 Scripts -- DONE
-- Rewrite Scripts and Fix Materials
-- Record Lectures
-
-
-## General Workflow
-- Get comments from manaba and create a 2022_comments.md file for each year/topic
-  - Mostly raw answers from students
-  - My comments for the thread
-  - Things to discuss in the "comments" video
-  - Extract points for the TODO of previous (or future!) lectures
-
-- Read and update the local TODO for that year
-- Re-read the material and further update the TODO
-
-- Update the material based on the TODO
-
-- Record new videos and set up Manaba
-
-# Ideas for 2022:
-- Lectures are separated in "Topics" and "Reviews":
-  - Topics: Introduce new concepts (current slides)
-  - Reviews: Review the reports, summarize past concepts, and also case studies and papers
-    (Make new folders for this, check schedule for details)
-
 ## New "Topic 05" -- Simple Experiment design
 - In Lecture the lectures so far, we assumed always one independent variable, and one dependent variable (and possibly some blocking factors). What if we have more than one variable?
 - What is a Factor? (Parameter, Treatment, Control)
@@ -75,7 +40,6 @@ A lot of people want to "find positive results", but negative results are very i
 ## Add a separate, entire lecture about reproducible research
 - Not a section of the first lecture.
 
-
 ## Exam:
 - Exam should include "hidden curriculum" and interpretation of
   text in papers (but I need to include these in class)
@@ -95,3 +59,27 @@ Review P.Hoff
 http://www2.stat.duke.edu/~pdh10/Teaching/421-502/
 
 Rewrite some of topics 2-6 taking into account this course.
+
+#########################################
+# TODO 2024
+## Rewrite Lecture Week 02 (Mean and Confidence Interval)
+- The discussion about the CLT is too early. Should be end of the class.
+- First thing: Clear example of mean and confidence interval using examples:
+  - Coaxial cable (testing one value)
+  - Comparison of algorithm parameters (testing multiple parameters)
+  - Show calculation of mean / CI with formula, code, and visualization
+  - See new R script (algorithm) for simple visualization example.
+
+- Show an example with another estimator (Variance, Variance CI)
+  - Experiment example: home-school walking
+
+- Then go back to the theory part.
+  - Need one slide to explain percentiles (maybe CLT can be explained after this)
+
+
+
+
+
+
+
+

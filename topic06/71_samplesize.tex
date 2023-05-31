@@ -1,27 +1,37 @@
-\section{Sample Size Calculation}
+\section{Introduction}
 
 \begin{frame}{}
   \begin{center}
-    {\bf Part I -- Introductio and Motivation}
+    {\bf Part I -- Introduction and Motivation}
   \end{center}
 \end{frame}
 
-\subsection{Introduction}
+\subsection{Outline}
 
-\begin{frame}{Lecture Outline}
+\begin{frame}{Outline}
 
-  In this course we talked several times about the necessity
-  of collecting {\bf a sample}: A set of (multiple) observations
-  that are used to calculate the value of interest.
-  \bigskip
+  A important point to decide when preparing an experiment is {\bf how
+    many observations} are necessary. We call this number the {\bf Sample Size}.\bigskip
 
-  However, up until now we have avoided talking about {\bf how big} this sample should be. This is the topic of today's lecture.\bigskip
+  A large sample size can reduce the influence of random noise in the
+  calculation of statistical indicators, such as the mean.\bigskip
+  
+  On the other hand, increasing the sample size also has a cost, in
+  time, money or resources.\bigskip
+
+  So how do we choose a proper sample size for an experiment?
+\end{frame}
+
+\begin{frame}{Outline}
+
+  In this lecture, we will discuss the following points:\bigskip
 
   \begin{itemize}
-    \item What is sample size?
-    \item Why do we need to worry about it?
-    \item What factors influence the choice of sample size?
-    \item How to calculate the desired sample size?
+  \item How to think about the sample size;
+  \item What factors influence the choice of sample size;
+  \item What factors are influenced by the choice of sample size;
+  \item How to calculate the desired sample size for certain
+    statistical models;
   \end{itemize}
 
 \end{frame}
@@ -29,218 +39,321 @@
 
 \subsection{Motivation}
 
-\begin{frame}{Why take samples?}{Review: Noise Factors}
-  As we discussed before, the result of an experiment is affected by several factors, some of which are unknown, or difficult to control.\bigskip
+\begin{frame}{Why Repeat an experiment?}{Noise Factors}
 
-  Because of these {\bf Noise Factors}, sometimes there will be a small variance in the result of repeated experiments. To measure this variance, and take it into account for our analysis, we repeat the experiment several times, and gather those repetitions into a {\bf sample}.\bigskip
+  The result of almost any experiment is affected by several
+  factors. Some of these factors we can control and understand, {\bf
+    but many we cannot}.\bigskip
 
+  {\bf Noise Factors} are these uncontrollable, unknown factors. As
+  much as possible, we want to reduce the influence of these factors
+  in the result of our experiment.\bigskip
 
-  \begin{columns}
-    \column{0.2\textwidth}
-      \includegraphics[width=\textwidth]{../img/irasutoya_dice}
-    \column{0.8\textwidth}
-      {\bf For example:} The true mean of throwing three dice and adding their values is {\bf 10.5}. However, every time we throw the dice, the result will be a bit different.
-  \end{columns}
+  \alert{{\bf Important:} In most cases, random factors actually have a
+    cause, we just don't know it. If you manage to identify the cause
+    for some of the random noise, consider if it would be possible to
+    remove that noise from your experiment}.
 \end{frame}
 
-\begin{frame}[fragile]{Why take samples?}{Sample size and estimation error}
+\begin{frame}{Repeating an experiment to remove noise factors}
+  \begin{columns}
+    \column{0.2\textwidth}
+    \includegraphics[width=\textwidth]{../img/irasutoya_dice}
+    \column{0.8\textwidth} {\bf For example:} When we throw a dice,
+    the throw is affected by the air resistance, by small changes in
+    our hand movements, by small imperfections in the dice, etc. All
+    of these will affect the final result of the dice;
+  \end{columns}
+
+  Some assumptions about random noise:
+  \begin{itemize}
+  \item The variance of random noise is smaller than our minimum interesting difference;
+  \item Random noise is unbiased;
+  \item Random noise is normally or uniformly distributed;
+  \end{itemize}\bigskip
+
+  \begin{block}{}
+    You should consider if these assumptions hold true, and maybe
+    check them by analyzing the result of a {\bf trial experiment}.
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Example: Sample size and Sample Mean Error}
 
   \begin{columns}
     \column{0.2\textwidth}
       \includegraphics[width=\textwidth]{../img/irasutoya_dice}
-    \column{0.8\textwidth}
-      If we want to estimate the mean value of a noisy process (for example, the mean of three dice), we can observe the process multiple times (a sample), and take the average of the sample values.\bigskip
+      \column{0.8\textwidth}
 
-      As the sample size gets larger, the sample error \alert{usually} gets smaller. {\bf However, the noise of the original process does not change!}
-  \end{columns}
+      Imagine the following simple experiment: We throw three dice,
+      and take their sum. We want to estimate the \emph{mean value} of
+      this process.\bigskip
+
+      So we repeat the process several times to reduce
+      the effect of random noise. What happens when the sample size increase?
+    \end{columns}
+
+{\bf The mean and the standard error of the process (10.5 and 2.1), in
+  general, will not change much.} However, the standard error of the
+{\bf sample mean} will change a lot!
+  
 {\smaller
 \begin{verbatim}
-> sample_2 <- replicate(2, sum(sample(6,3)))
-9 6
-> sample_5 <- replicate(5, sum(sample(6,3)))
-11 10  9 11 12
-> sample_10 <- replicate(10, sum(sample(6,3)))
-9 11 12 11  7  9 14 11 13 10
-> mean(sample_2)          #    7.5       > sd(sample_2)          # 2.12
-> mean(sample_5)          #   10.6       > sd(sample_5)          # 1.14
-> mean(sample_10)         #   10.7       > sd(sample_10)         # 2.05
+# Three experiments with different sample sizes
+sample_2_10 <- replicate(10, mean(replicate(2, sum(sample(6,3)))))
+sample_20_10 <- replicate(10, mean(replicate(20, sum(sample(6,3)))))
+sample_200_10 <- replicate(10, mean(replicate(200, sum(sample(6,3)))))
+# The sample mean is about the same, but the SD of the sample mean changes!
+sample size   2: mean of 10 samples: 11.50  sd of 10 samples: 1.90
+sample size  20: mean of 10 samples: 10.48  sd of 10 samples: 0.37
+sample size 200: mean of 10 samples: 10.56  sd of 10 samples: 0.20 
 \end{verbatim}}
 \end{frame}
 
-\begin{frame}{Why take samples?}{}
+\subsection{Sample Size Considerations}
 
-Larger sample sizes help us isolate the error related to the {\bf noise of the
-process}. This has an influence on:\bigskip
+\begin{frame}{Why should we use large sample sizes?}{}
 
-\begin{itemize}
-  \item Size of the confidence interval of the estimator;
-  \item Confidence of statistical tests;
-  \item Power of statistical tests;
-\end{itemize}\bigskip
+  Larger sample sizes will reduce (average) the effect of random
+  noise, and thus reduce the variance of the indicator.\bigskip
 
-This is why we are interested in having "big enough" sample sizes.
-\end{frame}
-
-\begin{frame}{Is "as much as possible" the answer for sample size?}
-
-  From what we talked until now, it is natural to think that "more observations is always better". In general, it is a good idea to have a large sample size, but
-  there are other things that need to be considered:\bigskip
-
-
-  \begin{itemize}
-    \item Many experiments have a cost associated with obtaining each observation. So large sample sizes result in large experimental cost.\medskip
-
-    \item Some experiments require materials or conditions that are hard to obtain
-    (for example, interviews);
-  \end{itemize}\bigskip
-
-  The increase in sample size has \alert{diminishing returns} in terms of confidence and power of tests. So, sometimes the cost of collecting more observations is higher than the benefit of those observations.
-  \medskip
-
-  So, what is the appropriate sample size for a given experiment?
-\end{frame}
-
-\begin{frame}{What is a good sample size?}
-  For the choice of sample size, you usually take three things in consideration:
+  This will have an effect on:
   \bigskip
 
   \begin{itemize}
-    \item The cost of the experiment;
-    \item The desired confidence ($\alpha$, Confidence interval size);
-    \item The desired power ($\beta$)
+  \item Reduce the size of the confidence interval of the indicator.
+  \item Reduce the Type-I error (increase the confidence) of statistical tests.
+  \item Reduce the Type-II error (increase the power) of statistical tests.
   \end{itemize}\bigskip
 \end{frame}
 
-\subsection{Fixed Sample Size}
+\begin{frame}{Why should we use SMALL sample sizes?}{}
 
-\begin{frame}{Calculating Sample Size: When you don't have a choice}
+  Right now, you might be thinking: ``I always want a sample size as big as possible!''\bigskip
+
+  But there are other things to be considered. Experiments usually
+  have a {\bf cost} associated with them. Large sample sizes may
+  result in large experimental cost:
+
+  \begin{itemize}
+  \item Money;
+  \item Time;
+  \item Resources;
+  \item Special conditions;
+  \item Ethical considerations;
+  \end{itemize}\bigskip
+
+  Also, the increase of sample size has \alert{diminishing returns} in
+  terms of reducing experimental error. So we want to use \structure{the
+    smallest possible sample size that satisfy our requirements}.
+\end{frame}
+
+\begin{frame}{What is a good sample size?}
+  For the choice of sample size, we usually take three things in
+  consideration:
+  \bigskip
+
+  \begin{itemize}
+    \item The costs of the experiment; (hard limit to sample size)
+    \item The desired \structure{confidence level} (Probability of Type-I error, $\alpha$);
+    \item The desired \structure{experimental power} (Probability of Type-II error, $\beta$);
+  \end{itemize}\bigskip
+\end{frame}
+
+\subsection{Intro to Power Calculation}
+
+\begin{frame}{When you can't choose the sample size, calculate the power}
 
 When an experiment is constrained by budget (not enough time,
 not enough money, etc), we might not have a choice of sample size.\bigskip
 
-But even if the sample size is fixed by the experimental conditions, it is still
-important to calculate the power of the experiment. The result of power
-calculation tells us how we should interpret the results of the experiment.\bigskip
+In this case, {\bf It is important to calculate the confidence and
+  power of the experiment}. The power of the experiment will let us
+know how reliable the result is.\bigskip
 
-To calculate the power of the experiment, we need to first define the minimum
-interesting effect size $\delta^*$.
+For example, if the power is too low with the available budget, this
+information can be used as a justification to require more budget for
+the experiment.
 \end{frame}
 
-\begin{frame}[fragile]{Example of power calculation}
 
-Consider an one-sample experiment with the following parameters: Alternate hypothesis is one-sided, sample size is 10, $\delta^*=0.5$, estimate of standard deviation is $\sigma=1$, desired significance $\alpha=0.01$.\medskip
+\begin{frame}{Example of Power Calculation}
 
-What is the power of this experiment?
+  To calculate the power of the experiment, we need the following variables:
+  \begin{itemize}
+  \item Sample size;
+  \item Standard deviation;
+  \item Significance Level;
+  \item Minimum Interesting effect (Delta: $\delta^*$)
+  \end{itemize}\bigskip
 
-{\smaller
+  The last one is important. $\delta^*$ has a large effect on the
+  experiment power. In fact, we usually say something like ``The
+  experiment is powerful enough to detect a difference of at least
+  $\delta^*$''.
+\end{frame}
+
+\begin{frame}[fragile]{Example Calculating the Power with R}
+
+  Let's calculate the power of the dice experiment.\medskip
+
+  Consider a sample size of 20, our observed standard deviation of
+  2.1. Can we detect a change in the mean of at least $\delta^*=0.5$,
+  with 95\% confidence?
+
+  \smaller{
 \begin{verbatim}
-> power.t.test(n = 10, sd = 1, sig.level = 0.01, type = "one.sample",
-+              alternative = "one.sided", delta = 0.5)
+> power.t.test(n = 20, sd = 2.1, sig.level = 0.05, 
+  + type = "one.sample", alternative = "two.sided", delta = 0.5)
 
-  One-sample t test power calculation
+     One-sample t test power calculation 
+              n = 20
+          delta = 0.5
+             sd = 2.1
+      sig.level = 0.05
+          power = 0.171485                    <-- Very low power
+    alternative = two.sided
+\end{verbatim}}
 
-           n = 10
-       delta = 0.5
-          sd = 1
-   sig.level = 0.01
-       power = 0.1654013           <- Power = 0.16 - Very low!
- alternative = one.sided              High chance for false negatives
-                                      *For this effect size*
+It is very likely that our experiment will not detect this difference,
+\alert{even if the difference exists!}. Also note that no data was needed!
+\end{frame}
+
+\begin{frame}[fragile]{Example Calculating Experiment Power -- changing $\delta^*$}
+
+  Let's repeat the calculation, but change $\delta^*$ to ``1.5''.
+
+  As you can see, the power of the experiment is now $0.85$. This means that the
+  experiment with 20 samples is sensitive enough to detect a difference of 1.5 in
+  the mean, with 95\% confidence.
+  
+  \smaller{
+\begin{verbatim}
+> power.t.test(n = 20, sd = 2.1, sig.level = 0.05, 
+  + type = "one.sample", alternative = "two.sided", 
+  + delta = 1.5)                              <-- Changing Delta!
+
+     One-sample t test power calculation 
+              n = 20
+          delta = 0.5
+             sd = 2.1
+      sig.level = 0.05
+          power = 0.85755                     <-- Power increased!
+    alternative = two.sided
 \end{verbatim}}
 \end{frame}
 
-\begin{frame}[fragile]{Example of power calculation}{Increasing the power by increasing $\delta^*$}
+\begin{frame}[fragile]{Example Calculating Experiment Power -- changing the sample size$}
 
-If we want to increase the power of the experiment, but we cannot increase the
-number of observations, we could increase the size of the "minimal difference"
-that this test detects. This calculation will tell us what is the minimum difference
-that our test will observe.
+  What if we really want to detect a difference of 0.5, with power 0.85?\bigskip
 
-{\smaller
+  What is the necessary sample size?
+  
+  \smaller{
 \begin{verbatim}
-> power.t.test(n = 10, sd = 1, sig.level = 0.01, type = "one.sample",
-+              alternative = "one.sided", power = 0.8)
+> power.t.test(power = 0.85,           <-- Fixed power, sample size not given
+  + sd = 2.1, sig.level = 0.05, type = "one.sample", 
+  + alternative = "two.sided", delta = 0.5)
 
-   One-sample t test power calculation
+     One-sample t test power calculation 
 
-            n = 10
-        delta = 1.185308         <- When we fix the power and the sample size,
-           sd = 1                   the calculation tells us that the minimum
-    sig.level = 0.01                effect size becomes "1.18". If the real
-        power = 0.8                 effect is less than this, the probability
-  alternative = one.sided           of a false negative increases.
+              n = 160.311      <-- Necessary Sample Size
+          delta = 0.5
+             sd = 2.1
+      sig.level = 0.05
+          power = 0.85
+    alternative = two.sided
 \end{verbatim}}
 \end{frame}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% \begin{frame}{Sample size and Type-II error}
-% {Estimating Experimental Power}
-%   A strategy for estimating an effective lower bound for the power of a test includes a definition of an \textit{minimally interesting effect} $\delta^*$.
-%   \bigskip
-%
-%   This value must be derived from technical and scientific knowledge about the phenomenon or system under experimentation.
-%   \bigskip
-%
-%   \begin{block}{}
-%   \centering It is essential to have a good understanding of the field in which the experiment will be conducted.
-%   \end{block}\bigskip
-%
-%   Once $\delta^*$ is defined, the experimenter can obtain an estimate of the variability of observations (e.g., by a pilot study), which can then be used to obtain an approximate power value for the experiment;
-% \end{frame}
-%
-% %=====
+\begin{frame}{Power Calculations: In Summary}{}
+  The power calculation can be used to estimate one of the three
+  below, \alert{given the other two}:
+  \begin{itemize}
+  \item The sample size ($n$);
+  \item The minimum interesting effect ($\delta^*$)
+  \item The experiment power ($\beta$);
+  \end{itemize}\bigskip
 
-\begin{frame}{Power calculations}{Some considerations}
-  Using power calculations, we can obtain the estimation of the Type-II error probability. This gives us a better understanding of the ability of an experiment
-  to detect effects of interest.\bigskip
+  Note that for the power calculation, {\bf You don't need the
+    data!}\footnote{except for an estimation of the SD}. So
+  \structure{It is possible to calculate the sample size before you
+    run the experiment}.
+\end{frame}
 
-  The statistical test will have lower power for differences smaller than $\delta^*$, but these differences are below the minimally interesting effect; any effect greater than $\delta^*$ will result in a higher power for the test;\bigskip
+\subsection{The magic number "30"}
 
-  This technique is most useful to compute the required sample size for the   experiment.
+\begin{frame}{What about the magic number 30?}{}
+  A lot of people have an instinct to use 30 as the ``default'' sample
+  size.\bigskip
+
+  This comes from earlier studies that showed that, for many
+  distributions, $n = 30$ is enough for the {\bf CLT} to apply, and
+  for the {\bf sample mean} to be roughly normally distributed.\bigskip
+
+  This is a very important result! It helps us not worry about the
+  assumption of normality. However, other than that, there is nothing
+  special about $n=30$\bigskip
+
+  You should always calculate the power of your experiment. Sometimes
+  you can use a smaller sample size. Sometimes you need a much bigger sample size.\bigskip
+
+  \alert{Also, it is important to know the power level of your experiment}.  
+\end{frame}
+
+\begin{frame}{What about the Variance?}
+
+The Power calculation function is very convenient, but it has a
+problem:
+\begin{itemize}
+\item To calculate the power / sample size, we need to input the standard deviation;
+\item To estimate the standard deviation, we need to do an experiment!
+\end{itemize}\bigskip
+
+This is a bit of a ``chicken and egg'' problem. There are a few ways to solve this problem:
+\begin{itemize}
+\item Use knowledge about the problem domain, or historical data, to
+  obtain an (initial) estimate;
+\item Perform a pilot study to collect a sample only for the SD estimation.
+\end{itemize}\bigskip
+\end{frame}
+
+\begin{frame}{What about the Variance? -- Pilot Study}{}
+
+  A {\bf Pilot Study} is a small, preliminary experiment. It is used
+  to obtain a few estimates about the model under study:
+  \begin{itemize}
+  \item mean and standard deviation;
+  \item possible sources of noise;
+  \item possible difficulties in the experiment;
+  \end{itemize}
+
+  One way to calculate the pilot study sample size is:
+  \begin{equation*}
+    n_{\mbox{\textit{pilot}}}\approx 2\left(\frac{z_{\alpha_n/2}}{e_{n}}\right)^2
+  \end{equation*}
+
+  \noindent where $(1-\alpha_{n})$ is the desired confidence level for
+  the sample size estimate of the main study, and $e_n$ is the maximum
+  relative error allowed for the sample size.\bigskip
+
+  This calculation can yield some scarily large sample sizes for a
+  pilot study (much larger than would be actually required for the
+  main study itself), so use this with caution.
 \end{frame}
 
 
-
+\section{Specific Sample Size Calculations}
 \subsection{}
 \begin{frame}{}
   \begin{center}
-    {\bf Part II -- Sample Size Calculation}
+    {\bf Sample Size Calculations for Specific Models}
   \end{center}
 \end{frame}
 
 
-\subsection{The magic number "30"}
-
-\begin{frame}{"We repeat each experiment 30 times"}
-  We see many papers use this sample size without much explanation.
-  \bigskip
-
-  Why 30 repetitions? Is it a good value?
-\end{frame}
-
-\begin{frame}{Why 30 repetitions?}
-  Remember that the {\bf Central Limit Theorem} (CLT) states that the distribution
-  of the "sample mean" estimator becomes closer to normal, as the sample
-  $n$ size increases.\bigskip
-
-  When $n > 30$, the CLT holds (the sample mean follows a normal distribution)
-  for most cases (except very extreme cases of non-normality). This is important,
-  because many test statistics require the assumption of normality.
-  \bigskip
-
-  {\bf However!} Other than (potentially) guaranteeing that the estimator
-  is a normally distributed random variable, there is nothing special about
-  using 30 repetitions.\bigskip
-
-  \structure{In particular, $n=30$ does not guarantee anything about the power or confidence of the experiment, so you still need to perform power calculations! (And you also need to guarantee the other assumptions of the experiment.)}
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Sample Size Calculation}
-
-% - Sample size calculation
-%   - sample size calculation for single sample test
+\subsection{One Sample Test}
 
 \begin{frame}[fragile]{Sample Size Calculation}{One Sample Testing}
 
@@ -323,34 +436,7 @@ we would calculate the sample size as:
 \end{frame}
 
 
-\begin{frame}{Sample Size Calculation}{Obtaining the variance estimate}
 
-The Power calculation formulas and functions are convenient, but leave us
-with a problem: we need a variance estimate to calculate the sample size,
-but we need observations to estimate the variance!\bigskip
-
-There are a few ways to proceed in this case. The most practical are:
-
-\begin{itemize}
-  \item Use process knowledge or historical data to obtain an (initial) estimate of the variance;
-  \item Use a standardized MRES to calculate sample size;
-  \item Perform a pilot study and collect samples to estimate the variance.
-\end{itemize}\bigskip
-
-Each approach has its own advantages and drawbacks.
-\end{frame}
-
-% \begin{frame}{Sample Size Calculation}{Pilot Study}
-% If no information is available to estimate the variance, a pilot study must be performed to obtain this value. The sample size required for this pilot study is given by:
-%
-% \begin{equation*}
-% n_{\mbox{\textit{pilot}}}\approx 2\left(\frac{z_{\alpha_n/2}}{e_{n}}\right)^2
-% \end{equation*}
-%
-% \noindent where $(1-\alpha_{n})$ is the desired confidence level for the sample size estimate of the main study, and $e_n$ is the maximum relative error allowed for the sample size.\bigskip
-%
-% This calculation can yield some scarily large sample sizes for a pilot study (much larger than would be actually required for the main study itself), so use this with caution.
-% \end{frame}
 %
 %
 % \begin{frame}{Calculation of Sample Sizes}{Case of Known Standard Deviation}
