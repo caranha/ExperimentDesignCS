@@ -243,7 +243,7 @@ It is very likely that our experiment will not detect this difference,
 \end{verbatim}}
 \end{frame}
 
-\begin{frame}[fragile]{Example Calculating Experiment Power -- changing the sample size$}
+\begin{frame}[fragile]{Example Calculating Experiment Power -- changing the sample size}
 
   What if we really want to detect a difference of 0.5, with power 0.85?\bigskip
 
@@ -353,28 +353,14 @@ This is a bit of a ``chicken and egg'' problem. There are a few ways to solve th
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{One Sample Test}
+\begin{frame}{Sample Size Calculation for several models}
+  Until now, we saw how to calculate the power / sample size for the
+  ``1 sample'' model, where we compare one sample against a fixed
+  value.\bigskip
 
-\begin{frame}[fragile]{Sample Size Calculation}{One Sample Testing}
-
-The sample size calculation in related to the power calculation. If we fix
-the value of power and $\delta^*$, the calculation will give us the minimum sample size:
-
-{\smaller
-\begin{verbatim}
-> power.t.test(sd = 1, sig.level = 0.01, type = "one.sample",
-               alternative = "one.sided",   power = 0.85,     delta = 0.5)
-
-  One-sample t test power calculation
-           n = 47.98044   # <-- Round this value up!
-       delta = 0.5
-          sd = 1
-   sig.level = 0.01
-       power = 0.85
- alternative = one.sided
-\end{verbatim}}
-
-We need at least 48 observations to detect a one-sided effect of $\delta^* = 0.5$ or more on the mean with a power level of $0.85$.
+  As you may imagine, this calculation will change slighly as the
+  statistical model used for the experiment changes. Let's see some of
+  these considerations.  
 \end{frame}
 
 %   - sample size calculation for post-hoc multi-sample test
@@ -385,13 +371,23 @@ We need at least 48 observations to detect a one-sided effect of $\delta^* = 0.5
 %     - The optimization problems have "Types", "Sub-types", and "Sub-Sub types"
 %     - We are interested
 
+\subsection{Two Sample Means}
 
-\subsection{Sample Size for Two Means}
+\begin{frame}{Sample size for Two Means}
+  Consider the situation where we are comparing the means of two
+  samples. For example, the typical experiment where we compare two
+  algorithms (A and B) on a single experiment.\bigskip
 
-%% TODO: Add the experimental context here
+  While the basic idea is the same, there is a key difference to
+  consider here: Should the two sample sizes be the same, or
+  different?
+\end{frame}
+
+
 \begin{frame}{Sample Size Calculation}{Example for Two Means}
 
-Let's consider a more general example, where we are comparing two means with the following experimental characteristics:\bigskip
+Consider a case where we are comparing two means with the following
+experimental characteristics:\bigskip
 
 \begin{itemize}
   \item Desired significante $\alpha = 0.05$
@@ -400,33 +396,38 @@ Let's consider a more general example, where we are comparing two means with the
   \item Variances of the samples: $\sigma_1, \sigma_2 = ?$
 \end{itemize}\bigskip
 
-From these specifications, we can obtain the required sample sizes.
+What are the required sample sizes for this case?
 \end{frame}
 
-\begin{frame}{Sample Size Calculation}{Two means with equal variances}
+\begin{frame}{Sample Size Calculation}{Case 1: Two means, equal variances}
 
-For the specific case of approximately equal variances, the optimal sample size ratio is $n_1 = n_2 = n$, with:
+For the specific case of approximately equal variances, {\bf the optimal
+sample size ratio is $n_1 = n_2 = n$}, calculated as:
 
 \begin{equation*}
 n \approxeq 2\left(\frac{t^{(2n-2)}_{\alpha/2}+t^{(2n-2)}_{\beta}}{d^*}\right)^2
 \end{equation*}
 
-where $d^* = \delta^*/\sigma$ is the (standardized) minimally interesting effect size; and $t^{(2n-2)}_{\alpha/2}$ and $t^{(2n-2)}_{\beta}$ are the $\alpha/2$ and $\beta$ quantiles of the $t^{(2n-2 )}$ distribution.\bigskip
+where $d^* = \delta^*/\sigma$ is the (standardized) minimally
+interesting effect size; and $t^{(2n-2)}_{\alpha/2}$ and
+$t^{(2n-2)}_{\beta}$ are the $\alpha/2$ and $\beta$ quantiles of the
+$t^{(2n-2 )}$ distribution.\bigskip
 \end{frame}
 
-\begin{frame}[fragile]{Sample Size Calculation}{Calculation Example}
+\begin{frame}[fragile]{Sample Size Calculation}{Case 1: Two means, equal variances}
 
-Back to the original example, with an estimation of standard deviation $= 15$,
-we would calculate the sample size as:
+  Let's say that we estimate the standard deviation (for both samples) to be $sd = 15$.\medskip
 
+  We can now calculate the sample size as:
 {\smaller
 \begin{verbatim}
 > ss.calc <- power.t.test(delta = 15,  sd = 15,
                           sig.level = 0.05,  power = 0.8,
-                          type = "two.sample", alternative = "one.sided")
+                          type = "two.sample",         <-- Two sample model
+                          alternative = "one.sided")
 
   Two-sample t test power calculation
-           n = 13.09777       <- NOTE: n is the size of *EACH* sample.
+           n = 13.09777             <- NOTE: n is the size of *EACH* sample
        delta = 15
           sd = 15
    sig.level = 0.05
@@ -436,55 +437,143 @@ we would calculate the sample size as:
 \end{frame}
 
 
+\begin{frame}{Sample Size Calculation}{Case 2: Two means, unequal variances}
+  When the variance is not the same in both samples, we can use:
+  \begin{itemize}
+  \item A \structure{balanced} design ($n_1 = n_2$) or;
+  \item An \structure{unbalanced} design ($n_1 \neq n_2$)
+  \end{itemize}\bigskip
 
-%
-%
-% \begin{frame}{Calculation of Sample Sizes}{Case of Known Standard Deviation}
-% Suppose that the engineer uses data available from the system manuals, as well as historical measurements, to estimate a reasonable upper bound for the common standard deviation as $\sigma \approxeq 15$.\bigskip
-%
-% Assuming that equal sample sizes are desired, we can simply use the formula:
-%
-% \begin{equation*}
-% n \approxeq 2\left[\left(t^{(2n-2)}_{\alpha/2}+t^{(2n-2)}_{\beta}\right)\frac{\sigma}{\delta^*}\right]^2
-% \end{equation*}
-% \vfill
-%
-% \hfill Easy, right?
-% \end{frame}
-%
-% \begin{frame}{Calculation of Sample Sizes}{Case of Known Standard Deviation}
-%
-% The last problem we have to solve is that the values of $t^{(2n-2)}_{\alpha/2}$ and $t^{(2n-2)}_{\beta}$ are also dependent of $n$, which makes the sample size equation transcendental in $n$.\bigskip
-%
-% We can solve that by using an initial estimate of $t^{(2n-2)}_{\kappa}\approx z_{\kappa}$, and iterating until we find the smallest $n$ that satisfies:
-%
-% \begin{equation*}
-%   n \geq 2 \left(\frac{\hat{\sigma}}{\delta^*}\right)^2\left(t_{\alpha/2}+t_{\beta}\right)^2
-% \end{equation*}
-% \end{frame}
+  The unbalanced design usually has a lower total number of
+  observations. The optimal allocation of sample size for this kind of
+  design is to have the ratio of observations to be equal to the ratio
+  of variance:
+
+  $$\frac{n_1}{n_2} = \frac{\sigma_1}{\sigma_2}$$.\bigskip
+
+  (provided that a good estimate of the ratio of variances is available, of course)
+  
+\end{frame}
+
+\begin{frame}[fragile]{Sample Size Calculation}{Case 2: Two means, unequal variances -- Example unbalanced design}
+
+{\small
+\begin{verbatim}
+> MESS::power_t_test(n=NULL, sd=15, delta=15, 
++                    ratio=2, sd.ratio=2,
++                    power=0.8, sig.level = 0.05,
++                    type="two.sample", alternative="one.sided")
+
+Two-sample t test power calc with unequal sample sizes and unequal variances 
+
+              n = 19.01525, 38.03050 <-- bigger sample size
+          delta = 15
+             sd = 15, 30             <-- total var is lager
+      sig.level = 0.05
+          power = 0.8
+    alternative = one.sided
+
+NOTE: n is vector of number in each group
+\end{verbatim}}
+\end{frame}
+
+\begin{frame}[fragile]{Sample Size Calculation}{Case 2: Two means, unequal variances -- Example balanced design}
+
+{\small
+\begin{verbatim}
+> MESS::power_t_test(n=NULL, sd=15, delta=15, 
++                    ratio=1, sd.ratio=2,
++                    power=0.8, sig.level = 0.05,
++                    type="two.sample", alternative="one.sided")
+     Two-sample t test power calculation with unequal variances 
+
+              n = 31.8629, 31.8629 <-- larger total observations
+          delta = 15
+             sd = 15, 30
+      sig.level = 0.05
+          power = 0.8
+    alternative = one.sided
+
+NOTE: n is number in *each* group
+\end{verbatim}}
+\end{frame}
+
+\begin{frame}[fragile]{Sample Size Calculation}{Case 2: Two means, unequal variances -- Example power calculation}
+
+{\small
+\begin{verbatim}
+> MESS::power_t_test(n=20, sd=15, delta=15, 
++                    ratio=1.5, sd.ratio=2,
++                    power=NULL, sig.level = 0.05,
++                    type="two.sample", alternative="one.sided")
+
+Two-sample t test power calc with unequal sample sizes and unequal variances 
+
+              n = 20, 30
+          delta = 15
+             sd = 15, 30
+      sig.level = 0.05
+          power = 0.7438965 <-- lower power
+    alternative = one.sided
+
+NOTE: n is vector of number in each group
+\end{verbatim}}
+\end{frame}
 
 
+\begin{frame}{Sample Size Calculation}{Two means, unequal variances considerations}
 
-% \begin{frame}{Case of Two Means -- Unequal Variance}
-%
-% The two-sample Welch t-test for considering unequal variances is usually the first test of choice, since it drops one (often inconvenient) assumption, at a very small cost in terms of power.\bigskip
-%
-% Calculating sample sizes for the general case (unequal variances, unequal sample sizes) is not particularly difficult, and can be done for either a \textit{balanced} case (i.e., $n_1 = n_2 = n$) or an optimal, \textit{unbalanced} case (in which $n_1 \neq n_2$).\bigskip
-%
-% For the unbalanced case, it is not particularly difficult to prove that the optimal allocation of observation is to keep:
-% $$\frac{n_1}{n_2} = \frac{\sigma_1}{\sigma_2}$$.
-%
-% (if a good estimate of the ratio of variances is available, of course).
-% \end{frame}
+  \begin{itemize}
+  \item We can use a balanced design, but the total number of observations will be higher.
+  \item Using an unbalanced design will result in a smaller total sample size.
+  \item We should calculate the power if the sample size is fixed.
+  \end{itemize}
 
-\begin{frame}{Comparison of two means -- Paired design}
-Paired designs can require smaller sample sizes for equivalent power in cases where the {\bf between-units variation} is relatively high, and the {\bf in-unit variation} is relatively homogeneous.\bigskip
+\end{frame}
 
-More specifically, if the within-level variation is given by $\sigma_\epsilon$ and the between-units variation is $\sigma_u$, we have that, for large enough $n$\\(e.g., $n\geq 10$),
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Comparison of two means -- Paired design}{}
+
+
+  The analysis of an experiment with \structure{paired design} can
+  require smaller sample sizes for the same power.\bigskip
+
+  This happens when the {\bf between-units variation~($\sigma_U$)} is relatively
+  high, and the {\bf in-unit variation ($\sigma_\epsilon$)} is relatively
+  homogeneous.\bigskip
+
+  For large enough $n$~(e.g., $n\geq 10$), we have that:
 
 \begin{equation*}
 \frac{n_{\mbox{\tiny unpaired}}}{n_{\mbox{\tiny paired}}}\approx\sqrt{2\left[\left(\frac{\sigma_u}{\sigma_\epsilon}\right)^2+1\right]}
 \end{equation*}
+
+  So we can initially calculate the unpaired sample size, and adjust it for the paired case.
+\end{frame}
+
+\begin{frame}[fragile]{Comparison of two means -- Paired design}{}
+  Alternatively, we can also use good old \emph{power\_t\_test}:
+
+{\small
+\begin{verbatim}
+> MESS::power_t_test(n=NULL, sd=15, delta=15, 
++                    ratio=1, sd.ratio=1,
++                    power=0.8, sig.level = 0.05,
++                    type="paired", alternative="one.sided")
+
+     Paired t test power calculation 
+
+              n = 7.727622       <-- paired tests are very powerful!
+          delta = 15
+             sd = 15             <-- don't forget you have to show this!
+      sig.level = 0.05
+          power = 0.8
+    alternative = one.sided
+
+NOTE: n is number of *pairs*, sd is std.dev. of *differences* within pairs
+\end{verbatim}
+}
 \end{frame}
 
 
@@ -510,52 +599,80 @@ More specifically, if the within-level variation is given by $\sigma_\epsilon$ a
 % $$c = \frac{1}{2}\exp\left(-7.06\frac{\Delta\mu^*}{\delta^*}\right)$$
 % \end{frame}
 
-\subsection{Sample Size for Multiple Means}
+\subsection{Sample Size for ANOVA}
 
-\begin{frame}{Sample size formulas for ANOVA}
-If one is interested in calculating the required sample size for the ANOVA procedure (without worrying about the eventual post-hoc testing), the formulas are almost as simple as those used for the t tests.\bigskip
+\begin{frame}{Sample Size Calculation for multiple means}
 
-Essentially, the power/sample size calculations for the ANOVA boil down to the equality:
+  The analysis of multiple means, as discussed in a previous class, is composed of two steps:
+  \begin{itemize}
+  \item Overall analysis using ANOVA;
+  \item Posthoc analysis between pairs of samples;
+  \end{itemize}\bigskip
+
+  So when calculating sample size, we can use the calculation for the
+  first part, or for the second part. Usually the second part implies
+  a larger sample size, but sometimes we want to know the power for
+  the first part too.  
+\end{frame}
+
+\begin{frame}{Power calculation for the ANOVA}{Scenarios of Interest}
+  The power of a test is the probability of the test not being able to
+  detect the alternate hypothesis (type II error). So to calculate the
+  power of ANOVA, we need to establish a {\bf scenario of interest}.\medskip 
+
+  For example, if we are comparing 4 samples, two scenarios tend to be
+  of interest:\bigskip
+
+\noident The first is if we have two levels biased symmetrically about the
+  grand mean, and all the others equal to zero:
+
+$$ \tau = \left\{-\frac{\delta^*}{2}, \frac{\delta^*}{2}, 0, 0\right\}$$
+
+\noindent and the second is if we have one level biased in relation to
+all others:
+
+$$ \tau = \left\{-\frac{(a-1)\delta^*}{a}, \frac{\delta^*}{a}, \frac{\delta^*}{a}, \frac{\delta^*}{a}\right\}$$
+\end{frame}
+
+\begin{frame}{Power calculation for the ANOVA}{General Formula}
+  
+Given the scenario of interest, the power/sample size calculations
+boil down to the equality:
 
 \begin{equation*}
 F_{(1-\alpha)} = F_{\beta;\phi}
 \end{equation*}
 
-with both $F$ distributions having $(a-1)$ degrees of freedom in the numerator and $a(n-1)$ in the denominator. The noncentrality parameter $\phi$ is given by:
+with both $F$ distributions having $(a-1)$ degrees of freedom in the
+numerator and $a(n-1)$ in the denominator. The noncentrality parameter
+$\phi$ is given by:
 
 \begin{equation*}
 \phi = \frac{n\sum\limits_{i=1}^{a}\tau_i^2}{\hat{\sigma}^2}
 \end{equation*}
 \end{frame}
 
-\begin{frame}{Sample size formulas for ANOVA}
+\begin{frame}[fragile]{Power calculation for the ANOVA}{Example}
 
-To ilustrate the sample size calculation procedure, imagine an experimental design with $a = 4,\ \alpha = 0.05,\ \hat{\sigma} = 7$, and suppose that the researcher wants to be able to detect whether any two means present differences of magnitude $\delta^* = 12$ with power $(1-\beta)=0.8$.\bigskip
+To ilustrate, imagine an experimental design with $a = 4,\ \alpha =
+0.05,\ \hat{\sigma} = 7$, and suppose that the researcher wants to be
+able to detect whether any two means present differences of magnitude
+$\delta^* = 12$ with power $(1-\beta)=0.8$.\bigskip
 
-Under these conditions, two scenarios tend to be of interest: the first is if we have two levels biased symmetrically about the grand mean, and all the others equal to zero:
-
-$$ \tau = \left\{-\frac{\delta^*}{2}, \frac{\delta^*}{2}, 0, 0\right\}$$
-
-\noindent and the second is if we have one level biased in relation to all others:
-
-$$ \tau = \left\{-\frac{(a-1)\delta^*}{a}, \frac{\delta^*}{a}, \frac{\delta^*}{a}, \frac{\delta^*}{a}\right\}$$
-\end{frame}
-
-
-
-\begin{frame}[fragile]{Sample size formulas for ANOVA}
-For the first case we have a noncentrality parameter of:
+For the first scenario of interest we have a noncentrality parameter of:
 
 $$\phi = \frac{4\left(6^2+6^2+0+0\right)}{7^2} = 5.88$$
+\end{frame}
 
-And we can calculate it as:
+\begin{frame}[fragile]{Power calculation for the ANOVA}{Example}
+And we can calculate the power/sample size of the first scenaro as:
 
 {\smaller
 \begin{verbatim}
 > a       <- 4                         > alpha   <- 0.05
 > sigma   <- 7                         > delta   <- 12
 > beta    <- 0.2
-> tau <- c(-delta/2, delta/2, rep(0, a - 2))
+> tau <- c(-delta/2, delta/2, 0, 0)
 > vartau <- var(tau)
 
 > power.anova.test(groups = 4, between.var = vartau,
@@ -568,7 +685,7 @@ And we can calculate it as:
 %=====
 
 
-\begin{frame}[fragile]{Sample size formulas for ANOVA}
+\begin{frame}[fragile]{Power calculation for the ANOVA}{Example}
 The second case (one level biased in relation to all others) is also quite easy to calculate:
 
 {\smaller
@@ -581,7 +698,13 @@ The second case (one level biased in relation to all others) is also quite easy 
 [1] 6.018937
 \end{verbatim}}
 
-It is important to remember that these are the sample sizes required for the ANOVA only - any multiple comparisons procedure executed afterwards to pinpoint the significant differences will have smaller power for same-sized effects (unless more observations are added). This is one reason why it is common to design experiments calculating the sample sizes based on the multiple comparisons procedure, instead of using the ANOVA formulas.
+It is important to remember that these are the sample sizes required
+for the ANOVA only - any multiple comparisons procedure executed
+afterwards to pinpoint the significant differences will have smaller
+power for same-sized effects (unless more observations are
+added). This is one reason why it is common to design experiments
+calculating the sample sizes based on the multiple comparisons
+procedure, instead of using the ANOVA formulas.
 \end{frame}
 
 \subsection{}
