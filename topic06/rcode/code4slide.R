@@ -49,3 +49,6 @@ MESS::power_t_test(n=20, sd=15, delta=15,
                    power=NULL, sig.level = 0.05,
                    type="two.sample", alternative="one.sided")
 
+MESS::power_t_test(n=NULL, sd=15, delta=15, 
+                   power=0.8, sig.level = 0.05,
+                   type="paired", alternative="one.sided")
