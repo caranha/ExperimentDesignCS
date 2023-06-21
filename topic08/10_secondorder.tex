@@ -1,0 +1,415 @@
+\section{Interaction Effects}
+
+\begin{frame}{}
+
+  \begin{center}
+    {\large {\bf
+        Second Order Interaction Effects
+    }}
+  \end{center}
+  
+\end{frame}
+
+\begin{frame}[t]{What are Interaction Effects?}{}
+  When analyzing data from an experiment, a common question of
+  interest is {\bf how do the factors affect the response variable?}.\bigskip
+
+  For example, we want to know how do the values of the parameters $F$
+  and $CR$ affect the performance of the \emph{Differential Evolution}
+  algorithm.\bigskip
+
+  {\bf Main Effects} are how the factors individually affect the
+  response variable:\footnote{hypothetical statements}
+  \begin{itemize}
+  \item Convergence time decreases as we increase the value of $CR$;
+  \item Convergence time changes in a parabole with $F$, and is minimal when
+    $F \approx 0.5$;
+  \end{itemize}
+  {\bf Interaction Effects} are how the factors affect the response
+  variable in combination;
+  \begin{itemize}
+  \item When $CR \approx 0.5$, minimal convergence time happens for $F \approx 0.6$
+  \item When $CR \approx 0.8$, minimal convergence time happens for $F \approx 1.1$
+  \end{itemize}
+\end{frame}
+
+\subsection{Simple Example}
+\begin{frame}{Simple Example -- Chocolate survey}
+
+  Imagine that we are conducting a survey to discover what is the best
+  food condiment.\bigskip
+
+  We perform a survey, where we give the person a random food with a random condiment,
+  and ask them their satisfaction.
+  \begin{itemize}
+  \item Independent Factor: {\bf Food:} Hotdog, Ice Cream
+  \item Independent Factor: {\bf Condiment:} Chocolate Sauce, Mustard
+  \item Response Variable : Enjoyment
+  \end{itemize}
+
+  \includegraphics[width=0.2\textwidth]{../img/irasutoya_hotdog.png}
+  \hfill
+  \includegraphics[width=0.2\textwidth]{../img/irasutoya_icecream.png}
+  \ppagenote{Hotdog and icecream images from irasutoya}
+\end{frame}
+
+\begin{frame}[fragile]{Chocolate survey data}
+
+  Here is what the data looks like (you can download data and code from manaba)\medskip
+
+\begin{verbatim}
+% cat Condiments.csv
+"Enjoyment","Food","Condiment"
+81.9269574232529,"Hot Dog","Mustard"
+84.9397743293292,"Hot Dog","Mustard"
+90.28647932801438,"Hot Dog","Mustard"
+89.56180151665502,"Hot Dog","Mustard"
+97.67682591880066,"Hot Dog","Mustard"
+83.61712996934618,"Hot Dog","Mustard"
+89.21086046510206,"Hot Dog","Mustard"
+90.7668667221883,"Hot Dog","Mustard"
+102.62044030772365,"Hot Dog","Mustard"
+85.74390036422551,"Hot Dog","Mustard"
+96.5923588947792,"Hot Dog","Mustard"
+91.99449143926803,"Hot Dog","Mustard"
+87.3332551483422,"Hot Dog","Mustard"
+86.87685892829761,"Hot Dog","Mustard"
+87.51938536071019,"Hot Dog","Mustard"
+93.49125482138082,"Hot Dog","Mustard"
+94.30378893191127,"Hot Dog","Mustard"
+95.86999176797764,"Hot Dog","Mustard"
+81.24348763821509,"Hot Dog","Mustard"
+80.53783465646922,"Hot Dog","Mustard"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Visualizing the results with a boxplot}
+  At first glance, it seems that the condiment does not make a big
+  difference?
+
+  {\smaller
+\begin{verbatim}
+> satisfaction.df <- read.csv("Condiments.csv")
+> boxplot(satisfaction.df$Enjoyment ~ satisfaction.df$Condiment)
+\end{verbatim}}
+  
+  \begin{center}
+    \includegraphics[width=0.65\textwidth]{../img/boxplot_condiment.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Means across factors}{}
+  We suspect that something is wrong here, so we plot the means for
+  each combination of food and condiment.\footnote{It is always good
+    to be curious about your data and explore it in depth.}\bigskip
+
+  {\smaller
+\begin{verbatim}
+> aggregate(Enjoyment ~ Food + Condiment, satisfaction.df, mean)
+       Food       Condiment Enjoyment
+1   Hot Dog Chocolate Sauce  65.31661
+2 Ice Cream Chocolate Sauce  93.04810
+3   Hot Dog         Mustard  89.60569
+4 Ice Cream         Mustard  61.30891
+\end{verbatim}} \bigskip
+
+    It appears that the Enjoyment depends on both the food and the
+    condiment! Unfortunately, ice cream with mustard does not seem to
+    be a very popular choice...
+\end{frame}
+
+\begin{frame}[fragile]{Measuring Interaction Effects}{}
+
+  We can get a statistical measure of our interaction effect by using
+  the ANOVA analysis on a linear model that includes the effect.
+
+  {\smaller
+\begin{verbatim}
+> Food.lm <- lm(formula = Enjoyment ~ Food + Condiment + Food*Condiment, 
++               data = satisfaction.df)
+> # ANOVA (effects of each factor on the final result)
+> summary(aov(Food.lm))
+               Df Sum Sq Mean Sq F value  Pr(>F)    
+Food            1      2       2   0.064 0.80136    
+Condiment       1    278     278  11.071 0.00135 ** 
+Food:Condiment  1  15696   15696 626.153 < 2e-16 ***
+Residuals      76   1905      25                    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{verbatim}}
+    The F (and P) values on the Food:Condiment row indicate the strong interaction effect.
+
+\end{frame}
+
+\begin{frame}[fragile]{Visualization of Interaction Effects}{}
+
+{\smaller
+\begin{verbatim}
+interaction.plot(satisfaction.df$Food, satisfaction.df$Condiment, 
+                 satisfaction.df$Enjoyment, 
+                 xlab = "Food", ylab = "Enjoyment", trace.label = "Condiment")
+\end{verbatim}}
+
+\begin{center}
+  \includegraphics[width=0.7\textwidth]{../img/interactionplot_condiment.png}
+\end{center}
+\end{frame}
+
+\subsection{Lung Cancer Example}
+\begin{frame}{Another Example: Smoking, Abestos and Cancer}
+
+  The data below was presented in Hilt et al. (1986), about the risk
+  of lung cancer depending on whether a person smokes, and whether
+  they are exposed to abestos.
+
+  \begin{center}
+    \includegraphics[width=0.55\textwidth]{../img/interaction_lungcancer.png}
+  \end{center}\ppagenote{Lung Cancer table from VanderWeele and Know: A Tutorial on Interaction}
+
+  We can observe that the risk of Lung Cancer increases much more when
+  both Abestos and Smoking are present. More than we would expect from
+  either factor alone.\bigskip
+
+  Interaction effects can be both negative and positive.
+\end{frame}
+
+% TODO: Improve understanding of additive and multiplicative interaction effects
+
+%\begin{frame}{Measuring Interaction}
+%  - Additive Effects
+%  - Multiplicative Effects (Ratio Effects)
+%  
+%  Which to use? Difficult question. There is always ``some'' interaction, if both
+%  variables have an effect on the outcome. Better look at both, and consider the
+%  characteristics and motivation of the experiment.
+%\end{frame}
+
+
+
+\subsection{Interaction Effects on DE}
+
+\begin{frame}{Interaction Effects on DE Parameters}{}
+  Let's see a more complex example, that is closer to computer science.\bigskip
+
+  {\bf Differential Evolution} (DE) is a popular meta-heuristic algorithm
+  that can be used to solve blackbox optimization problems.\bigskip
+
+  The it is known that the performance of DE depends on the problem
+  being solved, as well as its two control parameters: $F$ and
+  $Cr$. Therefore, the user is encouraged to {\bf fine tune} the
+  algorithm prior to application.\bigskip
+
+  In this example, we run a simplified experiment to find optimal
+  parameter values for DE for a sample problem.
+\end{frame}
+
+\begin{frame}[t]{DE Description}{}
+  Differential Evolution is an algorithm that rely on two parameters:
+  \begin{itemize}
+  \item CR: Ranges from 0 to 1, recommended value is 0.5;
+  \item F: Ranges from 0 to 2, recommended value is 0.8;
+  \end{itemize}\bigskip
+
+  It is recommended that the algorithm is fine-tuned for specific
+  problems. In this case, we will use check the performance of the
+  algorithm in a benchmark function under different parameter values.
+\end{frame}
+
+\begin{frame}[t]{Experimental Design}{}
+
+  Scientific inquiry: Understand how the convergence rate of DE
+  changes as we set different values of the parametes CR and F. In
+  specific, try to detect if there are any interactions between these
+  parameters.\bigskip
+  
+  \begin{itemize}
+  \item {\bf Response Variable}: Number of iterations until a target solution quality is reached.
+  \item {\bf Independent Factor 1}: CR, levels: 0.1, 0.3, 0.5, 0.7, 0.9
+  \item {\bf Independent Factor 2}: F, levels: 0.2, 0.4, 0.8, 1.0, 1.2
+  \item {\bf Noise Factor}: Random seed (probabilistic algorithm)
+  \end{itemize}
+  \bigskip
+
+  Since this is an exploratory experiment, we do not set specific
+  values for $\alpha$, $\beta$, etc. These values should be set when
+  specific null and alternate hypothesis are considered.  
+\end{frame}
+
+
+\begin{frame}[t]{Initial observation of the parameters -- CR}{}
+  First, let's observe how changing the parameters affect the response variable:
+  \begin{columns}
+    \column{0.4\textwidth}
+    Notes:
+    \begin{itemize}
+    \item This is a box plot of the response value, grouped by CR value.
+    \item It includes different values of F in the results, so
+      interaction effects might be a concern.
+    \item Still, we see a generally downwards trend for higher CR values {\bf For this problem}.
+    \end{itemize}
+    \column{0.6\textwidth}
+    \includegraphics[width=\textwidth]{../img/DE_experiment_CR_analysis.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Initial observation of the parameters -- F}{}
+  Same boxplot observation, focusing on the parameter F:
+  \begin{columns}
+    \column{0.4\textwidth}
+    Notes:
+    \begin{itemize}
+    \item The parameter F shows a clearly non-linear relationship with
+      the output variable.\bigskip
+      
+    \item The anomalous behavior for $F=1$ should be investigated more
+      carefully (but we won't do it here).
+    \end{itemize}
+    \column{0.6\textwidth}
+    \includegraphics[width=\textwidth]{../img/DE_experiment_F_analysis.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t,fragile]{Measuring Interaction Effect with a linear regression}{}
+
+{\smaller
+\begin{verbatim}
+> DE.lm <- lm(formula = R ~ F + CR + F*CR,            <-- Linear Reg Formula
+              data = tab.results)                         Includes F*CR, the
+> summary(DE.lm)                                          iteraction factor.
+(...)
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-90.107 -36.083   7.101  31.577 103.793               <-- Residuals don't look
+(...)                                                     too skewed.
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   212.31      12.94  16.409  < 2e-16 ***  
+F             -13.15      15.97  -0.823  0.41124      <-- no "linear" effect!
+CR           -177.01      22.52  -7.859 1.21e-13 ***
+F:CR           74.56      27.81   2.681  0.00783 **   <-- Detects a significant
+(...)                                                     effect from changing
+                                                          both factors together
+\end{verbatim}}                                                 
+\end{frame}
+
+\begin{frame}[t,fragile]{Interaction Graph -- CR by F}{}
+  A visual investigation of interaction effects might be more informative.
+\begin{verbatim}
+interaction.plot(tab.results$CR, tab.results$F, tab.results$R)
+\end{verbatim}
+
+  \begin{columns}
+    \column{0.6\textwidth}
+    \includegraphics[width=\textwidth]{../img/interaction_DE_CRbyF.png}
+    
+    \column{0.4\textwidth}
+    \begin{itemize}
+    \item $F=0.2$ and $F=1.2$ show low convergence compared to $F=0.4$
+      and $F=0.8$. But the shape of the curve seems roughly similar.
+    \item Again we see the anomalous behavior of $F=1$
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t,fragile]{Interaction Graph -- F by CR}{}
+  A visual investigation of interaction effects might be more informative.
+\begin{verbatim}
+interaction.plot(tab.results$F, tab.results$CR, tab.results$R)
+\end{verbatim}
+
+  \begin{columns}
+    \column{0.6\textwidth}
+    \includegraphics[width=\textwidth]{../img/interaction_DE_FbyCR.png}
+    
+    \column{0.4\textwidth}
+    \begin{itemize}
+    \item Here we see that the curves show roughly the same shape,
+      and convergence speed increasing as CR increases;
+    \item Here the anomalous behavior of $F=1$ is more pronounced.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[t]{Early Conclusions}
+  \begin{itemize}
+  \item The linear regression model indicates a strong effect for a CR*F factor.\medskip
+    
+  \item However, this effect is not so clear in a visual inspection.
+    \begin{itemize}
+    \item This may be because the relationship between F and the
+      output variable is not linear.
+    \end{itemize}\medskip
+    
+  \item The recommendation {\bf from these results} would be to try
+    $F=0.8$, and $CR$ as high as possible.
+    \begin{itemize}
+    \item Maybe worth investigation $CR > 0.9$;
+    \end{itemize}\medskip
+    
+  \item Maybe worth it investigating $F = 1.0$ for bugs in the code,
+    since a scaling factor should not have such an anomalous behavior.
+    \bigskip
+    
+  \item \structure{A good experiment many times raises as many
+      questions as it answers!}
+    
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Caveats of this case study}{}
+  \begin{itemize}
+  \item {\bf Non-linear effects}: $F$ shows a clear non-linear
+    relationship with the output variable.
+    \begin{itemize}
+    \item Note how the difference cause the linear model to return
+      non-reliable information!
+    \item Good opportunity to investigate non-linear models.
+    \end{itemize}\bigskip
+
+  \item Second order interaction is already though. Third order
+    interaction and above become exponentialy harder to analyze;
+    \bigskip
+
+  \item Eventually, it becomes more practical to use sequential models
+    like IRACE and SMAC;
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Suggested Extra Reading}{}
+  \begin{itemize}
+  \item Bartz-Bielstein: ``Experimental Methods for the Analysis of
+    Optimization Algorithms'', In depth discussion about
+    parametrization and analysis of algorithms like DE;\bigskip
+
+  \item Paul Teetor: ``R Cookbook'', Quick recipes for a variety of
+    data visualizations in R;\bigskip
+    
+  \item Statistics by Jim: ``Interaction Effects''.\\
+    A short, intuitive description of interaction
+    effects. \url{https://statisticsbyjim.com/regression/interaction-effects/}
+    \bigskip
+    
+  \item T.J. VanderWeele, M. J. Know: ``A Tutorial on Interaction.\\
+    A more in-depth discussion of interaction in several models, but focused on medicine use cases.
+    \url{https://www.hsph.harvard.edu/wp-content/uploads/sites/603/2018/04/InteractionTutorial_EM.pdf}
+  \end{itemize}
+\end{frame}
+
+%%% Notes
+% Interaction effects are common in regression models,
+% Anova, and designed experiments
+% Interaction plot -- (of two variables)
+
+
+
+% Categorical Variables
+% Continuous independent variables
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "topic08"
+%%% End:

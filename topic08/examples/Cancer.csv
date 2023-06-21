@@ -1,0 +1,5 @@
+"Cancer Risk", "Smoking", "Exposure"
+0.0011, "Non-Smoker", "No Abestos"
+0.0067, "Non-Smoker", "Abestos"
+0.0095, "Smoker", "No Abestos"
+0.0450, "Smoker", "Abestos"
