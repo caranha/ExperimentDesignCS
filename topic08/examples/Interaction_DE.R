@@ -37,15 +37,23 @@ tab.results <- data.frame(t(exp.results))
 
 tab.results
 
-boxplot(tab.results$R ~ tab.results$CR)
-boxplot(tab.results$R ~ tab.results$F)
+boxplot(tab.results$R ~ tab.results$CR, xlab = "CR", ylab = "number of iterations to success")
+boxplot(tab.results$R ~ tab.results$F, xlab = "F", ylab = "number of iterations to success")
 
 DE.lm <- lm(formula = R ~ F + CR + F*CR, data = tab.results)
 
 summary(DE.lm)
 # plot(DE.lm)
 
-interaction.plot(tab.results$CR, tab.results$F, tab.results$R)
+interaction.plot(tab.results$CR, tab.results$F, tab.results$R,
+                 xlab = "CR Parameter",
+                 ylab = "number of iterations to success",
+                 trace.label = "F Parameter")
+
+interaction.plot(tab.results$F, tab.results$CR, tab.results$R,
+                 xlab = "F Parameter",
+                 ylab = "number of iterations to success",
+                 trace.label = "CR Parameter")
 
 
 # Some more recipes
