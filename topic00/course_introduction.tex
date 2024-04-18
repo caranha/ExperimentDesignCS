@@ -2,17 +2,17 @@
 \input{../utils/beamerpreamble.tex}
 
 \subtitle[Intro]{Topic 00 - Course Introduction}
-\date{2023/04/14}
+\date{2024/04/19}
 
 \begin{document}
-\begin{CJK}{UTF8}{ipxm}
+%\begin{CJK}{UTF8}{ipxm}
 
 \begin{frame}
   \maketitle
 
   \vfill
 
-  \hfill Version 2023.1
+  \hfill Version 2024.1
 \end{frame}
 
 \section{Course Motivation}
@@ -25,7 +25,7 @@
 
 \begin{frame}{What is this course about?}
 
-  \begin{block}{From the syllabus}
+  \begin{block}{From the (old) syllabus}
     \emph{The collection and analysis of data through experiments is
       one of the cornerstones of the scientific method. In this
       course, we study the general philosophy and methods behind
@@ -36,10 +36,10 @@
   \end{block}
   \bigskip
 
-  What does this mean?
+  TL;DR: In this course we study {\bf Experiments}, in the context of computer science.
 \end{frame}
 
-\begin{frame}{What is this course about?}{}
+\begin{frame}{What is this course about?}{Systematic experiments}
 
   The key idea of this course is to learn \structure{how to do an
     experiment in a systematic manner}.\bigskip
@@ -67,39 +67,41 @@
   \end{itemize}\bigskip
 
   Many of these errors happen because of experiments done
-  carelessly. So let's learn to think more carefully about them!
+  carelessly.\\
+  So let's learn to think more carefully about them!
 
 
 \end{frame}
 
-\begin{frame}{Why is this course necessary?}{The "Invisible
-    Curriculum" -- things that are not taught in classes}
+% Add this back after redesigning the course
+% \begin{frame}{Why is this course necessary?}{The "Invisible
+%     Curriculum" -- things that are not taught in classes}
 
-  The \structure{Invisible Curriculum} are things that are necessary
-  for your work as an academic, but that you usually can't learn in a
-  lecture, and must discover by \alert{trial and error}. For
-  example:\bigskip
+%   The \structure{Invisible Curriculum} are things that are necessary
+%   for your work as an academic, but that you usually can't learn in a
+%   lecture, and must discover by \alert{trial and error}. For
+%   example:\bigskip
 
-  \begin{columns}
-    \column{0.7\textwidth}
-    \begin{itemize}
-      \item How do I prepare an experiment?
-      \item When do I publish a result?
-      \item How do I review a paper?
-      \item How do I teach a lecture?
-      \item What are grants?
-      \item ...
-    \end{itemize}\bigskip
+%   \begin{columns}
+%     \column{0.7\textwidth}
+%     \begin{itemize}
+%       \item How do I prepare an experiment?
+%       \item When do I publish a result?
+%       \item How do I review a paper?
+%       \item How do I teach a lecture?
+%       \item What are grants?
+%       \item ...
+%     \end{itemize}\bigskip
 
-    The goal of this course is to shed light in one of these points:\\
-    \emph{What is an experiment, and how do I prepare it?}
+%     The goal of this course is to shed light in one of these points:\\
+%     \emph{What is an experiment, and how do I prepare it?}
 
-    \column{0.3\textwidth}
-    \includegraphics[width=1\textwidth]{../img/irasutoya_cave}\ppagenote{Cave illustration from \url{https://www.irasutoya.com}}
-  \end{columns}
-  \bigskip
+%     \column{0.3\textwidth}
+%     \includegraphics[width=1\textwidth]{../img/irasutoya_cave}\ppagenote{Cave illustration from \url{https://www.irasutoya.com}}
+%   \end{columns}
+%   \bigskip
 
-\end{frame}
+% \end{frame}
 
 \section{Course Topics}
 \begin{frame}{Course Topics}
@@ -124,7 +126,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Course Topics}{Limitations: This is only an introductory course!}
+\begin{frame}{Course Topics}{Limitations: This is only an introductory course! Complement with your own study.}
 
   \begin{columns}
     \column{0.8\textwidth}
@@ -177,10 +179,7 @@
     \item Also, breaks when necessary.
     \end{itemize}
   \item Final exam will be in person too.
-  \item If you cannot come to class, videos from last year will be available.
-    \begin{itemize}
-    \item In that case, please ask questions on manaba!
-    \end{itemize}
+  \item If you cannot come to class, I can make videos from previous years available.
   \end{itemize}
 \end{frame}
 
@@ -205,13 +204,11 @@
 % \end{frame}
 
 \begin{frame}[t]{Communication Channels}{}
-  Communication between us is very important. Do not leave questions unanswered!\bigskip
+  Talking to your professors is important. Do not leave questions unanswered!\bigskip
 
   Communication channels by priority:
   \begin{enumerate}
-  \item Ask questions during the class. The material does not cover
-    the full class time, so you can stop and ask if anything is not
-    clear.
+  \item Ask questions during the class. {\bf There is always time left at the end of the class}, so feel free to interrupt, or write your questions to ask after the class.
   \item Use the manaba forums to ask questions outside of class
     hours. By opening a forum thread, other students with similar
     questions can also see the answer.
@@ -219,8 +216,8 @@
     shared with other students.
   \end{enumerate}\bigskip
 
-  Also, every lecture I post an {\bf Attendance Survey} on manaba. The
-  survey is not graded, but \alert{you must take the survey to count
+  Also, every lecture I post an {\bf Attendance Survey} on manaba.\\
+  The survey is not graded, but \alert{you must take the survey to count
     for attendance!}
 \end{frame}
 
@@ -228,18 +225,21 @@
 \begin{frame}[t]{Course Materials}
   \begin{itemize}
   \item The lecture notes are published in the "manaba" system.
-  \item Access code for 2023: \alert{9352484}. Use this code if you can't access manaba yet.
+  \item Access code for 2024: \alert{3339466}. Use this code if you can't access manaba yet.
     \bigskip
 
   \item The course materials are also available on github:\\
     \url{https://caranha.github.io/ExperimentDesignCS/}.\medskip
-
-  \item This year, the course is fully in person. I strongly recommend
-    that you come to class. However, the videos from 2022 will be
-    listed on Manaba if you need to miss a lecture.
     \begin{itemize}
-    \item Please note that there may be new material not covered in the videos.
+      \item Note: The materials on github may be outdated. The version in manaba is the official version of the materials.
     \end{itemize}
+
+  % \item This year, the course is fully in person. I strongly recommend
+  %   that you come to class. However, the videos from 2022 will be
+  %   listed on Manaba if you need to miss a lecture.
+  %   \begin{itemize}
+  %   \item Please note that there may be new material not covered in the videos.
+  %   \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -268,20 +268,19 @@
 
 
 \subsection{Course Schedule}
-\begin{frame}{Course Schedule}{}
+\begin{frame}{Course Schedule - Expect Changes!}{}
   \begin{itemize}
-    \item 4/14 Topic 01 -- Course Introduction, What is Experimentation
-    \item 4/21 Topic 02 -- Point and Interval Indicators
-    \item 4/28 Topic 03 -- Inference Testing I
-    \item 5/05 (Golden Week, no Class)
-    \item 5/12 Review -- Class Review and Discussion of Report I
-    \item 5/19 Topic 04 -- Inference Testing II
-    \item 5/26 Topic 05 -- Inference Testing III
-    \item 6/02 Topic 06 -- Sample Size and Experiment Power
-    \item 6/09 Topic 07 -- Block and Factorial Designs I
-    \item 6/16 Topic 08 -- Block and Factorial Designs II
-    \item 6/23 Review -- Class Review and Consultation about Report II
-    \item 6/30 Final Exam
+    \item 4/19 Topic 01 -- Course Introduction, What is Experimentation
+    \item 4/26 Topic 02 -- Point and Interval Indicators
+    \item \alert{5/01 Topic 03 -- Inference Testing I (Wednesday!)}
+    \item 5/10 Review -- Class Review and Discussion of Report I
+    \item 5/17 Topic 04 -- Inference Testing II
+    \item 5/24 Topic 05 -- Inference Testing III
+    \item 5/31 Topic 06 -- Sample Size and Experiment Power
+    \item 6/07 Topic 07 -- Case Study: Benchmarking Experiments I
+    \item 6/14 Topic 08 -- Case Study: Benchmarking Experiments II
+    \item 6/21 Review -- Class Review and Consultation about Report II
+    \item 6/28 Final Exam
 \end{itemize}
 \end{frame}
 
@@ -443,7 +442,7 @@
 
 \begin{frame}[t]{Report 1}{Rules and Deadlines}
   \begin{itemize}
-    \item {\bf Report Deadline: 05/01, 23:00} -- submit on manaba\bigskip
+    \item {\bf Report Deadline: 05/07, 23:00} -- submit on manaba\bigskip
 
     \item The report must be in English.\bigskip
 
@@ -459,5 +458,5 @@
 
 
 \input{../utils/lastslide.tex}
-\end{CJK}
+%\end{CJK}
 \end{document}
