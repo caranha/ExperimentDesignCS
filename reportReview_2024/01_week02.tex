@@ -1,0 +1,127 @@
+\documentclass[aspectratio=169]{beamer}
+\input{../utils/beamerpreamble.tex}
+
+\subtitle[Report 1 Review]{Report 1 Review}
+
+\begin{document}
+
+
+\begin{frame}
+  \maketitle
+
+  \vfill
+
+  \hfill \tiny{Version 2024}
+\end{frame}
+
+\begin{frame}[t]{Outline}
+  \begin{itemize}
+    \item General Comments about the Reports
+    \item Specific Comments about the reports
+  \end{itemize}
+  
+\end{frame}
+
+\section{General Comments}
+\begin{frame}[t]{Talking about your experiment: Know your audience}
+\begin{itemize}
+  \item Three paragraphs of introduction before explaining the experience. What does your reader want to know?
+  \item The objective of each text is different. There is no size fits all solution.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpreting results honestly}
+\begin{itemize}
+  \item Interpret the results honestly. Do not say the results are clear when they are not.
+  \item Poke holes in your experiment, and do curious questioning.
+  \item Choose experiments that are important for you for some reason (you need the result for some reason). If the results are important for you, then you will question them more honestly.
+  \item (Note: The report is important to you $\neq$ the result is important to you)
+\end{itemize}  
+\end{frame}
+
+\begin{frame}{Why Kaggle is not a good object of analysis}
+  \begin{itemize}
+    \item Kaggle data is made for testing algorithms. The data itself is not imporant for you (usually)
+    \item Kaggle data is made for testing algorithm: It was not gathered for analysis of the data itself
+    \item Little information about how it was gathered, possible issues.
+    \item Possible issues also change depending on the question you want to ask.
+  \end{itemize}  
+\end{frame}
+
+\begin{frame}{Making Good questions}
+  \begin{itemize}
+    \item Common question: "Does X has an influence on Y?" The answer is very often yes. This is not a good question.
+    \begin{itemize}
+      \item Example: Estimation of Pi by Monte Carlo: Does N have an effect? Of course it does. It is obvious. 
+      \item A more interesting question: How big N has to be for me to get a "good enough" PI for some reason?
+    \end{itemize}
+    \item "How much of an influence X has on Y?"; "Does X has enough of an influence on Y that we should care about X?"
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Simulated Experiments}
+  \begin{itemize}
+    \item How much can we learn from simulated experiments? We can simulate whatever we want.
+    \item How do we validate results from simulated experiments?
+  \end{itemize}
+\end{frame}
+
+\section{Specific Comments}
+\begin{frame}{Specific Comments}{Adversarial Neural Networks}
+  Experiment on Adversarial Neural Network: Does an adversarial image generated on network A affects the result of network B? \bigskip
+  
+  Accuracy on Network A: 33\% (original accuracy is not reported). 
+  
+  Accuracy on network B: 90\% (original accuracy is 92\%). 
+  \bigskip
+
+  How would you interpret this result? Noise is not considered correctly. What possible sources of noise could be in this experiment, and how would you evaluate them?
+\end{frame}
+
+\begin{frame}{Specific Comments}{Comparison on programming languages}
+  \begin{itemize}
+    \item Comparison of Python, Java and C on quicksort. C was much lower. Why is that?
+    \item Importance of implementation in programming experiments
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Specific Comments}{Learning English}
+  \begin{itemize}
+    \item One experiment about learning English; (Memorizing words)
+    \item No problem with the experiment. But to learn English, you should focus on Output, not Input;
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Specific Comments}{Measuring time for Caramel}
+  \begin{itemize}
+    \item Measuring state change with time cooking.
+    \item Experiment found good transitions.
+    \item Idea for follow up: If 130s seems to be the optimal heating time, how reproducible is this? Does this always work?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Specific Comments}{Simulated Experiments}
+  \begin{itemize}
+    \item Comparing Simulated Data vs Real Birth data. How similar are the results?
+    \item Green light experiment: How to validate premises?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Specific Comments}{Baumkuchen Experiment}
+  \begin{itemize}
+    \item Options: Two different samples or two of the same sample
+    \item The importance of controls!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Specific Comments}{Music and Study}
+  \begin{itemize}
+    \item A few "self experiments"
+    \item How do you define a control in this case, is it even necessary?
+    \item Is it necessary to test on other people? Depend on what you care about!
+  \end{itemize}
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,629 @@
+
+\section{Statistical Indicators}
+
+\begin{frame}[t]{Section II: Statistical Indicators}
+
+  In this section we talk more formally about how we define variables and models for our experiments, and about Statistical Indicators.
+
+\end{frame}
+
+\begin{frame}[t]{Data and "Experiment Data"}
+  When we talk about "data" in Computer Science, the first thing that comes to mind is "information that we feed to a program". {\bf For example}: images, network logs, user databases, etc.\bigskip
+
+  In this class, we are talking about "Experiment Data", which should be understood as "Data about the result of an experiment". {\bf For example}: How long did the experiment take? What is the success rate of my program?\bigskip
+
+  In fact, we can use the tecniques of this lecture for the first kind of data too! But to make things simpler, let's concentrate on the second kind of data.
+\end{frame}
+
+\begin{frame}{Example of Data Collection}{Using Experiment Data to characterize a system}
+  \begin{columns}
+    \column{0.8\textwidth}
+    \structure{Tsukuba University} is famous for many olympic athletes. Let's say we want to investigate if this is because some special characteristic of the students. After thinking a bit, I come up with the following question:
+    \begin{itemize}
+      \item Is the olympic performance related with the height of the students?
+      \item Are students in Tsukuba taller than normal in Japan?
+    \end{itemize}\bigskip
+
+    The 1st question seems hard to answer right now, but 2nd question seems easier.\bigskip
+
+    Imagine I take ONE student from Tsukuba and measure their height.
+    Can this information answer the second question? Why?
+    \column{.2\textwidth}
+    \includegraphics[width=\textwidth]{../img/irasutoya_height}
+    \ppagenote{Height image from \url{https://www.irasutoya.com}}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Using experiment data to characterize a system}
+  From the height of only one student, I cannot really learn anything about
+  the height of the students of the university {\bf in general}.
+  A better approach would be to measure the height of several students.\bigskip
+
+  \begin{center}
+    \includegraphics[width=0.09\textwidth]{../img/irasutoya_height}
+    \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
+    \includegraphics[width=0.08\textwidth]{../img/irasutoya_height}
+    \includegraphics[width=0.09\textwidth]{../img/irasutoya_height}
+    \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
+    \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
+    \includegraphics[width=0.09\textwidth]{../img/irasutoya_height}
+    \includegraphics[width=0.1\textwidth]{../img/irasutoya_height}
+  \end{center}
+  \bigskip
+
+  Now that I have the height of many students, what can I say about the height
+  of the students in the university, {\bf in general}?
+\end{frame}
+
+\begin{frame}{Population and Sample}
+  This example introduces us to some important concepts in statistics:
+  \structure{Observation, Sample, and Population}.\bigskip
+
+  \begin{itemize}
+    \item {\bf Observation}: This is the result of one experiment: One student from the university, or one execution of the program.\medskip
+
+    \item {\bf Sample}: This is a set of observations. When we repeat the experiment to observe the variation in the results, we collect a sample.\medskip
+
+    \item {\bf Population}: This is the set of all possible experiment results. It can be a real set (all students of the university), or a theoretical set (all possible times for going from the dorm to class).
+  \end{itemize}
+  \bigskip
+
+  The general goal of an experiment is {\bf "to learn something about the population, by examining the observations in the sample"}.
+\end{frame}
+
+\begin{frame}{Population and Sample}{Learn something about the population, by examining the observations in the sample}
+  \begin{block}{Population}
+    \begin{columns}
+      \column{.18\textwidth}
+      \includegraphics[width=1\textwidth]{../img/ballpool}
+      \column{.65\textwidth}
+      You want to know the proportion of colorful balls in a pool (you like the red ones). Because we don't know exactly how many there are, we need to {\bf make an estimation}.
+    \end{columns}
+  \end{block}
+  \begin{block}{Sample}
+    \begin{columns}
+      \column{.14\textwidth}
+      \includegraphics[width=1\textwidth]{../img/ballhand}
+      \column{.65\textwidth}
+      To learn the proportion of red balls, we pick a number of balls, and {\bf estimate that the proportion of red balls in the pool is equal to the proportion in my hand}.
+    \end{columns}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Population, Model and Parameters}{What is a model?}
+  \structure{A model is a description of the population}, describing the relationship between the conditions of the experiment and its possible results.\bigskip
+
+  \begin{itemize}
+    \item The balls pool has balls distributed {\bf uniformly}, so any sample that I take is a good representation of the population.
+    \item If we measure the height of all students, the aggregate values can be represented by a {\bf normal distribution}.
+    \item We model spread of a sickness in a city by dividing the inhabitants in {\bf susceptible}, {\bf infected} and {\bf Recovering} groups, and defining {\bf transition probabilities} between the groups.
+  \end{itemize}\bigskip
+
+  One goal of many experiments is to {\bf validate} or {\bf clarify} the details of a model.
+\end{frame}
+
+\begin{frame}{Population, Model and Parameters}{Example of model parameters}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      The analysis of experimental data can be used to estimate the parameters of a model.\bigskip
+
+      The model is determined during the experiment design phase.\medskip
+
+      Each parameter in the model has "true values" (values that reflect the population, $\theta$), and "estimated values" (values that are observed from the experiment, $\hat{\theta}$).\bigskip
+
+      (Note that this setup assumes the model is correct, or a good approximation of reality!)
+    \column{0.5\textwidth}
+    \includegraphics[width=.8\textwidth]{../img/wikipedia_triceratops}
+    \ppagenote{Triceratops information table CC by Zachi Evenor and MathKnight}
+  \end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Sample Data, Statistics, and Parameters}{Statistics are functions on the data}
+  \begin{block}{}
+    A \structure{statistic} (singular) is a function, that takes experiment data as its input.
+  \end{block}\medskip
+
+  We estimate the value of the parameter of a model, by calculating a statistic, based on data we obtained from the sample. For example:\bigskip
+
+  \begin{itemize}
+    \item How long does it take to run a program? Run the program many times (sample), and calculate the \structure{mean execution time} (statistic).
+    \item How effective is a drug? We give the drug to sick patients (sample), and count \structure{how~many~patients} get better after two days (statistic);
+    \item Is it better to add more perceptrons to a neural network? We run the network with different sizes (sample), and calculate the \structure{correlation between size and accuracy} (statistic).
+  \end{itemize}\bigskip
+\end{frame}
+
+\begin{frame}{Point and Interval Indicators}
+  In this lecture, we focus on two types of statistics: {\bf Point Estimators} and
+  {\bf Interval Estimators}.\bigskip
+
+  \begin{itemize}
+    \item {\bf Point Estimators}: estimate \structure{one value} for a parameter from a sample;
+
+    \item {\bf Interval Estimators}: estimate a \structure{range of values} for a parameter;
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Statistics are Random Variables}{The estimated value depends on the population and the sample}
+
+  \begin{itemize}
+    \item The value of an \structure{statistic} is calculated from the \structure{sample}, that we obtained from the experiment.
+    \item The \structure{sample}, in turn, is a subset of the \structure{population}, which is what we want to study.\bigskip
+
+    \item The implication is that {\bf every time we do a new experiment, the value calculated by an statistic will be a little bit different}.
+  \end{itemize}\vfill
+
+  % \begin{exampleblock}{Don't Worry!}
+  %   These differences are expected and, if your experiment design is good, can be controlled. Just remember that a value you calculate from a sample is not necessarily {\bf the truth}$^{tm}$
+  % \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Statistics are Random Variables}{What is measured by statistical tests?}
+  \begin{columns}[T]
+    \column{.3\textwidth}
+      \includegraphics[width=1\textwidth]{../img/sampling_distribution}
+    \column{.7\textwidth}
+    A statistic can show different values, depending on the sample obtained.
+    So it is useful to treat statistics as \structure{Random~Variables}.\bigskip
+
+    As a Random Variable, a statistic has a {\bf sampling distribution}.
+    The sampling distribution is a model that describes what values we expect
+    to obtain from a statistic, when we perform an experiment.\bigskip
+
+    In general, statistical tests work by estimating the sampling distribution,
+    and using the sampling distribution to understand the population under study.
+    (We will study statistical tests next week).
+  \end{columns}
+
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Point Estimators}
+% \begin{frame}
+%   \begin{center}
+%     Part II - Point Estimators
+%   \end{center}
+% \end{frame}
+
+\subsection{Definition}
+
+\begin{frame}{Definition of a Point Indicator}
+
+A more formal definition of \structure{Point Indicator} is: \emph{a statistic
+that provides the value of maximum plausibility for an (unknown) population
+parameter $\theta$}.\bigskip
+
+In other words, a P.I. is a function that, given a sample obtained in an
+experiment, calculates the {\bf more plausible} value for a parameter $\theta$
+that describes the population of interest.\bigskip
+
+\begin{itemize}
+  \item Consider a random variable $X$, and a parameter $\theta$ that describes its distribution.
+  \item Consider a sample $x = \{x_1, x_2, \ldots, x_n\}$ obtained from $X|\theta$
+  \item The function $\hat{\Theta} = h\left(x\right)$ is a \structure{point estimator} of $\theta$, and the value $\hat\theta$ calulated from this function is a \structure{point estimate} of $\theta$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example of model parameters}
+We use point estimators to calculate several parameters for
+population models. Some common parameters that we are interested
+in estimating include:\bigskip
+
+\begin{itemize}
+  \item the population mean, $\mu$;
+	\item the population variance, $\sigma^2$;
+	\item the population proportion, $p$;
+	\item the difference in the means of two populations, $\mu_1-\mu_2$;
+	\item etc...
+\end{itemize}\bigskip
+
+Note that for each of these parameters, there are many different statistics that we could use to calculate an estimate. Which statistic / which point estimator should be used, depends on the mathematical properties of the statistic AND the model under study.
+\end{frame}
+
+\subsection{Statistical Errors and Biases}
+\begin{frame}{Statistical Errors and Biases}
+  We said before that the value calculated by a point estimator (\structure{the estimate, $\hat\theta$}) depends on the sample. So if we are unlucky with our sample, the estimated value can be very different from the true parameter value, $\theta$.\bigskip
+
+  Talking about this difference, we want to consider {\bf Statistical Error} and {\bf Statistical Bias}:
+
+  \begin{itemize}
+    \item {\bf Error}: The difference between an estimate and the true value of a parameter;
+    \item {\bf Bias}: The property of a statistic that \structure{systematically} produces wrong estimates;
+  \end{itemize}\vfill
+
+  It is important to note that besides \structure{Statistical Bias}, we also have \structure{Structural Bias}, which depends a lot on the design of the experiment. Today, we will focus on the first one.
+\end{frame}
+
+
+\begin{frame}{Statistical Errors and Biases}{Example of a biased statistic}
+  Imagine that we want to know the typical height of the students of the CS Program.\bigskip
+
+  Our experiment design is to get a random sample of 10 students, measure their height, and use a statistic to calculate the point estimate of the height, from the sample data. Let's consider two statistics:
+  \begin{itemize}
+    \item The point estimate of the height is {\bf the minimum height} from the sample.
+    \item The p. e. of the height is {\bf the height of a random observation} from the sample;
+  \end{itemize}\bigskip
+
+  The first statistic will give you a result that is {\bf usually smaller} than what we could consider a representative value for the students' height.\bigskip
+
+  \alert{To think about}: What could we say (mathematically) about the second statistic?
+\end{frame}
+
+\begin{frame}{Unbiased estimators}
+\begin{itemize}
+  \item A good estimator should consistently generate estimates that are close to the real value of the parameter $\theta$.
+  \item An \structure{unbiased} estimator will generate estimates where the errors, when they happen, are equally distributed above and below the real value of $\theta$.
+\end{itemize}\bigskip
+
+Mathematically, we say that an estimator $\hat{\Theta}$ is said to be \textit{unbiased} for parameter $\theta$ if its \structure{expected value} is $\theta$ ($E\left[\hat\Theta\right] = \theta$). or, equivalently:\bigskip
+
+\begin{equation*}
+E\left[\hat{\Theta}\right] - \theta = 0
+\end{equation*}\bigskip
+
+The difference $E\left[\hat{\Theta}\right] - \theta$ is referred to as the \textit{bias} of a given estimator.
+\end{frame}
+
+\begin{frame}{Unbiased estimators}{Example: sample's average}
+Let's show briefly that the average of a sample of values is an unbiased estimator for the mean of the population:\bigskip
+
+Let $x_1,\ldots,x_n$ be a random sample from a given population $X$, and $\bar{x}$ be the average of the sample. The {\bf value of interest} in this population is modeled by a distribution with mean $\mu$.\bigskip
+
+Noting that the expected value of one observation $x_i$ is the mean $\mu$ of the population, the expected value of the average of the sample will be:\bigskip
+
+\begin{equation*}
+E\left[\bar{x}\right] = E\left[\frac{1}{n}\sum\limits_{i=1}^{n}x_i\right] =
+\frac{1}{n}\sum\limits_{i=1}^{n}E\left[x_i\right] =
+\frac{1}{n}\sum\limits_{i=1}^{n}\mu = \mu
+\end{equation*}
+\vfill
+\end{frame}
+
+\begin{frame}{Unbiased estimators}{If statistical bias is the same, what else is important for a statistic?}
+
+It is usually possible to define multiple unbiased estimators for a parameter $\theta$. However, the \structure{variance} of these estimators may be different.\bigskip
+
+\begin{columns}[T]
+    \column{0.5\textwidth}\includegraphics[width=1\textwidth]{../img/unbiased_variance.png}
+    \column{0.5\textwidth}
+    For example, the \structure{average value of a sample} and the \structure{value of a single observation} are both unbiased estimators of the mean. The first one has smaller variance.\bigskip
+
+    We usually want to obtain the \textit{minimal-variance unbiased estimator} (MVUE).
+\end{columns}\bigskip
+This is because they will usually generate estimates $\hat\theta$ that are closer to the real value of $\theta$.
+
+\ppagenote{Image: D.C.Montgomery,G.C. Runger, \textit{Applied Statistics and Probability for Engineers},Wiley 2003.}
+\end{frame}
+
+\subsection{Statistics about Statistics}
+\begin{frame}{Standard error of a point estimator}
+In the last slide we showed that a point estimator $\hat\Theta$ will have an associated distribution, with its mean ($\mu_{\hat\Theta}$) and variance ($Var\left[\hat{\Theta}\right]$).\bigskip
+
+So we can talk about the \structure{standard error} of an estimator $\hat{\Theta}$ as:
+\begin{equation*}
+\sigma_{\hat{\Theta}} = \sqrt{Var\left[\hat{\Theta}\right]}
+\end{equation*}\bigskip
+
+Because the values of the estimator depend on the parameters of the population, we cannot know precisely the value of $\sigma_{\hat\Theta}$ or $\mu_{\hat\Theta}$. But we can {\bf estimate the error of the estimator}, using data from the sample. In this case, we refer to it as the \textit{estimated standard error}, $\hat{\sigma}_{\hat{\Theta}}$ (the notations $s_{\hat{\Theta}}$ and $se(\hat{\Theta})$ are also common).
+
+\hfill\includegraphics[width=.1\textwidth]{../img/yodawg}
+\end{frame}
+
+%% TODO: this part was taken directly from campelo's materials, Needs update?
+\begin{frame}{Standard error of a point estimator}{Examples}
+  Assuming a random variable $X$ under a gaussian distribution, and a sample error $s$, we can calculate the standard errors of several common point indicators\footnote{See Ahn and Fessler (2003), \textit{Standard Errors of Mean, Variance, and Standard Deviation Estimators}: \url{https://git.io/v5Z5v}}
+
+\begin{equation*}
+\hat{\sigma}_{\bar{X}} = \frac{s}{\sqrt{n}}
+\end{equation*}
+
+\begin{equation*}
+\hat{\sigma}_{S^2} = s^2\sqrt{\frac{2}{n-1}}
+\end{equation*}
+
+\begin{equation*}
+\hat{\sigma}_{S} = \frac{s}{\sqrt{2(n-1)}} + O\left(\frac{1}{n\sqrt{n}}\right)\approx \frac{s}{\sqrt{2(n-1)}}
+\end{equation*}\bigskip
+\end{frame}
+
+\subsection{Example}
+\begin{frame}{Point Estimator Use Case}
+  \begin{columns}[T]
+    \column{0.4\textwidth}
+    \hspace{.05\textwidth}\includegraphics[width=.9\textwidth]{../img/pixabay_cable}
+    \ppagenote{Coaxial cable image from \url{https://pixabay.com}}
+
+    \column{0.6\textwidth}
+    Consider a factory that produces coaxial cables.\bigskip
+
+    Let's assume that the resistance values of the cables produced by this factory
+    are distributed following a normal distribution, with mean $50\Omega$ and variance $4\Omega$.\bigskip
+
+    $X\sim\mathcal{N}\left(\mu=50,\sigma^2=4\right)$
+\end{columns}
+\end{frame}
+
+\begin{frame}{Point Estimator Use Case}
+  \begin{columns}[T]
+    \column{.4\textwidth}
+    \hspace{.05\textwidth}\includegraphics[width=.9\textwidth]{../img/pixabay_cable}
+    \column{.6\textwidth}
+    Let's imagine an experiment, where we take a random sample of $25$ cables
+    from the production process (to see if the resistance of the cables is as
+    expected).\bigskip
+
+    The \structure{sample mean} of the the observations is:
+    \begin{equation*}
+    \bar{x} = \frac{1}{25}\sum\limits_{i=1}^{25}{x_i}
+    \end{equation*}
+  \end{columns}
+  \bigskip
+
+
+
+The \structure{sample mean} follows a normal distribution, with $E[\bar{x}] = \mu = 50\Omega$ and $\sigma_{\bar{x}} = \sqrt{\sigma^2/25} = 0.4\Omega$.\bigskip
+
+Note that the error of the estimator depends on the sample size. So if we collect a bigger or smaller sample, the error will decrease or increase, respectively.
+\end{frame}
+
+% %% TODO: add one slide with examples of estimating the mean resistance of
+% %% the cables, with smaller and bigger sample sizes.
+
+% \subsection{The Central Limit Theorem}
+
+% %% TODO: this part was taken directly from campelo's materials, Needs update.
+% \begin{frame}{The Central Limit Theorem}{We love Normal distributions.}
+
+% In the previous example, the resistance of cables in our imaginary factory follows a normal distribution. \bigskip
+
+% So the \structure{sample average} statistic for this model will also follow a normal distribution.\bigskip
+
+% Normal distributions have some very nice properties (that we will explore in the next class), so it is nice when our statistics follow them.\bigskip
+
+% Does this only happen when the population ("real") distribution is real?\bigskip
+% \end{frame}
+
+% \begin{frame}{The Central Limit Theorem}{Sample-based statistics follow a normal distribution under certain conditions}
+
+% The {\bf Central Limit Theorem} states that, under certain conditions, the sampling distribution of the mean will tend to be approximately normal, even for populations with arbitrary distributions.
+% \bigskip
+
+% More formally, let $x_1,\ldots,x_n$ be a sequence of \textbf{independent and identically distributed} (\textbf{iid}) random variables, with mean $\mu$ and finite variance $\sigma^2$. We define the statistic $z_n$ as:
+% \begin{equation*}
+% z_n = \frac{\sum\limits_{i=1}^{n}{(x_i)} - n\mu}{\sqrt{n\sigma^2}} = \frac{\bar{x} - \mu}{\sqrt{\sigma^2/n}}
+% \end{equation*}
+
+% Under these conditions, $z_n$ is distributed asymptotically as a standard Normal variable, that is, $z_n\sim\mathcal{N}(0,1)$.
+% \end{frame}
+
+% \begin{frame}{The Central Limit Theorem}
+
+% The {\bf Central Limit Theorem} is one of the most useful properties for statistical inference. The CLT allows the use of techniques based on the Normal distribution, even when the population under study is not normal.\bigskip
+
+% For ``well-behaved'' distributions (continuous, symmetrical, unimodal - the usual bell-shaped pdf we all know and love) even small sample sizes are commonly enough to justify invoking the CLT and using techniques that assume a model with a normal distribution.\bigskip
+
+% For more details on the CLT, see \url{https://www.encyclopediaofmath.org/index.php/Central_limit_theorem}
+% \end{frame}
+
+%% TODO: Set up my own CLT code example
+
+% \begin{frame}
+% {Sampling Distributions}
+% {The Central Limit Theorem}
+% For an interactive demonstration of the CLT, download the files in {\small\url{https://git.io/vnPj8}} and run on RStudio.
+% \bigskip
+%
+% {\centering\includegraphics[width=\textwidth]{../img/CLTdemo.png}}
+% \end{frame}
+%
+% \section{Interval Estimators}
+% \section{Basic Concepts}
+% \begin{frame}
+%   \begin{center}
+%     Indicators, Part III - Interval Estimators
+%   \end{center}
+% \end{frame}
+
+%% TODO: This part is too technical. Add a concrete example of the Confidence Interval, with actual numbers, when explaining what it is.
+\section{Interval Indicators}
+\begin{frame}
+  \begin{center}
+    Part III - Interval Estimators
+  \end{center}
+\end{frame}
+
+\begin{frame}{Statistical Intervals}{How sure are you?}
+As we saw, point indicators are statistics (functions) that estimate values of a population parameter, from data in the sample.\bigskip
+
+\structure{Statistical intervals} are functions that quantify {\bf the uncertainty} associated to an estimate;
+\bigskip
+
+Let's remember the coaxial cable factory example:
+\begin{itemize}
+  \item A cable factory produces cable, and we are interested in their resistance.
+  \item The cable producion can be described as a normal distribution, with $\mu = 50, \sigma = 2$.
+\end{itemize}\bigskip
+
+Let's now suppose that we obtained a sample with $n=25$ observations, and calculated a sample mean of $\bar{x} = 48$. Because of the sample variability, it is likely that this estimate is not the true value of $\mu$, but how much error can we assume exist in this statistic?
+\end{frame}
+
+\begin{frame}{Statistical Intervals}{Definition}
+A {\bf statistical interval} defines a region that is \structure{likely to contain the true value of an estimated parameter}.
+\bigskip
+
+The statistic interval allows us to quantify the {\bf level of uncertainty} associated with the estimation. This information helps us arrive at sound conclusions about the parameter, at {\bf predefined} levels of certainty.
+\bigskip
+
+Three of the most common types of interval are:
+
+\begin{itemize}
+  \item Confidence Intervals;
+  \item Tolerance Intervals;
+  \item Prediction Intervals;
+\end{itemize}
+\end{frame}
+
+
+%=====
+
+\begin{frame}{What is a Confidence Interval?}
+Confidence intervals quantify the degree of uncertainty associated with the estimation of population parameters such as the mean or the variance.\bigskip
+
+Can be defined as ``\textit{the interval that contains the true value of a given population parameter with a confidence level of $100(1-\alpha)$}'';\bigskip
+
+Another useful definition is to think about confidence intervals in terms of confidence \textit{in the method}: ``The method used to derive the interval has a hit rate of $95\%$'' - i.e., the interval generated has a $95\%$ chance of `capturing' the true population parameter.''
+\end{frame}
+
+%=====
+
+
+
+%% TODO: the explanation of $z$ and $t$ comes out of nowhere in the definition of CI. This part needs to be broken down a bit more.
+
+\begin{frame}[t]{CI on the Mean of a Normal Variable}
+  {Known Variance Case}
+The two-sided $CI_{(1-\alpha)}$ for the mean of a normal population with known variance $\sigma^2$ is given by:
+\begin{equation*}
+\bar{x}+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\leq\mu\leq\bar{x}+z_{1-\alpha/2}\frac{\sigma}{\sqrt{n}}
+\end{equation*}
+\noindent where $(1-\alpha)$ is the confidence level and $z_{x}$ is the $x$-quantile of the standard normal distribution.
+\bigskip
+
+For our coaxial cable example we have:
+\begin{itemize}
+  \item $\bar{x}$: Mean resistance: 48
+  \item $z_{\alpha/2}$: 2.5 and 97.5 percentiles of the z distribution: 1.96, -1.96
+  \item $\sigma$: assumed standard deviation: 2; $n$: Number of repetitions: 25
+\end{itemize}\medskip
+
+The result will be a confidence interval between 47.216 to 48.784
+\end{frame}
+
+\begin{frame}{CI with unknown variance}
+For the more usual case with an unknown variance:
+
+\begin{itemize}
+  \item Replace the assumed standard deviation $\sigma$ with the calculated error from the experimental result, $s$.
+  \item Replace the normal distribution with the student-t distribution.
+\end{itemize}
+
+The calculation becomes:
+
+\begin{equation*}
+\bar{x}+t_{\alpha/2}^{(n-1)}\frac{s}{\sqrt{n}}\leq\mu\leq\bar{x}+t_{1-\alpha/2}^{(n-1)}\frac{s}{\sqrt{n}}
+\end{equation*}
+\noindent where $t_{x}^{(n-1)}$ is the $x$-quantile of the t distribution with $n-1$ degrees of freedom.
+\end{frame}
+
+% \begin{frame}
+% {Confidence Intervals}
+% {Example: 100 $CI_{.95}$ for a sample of 25 observations}
+% \centering\includegraphics[width=.8\textwidth]{../img/CIs.pdf}
+% \footnote{For an interactive demonstration of the factors involved in the definition of a confidence interval, Run the files at \url{https://git.io/vxXGj} on RStudio.}
+% \end{frame}
+
+
+%=====
+
+% \begin{frame}{CI on the Variance and Standard Deviation of a Normal Variable}
+% A two-sided confidence interval on the variance of a normal variable can be easily calculated:
+% \begin{equation*}
+% \frac{(n-1)s^2}{{\chi^2}_{1 - \alpha/2}^{(n-1)}}\leq\sigma^2\leq\frac{(n-1)s^2}{{\chi^2}_{\alpha/2}^{(n-1)}}
+% \end{equation*}
+% \noindent where ${\chi^2}_{x}^{(n-1)}$ represents the x-quantile of the $\chi^2$ distribution with $n-1$ degrees of freedom. For the standard deviation one simply needs to take the squared root of the confidence limits.
+% \end{frame}
+
+%=====
+
+%\begin{ftst}
+%	{Bootstrap Confidence Intervals}
+%	{Using resampling}
+%	Confidence intervals can also be constructed using a resampling technique called \textit{bootstrap};
+%	\vone
+%	This method works by resampling (with replacement) from the
+%
+%\end{ftst}
+
+%\begin{ftst}
+%{Prediction Intervals}
+%{Definition}
+%Prediction intervals quantify the uncertainty associated with forecasting the value of a future observation;
+%\vone
+%Essentially, one is interested in obtaining an interval within which he or she can declare that the next observation will fall with a given probability;
+%\vone
+%For a normal distribution, the tolerance interval for a single next observation (given an existing sample of size $n$) is:
+%\beqs
+%\bar{x}+t_{\alpha/2}^{(n-1)}s\sqrt{1 + \frac{1}{n}}\leq x_{n+1}\leq\bar{x}+t_{1-\alpha/2}^{(n-1)}s\sqrt{1 + \frac{1}{n}}
+%\eqs
+%\end{ftst}
+%
+%%=====
+%
+%\begin{ftst}
+%{Tolerance Intervals}
+%{Definition}
+%``\textit{A tolerance interval is an \textbf{enclosure} interval for a specified proportion of the sampled population, not its mean or standard deviation. For a specified confidence level, you may want to determine lower and upper bounds such that a given percent of
+%the population is contained within them.}''$^{[1]}$.
+%
+%\centering\includegraphics[width=\textwidth]{../figs/enclosure.pdf}
+%\lfr{[1] J.G. Ram\'irez: \url{https://git.io/v5ZFh}}
+%\end{ftst}
+%
+%%=====
+%
+%\begin{ftst}
+%{Tolerance Intervals}
+%{Definition}
+%The common practice in engineering of defining specification limits by adding $\pm3\sigma$ to a given estimate of the mean arises from this definition - for a normal population $\approx 99.75\%$ of observations fall within $\mu\pm3\sigma$.
+%\vone
+%However, as in most cases $\sigma^2$ is unknown, we have to use $s^2$ and compensate for the uncertainty in this estimation. The two-sided tolerance interval for a given population proportion $\gamma$ is given as:$^{[2]}$
+%
+%\beqs
+%\bar{x}\pm s\sqrt{\frac{\left(n-1\right)}{n}\frac{\left(n+z_{(\alpha/2)}^{2}\right)}{{\chi^2}_{\gamma}^{(n-1)}}}
+%\eqs
+%\vhalf
+%\noindent wherein $\gamma$ is the proportion of the population to be enclosed, and $1-\alpha$ is the desired confidence level for the interval.
+%\lfr{[2] NIST Engineering Statistics Handbook, \url{https://goo.gl/m6cxC6}}
+%\end{ftst}
+
+%=====
+
+% \begin{frame}{Wrapping up}
+% Statistical intervals quantify the uncertainty associated with different aspects of estimation;
+% \bigskip
+%
+% Reporting intervals is always better than point estimates, as it provides the necessary information to quantify the location and uncertainty of your estimated values;
+% \bigskip
+%
+% The correct interpretation is a little tricky (although not very difficult)\footnote{See the table at the end of  \url{https://git.io/v5ZFh}}, but it is essential in order to derive the correct conclusions based on the statistical interval of interest.
+% \end{frame}
+
+
+%% TODO: Data visualization (types of graphs for indicators)
+% \subsection{Visualizing indicators}
+
+\begin{frame}{Summary}{Descriptive Statistics}
+
+  Experiment Data can be used to \structure{estimate facts about the world}:
+  \bigskip
+
+  \begin{itemize}
+    \item Point estimators: Sample Means, Variance, Correlation, etc.
+    \begin{itemize}
+      \item Give us specific information about the model we want to study
+      \item "What is the average height of a student?"
+      \item {\bf An estimator is not the real value!}
+    \end{itemize}\bigskip
+
+    \item Interval estimators: Confidence Interval, etc. %IQR
+    \begin{itemize}
+      \item Give us more information than point estimators.
+      \item "How certain should I be about this point estimator".
+      \item Size of interval estimator depends on the number of samples.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
